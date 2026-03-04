@@ -1,0 +1,255 @@
+/* app/components/header/header.scss */
+.header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 100;
+	padding: 0 clamp(12px, 2vw, 50px);
+
+	&--with-topbar {
+		top: 80px;
+		left: 0;
+		width: 100%;
+	}
+	&--collapsed {
+		.header__burger {
+			display: inline-flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+	}
+	&__row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&__inner {
+		display: flex;
+		align-items: center;
+		position: fixed;
+		top: 0;
+		right: clamp(12px, 2vw, 50px);
+		z-index: 100;
+		// на широких экранах вписывается в контейнер 1280px
+		@media (min-width: 1280px) {
+			right: calc((100vw - 1280px) / 2 + 50px);
+		}
+		gap: 24px;
+		border-radius: 999px;
+		box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+		background: var(--backgrounds-white);
+		padding: 18px 30px;
+		will-change: transform;
+		will-change: padding;
+		margin-right: 0;
+	}
+
+	&--with-topbar .header__inner {
+		top: 80px; // ниже топбара при скролле
+	}
+
+	// модификатор: отступ сверху (страница «О нас»)
+	&--about {
+		top: 24px;
+
+		.header__inner {
+			top: 24px;
+		}
+	}
+
+	&__nav {
+		flex: 1 1 auto;
+		overflow: hidden; /* чтобы элементы меню не вылазили */
+		will-change: width, opacity, transform;
+	}
+	// &__nav-wrap { transform-origin: left center; will-change: transform, opacity; }
+
+	&__logo {
+		display: inline-flex;
+		align-items: center;
+	}
+	&__logo-img {
+		width: 156px;
+		height: auto;
+		display: block;
+	}
+
+	&__nav {
+		justify-self: center;
+	}
+	&__menu {
+		display: flex;
+		gap: clamp(16px, 3vw, 24px);
+		align-items: center;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	&__item {
+		display: flex;
+	}
+	&__link {
+		text-decoration: none;
+		color: var(--text-dark-blue);
+		font: 500 14px/1 var(--font-family);
+		transition: opacity 0.2s;
+		text-wrap: nowrap;
+	}
+	&__link:hover {
+		opacity: 0.7;
+	}
+
+	&__controls {
+		display: flex;
+		flex: 0 0 auto;
+		align-items: center;
+		gap: 12px;
+		background: transparent;
+		position: relative;
+		z-index: 2;
+	}
+
+	&__burger {
+		display: none;
+		width: 36px;
+		height: 36px;
+		border: none;
+		background: var(--backgrounds-white);
+		position: absolute;
+		left: 18px;
+	}
+	&__burger-line {
+		display: block;
+		width: 29px;
+		height: 3px;
+		margin: 3px auto;
+		background: var(--text-green);
+		border-radius: 2px;
+	}
+
+	&__lang {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		padding: 8px 12px;
+		border-radius: 999px;
+		border: 1px solid var(--backgrounds-blue);
+		text-decoration: none;
+		color: var(--text-dark-blue);
+	}
+	&__lang-flag {
+		width: 20px;
+		height: 20px;
+		border-radius: 999px;
+	}
+	&__lang-caret {
+		width: 10px;
+		height: 10px;
+		border: solid var(--backgrounds-blue);
+		border-width: 0 1px 1px 0;
+		transform: rotate(45deg);
+		display: inline-block;
+	}
+
+	&__cta {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 11px 16px;
+		height: 36px;
+		border-radius: 999px;
+		background: var(--text-green);
+		color: var(--backgrounds-white);
+		text-decoration: none;
+		font: 400 14px/1 var(--font-family);
+		position: relative;
+		overflow: hidden;
+		cursor: pointer;
+		min-width: 170px;
+
+		// если хочешь, чтобы цвет менялся без GSAP — оставь hover
+		&:hover {
+			background: var(--elements-green-extra);
+			color: var(--backgrounds-white);
+		}
+
+		&-texts {
+			position: relative;
+			display: inline-block;
+		}
+		span {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			white-space: nowrap;
+			will-change: transform;
+		}
+	}
+
+	&__icon {
+		width: 36px;
+		height: 36px;
+		border-radius: 999px;
+		background: #e6f2ea;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		text-decoration: none;
+		&--login {
+			width: 26px;
+			height: 26px;
+			background: transparent;
+			border: none;
+			outline: none;
+			box-shadow: none;
+		}
+	}
+	&__icon-user {
+		width: 15px;
+		height: 19px;
+	}
+	&__icon-door {
+		width: 100%;
+		height: 100%;
+		display: inline-block;
+	}
+
+	/* Drawer (mobile) */
+	&__drawer {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 100%;
+		overflow: hidden;
+		height: 0; /* GSAP анимирует высоту */
+	}
+	&__drawer-menu {
+		list-style: none;
+		margin: 0;
+		padding: 12px 18px;
+		background: var(--backgrounds-white);
+		border-radius: 20px;
+		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+	}
+	&__drawer-item {
+	}
+	&__drawer-link {
+		display: block;
+		padding: 12px 8px;
+		color: var(--text-dark-blue);
+		text-decoration: none;
+	}
+
+	/* Адаптив */
+	@media (max-width: 1024px) {
+		&__menu {
+			display: none;
+		}
+		&__burger {
+			display: inline-flex;
+		}
+	}
+}

@@ -1,0 +1,23 @@
+mixin table(data)
+	//- модификатор
+	+modif('table', data.mod)
+
+	//- префикс
+	+prefix('table', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || ''
+
+	table(class=`table${pr}${mod}`)&attributes(attr)
+		if (data.thead)
+			thead(class=`table${pr}__head`)
+				tr(class=`table${pr}__tr`)
+					each th in data.thead
+						th(class=`table${pr}__th`)= th.text
+
+		tbody(class=`table${pr}__body`)
+			each tr in data.tbody
+				tr(class=`table${pr}__tr`)
+					each td in tr.list
+						td(class=`table${pr}__td`)&attributes(td.attr)= td.text
+

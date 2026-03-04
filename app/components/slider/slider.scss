@@ -1,0 +1,11 @@
+@import '~swiper/swiper-bundle';
+@import '~swiper/swiper-bundle.min.css';
+.slider {
+    &__slide {
+        min-height: 200px;
+        background: rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

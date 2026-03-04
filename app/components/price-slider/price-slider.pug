@@ -1,0 +1,31 @@
+mixin priceSlider(data)
+	//- модификатор
+	+modif('price-slider', data.mod)
+
+	//- префикс
+	+prefix('price-slider', data.prefix)
+
+	//- атрибуты
+	- id = {'id': data.id}
+	- startMin = {'data-start-min': data.startMin} || ''
+	- startMax = {'data-start-max': data.startMax} || ''
+	- connect = {'data-connect': data.connect} || ''
+	- min = {'data-min': data.range.min} || ''
+	- max = {'data-max': data.range.max} || ''
+	- inputs = {'data-inputs': data.inputs} || ''
+	- values = {'data-values': data.values} || ''
+	- tooltips = {'data-tooltips': data.tooltips} || ''
+	- attr = data.attr || {'data-price-slider': 'data-price-slider'}
+
+	div(class=`price-slider${pr}__wrap`)
+		div(class=`price-slider${pr}${mod}`)&attributes(attr, id, startMin, startMax, connect, min, max, inputs, values, tooltips)
+
+		if (data.inputs)
+			div(class=`price-slider${pr}__values`)
+				input(type="text" class=`price-slider${pr}__input` id=`${data.id}-min`)
+				input(type="text" class=`price-slider${pr}__input` id=`${data.id}-max`)
+
+		if (data.values)
+			div(class=`price-slider${pr}__values`)
+				span(class=`price-slider${pr}__value` id=`${data.id}-val-min`)= data.startMin
+				span(class=`price-slider${pr}__value` id=`${data.id}-val-max`)= data.startMax

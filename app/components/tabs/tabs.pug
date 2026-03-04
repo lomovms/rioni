@@ -1,0 +1,18 @@
+mixin tabs(data)
+	//- модификатор
+	+modif('tabs', data.mod)
+
+	//- префикс
+	+prefix('tabs', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || ''
+
+	div(class=`tabs${pr}${mod}` data-tabs="")&attributes(attr)
+		div(class=`tabs${pr}__head` data-tabs-head="")&attributes(data.attrHead)
+			each head in data.head
+				a(href="#" class=`tabs${pr}__link` class= head.class)= head.text
+
+		div(class=`tabs${pr}__body` data-tabs-body="")&attributes(data.attrBody)
+			each body in data.body
+				div(class=`tabs${pr}__item` class= body.class) !{body.text}

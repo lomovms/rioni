@@ -1,0 +1,48 @@
+mixin review(data)
+	//- модификатор
+	+modif('review', data.mod)
+
+	//- префикс
+	+prefix('review', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || ''
+
+	div(class=`review${pr}${mod}`)&attributes(attr)
+		each item in data.list
+			div(class=`review${pr}__item`)
+				+reviewInner(item, pr)
+
+//- внутренний контент
+mixin reviewInner(data, prefix)
+
+	//- Если есть фото
+	if (data.img)
+		+img(data.img, `review${prefix}__img lazyload`)
+
+	//- //- Если есть заголовок
+	if (data.title)
+		div(class=`review${prefix}__title`)= data.title
+
+	//- Если есть Имя
+	if (data.name)
+		div(class=`review${prefix}__name`)= data.name
+
+	//- Если есть дата
+	if (data.date)
+		div(class=`review${prefix}__date`)= data.date
+
+	//- Если есть текст
+	if (data.text)
+		div(class=`review${prefix}__text`)= data.text
+
+	//- Если есть рейтинг
+	if (data.rating)
+		div(class=`review${prefix}__rating`)
+			+rating({star: data.rating})
+
+	if (data.answer)
+		div(class=`review${prefix}__answer`)
+			each item in data.answer
+				div(class=`review${prefix}__answer-item`)
+					+reviewInner(item)

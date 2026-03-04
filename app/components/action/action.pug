@@ -1,0 +1,24 @@
+mixin action(data)
+	//- модификатор
+	+modif('action', data.mod)
+
+	//- префикс
+	+prefix('action', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || ''
+
+	a(class=`action${pr}${mod}` class= data.class href= data.href)&attributes(attr)
+		if (data.img)
+			div(class=`action${pr}__images`)
+				+img(data.img, `action${pr}__img lazyload`)
+
+		if (data.title || data.text || data.btn)
+			div(class=`action${pr}__inner`)
+				//- Заголовок
+				if (data.title)
+					div(class=`action${pr}__title`)= data.title
+
+				//- Текст
+				if (data.text)
+					div(class=`action${pr}__text`)= data.text

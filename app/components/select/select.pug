@@ -1,0 +1,54 @@
+mixin select(data)
+	//- модификатор
+	+modif('select', data.mod)
+
+	//- префикс
+	+prefix('select', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || ''
+
+	if (data.multiple)
+		- multi = {multiple: ''}
+
+		if (data.okCancel)
+			- okCancel = {'data-okCancel': 'true'}
+		else
+			- okCancel = ''
+
+		if (data.selectAll)
+			- selectAll = {'data-selectAll': 'true'}
+		else
+			- selectAll = ''
+	else
+		- multi = ''
+
+	if (data.search)
+		- search = {'data-search': 'true'}
+	else
+		- search = ''
+
+	if (data.placeholder)
+		- placeholder = {'data-placeholder': data.placeholder}
+	else
+		- placeholder = ''
+
+	select(class=`select${pr}${mod}`)&attributes(attr, multi, search, placeholder, okCancel, selectAll)
+		each item in data.list
+
+			if (item.disabled)
+				- dis = {'disabled': ''}
+			else
+				- dis = ''
+
+			if (item.optgroup)
+				optgroup(label=item.label)
+					each item2 in item.optgroup
+						if (item2.disabled)
+							- dis = {'disabled': ''}
+						else
+							- dis = ''
+
+						option&attributes(dis)= item2.text
+			else
+				option&attributes(dis)= item.text

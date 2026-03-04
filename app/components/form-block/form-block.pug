@@ -1,0 +1,66 @@
+//- Секция формы обратной связи (section-form). data.prefix — суффикс для id полей (например 'about' → form-name-about)
+mixin sectionForm(data)
+	- var prefix = (data && data.prefix) ? '-' + data.prefix : '';
+	- var idName = 'form-name' + prefix;
+	- var idEmail = 'form-email' + prefix;
+	- var idPhone = 'form-phone' + prefix;
+	- var idComment = 'form-comment' + prefix;
+	- var idCountryFlag = 'form-country-flag' + prefix;
+	- var idCountry = 'form-country' + prefix;
+
+	section.section-form
+		.container
+			.form-block
+				.form-block__left
+					.form-block__info
+						h2.form-block__title Начни инвестировать!
+						p.form-block__text Напишите нам и получите бесплатную консультацию от ведущих инвестиционных специалистов Rioni Capital
+					.form-block__img-wrap
+						img.form-block__img(src="./assets/images/required/form-img.jpg" alt="")
+				.form-block__right
+					form.form-block__form(action="#" method="post")
+						.form-block__field
+							label.form-block__label(for=idName) Ваше имя
+							input.form-block__input(id=idName type="text" name="name" placeholder="")
+						.form-block__row
+							.form-block__field
+								label.form-block__label(for=idEmail) E-mail
+								input.form-block__input(id=idEmail type="email" name="email" placeholder="")
+							.form-block__field
+								label.form-block__label(for=idPhone) Номер телефона
+								.form-block__phone
+									.form-block__country.js-country-select
+										.form-block__country-trigger(role="button" tabindex="0" aria-haspopup="listbox" aria-expanded="false" aria-label="Страна")
+											span.form-block__country-flag(id=idCountryFlag)
+											span.form-block__country-arrow
+										.form-block__country-dropdown(role="listbox" aria-hidden="true")
+											.form-block__country-option(role="option" data-value="ru" tabindex="0")
+											.form-block__country-option(role="option" data-value="ge" tabindex="0")
+										select.form-block__country-select(id=idCountry name="country" aria-label="Страна" data-country-select)
+											option(value="ru" selected) RU
+											option(value="ge") GE
+									input.form-block__input.form-block__input--phone(id=idPhone type="tel" name="phone" placeholder="" autocomplete="tel")
+						.form-block__field
+							label.form-block__label(for=idComment) *Комментарий
+							textarea.form-block__input.form-block__textarea(id=idComment name="comment" rows="3" placeholder="")
+						.form-block__agree
+							label.form-block__checkbox-label
+								input.form-block__checkbox(type="checkbox" name="consent" value="1")
+								span.form-block__checkbox-text Даю согласие на обработку
+									a.form-block__link(href="#")  персональных данных
+						button.form-block__submit(type="submit") Отправить
+						p.form-block__privacy Нажимая кнопку «Отправить» вы принимаете
+							a.form-block__link(href="#")  политику конфиденциальности
+			.form-block__socials
+				a.form-block__social(href="#" aria-label="Instagram")
+					span.form-block__social-icon.form-block__social-icon--instagram
+				a.form-block__social(href="#" aria-label="LinkedIn")
+					span.form-block__social-icon.form-block__social-icon--linkedin
+				a.form-block__social(href="#" aria-label="Facebook")
+					span.form-block__social-icon.form-block__social-icon--facebook
+				a.form-block__social(href="#" aria-label="TikTok")
+					span.form-block__social-icon.form-block__social-icon--tiktok
+				a.form-block__social(href="#" aria-label="X")
+					span.form-block__social-icon.form-block__social-icon--x
+				a.form-block__social(href="#" aria-label="YouTube")
+					span.form-block__social-icon.form-block__social-icon--youtube

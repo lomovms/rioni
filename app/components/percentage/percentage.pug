@@ -1,0 +1,17 @@
+mixin percentage(data)
+	//- модификатор
+	+modif('percentage', data.mod)
+
+	//- префикс
+	+prefix('percentage', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || {'data-percentage': ''}
+	- color1 = {'data-color1': data.color1} || {'data-color1': '#ECEDEF'}
+	- color2 = {'data-color2': data.color2} || {'data-color2': '#ECEDEF'}
+
+	div(class=`percentage${pr}${mod}`)
+		div(class=`percentage${pr}__circle`)&attributes(attr)
+			div(class=`percentage${pr}__border`)&attributes(color1, color2)
+				div(class=`percentage${pr}__content`)
+					div(class=`percentage${pr}__inner` data-percentage=data.count)

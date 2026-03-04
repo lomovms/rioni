@@ -1,0 +1,15 @@
+@import '~tooltipster/src/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-shadow.css';
+@import '~tooltipster/src/css/tooltipster.css';
+@import '~sumoselect/dist/sumoselect.min.css';
+.tooltip {
+    position: relative;
+    &__templates {
+        display: none;
+    }
+    &__content {
+        display: block;
+        & img {
+            max-height: 50px;
+        }
+    }
+}

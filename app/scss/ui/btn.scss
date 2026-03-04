@@ -1,0 +1,45 @@
+.btn {
+	position: relative;
+	display: inline-flex;
+	cursor: pointer;
+	outline: none;
+	align-items: center;
+	justify-content: center;
+	background: #fa803f;
+	border: 0;
+	padding: 20px;
+	color: $color-white;
+	min-width: 200px;
+
+	& + & {
+		margin-left: 30px;
+	}
+
+	&--small {
+
+	}
+
+	&--full {
+		width: 100%;
+	}
+
+	&--add {
+		min-width: 0;
+		width: 50px;
+		padding: 16px 10px;
+	}
+
+	&--remove {
+		border-radius: 50%;
+		padding: 0 5px;
+		position: absolute;
+		right: 5px;
+		top: 5px;
+		min-width: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		line-height: 1;
+		z-index: 1;
+	}
+}

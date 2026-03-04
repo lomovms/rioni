@@ -1,0 +1,45 @@
+mixin banner(data)
+	//- модификатор
+	+modif('banner', data.mod)
+
+	//- префикс
+	+prefix('banner', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || ''
+
+	div(class=`banner${pr}${mod}` class= data.class)&attributes(attr)
+		//- если баннер разбит на колонки
+		if (data.grid)
+			each item in data.grid
+				.banner__item(class= item.class)
+					//- если колонка баннера разбита на колонки
+					if (item.grid)
+						each itemInner in item.grid
+							.banner__item-inner
+								+bannerInner(itemInner, pr)
+					else
+						+bannerInner(item, pr)
+		else
+			+bannerInner(data, pr)
+
+//- внутренний контент баннера
+mixin bannerInner(data, prefix)
+	//- Картинка
+	if (data.img)
+		.banner__images
+			+img(data.img, `banner${prefix}__img lazyload`)
+
+	if (data.title || data.text || data.btn)
+		.banner__inner
+			//- Заголовок
+			if (data.title)
+				div(class=`banner${prefix}__title`)= data.title
+
+			//- Текст
+			if (data.text)
+				div(class=`banner${prefix}__text`)= data.text
+
+			//- Кнопка
+			if (data.btn)
+				a(href="#" class=`banner${prefix}__btn`)= data.btn

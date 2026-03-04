@@ -1,0 +1,23 @@
+.form {
+    &__step {    
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    }
+    
+    &__input {
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    }
+
+    &__item {
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    }
+}

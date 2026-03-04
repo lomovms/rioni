@@ -1,0 +1,19 @@
+mixin social(data)
+	//- модификатор
+	+modif('social', data.mod)
+
+	//- префикс
+	+prefix('social', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || ''
+
+	div(class=`social${pr}${mod}`)&attributes(attr)
+		if (data.title)
+			div(class=`social${pr}__title`)= data.title
+
+		div(class=`social${pr}__list`)
+			each item in data.list
+				div(class=`social${pr}__item`)
+					a(class=`social${pr}__link` href= item.href)
+						+icon(item.icon)

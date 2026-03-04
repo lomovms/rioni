@@ -1,0 +1,37 @@
+//- Svg icon
+mixin icon(name,mod)
+	- mod = mod || ''
+	svg(aria-hidden="true" class="icon " + name + ' ' + mod)
+		use(xlink:href="./assets/images/required/sprite.svg#" + name)
+
+//- Img
+mixin img(imgPath, imageClass, imageRetina, imageAlt)
+	- imageAlt = imageAlt || ''
+	- imageClass = imageClass || ''
+	- imageRetina = imageRetina || ''
+	- attr = {"data-src": `./assets/images/${imgPath}`} || ''
+
+	if (imageRetina)
+		- attr = {"data-src": `./assets/images/${imgPath}`, "data-srcset": `./assets/images/${imageRetina}, ./assets/images/${imgPath}`} || ''
+
+	img(src=`./assets/images/example/load.jpg`, alt=`${imageAlt}`, class=`${imageClass}`)&attributes(attr)
+
+mixin ul(className, items, activeElem, addClass, mmodifierName)
+	ul(class= className + '__list' class= mmodifierName)
+		each item, index in items
+			li(class= className + "__item")
+				a(href="#" class= className + "__link" class=  addClass + ((activeElem === index) ? ' ' + className + '__link_active' : ''))= item
+
+//- Префикс в компонентах
+mixin prefix(el, prefix)
+	if (prefix != undefined)
+		- pr = `-${prefix}`
+	else
+		- pr = ''
+
+//- Модификатор в компонентах
+mixin modif(el, modif)
+	if (modif != undefined)
+		- mod = ` ${el}--${modif}`
+	else
+		- mod = ''

@@ -1,0 +1,40 @@
+// app/components/hero/hero.pug
+mixin hero(data)
+  // модификатор / префикс
+  +modif('hero', data && data.mod)
+  +prefix('hero', data && data.prefix)
+
+  - var d      = data || {};
+  - var attr   = d.attr || {};
+  - var align  = d.align || 'left'; // left | right | center
+  - var bg     = d.bg || '';
+  - var alt    = d.alt || '';
+  - var cls    = 'hero' + (typeof pr !== 'undefined' ? pr : '') + (typeof mod !== 'undefined' ? mod : '') + ' hero--align-' + align;
+
+  section(class=cls)&attributes(attr)
+
+    // media: фоновое изображение или видео
+    .hero__media
+      if d.video
+        video.hero__video(autoplay muted loop playsinline)
+          source(src=d.video, type="video/mp4")
+      else if bg
+        +img(bg, 'hero__bg lazyload', '', alt)
+      else if d.mediaBlock
+        //- кастомный блок вместо картинки/видео
+        != d.mediaBlock
+
+    // контент
+    - var animateMode = d.animate || 'fade';
+    .hero__content(data-animate=animateMode)
+      if d.pretitle
+        .hero__pretitle= d.pretitle
+      if d.title
+        h1.hero__title!= d.title
+      if d.subtitle
+        p.hero__subtitle!= d.subtitle
+      if d.button
+        a.hero__btn.button(href=d.button.url)
+          span.button__text= d.button.text
+          span.button__icon
+            i.icon.icon-arrow-right

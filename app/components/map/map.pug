@@ -1,0 +1,11 @@
+mixin map(data)
+	//- модификатор
+	+modif('map', data.mod)
+
+	//- префикс
+	+prefix('map', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || {'data-map': ''}
+
+	div(class=`map${pr}${mod}` id= data.id)&attributes(attr)

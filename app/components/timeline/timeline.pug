@@ -1,0 +1,25 @@
+mixin timeline(data)
+	//- модификатор
+	+modif('timeline', data.mod)
+
+	//- префикс
+	+prefix('timeline', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || ''
+
+	div(class=`timeline${pr}${mod}`)&attributes(attr)
+		each item in data.list
+			div(class=`timeline${pr}__item`)
+				if (item.date)
+					div(class=`timeline${pr}__data`)= item.date
+
+				div(class=`timeline${pr}__info`)
+					if (item.title)
+						div(class=`timeline${pr}__title`)= item.title
+
+					if (item.text)
+						div(class=`timeline${pr}__text`)= item.text
+
+					if (item.link)
+						a(href="#" class=`timeline${pr}__link`)= item.link

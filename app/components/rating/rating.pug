@@ -1,0 +1,14 @@
+mixin rating(data)
+	//- модификатор
+	+modif('rating', data.mod)
+
+	//- префикс
+	+prefix('rating', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || ''
+
+	div(class=`rating${pr}__wrap`)
+		div(class=`rating${pr}${mod}` data-rating= data.star)&attributes(attr)
+		if (data.rating)
+			div(class=`rating${pr}__count`)= data.rating

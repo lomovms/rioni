@@ -1,0 +1,38 @@
+.input {
+	width: 100%;
+	position: relative;
+	z-index: 1;
+	background: transparent;
+
+	&__container {
+		position: relative;
+	}
+
+	&__icon {
+		position: absolute;
+		right: 0;
+		top: 0;
+		height: 20px;
+		width: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		& .icon {
+			height: 100%;
+			width: 100%;
+		}
+	}
+
+	&__name {
+		position: relative;
+	}
+
+	& ~ &__name {
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 100%;
+	}
+}

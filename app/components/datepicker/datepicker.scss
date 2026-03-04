@@ -1,0 +1,12 @@
+@import '../../assets/scss/libs/daterangepicker';
+
+.datepicker {
+	position: relative;
+
+	&__icon {
+		background: $color-gray-light;
+		height: 20px;
+		width: 20px;
+		display: block;
+	}
+}

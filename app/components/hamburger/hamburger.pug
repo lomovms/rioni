@@ -1,0 +1,11 @@
+mixin hamburger(data)
+	//- модификатор
+	- mod = data.mod || undefined
+	+modif('hamburger', mod)
+
+	//- атрибуты
+	- attr = data.attr || {"data-hamburger": ""}
+
+	button(class=`hamburger${mod}`, class= data.class)&attributes(attr)
+		input(type="checkbox" class="hamburger__input")
+		div(class=`hamburger__line`)

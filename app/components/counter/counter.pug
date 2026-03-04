@@ -1,0 +1,16 @@
+mixin counter(data)
+	//- модификатор
+	+modif('counter', data.mod)
+
+	//- префикс
+	+prefix('counter', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || {'data-counter': ''}
+	- attrMin = data.attrMin || {'data-counter-min': ''}
+	- attrMax = data.attrMax || {'data-counter-max': ''}
+
+	div(class=`counter${pr}${mod}`)&attributes(attr)
+		button(class=`counter${pr}__btn counter${pr}__btn--min`)&attributes(attrMin)
+		input(class=`counter${pr}__input `, type="text", min= data.min, max= data.max, value= data.val)&attributes({'data-counter-input': ''})
+		button(class=`counter${pr}__btn counter${pr}__btn--max`)&attributes(attrMax)

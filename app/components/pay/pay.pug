@@ -1,0 +1,19 @@
+mixin pay(data)
+	//- модификатор
+	+modif('pay', data.mod)
+
+	//- префикс
+	+prefix('pay', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || ''
+
+	div(class=`pay${pr}${mod}`)&attributes(attr)
+		if (data.title)
+			div(class=`pay${pr}__title`)= data.title
+
+		div(class=`pay${pr}__list`)
+			each item in data.list
+				div(class=`pay${pr}__item`)
+					a(class=`pay${pr}__link` href= item.href)
+						+icon(item.icon)

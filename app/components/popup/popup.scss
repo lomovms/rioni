@@ -1,0 +1,10 @@
+@import '../../../node_modules/magnific-popup/src/css/main.scss';
+.popup {
+    background: $color-white;
+    max-width: 600px;
+    margin: 30px auto;
+    &--figure {
+        max-width: calc(100vw - 60px);
+        margin: 30px auto;
+    }
+}

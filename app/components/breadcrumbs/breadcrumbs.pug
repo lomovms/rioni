@@ -1,0 +1,18 @@
+mixin breadcrumbs(data)
+	//- модификатор
+	+modif('breadcrumbs', data.mod)
+
+	//- префикс
+	+prefix('breadcrumbs', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || ''
+
+	div(class=`breadcrumbs${pr}${mod}`)&attributes(attr)
+		each item in data.list
+			div(class=`breadcrumbs${pr}__item`, class= item.class)
+				//- Если есть заголовок
+				if (item.href)
+					a(class=`breadcrumbs${pr}__link`, href= item.href)= item.text
+				else
+					span(class=`breadcrumbs${pr}__text`)= item.text

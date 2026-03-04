@@ -1,0 +1,20 @@
+.notify {
+	padding: 15px;
+	background: $color-gray-light;
+
+	&--success {
+		background-color: $color-green;
+	}
+
+	&--info {
+		background-color: $color-blue;
+	}
+
+	&--warning {
+		background-color: $color-orange;
+	}
+
+	&--danger {
+		background-color: $color-red;
+	}
+}

@@ -1,0 +1,216 @@
+extends template/layout
+//- include ../components/menu/menu
+
+block variables
+	- var title = 'Главная — Rioni';
+	- var menuHeader = [
+	-   { title: 'О нас', href: '#' },
+	-   { title: 'Услуги', href: '#' },
+	-   { title: 'Тарифы', href: '#' },
+	-   { title: 'Обучение', href: '#' },
+	-   { title: 'Рынок', href: '#' },
+	-   { title: 'Документы', href: '#' }
+	- ];
+	- var showTopbar = true
+	- var headerCta = { text: 'Открыть счет', href: '#' };
+
+block content
+	//- h1 Тест
+	//- +menu(menuHeader)
+	//- +img('example/preview.jpg', `lazyload`)
+
+	//- svg
+	//- 	use(xlink:href="/assets/images/required/sprite.svg#accordion")
+	.container
+		+hero({
+				topbar: true,
+				topbarLinks: [
+					{ text: 'Для физических лиц', href: '#' },
+					{ text: 'Для юридических лиц', href: '#' }
+				],
+				bg: 'required/hero-main.jpg',
+				align: 'right',
+				pretitle: '',
+				title: 'Rioni Capital –<br>европейский брокер<br>с грузинским колоритом',
+				subtitle: 'Мы объединяем европейские стандарты, инновационные<br> технологии и тёплый грузинский сервис, чтобы вы могли <br> инвестировать уверенно и прозрачно',
+				button: { text: 'Открыть счет', url: '#' },
+				animate: 'fade'
+			})
+		section.section-features
+			.features__center
+				h1.features__title
+					span.line Откройте для себя
+					span.line все грани
+					span.line инвестирования
+					span.line вместе с Rioni Capital
+			.features
+				a.float-card.float-card--1(data-strength="0.10")
+					img(src="./assets/images/required/card1.png" alt="")
+				a.float-card.float-card--2(data-strength="0.12")
+					img(src="./assets/images/required/card2.png" alt="")
+				a.float-card.float-card--3(data-strength="0.08")
+					img(src="./assets/images/required/card3.png" alt="")
+				a.float-card.float-card--4(data-strength="0.06")
+					img(src="./assets/images/required/card4.png" alt="")
+				a.float-card.float-card--5(data-strength="0.03")
+					img(src="./assets/images/required/card5.png" alt="")
+				a.float-card.float-card--6(data-strength="0.01")
+					img(src="./assets/images/required/card6.png" alt="")
+			.features__bottom
+				h2.features__bottom-title Инвестировать просто!
+				p.features__bottom-text Rioni Capital обещает своим клиентам надежный и безопасный
+					br
+					| доступ к международным финансовым рынкам через инновационные и удобные цифровые платформы
+
+	section.section-services(id="services")
+		.container
+			.services
+				.services__left
+					// Прогресс-бары для каждого слайда
+					ul.services__progress
+						li.service__bar
+							.service__bar-fill
+						li.service__bar
+							.service__bar-fill
+						li.service__bar
+							.service__bar-fill
+						li.service__bar
+							.service__bar-fill
+					// Контент текущего слайда (меняется динамически)
+					.service__content
+						h3.service__title Брокерские услуги
+						p.service__desc Индивидуальные стратегии, доступ к рынкам...
+
+				.services__right
+					// Рамка ПК
+					.device.device--desktop
+						img.device__frame(src="./assets/images/required/monitor-frame.png" alt="")
+						.device__screen
+							img.device__gif-desktop(src="./assets/images/required/gif.png" alt="")
+					// Рамка телефона
+					.device.device--mobile
+						img.device__frame(src="./assets/images/required/monitor-frame.png" alt="")
+						.device__screen
+							img.device__gif-mobile(src="./assets/images/required/gif.png" alt="")
+
+				// Сам слайдер (без контента — хранит метаданные)
+				.services__swiper.swiper
+					.swiper-wrapper
+						.swiper-slide(
+							data-title="Брокерские услуги и инвестиционное консультирование"
+							data-desc="Профессиональный инвестиционный консалтинг помогает клиентам разрабатывать индивидуальные стратегии для достижения любых финансовых целей - рост, получение дохода или управление рисками. || Расширенный доступ к различным финансовым рынкам, и торговля ценными бумагами - акции, облигации и ETF"
+							data-gif-desktop="./assets/images/required/gif.png"
+							data-gif-mobile="./assets/images/required/gif.png")
+						.swiper-slide(
+							data-title="Консалтинг и аналитика"
+							data-desc="Экспертные советы, глубокий анализ рынка, персональные рекомендации"
+							data-gif-desktop="./assets/images/required/gif2.png"
+							data-gif-mobile="./assets/images/required/gif2.png")
+						.swiper-slide(
+							data-title="Автоследование и портфели"
+							data-desc="Готовые портфельные решения, автоматическое копирование сделок"
+							data-gif-desktop="./assets/images/required/gif.png"
+							data-gif-mobile="./assets/images/required/gif.png")
+						.swiper-slide(
+							data-title="Управление капиталом"
+							data-desc="Персональное управление активами, диверсификация портфеля, контроль рисков"
+							data-gif-desktop="./assets/images/required/gif.png"
+							data-gif-mobile="./assets/images/required/gif.png")
+	section.section-planet(id="planet")
+		.container.planet__container-wrap
+			.planet__controls
+				button.planet__play(type="button") Запустить анимацию
+				.planet__progress-wrap
+					label.planet__progress-label(for="planet-progress") Прогресс
+					input.planet__progress-input#planet-progress(type="range" min="0" max="100" value="0" aria-label="Прогресс анимации")
+			.planet__light
+				img(src="./assets/images/required/light.png" alt="")
+			.planet__light2
+				img(src="./assets/images/required/light2.png" alt="")
+			.planet__container
+				.planet__globe
+					img.planet__earth(src="./assets/images/required/earth.png" alt="")
+					img.planet__clients(src="./assets/images/required/clients.png" alt="")
+			.planet__title-wrap
+				h2.planet__title Rioni Capital -<br>инвестируй<br>по всему миру
+			.planet__content
+				.planet__stats
+					.planet__stat
+						span.planet__stat-num 160
+						span.planet__stat-label Рынков
+					.planet__stat
+						span.planet__stat-num 36
+						span.planet__stat-label Стран
+					.planet__stat
+						span.planet__stat-num 28
+						span.planet__stat-label Валют
+				p.planet__text Инвестируйте по всему миру в акции, опционы, фьючерсы, валюты, облигации и фонды с единой унифицированной платформы.
+	section.section-partners
+		.container
+			.partners
+				each partner in [{img:"./assets/images/required/prime.png",text:"A globally-renowned charting platform integrated with the DXtrade backend for trade execution"},{img:"./assets/images/required/kenmore.png",text:"A globally-renowned charting platform integrated with the DXtrade backend for trade execution"},{img:"./assets/images/required/propguru.png", text:"A globally-renowned charting platform integrated with the DXtrade backend for trade execution"},{img:"./assets/images/required/propguru.png", text:"A globally-renowned charting platform integrated with the DXtrade backend for trade execution"},{img:"./assets/images/required/prime.png",text:"A globally-renowned charting platform integrated with the DXtrade backend for trade execution"},]
+					.partner-card
+						.partner-card__image
+							img(src=partner.img alt=partner.text)
+						.partner-card__text= partner.text
+
+	//- Слайдер «колода карт» перед формой
+	section.section-trust
+		.container
+			.trust-slider
+				.trust-slider__header
+					.trust-slider__icon-wrap
+						img.trust-slider__icon#trust-header-icon(src="./assets/images/required/lock.png" alt="" width="48" height="48")
+					h2.trust-slider__title#trust-header-title Надежность и безопасность финансовых операций
+					p.trust-slider__subtitle#trust-header-subtitle Rioni Capital придерживается высоких стандартов безопасности и гарантирует надежность и безопасность своих услуг
+				.trust-slider__stack#trust-stack
+					.trust-slider__slide.trust-slider__slide--top(data-header-icon="./assets/images/required/lock.png" data-header-title="Надежность и безопасность финансовых операций" data-header-subtitle="Rioni Capital придерживается высоких стандартов безопасности и гарантирует надежность и безопасность своих услуг")
+						.trust-slider__slide-bg(style="background-image: url('./assets/images/required/slide1.jpg')")
+						.trust-slider__slide-overlay
+							.trust-slider__point
+								.trust-slider__point-title Прозрачность операций:
+								.trust-slider__point-desc Полная прозрачность всех
+									br
+									| условий, комиссий и финансовых
+									br
+									| операций
+							.trust-slider__point
+								.trust-slider__point-title Соблюдение регуляторных требований:
+								.trust-slider__point-desc Обеспечивает возможность, надежность и законность всех проводимых операций
+							.trust-slider__point
+								.trust-slider__point-title Высокие стандарты защиты данных:
+								.trust-slider__point-desc Использование новейших технологий шифрования и защиты данных клиента
+						.trust-slider__slide-icon
+							img(src="./assets/images/required/slide-icon1.png" alt="")
+					.trust-slider__slide(data-header-icon="./assets/images/required/binokle.png" data-header-title="Современные решения и прогнозирование" data-header-subtitle="Rioni Capital использует в своих разработках новые технологии и лучшие финансовые инструменты")
+						.trust-slider__slide-bg(style="background-image: url('./assets/images/required/slide2.jpg')")
+						.trust-slider__slide-overlay
+							.trust-slider__point
+								.trust-slider__point-title Прозрачность операций:
+								.trust-slider__point-desc Полная прозрачность всех условий, комиссий и финансовых операций
+							.trust-slider__point
+								.trust-slider__point-title Соблюдение регуляторных требований:
+								.trust-slider__point-desc Обеспечивает возможность, надежность и законность всех проводимых операций
+							.trust-slider__point
+								.trust-slider__point-title Высокие стандарты защиты данных:
+								.trust-slider__point-desc Использование новейших технологий шифрования и защиты данных клиента
+						.trust-slider__slide-icon
+							img(src="./assets/images/required/slide-icon2.png" alt="")
+					.trust-slider__slide(data-header-icon="./assets/images/required/hand.png" data-header-title="Удобство и простота внутренних процессов" data-header-subtitle="Rioni Capital предоставляет удобные и понятные финансовые инструменты для широкого круга пользователей")
+						.trust-slider__slide-bg(style="background-image: url('./assets/images/required/slide3.jpg')")
+						.trust-slider__slide-overlay
+							.trust-slider__point
+								.trust-slider__point-title Интуитивно понятный интерфейс:
+								.trust-slider__point-desc Дополнительное использование передовых алгоритмов и AI для анализа рынка и прогнозирования
+							.trust-slider__point
+								.trust-slider__point-title Расширенная языковая поддержка:
+								.trust-slider__point-desc Применение технологии блокчейн для обеспечения безопасности и минимизации рисков мошенничества
+							.trust-slider__point
+								.trust-slider__point-title Профессиональное обучение:
+								.trust-slider__point-desc Сотрудничество с крупными торговыми платформами и финансовыми сервисами для управления инвестициями
+						.trust-slider__slide-icon
+							img(src="./assets/images/required/slide-icon3.png" alt="")
+
+	//- Секция формы обратной связи перед футером
+	+sectionForm()
+

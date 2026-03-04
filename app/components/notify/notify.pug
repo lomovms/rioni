@@ -1,0 +1,11 @@
+mixin notify(data)
+	//- модификатор
+	+modif('notify', data.mod)
+
+	//- префикс
+	+prefix('notify', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || ''
+
+	div(class=`notify${pr}${mod}`)&attributes(attr)= data.text

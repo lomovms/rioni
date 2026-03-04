@@ -1,0 +1,18 @@
+mixin autocomplete(data)
+	//- модификатор
+	+modif('autocomplete', data.mod)
+
+	//- префикс
+	+prefix('autocomplete', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || {'data-autocomplete': ''}
+
+	div(class=`autocomplete${pr}__wrap`)
+		div(class=`autocomplete${pr}${mod}`)&attributes(attr)
+			input(class=`autocomplete${pr}__input` data-autocomplete-front)
+
+			if (data.back)
+				input(class=`autocomplete${pr}__input autocomplete${pr}__input--back` disabled="disabled" data-autocomplete-back)
+
+		div(class=`autocomplete${pr}__res` data-autocomplete-res)

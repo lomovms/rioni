@@ -1,0 +1,55 @@
+mixin input(data)
+	//- модификатор
+	+modif('input', data.mod)
+
+	//- префикс
+	+prefix('input', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || ''
+	- type = data.type || 'text'
+
+	//- Если это checkbox или radio
+	if (type == 'checkbox' || type == 'radio')
+		label(class=`${type}${pr}${mod}`)
+			input(class=`${type}${pr}__input` type=`${type}`)&attributes(attr)
+			div(class=`${type}${pr}__text`)= data.value
+	else
+		div(class=`input${pr}__wrap`)
+
+			//- Если заголовок выводится перед input
+			if (typeof data.labelFocus === "undefined")
+				if (data.label)
+					label(class=`input${pr}__label`)= data.label
+
+			div(class=`input${pr}${mod}__container`)
+				if (type == 'textarea')
+					textarea(
+						class=`input${pr}`
+						class=typeof data.class === "undefined" ? "" : data.class
+						name=typeof data.name === "undefined" ? data.type : data.name
+						placeholder=typeof data.placeholder === "undefined" ? "" : data.placeholder
+						aria-required="true"
+					)&attributes(attr)
+						if (data.value)
+							data.value
+				else
+					input(
+						type=`${type}`
+						class=`input${pr}`
+						class=typeof data.class === "undefined" ? "" : data.class
+						value=typeof data.value === "undefined" ? "" : data.value
+						name=typeof data.name === "undefined" ? data.type: data.name
+						placeholder=typeof data.placeholder === "undefined" ? "" : data.placeholder
+						aria-required="true"
+					)&attributes(attr)
+
+				//- Если заголовок выводится поверх input
+				if (typeof data.labelFocus != "undefined")
+					if (data.label)
+						label(class=`input${pr}__label`)= data.label
+
+				//- Вывод иконки
+				if (data.icon)
+					div(class=`input${pr}__icon`)
+						+icon(data.icon)

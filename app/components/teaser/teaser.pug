@@ -1,0 +1,12 @@
+mixin teaser(data)
+	//- модификатор
+	+modif('teaser', data.mod)
+
+	//- префикс
+	+prefix('teaser', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || ''
+
+	div(class=`teaser${pr}${mod}` class= data.class)&attributes(attr)
+		h3(class=`teaser${pr}__text`)= data.text

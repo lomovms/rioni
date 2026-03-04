@@ -1,0 +1,21 @@
+// style in all page
+@import '../../node_modules/normalize.css/normalize.css';
+@import 'config/variables';
+@import 'config/mixins';
+@import 'config/extend';
+@import 'config/utilities';
+@import 'base/**/*';
+@import 'ui/**/*';
+// @import '../components/**/*.scss'
+@import '../components/header/header.scss';
+@import '../components/footer/footer.scss';
+@import '../components/slider/slider.scss';
+@import '../components/popup/popup.scss';
+@import '../components/hamburger/hamburger.scss';
+@import '../components/hero/hero.scss';
+@import '../components/button/button.scss';
+@import '../components/form-block/form-block.scss';
+@import '../components/planet/planet.scss';
+@import '../components/trust-slider/trust-slider.scss';
+@import '../components/hero-about/hero-about.scss';
+@import '../components/about-content/about-content.scss';

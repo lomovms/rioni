@@ -1,0 +1,34 @@
+.banner {
+	position: relative;
+
+	&__images {
+		display: flex;
+		height: 100%;
+	}
+
+	&__img {
+		display: block;
+		vertical-align: top;
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+	}
+
+	&__item {
+		position: relative;
+
+		&-inner {
+			position: relative;
+		}
+	}
+
+	&__inner {
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}

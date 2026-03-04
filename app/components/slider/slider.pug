@@ -1,0 +1,40 @@
+mixin slider(data)
+	//- модификатор
+	+modif('slider', data.mod)
+
+	//- префикс
+	+prefix('slider', data.prefix)
+
+	//- атрибуты
+	- count = {'data-count': data.count} || ''
+	- loop = {'data-loop': data.loop} || ''
+	- freeMode = {'data-freeMode': data.freeMode} || ''
+	- centered = {'data-centered': data.centered} || ''
+	- column = {'data-column': data.column} || ''
+	- attr = data.attr || {'data-slider': 'data-slider'}
+
+	div(class=`slider${pr}${mod} swiper-container`)&attributes(attr, count, loop, freeMode, centered, column)
+		div(class=`slider${pr}__wrapper swiper-wrapper`)
+			each item in data.list
+				div(class=`slider${pr}__slide swiper-slide`)
+					if (data.card)
+						+card(item)
+					else
+						if (item.img)
+							+img(item.img, `slider${pr}__img lazyload`)
+
+						if (item.title)
+							div(class=`slider${pr}__title`)= item.title
+
+						if (item.text)
+							div(class=`slider${pr}__title`)= item.text
+
+		if (data.pagination)
+			div(class=`slider${pr}__pagination swiper-pagination`)
+
+		if (data.arrow)
+			div(class=`slider${pr}__button-prev swiper-button-prev`)
+			div(class=`slider${pr}__button-next swiper-button-next`)
+
+		if (data.scrollbar)
+			div(class=`slider${pr}__scrollbar swiper-scrollbar`)

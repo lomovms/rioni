@@ -1,0 +1,60 @@
+// app/components/header/header.pug
+mixin header(data)
+	+modif('header', data && data.mod)
+	+prefix('header', data && data.prefix)
+
+	- var d = data || {};
+	- var menu = d.menu || []; // [{title:'О нас', href:'#'}, ...]
+	- var cta  = d.cta || { text: 'Открыть счет', href: '#' }; // или {text:'Личный кабинет', href:'#'}
+	- var lang = d.lang || { code: 'ru', flag: 'required/flag-ru.svg' }; // пример
+	- var cls  = 'header' + (typeof pr !== 'undefined' ? pr : '') + (typeof mod !== 'undefined' ? mod : '');
+
+	header(class=cls)
+		.container
+			.header__row
+				a.header__logo(href="/")
+					+img('required/logo-rioni.svg', 'header__logo-img lazyload', '', 'RIONI capital')
+				.header__inner
+					// Навигация
+					button.header__burger(type="button" aria-controls="headerNav" aria-expanded="false")
+							span.header__burger-line
+							span.header__burger-line
+							span.header__burger-line
+					nav.header__nav
+						ul.header__menu
+							each item in menu
+								li.header__item
+									a.header__link(href=item.href)= item.title
+
+					// Правый блок:  язык / CTA / иконки
+					.header__controls
+
+						// язык-«пилюля»
+						a.header__lang(href="#")
+							// можно заменить на svg флаг
+							+img(lang.flag, 'header__lang-flag lazyload', '', lang.code.toUpperCase())
+							span.header__lang-caret
+
+						//- a.header__cta(href=cta.href)= cta.text
+						//- a.header__cta(href=cta.href data-hover=cta.text)
+						//- 	span= cta.text
+						//- a.header__cta(href="#")
+						//- 	span.text-default= cta.text
+						//- 	span.text-hover= cta.text
+						a.header__cta(href="#")
+							.header__cta-texts
+								span.text-default= cta.text
+								span.text-hover= cta.text
+
+						// две круглые иконки справа (плейсхолдеры, подставишь свои svg)
+						//- a.header__icon(href="#", aria-label="Профиль")
+						//- 	span.header__icon-user.icon.icon--user
+						a.header__icon.header__icon--login(href="#", aria-label="Вход")
+							span.header__icon-door.icon--exit
+
+				// выпадающее меню для мобилы (анимируем высоту и позицию)
+				.header__drawer(id="headerNav")
+					ul.header__drawer-menu
+						each item in menu
+							li.header__drawer-item
+								a.header__drawer-link(href=item.href)= item.title

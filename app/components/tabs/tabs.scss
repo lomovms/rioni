@@ -1,0 +1,31 @@
+.tabs {
+	position: relative;
+
+	&__head {
+		display: flex;
+		margin-bottom: 20px;
+	}
+
+	&__link {
+		background: rgba(0, 0, 0, 0.1);
+		padding: 10px 20px;
+		margin: 0 5px;
+
+		&.active {
+
+		}
+	}
+
+	&__body {
+
+	}
+
+	&__item {
+		position: relative;
+		display: none;
+
+		&.active {
+			display: block;
+		}
+	}
+}

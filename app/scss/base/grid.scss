@@ -1,0 +1,66 @@
+.grid {
+	display: flex;
+	flex-wrap: wrap;
+	margin-left: $grid-indent / -2;
+	margin-right: $grid-indent / -2;
+	width: calc(100% + #{$grid-indent});
+
+	&__item {
+		position: relative;
+		padding-left: $grid-indent / 2;
+		padding-right: $grid-indent / 2;
+		width: 100%;
+
+		// grid__item-1 .. grid__item-12
+		@for $i from 1 through 12 {
+			&-#{$i} {
+				width: $col * $i;
+			}
+		}
+
+		// grid__item-1--xs .. grid__item-12--xs
+		@include media($xs) {
+			@for $i from 1 through 12 {
+				&-#{$i}--xs {
+					width: $col * $i;
+				}
+			}
+		}
+
+		// grid__item-1--sm .. grid__item-12--sm
+		@include media($sm) {
+			@for $i from 1 through 12 {
+				&-#{$i}--sm {
+					width: $col * $i;
+				}
+			}
+		}
+
+		// grid__item-1--md .. grid__item-12--md
+		@include media($md) {
+			@for $i from 1 through 12 {
+				&-#{$i}--md {
+					width: $col * $i;
+				}
+			}
+		}
+
+		// grid__item-1--lg .. grid__item-12--lg
+		@include media($lg) {
+			@for $i from 1 through 12 {
+				&-#{$i}--lg {
+					width: $col * $i;
+				}
+			}
+		}
+
+		// grid__item-1--xl .. grid__item-12--xl
+		@include media($xl) {
+			@for $i from 1 through 12 {
+				&-#{$i}--xl {
+					width: $col * $i;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,54 @@
+mixin card(data)
+	//- модификатор
+	+modif('card', data.mod)
+
+	//- префикс
+	+prefix('card', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || ''
+
+	div(class=`card${pr}${mod}`)&attributes(attr)
+		//- Иконка
+		if (data.icon)
+			div(class=`card${pr}__icon`)
+				+icon(data.icon)
+
+		//- Картинка
+		if (data.img)
+			a(class=`card${pr}__images` href=data.href)
+				+img(data.img, `card${pr}__img lazyload`)
+
+		//- Cтатус
+		if (data.status)
+			div(class=`card${pr}__status`)= data.status
+
+		//- Заголовок
+		if (data.title)
+			a(class=`card${pr}__title` href=data.href)= data.title
+
+		//- Артикул
+		if (data.articul)
+			div(class=`card${pr}__articul`)= data.articul
+
+		//- Текст
+		if (data.text)
+			div(class=`card${pr}__title`)= data.text
+
+		//- Цена
+		if (data.price)
+			div(class=`card${pr}__price`)
+				div(class=`card${pr}__price-current`)= data.price
+
+				//- Старая цена
+				if (data.priceOld)
+					div(class=`card${pr}__price-old`)= data.priceOld
+
+		//- Избранное
+		if (data.like)
+			div(class=`card${pr}__like`)
+				+icon('love')
+
+		//- Кнопка
+		if (data.btn)
+			button(class=`btn card${pr}__btn`)= data.btn

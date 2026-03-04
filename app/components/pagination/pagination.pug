@@ -1,0 +1,43 @@
+mixin pagination(amount, active, ellipsis, last, arrows, mod, prefix, attr)
+	//- модификатор
+	+modif('pagination', mod)
+
+	//- префикс
+	+prefix('pagination', prefix)
+
+	//- атрибуты
+	- attr = attr || ''
+
+	//- amount - amount of displayed numbers +1 prior ellipsis
+	//- active - active number
+	//- ellipsis - number to be replaced by ellipsis
+	//- last - number after ellipsis
+	//- .icon-pagination-prev and .icon-pagination-next
+
+	nav(class=`pagination${pr}${mod}`)&attributes(attr)
+		//- prev arrow
+		if (arrows === arrows)
+			a(href="#" title="Prev page" class=`pagination${pr}__prev`).icon-pagination-prev
+		else
+
+		ul(class=`pagination${pr}__list`)
+			//- before ellipsis
+			- for (var index = 1; index <= ellipsis; index++)
+				if (index === active)
+					li(class=`pagination${pr}__item`).is-active
+						a(href="#" title=`Current page ${index}` class=`pagination${pr}__number`)= index
+				else if (index === ellipsis)
+					li(class=`pagination${pr}__item`)
+						a(href="#" title="Show more" class=`pagination${pr}__number`).is-collapsed ...
+				else
+					li(class=`pagination${pr}__item`)
+						a(href="#" title=`Go to page ${index}` class=`pagination${pr}__number`)= index
+			//- after ellipsis
+			- for (var index = amount + 1; index <= last; index++)
+				li(class=`pagination${pr}__item`)
+					a(href="#" title=`Go to pagе ${index}` class=`pagination${pr}__number`)= index
+
+		//- next arrow
+		if (arrows === arrows)
+			a(href="#" title="Next page" class=`pagination${pr}__next`).icon-pagination-next
+		else

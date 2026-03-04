@@ -1,0 +1,115 @@
+extends template/layout
+
+block variables
+	- var title = 'О нас — Rioni';
+	- var menuHeader = [
+	-   { title: 'О нас', href: 'about.html' },
+	-   { title: 'Услуги', href: 'index.html#services' },
+	-   { title: 'Тарифы', href: '#' },
+	-   { title: 'Обучение', href: '#' },
+	-   { title: 'Рынок', href: '#' },
+	-   { title: 'Документы', href: '#' }
+	- ];
+	- var showTopbar = false
+	- var headerMod = 'about'
+	- var headerCta = { text: 'Зарегистрироваться', href: '#' };
+
+block content
+	section.hero-about
+		.container.hero-about__container
+			.hero-about__stairs
+				.hero-about__stair
+					img(src="./assets/images/required/stair1.png" alt="")
+				.hero-about__stair
+					img(src="./assets/images/required/stair2.png" alt="")
+				.hero-about__stair
+					img(src="./assets/images/required/stair3.png" alt="")
+				.hero-about__stair
+					img(src="./assets/images/required/stair4.png" alt="")
+				.hero-about__stair
+					img(src="./assets/images/required/stair5.png" alt="")
+			.hero-about__content
+				h1.hero-about__title Rioni Capital – ваш надежный партнер в сфере финансовых продуктов и инвестиций
+				//- p.hero-about__subtitle Мы объединяем европейские стандарты, инновационные технологии и прозрачный сервис для уверенного инвестирования.
+			.hero-about__bottom
+				img.hero-about__bottom-img(src="./assets/images/required/hero-about.jpg" alt="")
+				.hero-about__bottom-text
+					p.hero-about__bottom-caption Общая стоимость инвестиционных портфелей клиентов Rioni Capital
+					p.hero-about__bottom-value $134million
+		// CTA-бар: как на главной (hero__btn)
+		.hero-about__cta
+			.container.hero-about__cta-inner
+				p.hero-about__cta-text Начните инвестировать уже сегодня вместе с Rioni Capital
+				a.hero-about__cta-btn.button.button--light(href="#")
+					span.button__text Открыть счет
+					span.button__icon
+						i.icon.icon-arrow-right-blue
+
+	// Секция «Наши принципы»
+	section.section-principles
+		.container
+			h2.principles__title Наши принципы
+			p.principles__subtitle Мы придерживаемся высоких стандартов во всех аспектах нашей деятельности
+			.principles__cards
+				.principles__card
+					.principles__card-icon
+					h3.principles__card-title Команда профессионалов
+					p.principles__card-text Опыт и навыки команды наших специалистов помогут вам освоить управление финансами
+				.principles__card
+					.principles__card-icon
+					h3.principles__card-title Лицензии и партнерства
+					p.principles__card-text Опыт и навыки команды наших специалистов помогут вам освоить управление финансами
+				.principles__card
+					.principles__card-icon
+					h3.principles__card-title Доверие и уважение
+					p.principles__card-text Опыт и навыки команды наших специалистов помогут вам освоить управление финансами
+				.principles__card
+					.principles__card-icon
+					h3.principles__card-title Удобная торговая платформа
+					p.principles__card-text Опыт и навыки команды наших специалистов помогут вам освоить управление финансами
+
+	// Секция «Инструменты»
+	section.section-tools
+		.container
+			h2.tools__title Инструменты
+			p.tools__subtitle Откройте для себя широкий спектр финансовых возможностей с экосистемой продуктов RIONI
+			.tools__grid
+				.tools__card
+					h3.tools__card-title Рынок акций и ETF
+					p.tools__card-text Откройте для себя мир новых возможностей, инвестируя в акции ведущих мировых компаний
+				.tools__card
+					h3.tools__card-title Рынок Fixed income и Валютный рынок
+					p.tools__card-text Диверсифицируйте портфель и защищайте свои инвестиции от рыночных колебаний
+				.tools__card
+					h3.tools__card-title Рынок фьючерсов и опционов
+					p.tools__card-text Подходите основательнее к стратегии по управлению рисками и увеличению потенциальной прибыли!
+				.tools__card
+					h3.tools__card-title Товарный рынок
+					p.tools__card-text Улучшайте свою инвестиционную стратегию и расширяйте возможности инвестирования
+
+	// Секция «Новости»
+	section.section-news
+		.container
+			h2.news__title Новости Rioni Capital
+			.news__grid
+				.news__main
+					a.news__main-link(href="#")
+						.news__main-img-wrap
+							img.news__main-img(src="./assets/images/required/news-main.jpg" alt="")
+						h3.news__main-heading Новости
+						p.news__main-text Любая острая тема с экспертным мнением, вырезки, новости/можно даже онлайн трансляцию новостей пустить сюда
+				.news__side
+					.news__card
+						a.news__card-link(href="#")
+							h3.news__card-heading Новости
+							p.news__card-text Любая острая тема с экспертным мнением, вырезки, новости/можно даже онлайн трансляцию новостей пустить сюда, кратко и в небольшом объеме
+					a.news__more.button.button--light(href="#")
+						span.button__text Больше новостей
+						span.button__icon
+							i.icon.icon-arrow-right-blue
+		.news-ticker
+			.news-ticker__wrap
+				.news-ticker__text(data-ticker) Бегущая строка главные новости для компании Бегущая строка главные новости для компании Бегущая строка главные новости для компании
+
+	// Секция формы (как на главной)
+	+sectionForm({ prefix: 'about' })

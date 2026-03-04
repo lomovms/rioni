@@ -1,0 +1,101 @@
+.menu {
+	&__list {
+		display: block;
+
+		&--inner,
+		&--inner2 {
+			display: block;
+		}
+	}
+
+	&__item {
+		display: block;
+
+		&--inner,
+		&--inner2 {
+			display: block;
+			padding-left: 20px;
+		}
+	}
+
+	&-asside {
+		display: block;
+
+		&__link {
+			display: flex;
+			color: $color-blue;
+		}
+
+		&__icon {
+			width: 50px;
+			height: 50px;
+
+			& .icon {
+				height: 100%;
+				width: 100%;
+			}
+		}
+
+		&__text {
+			display: block;
+			font-size: 12px;
+			line-height: 24px;
+		}
+	}
+
+	&-fixed {
+		position: fixed;
+		left: -100vw;
+		top: 0;
+		bottom: 0;
+		background: $color-white;
+		width: 320px;
+		transition: $transition;
+		z-index: 9;
+
+		&.active {
+			left: 0;
+		}
+
+		&__item,
+		&__list {
+			position: initial;
+
+			&--inner {
+				position: initial;
+			}
+		}
+
+		&__nav {
+			display: none;
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background: $color-white;
+			transition: $transition;
+
+			&.active {
+				display: block;
+			}
+		}
+
+		&__link {
+			position: relative;
+
+			&--drop {
+				&:after {
+					content: '';
+					background-image: svg-load('arrow-down.svg', fill=#e83587);
+					background-size: contain;
+					background-repeat: no-repeat;
+					height: 15px;
+					width: 15px;
+					margin-left: 10px;
+					display: inline-flex;
+				}
+			}
+		}
+	}
+}

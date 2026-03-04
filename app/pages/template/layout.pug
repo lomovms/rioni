@@ -1,0 +1,61 @@
+block variables
+include ../helpers/mixins
+include ../../components/menu/menu
+include ../../components/header/header
+include ../../components/footer/footer
+include ../../components/popup/popup
+include ../../components/hero/hero
+include ../../components/form-block/form-block
+
+doctype html
+html(lang="RU")
+	head
+		meta(charset="utf-8")
+		title #{title}
+		meta(content="" name="author")
+		meta(content="" name="description")
+		meta(content="" name="keywords")
+		meta(content="width=device-width, initial-scale=1" name="viewport")
+		meta(content="ie=edge" http-equiv="x-ua-compatible")
+		link(
+			href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Red+Rose:wght@400;500;700&family=Poller+One&display=swap"
+			rel="stylesheet"
+		)
+		link(
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+		)
+
+
+		//- favicon block start
+		//- favicon block end
+
+	block head
+
+	body
+		.page
+			.container
+				if typeof showTopbar !== 'undefined' && showTopbar
+					.hero__topbar
+						a.hero__switch(href="#") Для физических лиц
+						a.hero__switch(href="#") Для юридических лиц
+			+header({
+				menu: menuHeader,
+				cta: typeof headerCta !== 'undefined' ? headerCta : { text:'Открыть счет', href:'#' },
+				mod: typeof headerMod !== 'undefined' ? headerMod : ((typeof showTopbar !== 'undefined' && showTopbar) ? 'with-topbar' : ''),
+				lang: { code:'ru', flag:'required/flag-ru.svg' }
+			})
+
+
+			main.main
+				block content
+
+			//- block footer
+			+footer({})
+			// JS
+			script(src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js")
+			script(src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js")
+			script(src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js")
+
+			//- block popup
+			+popup({})

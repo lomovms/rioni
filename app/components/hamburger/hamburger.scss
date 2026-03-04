@@ -1,0 +1,84 @@
+.hamburger {
+	width: $hamburger-size;
+	height: $hamburger-size;
+	position:relative;
+	display:block;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: none;
+
+	&__line {
+		&:before,
+		&:after {
+			content: '';
+		}
+
+		top: calc(50% - #{$hamburger-line-height} / 2);
+
+		&:before {
+			top: -$hamburger-space;
+		}
+
+		&:after {
+			top: $hamburger-space;
+		}
+	}
+
+	&__line,
+	&__line:before,
+	&__line:after {
+		height: $hamburger-line-height;
+		width: $hamburger-line-width;
+		display: block;
+		background: $hamburger-line-color;
+		position: absolute;
+		left: 50%;
+		border-radius: ($hamburger-line-height / 2);
+		transition: $hamburger-transition;
+		transform: translateX($hamburger-translateX);
+	}
+
+	&__input {
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		opacity: 0;
+		z-index: 2;
+	}
+
+	&__input:checked + &__line:before {
+		transform: translateY($hamburger-translateY) translateX($hamburger-translateX) rotate($hamburger-rotation);
+	}
+
+	&__input:checked + &__line:after {
+		transform: translateY($hamburger-translateY * -1) translateX($hamburger-translateX) rotate($hamburger-rotation * -1);
+	}
+
+	&__input:checked + &__line {
+		background-color: transparent;
+	}
+
+	// style2
+
+	&--style2 &__line,
+	&--style2 &__line:before,
+	&--style2 &__line:after {
+		transition: $hamburger-transition;
+	}
+
+	&--style2 &__input:checked + &__line:before {
+		transform: translateY($hamburger-translateY) translateX(30px) rotate(135deg);
+	}
+
+	&--style2 &__input:checked + &__line {
+		background-color: transparent;
+		transform: translateX(-60px);
+	}
+
+	&--style2 &__input:checked + &__line:after {
+		transform: translateY($hamburger-translateY * -1) translateX(30px) rotate(-135deg);
+	}
+}

@@ -1,0 +1,11 @@
+mixin tooltip(data)
+	//- модификатор
+	+modif('tooltip', data.mod)
+
+	//- префикс
+	+prefix('tooltip', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || ''
+
+	div(class=`tooltip${pr}${mod}`)&attributes(attr)

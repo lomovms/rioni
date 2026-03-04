@@ -1,0 +1,21 @@
+mixin question(data)
+	//- модификатор
+	+modif('question', data.mod)
+
+	//- префикс
+	+prefix('question', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || ''
+
+	div(class=`question${pr}${mod}`)&attributes(attr)
+		each item in data.list
+			.question__item(class= item.class)
+
+				//- Если есть заголовок
+				if (item.title)
+					.question__head= item.title
+
+				//- Если есть текст
+				if (item.text)
+					.question__text!= item.text

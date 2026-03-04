@@ -1,0 +1,17 @@
+mixin title(data)
+	//- модификатор
+	+modif('title', data.mod)
+
+	//- префикс
+	+prefix('title', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || ''
+
+	div(class=`title${pr}${mod}`)&attributes(attr)
+		if (data.icon)
+			.title__icon
+				+icon(data.icon)
+			div(class=`title${pr}__text`)= data.text
+		else
+			= data.text

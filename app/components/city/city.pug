@@ -1,0 +1,19 @@
+mixin city(data)
+	//- модификатор
+	+modif('city', data.mod)
+
+	//- префикс
+	+prefix('city', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || {"data-city": ""}
+	- attrCountry = {"data-city-country": ""}
+	- attrRegion = {"data-city-region": ""}
+
+	div(class=`city${pr}${mod}`)
+		if (data.country)
+			div(class=`city${pr}__country`)&attributes(attrCountry)
+		if (data.region)
+			div(class=`city${pr}__region`)&attributes(attrRegion)
+
+		div(class=`city${pr}__city`)&attributes(attr)

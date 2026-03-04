@@ -1,0 +1,26 @@
+ul:not([class]) {
+    margin-bottom: $margin-bottom-list-base;
+
+    &:last-child {
+		margin-bottom: 0;
+    }
+
+    & li {
+        padding-left: $padding-left-list-base;
+
+        & + li {
+            margin-top: $margin-top-list-item;
+        }
+
+        &:before {
+            background: $bg-point-base;
+            content: '';
+            border-radius: 50%;
+            left: 0;
+			height: $size-point;
+			position: absolute;
+			top: 0;
+			width: $size-point;
+        }
+    }
+}

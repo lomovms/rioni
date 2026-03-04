@@ -1,0 +1,35 @@
+.table {
+	@media (max-width: $xs) {
+		display: block;
+	}
+
+	&__head {
+		@media (max-width: $xs) {
+			display: none;
+		}
+	}
+
+	&__body {
+		@media (max-width: $xs) {
+			display: block;
+		}
+	}
+
+	&__tr {
+		@media (max-width: $xs) {
+			display: block;
+		}
+	}
+
+	&__td {
+		@media (max-width: $xs) {
+			display: flex;
+		}
+
+		&:before {
+			@media (max-width: $xs) {
+				content: attr(data-td);
+			}
+		}
+	}
+}

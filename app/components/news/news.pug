@@ -1,0 +1,28 @@
+mixin news(data)
+	//- модификатор
+	+modif('news', data.mod)
+
+	//- префикс
+	+prefix('news', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || ''
+
+	div(class=`news${pr}${mod}`)&attributes(attr)
+
+		//- Картинка
+		if (data.img)
+			a(class=`news${pr}__images` href=data.href)
+				+img(data.img, `news${pr}__img lazyload`)
+
+		//- Заголовок
+		if (data.title)
+			a(class=`news${pr}__title` href=data.href)= data.title
+
+		//- Текст
+		if (data.text)
+			div(class=`news${pr}__title`)= data.text
+
+		//- Кнопка
+		if (data.btn)
+			button(class=`btn news${pr}__btn`)= data.btn

@@ -1,0 +1,43 @@
+.accordion {
+	position: relative;
+
+	&__item {
+		position: relative;
+	}
+
+	&__input {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		opacity: 0;
+		height: 44px;
+		margin: 0;
+		cursor: pointer;
+	}
+
+	&__head {
+		background: rgba(0, 0, 0, 0.1);
+		padding: 10px 20px;
+	}
+
+	&__text {
+		visibility: hidden;
+		opacity: 0;
+		transform-origin: 0 0;
+		transform: scaleY(0.8);
+		width: 100%;
+		transition: $transition;
+		padding: 0 20px;
+		height: 0;
+	}
+
+	&__input:checked ~ &__text {
+		visibility: visible;
+		opacity: 1;
+		transform: scaleY(1);
+		padding-top: 10px;
+		padding-bottom: 10px;
+		height: auto;
+	}
+}

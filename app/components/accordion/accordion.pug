@@ -1,0 +1,25 @@
+mixin accordion(data)
+	//- модификатор
+	+modif('accordion', data.mod)
+
+	//- префикс
+	+prefix('accordion', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || {'data-accordion': ''}
+
+	//- тип аккордиона (radio / checkbox)
+	- types = data.type || 'radio'
+
+	div(class=`accordion${pr}${mod}`)&attributes(attr)
+		each item in data.list
+			.accordion__item(class= item.class)
+				input(type=types, class=`accordion__input`, name=data.name, checked=(item.checked ? "checked": undefined))
+
+				//- Если есть заголовок
+				if (item.title)
+					.accordion__head= item.title
+
+				//- Если есть текст
+				if (item.text)
+					.accordion__text!= item.text

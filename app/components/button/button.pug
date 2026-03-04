@@ -1,0 +1,17 @@
+mixin button(data)
+	//- модификатор
+	+modif('button', data.mod)
+
+	//- префикс
+	+prefix('inbuttonput', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || ''
+	- type = data.type || 'submit'
+
+	button(class=`button${pr}${mod}` type= type)&attributes(attr)
+		span(class=`button${pr}__value`)= data.value
+
+		if (data.icon)
+			span(class=`button${pr}__icon`)
+				+icon(data.icon)

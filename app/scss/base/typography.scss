@@ -1,0 +1,110 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  line-height: $headings-line-height;
+  color: $headings-color;
+  margin-bottom: $headings-margin-bottom;
+}
+
+h1,
+.h1 {
+    font-size: $h1-font-size;
+}
+
+h2,
+.h2 {
+    font-size: $h2-font-size;
+}
+
+h3,
+.h3 {
+    font-size: $h3-font-size;
+}
+
+h4,
+.h4 {
+    font-size: $h4-font-size;
+}
+
+h5,
+.h5 {
+    font-size: $h5-font-size;
+}
+
+h6,
+.h6 {
+    font-size: $h6-font-size;
+}
+
+.lead {
+  font-size: $lead-font-size;
+  font-weight: $lead-font-weight;
+}
+
+hr {
+    margin-top: $hr-margin-y;
+    margin-bottom: $hr-margin-y;
+    border: 0;
+    border-top: $hr-border-width solid $hr-border-color;
+}
+
+small,
+.small {
+  font-size: $small-font-size;
+  font-weight: $font-weight-normal;
+}
+
+mark,
+.mark {
+  padding: $mark-padding;
+  background-color: $mark-bg;
+}
+
+p {
+	margin: 0;
+}
+
+p:not(:last-child) {
+	margin-bottom: $spacer * 0.75;
+}
+
+a {
+	color: $color-link;
+	text-decoration: none;
+	transition: $transition;
+
+	&:hover {
+		color: $color-link;
+	}
+}
+
+.color {
+	&--black {
+		color: $color-black;
+	}
+
+	&--wthite {
+		color: $color-white;
+	}
+}
+
+.bg {
+	&--black {
+		background: $color-black;
+	}
+
+	&--wthite {
+		background: $color-white;
+	}
+}

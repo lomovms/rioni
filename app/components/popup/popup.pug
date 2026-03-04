@@ -1,0 +1,19 @@
+mixin popup(data)
+	//- модификатор
+	+modif('popup', data.mod)
+
+	//- префикс
+	+prefix('popup', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || ''
+
+	div(class=`popup${pr}${mod} mfp-hide mfp-with-anim` id=`${data.id}`)&attributes(attr)
+
+		if (data.title)
+			div(class=`popup${pr}__title`)= data.title
+
+		div(class=`popup${pr}__content`)!= data.content
+			if (data.map)
+				div(class=`popup${pr}__map`)
+					+map(data.map)

@@ -1,0 +1,95 @@
+/* color */
+
+$color-white: #ffffff;
+$color-black: #000000;
+$color-mine-mhaft: #333333;
+$color-gray-light: #a4a4a4;
+$color-blue: #4365ec;
+$color-green: #87ec43;
+$color-orange: #ecb143;
+$color-red: #f52e2e;
+// color element
+$color-link: $color-black;
+
+/* fonts */
+
+$font-base: "ceraround-pro";
+$font-sanspro: 'sourcesanspro-regular';
+$font-base-size: 24px;
+$font-base-lineheight: 30px;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 600;
+$spacer: 20px !default;
+
+/* headings */
+
+$h1-font-size: $font-base-size * 3.052 !default;
+$h2-font-size: $font-base-size * 2.441 !default;
+$h3-font-size: $font-base-size * 1.953 !default;
+$h4-font-size: $font-base-size * 1.563 !default;
+$h5-font-size: $font-base-size * 1.25 !default;
+$h6-font-size: $font-base-size !default;
+$headings-margin-bottom: $spacer !default;
+$headings-font-family: inherit !default;
+$headings-font-weight: $font-weight-bold !default;
+$headings-line-height: 1.25 !default;
+$headings-color: inherit !default;
+// small
+$small-font-size: $font-base-size * 0.8 !default;
+// lead
+$lead-font-size: ($font-base-size * 1.25) !default;
+$lead-font-weight: 300 !default;
+// mark
+$mark-padding: .2em !default;
+$mark-bg: $color-black;
+// hr
+$hr-border-color: rgba($color-black, .1) !default;
+$hr-border-width: 1px !default;
+$hr-margin-y: 0 !default;
+
+/* grid */
+
+$col: 8.333333333333333%;
+$grid-indent: 30px;
+$container: 1280px;
+// list
+$margin-bottom-list-base: 20px;
+$padding-left-list-base: 20px;
+$margin-top-list-item: 0px;
+$bg-point-base: $color-black;
+$size-point: 6px;
+// radio
+$radio-size: 20px;
+$radio-border-width: 1px;
+$radio-border-color: $color-black;
+$radio-indent: 4px;
+// checkbox
+$checkbox-size: 20px;
+$checkbox-border-width: 1px;
+$checkbox-border-color: $color-black;
+$checkbox-indent: 4px;
+// transition
+$transition: all 0.25s ease;
+// counter
+$counter-btn-size: 50px;
+// hamburger
+$hamburger-size: 50px;
+$hamburger-line-height: 2px;
+$hamburger-line-width: 30px;
+$hamburger-line-color: $color-black;
+$hamburger-space: 8px;
+$hamburger-rotation: 45deg;
+$hamburger-translateY: $hamburger-space;
+$hamburger-translateX: -50%;
+$hamburger-transition: .3s ease-in-out;
+
+/* breakpoint */
+
+$xs: 480px;
+$sm: 768px;
+$md: 1024px;
+$lg: 1280px;
+$xl: 1440px;
+$xxl: 1920px;

@@ -1,0 +1,21 @@
+mixin datepicker(data)
+	//- модификатор
+	+modif('datepicker', data.mod)
+
+	//- префикс
+	+prefix('datepicker', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || {'data-datepicker': ''}
+
+	div(class=`datepicker${pr}${mod}`)
+
+		if (data.icon)
+			i(class=`datepicker${pr}__icon icon icon-${data.icon}`)&attributes(attr)
+
+		else
+			input(value="" class=`datepicker${pr}__input`)&attributes(attr)
+
+			if (data.container)
+				div(class=`datepicker${pr}__container` data-datepicker-container='')
+

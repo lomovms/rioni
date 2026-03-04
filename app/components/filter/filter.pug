@@ -1,0 +1,24 @@
+mixin filter(data)
+	//- модификатор
+	+modif('filter', data.mod)
+
+	//- префикс
+	+prefix('filter', data.prefix)
+
+	//- атрибуты
+	- attr = data.attr || ''
+
+	div(class=`filter${pr}${mod}`)&attributes(attr)
+		each item in data.list
+			div(class=`filter${pr}__item`)
+				if (item.select)
+					+select(item.select)
+
+				if (item.input)
+					+input(item.input)
+
+				if (item.button)
+					+button(item.button)
+
+				if (item.range)
+					+priceSlider(item.range)

@@ -1,0 +1,25 @@
+ol:not([class]) {
+    counter-reset: item;
+    margin-bottom: $margin-bottom-list-base;
+
+    &:last-child {
+		margin-bottom: 0;
+    }
+
+    & li {
+        padding-left: $padding-left-list-base;
+
+        & + li {
+            margin-top: $margin-top-list-item;
+        }
+
+        &:before {
+            content: counter(item)'.';
+            counter-increment: item;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: $padding-left-list-base;
+        }
+    }
+}
