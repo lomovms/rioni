@@ -1,4 +1,7 @@
 import 'jquery'
+
+window.$ = $;
+window.jQuery = jQuery;
 import svg4everybody from 'svg4everybody';
 import objectFitImages from 'object-fit-images';
 import LazyLoad from 'lazyload';
@@ -8,11 +11,56 @@ import '~components/hero/hero.js';
 import '~components/hero-about/hero-about.js';
 import '~components/about-content/about-news.js';
 import '~components/header/header.js';
+import '~components/popup/popup.js';
+import '~components/site-popups/site-popups.js';
 import '~components/form-block/form-block.js';
+import '~components/create-account-form/create-account-form.js';
+import '~components/login-form/login-form.js';
+import '~components/password-recovery-popup/password-recovery-popup.js';
+import '~components/news-page/news-page.js';
+import '~components/market/market.js';
 import '~components/planet/planet.js';
 import '~components/trust-slider/trust-slider.js';
+import '~components/training-page/training-page.js';
+import '~components/training-course-page/training-course-page.js';
+import '~components/lesson-page/lesson-page.js';
+import '~components/lk-page/lk-page.js';
+import initServicesCatalog from '~components/services/services.js';
+import initTariffsTabs from '~components/tariffs/tariffs.js';
+import initDisclosurePage from '~components/disclosure-page/disclosure-page.js';
+import initContentToc from '~components/content-page/content-page.js';
+import initProductTrust from '~components/product-trust/product-trust.js';
 import '../scss/style.scss'
 import { each } from 'jquery';
+
+function updateDynamicViewport() {
+    const viewport = document.getElementById('dynamicViewport');
+    if (!viewport) return;
+
+    const width = window.innerWidth || document.documentElement.clientWidth;
+    const content = width < 768
+        ? 'width=375, user-scalable=no'
+        : 'width=device-width, initial-scale=1';
+
+    viewport.setAttribute('content', content);
+}
+
+updateDynamicViewport();
+window.addEventListener('resize', updateDynamicViewport);
+window.addEventListener('orientationchange', updateDynamicViewport);
+
+document.addEventListener('rioni:open-create-account', function () {
+    $.magnificPopup.close();
+    setTimeout(function () {
+        $.magnificPopup.open({
+            items: { src: '#create-account-form' },
+            type: 'inline',
+            mainClass: 'mfp-zoom-in',
+            closeMarkup: '<button title="Закрыть" type="button" class="mfp-close popup__close"></button>',
+            removalDelay: 500
+        });
+    }, 600);
+});
 
 $(document).ready(function() {
     // adds SVG External Content support to all browsers
@@ -24,6 +72,12 @@ $(document).ready(function() {
     // lazyload
     let images = document.querySelectorAll("img.lazyload");
     new LazyLoad(images);
+
+    initServicesCatalog();
+    initTariffsTabs();
+    initDisclosurePage();
+    initContentToc();
+    initProductTrust();
 });
 
 // Ждем загрузки GSAP из CDN
@@ -40,14 +94,48 @@ window.addEventListener('load', function() {
     gsap.registerPlugin(ScrollTrigger);
 
     // Проверяем наличие элементов
-    const lines = document.querySelectorAll('.features__title .line');
+    const featuresSection = document.querySelector('.section-features');
+    const lines = document.querySelectorAll('.features__title--desktop .line');
     const cards = document.querySelectorAll('.float-card');
+    if (!featuresSection) {
+        return;
+    }
+
+    if (window.matchMedia('(max-width: 768px)').matches) {
+        gsap.set('.features, .features__bottom, .float-card', {
+            clearProps: 'all'
+        });
+
+        gsap.set('.features__title--mobile .line', {
+            y: 120,
+            opacity: 0
+        });
+
+        gsap.timeline({
+            defaults: { ease: "power2.out" },
+            scrollTrigger: {
+                trigger: '.section-features',
+                start: 'top 75%',
+                end: 'top 35%',
+                toggleActions: 'play none none none',
+                once: true,
+                markers: false
+            }
+        }).to('.features__title--mobile .line', {
+            y: 0,
+            opacity: 1,
+            duration: 0.75,
+            stagger: 0.08
+        });
+
+        return;
+    }
 
     console.log(`Найдено строк: ${lines.length}`);
     console.log(`Найдено карточек: ${cards.length}`);
 
     // Устанавливаем начальное состояние элементов - далеко снизу
-    gsap.set('.features__title .line', {
+    gsap.set('.features__title--desktop .line', {
         y: 500, // Летят издалека снизу
         opacity: 0
     });
@@ -74,7 +162,7 @@ window.addEventListener('load', function() {
             start: 'top 75%', // Начинает когда секция достигает 75% высоты viewport
             end: 'top 25%',
             toggleActions: 'play none none none',
-            markers: true, // Для отладки
+            markers: false,
             once: true, // Анимация только один раз
             onEnter: () => console.log('🎬 Анимация началась!'),
             onLeave: () => console.log('✅ Анимация завершена!')
@@ -84,7 +172,7 @@ window.addEventListener('load', function() {
     console.log('✅ Timeline создан с ScrollTrigger');
 
     // строки заголовка по очереди снизу вверх - видно как летят
-    tlIntro.to('.features__title .line', {
+    tlIntro.to('.features__title--desktop .line', {
         y: 0,
         opacity: 1,
         duration: 0.8, // Увеличена длительность чтобы видеть полет
@@ -167,43 +255,34 @@ window.addEventListener('load', function() {
 // Требуется: gsap, ScrollTrigger, Swiper (core/bundle)
 gsap.registerPlugin(ScrollTrigger);
 
-// === Константы ===
-const HOLD = 10; // сек на слайд (можно менять от 8 до 12)
-const EASE = "none";
+// Секция #services (слайдер с прогресс-барами)
+(function initServicesSection() {
+    const section = document.querySelector("#services");
+    const slides = [...document.querySelectorAll(".services__swiper .swiper-slide")];
+    if (!section || slides.length === 0) return;
 
-// === Ини Swiper (без автоплея, без свайпа мышью — управляем сами) ===
-const swiper = new Swiper(".services__swiper", {
-    slidesPerView: 1,
-    allowTouchMove: true, // тач — можно; колесо/скролл — управляет GSAP
-    resistanceRatio: 0, // без резинки
-    speed: 450, // скорость анимации Swiper при slideTo
-});
+    const HOLD = 5; // сек на слайд
+    const EASE = "none";
+    const SECTION_SERVICES_MAX_HEIGHT_PX = 832;
+    const AUTOPLAY_RESUME_DELAY = 600;
 
-// === Узлы ===
-const section = document.querySelector("#services");
-const slides = [...document.querySelectorAll(".services__swiper .swiper-slide")];
-const barElements = [...document.querySelectorAll(".service__bar")]; // родительские элементы для класса is-active
-const bars = [...document.querySelectorAll(".service__bar-fill")]; // элементы для анимации заполнения
-const titleEl = section ? section.querySelector(".service__title") : null;
-const descEl = section ? section.querySelector(".service__desc") : null;
-const gifDesk = section ? section.querySelector(".device__gif-desktop") : null;
-const gifMob = section ? section.querySelector(".device__gif-mobile") : null;
+    const swiper = new Swiper(".services__swiper", {
+        slidesPerView: 1,
+        allowTouchMove: true,
+        resistanceRatio: 0,
+        speed: 450,
+    });
 
-// Проверка наличия элементов
-console.log('Services elements:', {
-    section,
-    slides: slides.length,
-    barElements: barElements.length,
-    bars: bars.length,
-    titleEl,
-    descEl,
-    gifDesk,
-    gifMob
-});
+    const barElements = [...document.querySelectorAll(".service__bar")];
+    const bars = [...document.querySelectorAll(".service__bar-fill")];
+    const titleEl = section.querySelector(".service__title");
+    const descEl = section.querySelector(".service__desc");
+    const gifDesk = section.querySelector(".device__gif-desktop");
+    const gifMob = section.querySelector(".device__gif-mobile");
 
 // === Вспомогалки ===
 function setActive(idx) {
-    swiper.slideTo(idx);
+    swiper.slideTo(idx, 0);
 
     const s = slides[idx];
     if (!s || !s.dataset) return;
@@ -223,36 +302,27 @@ function setActive(idx) {
     // Сбрасываем все прогресс-бары кроме текущего
     bars.forEach((bar, i) => {
         if (i !== idx) {
-            gsap.set(bar, { scaleY: 0 });
+            gsap.set(bar, { height: '0%' });
         }
     });
 
-    // Плавная смена текста с fade-эффектом
+    gsap.killTweensOf([titleEl, descEl].filter(Boolean));
+
+    // Смена текста должна быть атомарной: при быстром скролле отдельные fade-твины
+    // успевают рассинхронизировать заголовок и описание.
     if (title && titleEl) {
-        gsap.to(titleEl, {
-            opacity: 0,
-            duration: 0.2,
-            onComplete: function() {
-                titleEl.textContent = title;
-                gsap.to(titleEl, { opacity: 1, duration: 0.3 });
-            }
-        });
+        titleEl.textContent = title;
+        gsap.set(titleEl, { opacity: 1 });
     }
     if (desc && descEl) {
-        gsap.to(descEl, {
-            opacity: 0,
-            duration: 0.2,
-            onComplete: function() {
-                // Если есть разделитель ||, создаём несколько параграфов
-                if (desc.includes('||')) {
-                    const paragraphs = desc.split('||').map(p => p.trim());
-                    descEl.innerHTML = paragraphs.map(p => '<p>' + p + '</p>').join('');
-                } else {
-                    descEl.textContent = desc;
-                }
-                gsap.to(descEl, { opacity: 1, duration: 0.3 });
-            }
-        });
+        // Если есть разделитель ||, создаём несколько параграфов
+        if (desc.includes('||')) {
+            const paragraphs = desc.split('||').map(p => p.trim());
+            descEl.innerHTML = paragraphs.map(p => '<p>' + p + '</p>').join('');
+        } else {
+            descEl.textContent = desc;
+        }
+        gsap.set(descEl, { opacity: 1 });
     }
 
     // Меняем гифки
@@ -266,30 +336,51 @@ function setActive(idx) {
     }
 }
 
-// === Главный TL: длительность = HOLD * slidesCount (сек), пинится на 100vh ===
+// === Главный TL: длительность = HOLD * slidesCount (сек), пинится на макс. 832px на слайд ===
 // Каждому слайду даём «сегмент» HOLD сек. В сегменте:
 //  - растёт прогресс-бар слева
 //  - по достижении сегмента — смена активного слайда/гифки
 const totalDur = HOLD * slides.length;
 const tl = gsap.timeline({ paused: true });
+let renderedServiceIndex = -1;
 
-slides.forEach((_, i) => {
-    const startTime = tl.duration();
+// Timeline используется только как шкала времени. Процент fill вычисляем напрямую:
+// вложенный height-tween нестабильно обновлялся после Bitrix-склейки JS.
+tl.to({}, { duration: totalDur, ease: EASE });
 
-    // Смена контента в НАЧАЛЕ сегмента
-    tl.call(() => setActive(i), null, startTime);
+function renderServicesAt(time) {
+    const clampedTime = gsap.utils.clamp(0, totalDur, time);
+    const index = Math.min(slides.length - 1, Math.floor(clampedTime / HOLD));
+    const segmentStart = index * HOLD;
+    const segmentProgress = clampedTime >= totalDur
+        ? 1
+        : gsap.utils.clamp(0, 1, (clampedTime - segmentStart) / HOLD);
 
-    // Прогресс-бар заполняется снизу вверх в течение HOLD секунд
-    tl.fromTo(bars[i], { scaleY: 0 }, { scaleY: 1, duration: HOLD, ease: EASE }, startTime);
-});
+    if (index !== renderedServiceIndex) {
+        setActive(index);
+        renderedServiceIndex = index;
+    }
+
+    bars.forEach((bar, barIndex) => {
+        gsap.set(bar, { height: barIndex === index ? `${segmentProgress * 100}%` : '0%' });
+    });
+}
+
+// Высота зоны пина: макс. 832px (на маленьких экранах — по вьюпорту)
+const sectionServicesPinHeight = () => Math.min(SECTION_SERVICES_MAX_HEIGHT_PX, window.innerHeight) * slides.length;
+
+// === Автоплей, когда пользователь дошел до pinned-зоны ===
+let ap; // gsap tween, который «течёт» по tl.time()
+let apTimer; // перезапуск с задержкой после скролла
+let isAutoplayActive = false; // флаг для отслеживания автоплея
 
 // ScrollTrigger: пиним секцию; скрабим таймлайн
 const st = ScrollTrigger.create({
     trigger: section,
     start: "top top",
-    end: () => "+=" + (window.innerHeight * slides.length), // по 100vh на слайд
+    end: () => "+=" + sectionServicesPinHeight(),
     pin: true,
-    scrub: 1,
+    scrub: true,
     onUpdate: self => {
         // Если автоплей активен, пропускаем обновление
         if (isAutoplayActive) return;
@@ -297,20 +388,16 @@ const st = ScrollTrigger.create({
         // переводим прогресс ST (0..1) в время TL
         const t = self.progress * totalDur;
         tl.time(t);
+        renderServicesAt(t);
 
         // любое движение скролла пользователем — стоп автоплей и перезапуск таймера
         stopAutoplayDebounced();
     },
     onEnter: startAutoplay,
-    onEnterBack: startAutoplay,
+    onEnterBack: stopAutoplay,
     onLeave: stopAutoplay,
     onLeaveBack: stopAutoplay,
 });
-
-// === Автоплей, когда пользователь не скроллит ===
-let ap; // gsap tween, который «течёт» по tl.time()
-let apTimer; // перезапуск с задержкой после скролла
-let isAutoplayActive = false; // флаг для отслеживания автоплея
 
 function startAutoplay() {
     killAutoplay();
@@ -322,6 +409,7 @@ function startAutoplay() {
         duration: (totalDur - tl.time()),
         ease: "linear",
         onUpdate: () => {
+            renderServicesAt(tl.time());
             // Синхронизируем позицию скролла с таймлайном
             const scrollPos = st.start + (tl.time() / totalDur) * (st.end - st.start);
             window.scrollTo(0, scrollPos);
@@ -349,20 +437,22 @@ function stopAutoplayDebounced() {
     killAutoplay();
     clearTimeout(apTimer);
     apTimer = setTimeout(() => {
-        // если секция видна и пользователь отпустил скролл — вновь запускаем
-        if (ScrollTrigger.isInViewport(section, 0.3)) {
-            console.log('⏯️ Autoplay resumed after scroll pause');
+        if (st.isActive && tl.time() < totalDur) {
             startAutoplay();
         }
-    }, 600); // небольшая задержка после прокрутки
+    }, AUTOPLAY_RESUME_DELAY);
 }
 
 // === Клики по прогресс-барам (ручная навигация) ===
 barElements.forEach((el, i) => {
     el.addEventListener("click", () => {
         const targetTime = i * HOLD + 0.001;
-        setActive(i); // Сразу делаем бар активным
-        gsap.to(tl, { time: targetTime, duration: 0.45, ease: "power2.out" });
+        gsap.to(tl, {
+            time: targetTime,
+            duration: 0.45,
+            ease: "power2.out",
+            onUpdate: () => renderServicesAt(tl.time()),
+        });
         stopAutoplayDebounced();
     });
 });
@@ -386,9 +476,7 @@ let userScrollTimeout;
 window.addEventListener('wheel', () => {
     if (isAutoplayActive && ScrollTrigger.isInViewport(section, 0.1)) {
         clearTimeout(userScrollTimeout);
-        userScrollTimeout = setTimeout(() => {
-            stopAutoplayDebounced();
-        }, 50);
+        stopAutoplayDebounced();
     }
 }, { passive: true });
 
@@ -399,11 +487,289 @@ window.addEventListener('touchmove', () => {
 }, { passive: true });
 
 // Стартовое состояние
-gsap.set(bars, { transformOrigin: "top center", scaleY: 0 });
-setActive(0); // Установит первый бар как активный
+gsap.set(bars, { height: '0%' });
+renderServicesAt(0);
+})();
 
-// Автоплей запустится автоматически через ScrollTrigger (onEnter)
-// Но если секция уже видна при загрузке, запускаем вручную
-if (ScrollTrigger.isInViewport(section, 0.3)) {
-    startAutoplay();
-}
+// Параллакс футера: зона раскрытия равна реальной высоте футера.
+(function footerParallax() {
+    const cover = document.querySelector('.footer-parallax-cover');
+    const footer = document.querySelector('.footer');
+    if (!cover || !footer) return;
+
+    const mqMobile = window.matchMedia('(max-width: 768px)');
+    const releaseOffset = 40;
+
+    function getRevealHeight() {
+        if (mqMobile.matches) {
+            return window.innerHeight;
+        }
+
+        return Math.ceil(footer.getBoundingClientRect().height);
+    }
+
+    function update() {
+        const vh = window.innerHeight;
+        const revealHeight = getRevealHeight();
+        document.documentElement.style.setProperty('--footer-reveal-height', `${revealHeight}px`);
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+        if (mqMobile.matches) {
+            document.documentElement.classList.remove('footer-parallax-released');
+
+            const footerTop = footer.getBoundingClientRect().top + scrollTop;
+            const revealStart = footerTop - vh;
+            const revealEnd = footerTop - releaseOffset;
+            const revealDistance = Math.max(1, revealEnd - revealStart);
+            const progress = Math.min(1, Math.max(0, (scrollTop - revealStart) / revealDistance));
+
+            cover.style.transform = `translateY(-${progress * vh}px)`;
+            return;
+        }
+
+        const maxScroll = document.documentElement.scrollHeight - vh;
+        const revealStart = maxScroll - revealHeight;
+        const progress = maxScroll <= 0 ? 1 : Math.min(1, Math.max(0, (scrollTop - revealStart) / revealHeight));
+        document.documentElement.classList.remove('footer-parallax-released');
+        cover.style.transform = `translateY(-${progress * revealHeight}px)`;
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    window.addEventListener('load', update);
+
+    if ('ResizeObserver' in window) {
+        const footerResizeObserver = new ResizeObserver(update);
+        footerResizeObserver.observe(footer);
+    }
+
+    update();
+})();
+
+// About: параллакс-цитата как отдельный fixed-экран в пределах своей секции
+(function aboutQuoteParallax() {
+    const section = document.querySelector('.section-about-quote');
+    const track = section ? section.querySelector('.section-about-quote__track') : null;
+    const quote = section ? section.querySelector('.section-about-quote__sticky') : null;
+    if (!section || !track || !quote) return;
+
+    let currentState = '';
+    let rafId = null;
+
+    function updateViewportVars() {
+        const viewport = window.visualViewport;
+        const viewportHeight = viewport && viewport.height ? viewport.height : window.innerHeight;
+        const vh = Math.round(viewportHeight) + 'px';
+
+        section.style.setProperty('--about-quote-vh', vh);
+        section.style.setProperty('--about-quote-vh-negative', '-' + vh);
+    }
+
+    function setState(state) {
+        if (state === currentState) return;
+        currentState = state;
+        quote.classList.toggle('is-fixed', state === 'fixed');
+        quote.classList.toggle('is-bottom', state === 'bottom');
+    }
+
+    function update() {
+        const trackRect = track.getBoundingClientRect();
+        const sectionRect = section.getBoundingClientRect();
+
+        if (trackRect.top > 0) {
+            setState('top');
+            return;
+        }
+
+        // Держим цитату fixed до конца секции: следующий блок должен наезжать поверх нее снизу.
+        if (sectionRect.bottom <= 0) {
+            setState('bottom');
+            return;
+        }
+
+        setState('fixed');
+    }
+
+    function requestUpdate() {
+        if (rafId) return;
+        rafId = requestAnimationFrame(function() {
+            rafId = null;
+            updateViewportVars();
+            update();
+        });
+    }
+
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', requestUpdate);
+        window.visualViewport.addEventListener('scroll', requestUpdate, { passive: true });
+    }
+    updateViewportVars();
+    update();
+})();
+
+// Страница «Услуги / Инструменты / Продукты»: hero-слайдер, материалы, слайдер инструментов
+(function initProductsPage() {
+    var heroSwiper = null;
+    var HERO_PRODUCTS_AUTOPLAY_DELAY = 5000;
+    function init() {
+        if (typeof Swiper === 'undefined') return;
+        var heroEl = document.querySelector('[data-hero-products-slider]');
+        var progressEl = document.querySelector('[data-hero-products-progress]');
+        if (!heroEl || !progressEl) return;
+        var bars = progressEl.querySelectorAll('.hero-products__bar');
+        var fills = progressEl.querySelectorAll('.hero-products__bar-fill');
+        var heroProgressRafId = null;
+        var heroProgressStateId = 0;
+
+        function resetHeroProgressFill(fill) {
+            if (!fill) return;
+            fill.style.transition = 'none';
+            fill.style.transform = 'scaleX(0)';
+            fill.offsetWidth;
+        }
+
+        function resetAllHeroProgressFills() {
+            heroProgressStateId += 1;
+            if (heroProgressRafId !== null) {
+                cancelAnimationFrame(heroProgressRafId);
+                heroProgressRafId = null;
+            }
+            fills.forEach(function(fill) {
+                resetHeroProgressFill(fill);
+            });
+        }
+
+        function activateHeroBar(index) {
+            resetAllHeroProgressFills();
+
+            bars.forEach(function(bar, i) {
+                bar.classList.toggle('is-active', i === index);
+            });
+
+            var activeFill = fills[index];
+            if (!activeFill) return;
+            var currentStateId = heroProgressStateId;
+            heroProgressRafId = requestAnimationFrame(function() {
+                if (currentStateId !== heroProgressStateId) return;
+                activeFill.style.transition = 'transform ' + HERO_PRODUCTS_AUTOPLAY_DELAY + 'ms linear';
+                activeFill.style.transform = 'scaleX(1)';
+                heroProgressRafId = null;
+            });
+        }
+
+        heroSwiper = new Swiper(heroEl, {
+            slidesPerView: 1,
+            spaceBetween: 0,
+            loop: true,
+            effect: 'fade',
+            fadeEffect: { crossFade: true },
+            speed: 500,
+            grabCursor: true,
+            allowTouchMove: true,
+            simulateTouch: true,
+            autoplay: {
+                delay: HERO_PRODUCTS_AUTOPLAY_DELAY,
+                disableOnInteraction: false
+            },
+            on: {
+                init: function(swiper) {
+                    activateHeroBar(swiper.realIndex);
+                },
+                touchStart: function() {
+                    resetAllHeroProgressFills();
+                },
+                slideChange: function(swiper) {
+                    activateHeroBar(swiper.realIndex);
+                }
+            }
+        });
+        progressEl.addEventListener('click', function(e) {
+            var bar = e.target.closest('.hero-products__bar');
+            if (!bar || !heroSwiper) return;
+            var i = Array.prototype.indexOf.call(bars, bar);
+            if (i !== -1) {
+                heroSwiper.slideToLoop(i, 500);
+                if (heroSwiper.autoplay) {
+                    heroSwiper.autoplay.start();
+                }
+            }
+        });
+        var instrumentsEl = document.querySelector('[data-instruments-slider]');
+        if (instrumentsEl) {
+            var prevBtn = document.querySelector('[data-instruments-prev]');
+            var nextBtn = document.querySelector('[data-instruments-next]');
+            var instrumentsWrapper = instrumentsEl.querySelector('.swiper-wrapper');
+            var sourceSlides = instrumentsWrapper
+                ? Array.prototype.slice.call(instrumentsWrapper.children)
+                : [];
+            var minInstrumentsSlides = 6;
+
+            function updateInstrumentsActiveSlide(swiper) {
+                var slides = swiper.slides;
+                var slidesPerView = Number(swiper.params.slidesPerView) || 1;
+                var activeIdx = swiper.activeIndex + Math.floor(slidesPerView / 2);
+                if (activeIdx > slides.length - 1) activeIdx = slides.length - 1;
+
+                slides.forEach(function(slide, i) {
+                    var card = slide.querySelector('.instrument-card');
+                    if (!card) return;
+                    card.classList.toggle('instrument-card--active', i === activeIdx);
+                });
+            }
+
+            if (instrumentsWrapper && sourceSlides.length && sourceSlides.length < minInstrumentsSlides) {
+                var cloneIndex = 0;
+                while (instrumentsWrapper.children.length < minInstrumentsSlides) {
+                    instrumentsWrapper.appendChild(sourceSlides[cloneIndex % sourceSlides.length].cloneNode(true));
+                    cloneIndex += 1;
+                }
+            }
+
+            var instrumentsSlidesCount = instrumentsEl.querySelectorAll('.swiper-slide').length;
+            var instrumentsSwiper = new Swiper(instrumentsEl, {
+                slidesPerView: 'auto',
+                spaceBetween: 16,
+                loop: false,
+                centeredSlides: false,
+                speed: 400,
+                navigation: prevBtn && nextBtn ? { nextEl: nextBtn, prevEl: prevBtn } : false,
+                breakpoints: {
+                    769: {
+                        slidesPerView: 3,
+                        spaceBetween: 4
+                    }
+                },
+                on: {
+                    init: function(swiper) {
+                        updateInstrumentsActiveSlide(swiper);
+                    },
+                    slideChange: function(swiper) {
+                        updateInstrumentsActiveSlide(swiper);
+                    },
+                    resize: function(swiper) {
+                        updateInstrumentsActiveSlide(swiper);
+                    }
+                }
+            });
+
+            requestAnimationFrame(function() {
+                instrumentsSwiper.update();
+            });
+
+            setTimeout(function() {
+                instrumentsSwiper.update();
+            }, 120);
+
+            window.addEventListener('resize', function() {
+                instrumentsSwiper.update();
+            });
+        }
+    }
+    if (document.readyState === 'complete') {
+        init();
+    } else {
+        window.addEventListener('load', init);
+    }
+})();

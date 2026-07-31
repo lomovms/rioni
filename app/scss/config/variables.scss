@@ -1,6 +1,6 @@
 /* color */
 
-$color-white: #ffffff;
+$color-white: var(--backgrounds-white, #fff);
 $color-black: #000000;
 $color-mine-mhaft: #333333;
 $color-gray-light: #a4a4a4;
@@ -13,7 +13,7 @@ $color-link: $color-black;
 
 /* fonts */
 
-$font-base: "ceraround-pro";
+$font-base: "Plus Jakarta Sans", sans-serif;
 $font-sanspro: 'sourcesanspro-regular';
 $font-base-size: 24px;
 $font-base-lineheight: 30px;
@@ -33,7 +33,7 @@ $h5-font-size: $font-base-size * 1.25 !default;
 $h6-font-size: $font-base-size !default;
 $headings-margin-bottom: $spacer !default;
 $headings-font-family: inherit !default;
-$headings-font-weight: $font-weight-bold !default;
+$headings-font-weight: $font-weight-medium !default;
 $headings-line-height: 1.25 !default;
 $headings-color: inherit !default;
 // small
@@ -53,7 +53,7 @@ $hr-margin-y: 0 !default;
 
 $col: 8.333333333333333%;
 $grid-indent: 30px;
-$container: 1280px;
+$container: 1180px;
 // list
 $margin-bottom-list-base: 20px;
 $padding-left-list-base: 20px;

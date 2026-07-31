@@ -1,0 +1,52 @@
+extends template/layout
+
+block variables
+	- var title = 'Кодекс — Rioni';
+	- var menuHeader = [
+	-   { title: 'О нас', href: 'about.html' },
+	-   { title: 'Услуги', href: 'services.html' },
+	-   { title: 'Инструменты', href: 'products.html' },
+	-   { title: 'Тарифы', href: 'tariffs.html' },
+	-   { title: 'Обучение', href: '#' },
+	-   { title: 'Рынок', href: 'market.html' },
+	-   { title: 'Документы', href: 'documents.html' }
+	- ];
+	- var showTopbar = false
+	- var headerCta = { text: 'Открыть счет', href: '#registration-form' };
+
+block content
+	section.section-team-hero
+		.container
+			.team-hero.team-hero--codex(style="background-image: url('./assets/images/required/gray.png')")
+				h1.team-hero__title Кодекс этики Rioni Capital
+				p.team-hero__subtitle Мы ценим наших клиентов и ставим потребности наших клиентов выше своих собственных. Доверие имеет первостепенное значение, и мы прилагаем все усилия, чтобы заслужить и сохранить доверие наших клиентов.
+				a.team-hero__btn.button.button--light(href="#")
+					span.button__text Открыть документ
+
+	section.section-principles.section-principles--codex
+		.container
+			h2.principles__title Наши ценности
+			.principles__cards
+				.principles__card
+					.principles__card-icon
+						img.principles__card-icon-img(src="./assets/images/required/team-2 1.svg" alt="" aria-hidden="true")
+					h3.principles__card-title Мы ценим
+						br
+						| наших клиентов
+					p.principles__card-text Опыт и навыки команды наших специалистов помогут вам освоить управление финансами
+				.principles__card
+					.principles__card-icon
+						img.principles__card-icon-img(src="./assets/images/required/team-2 1.svg" alt="" aria-hidden="true")
+					h3.principles__card-title Мы отвечаем
+						br
+						| за результат
+					p.principles__card-text Опыт и навыки команды наших специалистов помогут вам освоить управление финансами
+				.principles__card
+					.principles__card-icon
+						img.principles__card-icon-img(src="./assets/images/required/team-2 1.svg" alt="" aria-hidden="true")
+					h3.principles__card-title Мы постоянно
+						br
+						| совершенствуемся
+					p.principles__card-text Опыт и навыки команды наших специалистов помогут вам освоить управление финансами
+
+	+sectionFormWithFile({ prefix: 'codex' })

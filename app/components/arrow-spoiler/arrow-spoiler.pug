@@ -1,0 +1,4 @@
+//- Стрелка вниз с прямоугольником: при ховере на родителя (.faq__head и т.п.) стрелка и rect отодвигаются друг от центра.
+//- Можно добавить модификатор, напр. class="arrow-download", через атрибуты при вызове миксина: +arrowSpoiler(class="arrow-download")
+mixin arrowSpoiler()
+	span.arrow-spoiler(role="img" aria-hidden="true")&attributes(attributes)

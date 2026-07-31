@@ -1,0 +1,23 @@
+mixin productTrust(data)
+	- var d = data || {};
+	section.product-trust
+		.container
+			h2.product-trust__title= d.title
+			.product-trust__slider(data-product-trust)
+				.product-trust__track(data-product-trust-track)
+					each item in d.items
+						article.product-trust__card
+							.product-trust__media
+								if item.video
+									video(controls playsinline preload="metadata")
+										source(src="./assets/images/" + item.video type="video/mp4")
+									.product-trust__play(aria-hidden="true") ▶
+								else if item.image
+									img(src="./assets/images/" + item.image alt=item.title)
+								else
+									.product-trust__placeholder(aria-hidden="true")
+										span ▶
+							h3= item.title
+							p= item.text
+				button.product-trust__nav.product-trust__nav--prev(type="button" data-product-trust-prev aria-label="Предыдущая карточка") ←
+				button.product-trust__nav.product-trust__nav--next(type="button" data-product-trust-next aria-label="Следующая карточка") →

@@ -1,0 +1,242 @@
+// Страница статьи/новости — двухколоночный layout (основной контент + сайдбар), как market.pug
+
+.section-article {
+	padding: 152px 0 0;
+	background: var(--backgrounds-white, #fff);
+
+	&:last-child,
+	&:last-of-type {
+		border-radius: 0 0 100px 100px;
+		overflow: hidden;
+	}
+
+	@media (max-width: 1199px) {
+		// padding-left: 24px;
+		// padding-right: 24px;
+	}
+	@media (max-width: 767px) {
+		padding: 83px 0 50px;
+
+		&:last-child,
+		&:last-of-type {
+			border-radius: 0 0 60px 60px;
+		}
+	}
+}
+
+.article {
+	&__body {
+		display: grid;
+		grid-template-columns: 1fr 280px;
+		gap: 108px;
+		align-items: start;
+
+		@media (max-width: 991px) {
+			grid-template-columns: 1fr;
+		}
+
+		@media (max-width: 767px) {
+			gap: 40px;
+		}
+	}
+
+	&__main {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		min-width: 0;
+
+		@media (max-width: 767px) {
+			gap: 20px;
+		}
+	}
+
+	&__back {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		font: 500 14px/1.4 var(--font-family, inherit);
+		color: var(--text-dark-blue);
+		text-decoration: none;
+		cursor: pointer;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	&__back-arrow {
+		width: 11px;
+		height: 8px;
+		flex-shrink: 0;
+		background: url("data:image/svg+xml,%3Csvg width='11' height='8' viewBox='0 0 11 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.146446 3.32809C-0.0488157 3.52335 -0.0488157 3.83993 0.146446 4.03519L3.32843 7.21717C3.52369 7.41244 3.84027 7.41244 4.03553 7.21717C4.2308 7.02191 4.2308 6.70533 4.03553 6.51007L1.20711 3.68164L4.03553 0.853214C4.2308 0.657951 4.2308 0.341369 4.03553 0.146107C3.84027 -0.0491555 3.52369 -0.0491555 3.32843 0.146107L0.146446 3.32809ZM10.5 3.68164V3.18164L0.5 3.18164V3.68164V4.18164L10.5 4.18164V3.68164Z' fill='%230f171f' /%3E%3C/svg%3E")
+			center / contain no-repeat;
+	}
+
+	&__title {
+		margin: 0;
+		font-size: 36px;
+		font-weight: 500;
+		line-height: 1.25;
+		color: var(--text-dark-blue, #0f171f);
+
+		@media (max-width: 767px) {
+			font-size: 22px;
+		}
+	}
+
+	&__featured {
+		border-radius: 20px;
+		overflow: hidden;
+		background: #f0f3f6;
+		aspect-ratio: 799 / 280;
+		object-fit: cover;
+	}
+
+	&__featured-img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	&__content {
+		font-size: 16px;
+		line-height: 1.6;
+		color: var(--text-dark-blue, #0f171f);
+
+		@media (max-width: 767px) {
+			font-size: 12px;
+		}
+
+		p {
+			margin: 0 0 1em;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	&__lead {
+		font-size: 18px;
+		line-height: 1.5;
+		color: #1e3a5f;
+	}
+
+	&__gallery {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 19px;
+	}
+
+	&__gallery-item {
+		border-radius: 20px;
+		overflow: hidden;
+		background: #f0f3f6;
+		aspect-ratio: 380 / 210;
+
+		img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	&__subtitle {
+		margin: 0 0 0;
+		font-size: 22px;
+		font-weight: 500;
+		line-height: 1.3;
+		color: var(--text-dark-blue, #0f171f);
+		margin-bottom: 0 !important;
+
+		@media (max-width: 767px) {
+			font-size: 18px;
+		}
+	}
+
+	&__sidebar {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		min-width: 0;
+	}
+}
+
+// Блок «Статьи по теме» в сайдбаре
+.article-related {
+	min-width: 0;
+	max-width: 100%;
+
+	&__title {
+		margin: 0 0 12px;
+		font-size: 26px;
+		font-weight: 400;
+		color: var(--text-dark-blue, #0f171f);
+
+		@media (max-width: 767px) {
+			font-size: 24px;
+			font-weight: 500;
+		}
+	}
+
+	&__list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+
+		@media (max-width: 767px) {
+			width: 100%;
+			max-width: 100%;
+			flex-direction: row;
+			gap: 10px;
+			overflow-x: auto;
+			overflow-y: hidden;
+			-webkit-overflow-scrolling: touch;
+		}
+	}
+
+	&__item {
+		@media (max-width: 767px) {
+			flex: 0 0 270px;
+			width: 270px;
+			min-height: 160px;
+		}
+	}
+
+	&__link {
+		display: block;
+		height: 100%;
+		box-sizing: border-box;
+		padding: 24px;
+		background: var(--backgrounds-light-blue);
+		border-radius: 20px;
+		text-decoration: none;
+		color: inherit;
+		transition: background 0.2s ease;
+
+		&:hover {
+			// background: #dce5f0;
+		}
+	}
+
+	&__item-title {
+		margin: 0 0 12px;
+		font-size: 18px;
+		font-weight: 400;
+		line-height: 1.3;
+		color: var(--text-dark-blue, #0f171f);
+	}
+
+	&__item-desc {
+		margin: 0;
+		font-size: 12px;
+		line-height: 1.2;
+		color: #5a6b7d;
+	}
+}

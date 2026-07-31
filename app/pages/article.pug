@@ -1,0 +1,70 @@
+extends template/layout
+
+block variables
+	- var title = 'Название статьи — Rioni';
+	- var menuHeader = [
+	-   { title: 'О нас', href: 'about.html' },
+	-   { title: 'Услуги', href: 'services.html' },
+	-   { title: 'Тарифы', href: 'tariffs.html' },
+	-   { title: 'Обучение', href: '#' },
+	-   { title: 'Рынок', href: 'market.html' },
+	-   { title: 'Документы', href: 'documents.html' }
+	- ];
+	- var showTopbar = false
+	- var headerCta = { text: 'Открыть счет', href: '#registration-form' };
+
+block content
+	section.section-article
+		.container
+			.article
+				.article__body
+					article.article__main
+						a.article__back(href="market.html")
+							span.article__back-arrow
+							| Вернуться назад
+						h1.article__title Название статьи/новости
+						.article__featured
+							img.article__featured-img(src="./assets/images/required/news-main.jpg" alt="")
+						.article__content
+							p.article__lead Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+							p Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						.article__gallery
+							.article__gallery-item
+								img(src="./assets/images/required/news-main.jpg" alt="")
+							.article__gallery-item
+								img(src="./assets/images/required/news-main.jpg" alt="")
+							//- .article__gallery-item
+							//- 	img(src="./assets/images/required/news-main.jpg" alt="")
+						h2.article__subtitle Название статьи/новости
+						.article__content
+							p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+					aside.article__sidebar
+						.market-widget.market-widget--banner
+							.market-widget__inner
+								p.market-widget__title Рекламный баннер
+								p.market-widget__text Тут написать любую нашу рекламу продукта или важную информацию, которую мы хотим донести до клиента
+								a.market-widget__btn.button(href="#")
+									span.button__text Подробнее
+									span.button__icon
+										i.icon.icon-arrow-right
+
+						.article-related
+							h3.article-related__title Статьи по теме
+							ul.article-related__list
+								li.article-related__item
+									a.article-related__link(href="#")
+										h4.article-related__item-title Название статьи
+										p.article-related__item-desc Краткое описание, для большего понимания содержания данной статьи...
+								li.article-related__item
+									a.article-related__link(href="#")
+										h4.article-related__item-title Название статьи
+										p.article-related__item-desc Краткое описание, для большего понимания содержания данной статьи...
+								li.article-related__item
+									a.article-related__link(href="#")
+										h4.article-related__item-title Название статьи
+										p.article-related__item-desc Краткое описание, для большего понимания содержания данной статьи...
+								li.article-related__item
+									a.article-related__link(href="#")
+										h4.article-related__item-title Название статьи
+										p.article-related__item-desc Краткое описание, для большего понимания содержания данной статьи...

@@ -6,6 +6,16 @@ include ../../components/footer/footer
 include ../../components/popup/popup
 include ../../components/hero/hero
 include ../../components/form-block/form-block
+include ../../components/arrow-spoiler/arrow-spoiler
+include ../../components/error-page/error-page
+include ../../components/maintenance-page/maintenance-page
+include ../../components/registration-form/registration-form
+include ../../components/create-account-form/create-account-form
+include ../../components/after-registration-welcome/after-registration-welcome
+include ../../components/login-form/login-form
+include ../../components/password-recovery-popup/password-recovery-popup
+include ../../components/site-popups/site-popups
+include ../../components/tariff-consultation-popup/tariff-consultation-popup
 
 doctype html
 html(lang="RU")
@@ -15,7 +25,8 @@ html(lang="RU")
 		meta(content="" name="author")
 		meta(content="" name="description")
 		meta(content="" name="keywords")
-		meta(content="width=device-width, initial-scale=1" name="viewport")
+		meta(name="robots" content="noindex, nofollow")
+		meta(content="width=device-width, initial-scale=1" name="viewport" id="dynamicViewport")
 		meta(content="ie=edge" http-equiv="x-ua-compatible")
 		link(
 			href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Red+Rose:wght@400;500;700&family=Poller+One&display=swap"
@@ -35,21 +46,25 @@ html(lang="RU")
 	body
 		.page
 			.container
-				if typeof showTopbar !== 'undefined' && showTopbar
-					.hero__topbar
-						a.hero__switch(href="#") Для физических лиц
-						a.hero__switch(href="#") Для юридических лиц
+				//- if typeof showTopbar !== 'undefined' && showTopbar
+				//- 	.hero__topbar
+				//- 		a.hero__switch(href="#") Для физических лиц
+				//- 		a.hero__switch(href="#") Для юридических лиц
 			+header({
 				menu: menuHeader,
-				cta: typeof headerCta !== 'undefined' ? headerCta : { text:'Открыть счет', href:'#' },
+				cta: typeof headerCta !== 'undefined' ? headerCta : { text:'Открыть счет', href:'#registration-form' },
 				mod: typeof headerMod !== 'undefined' ? headerMod : ((typeof showTopbar !== 'undefined' && showTopbar) ? 'with-topbar' : ''),
-				lang: { code:'ru', flag:'required/flag-ru.svg' }
+				isAuthorized: typeof isAuthorized !== 'undefined' ? isAuthorized : false,
+				lang: { code:'ru', flag:'required/flag-ru.svg' },
+				logo: typeof headerLogo !== 'undefined' ? headerLogo : ''
 			})
 
 
 			main.main
 				block content
 
+			.footer-parallax-spacer(aria-hidden="true")
+			.footer-parallax-cover(aria-hidden="true")
 			//- block footer
 			+footer({})
 			// JS
@@ -59,3 +74,22 @@ html(lang="RU")
 
 			//- block popup
 			+popup({})
+			+registrationForm()
+			+createAccountForm()
+			+afterRegistrationWelcome()
+			+loginForm()
+			+passwordRecoveryPopup()
+			+cookieConsentPopup()
+			+onboardingResumePopup()
+			+authRequiredPopup()
+			+brokerAccountRequiredPopup()
+			+accessDeniedPopup()
+			+soonAvailablePopup()
+			+registrationSomethingWrongPopup()
+			+registrationServiceUnavailablePopup()
+			+registrationBannedPopup()
+			+registrationCompletedPopup()
+			+tariffConsultationPopup()
+
+			//- Не минифицируемый скрипт регистрации (копируется как есть в build/assets/js/)
+			script(src="./assets/js/registration-form.js")

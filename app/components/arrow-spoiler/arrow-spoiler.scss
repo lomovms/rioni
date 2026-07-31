@@ -1,0 +1,32 @@
+// Компонент «стрелка вниз».
+.arrow-spoiler {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: 23px;
+	height: 18px;
+	background-image: url("data:image/svg+xml,%3Csvg width='23' height='18' viewBox='0 0 23 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.98621 17.0607C10.572 17.6464 11.5217 17.6464 12.1075 17.0607L21.6535 7.51472C22.2393 6.92893 22.2393 5.97918 21.6535 5.3934C21.0677 4.80761 20.1179 4.80761 19.5322 5.3934L11.0469 13.8787L2.56159 5.3934C1.97581 4.80761 1.02606 4.80761 0.440273 5.3934C-0.145514 5.97918 -0.145514 6.92893 0.440273 7.51472L9.98621 17.0607ZM11.0469 0L9.54688 0V16H11.0469H12.5469V0L11.0469 0Z' fill='%230F171F' /%3E%3C/svg%3E");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	transition: transform 0.3s ease;
+}
+
+.arrow-download {
+	width: 34px;
+	height: 34px;
+	background: url('../assets/images/required/document.svg') center / contain no-repeat;
+}
+
+@media (max-width: 767px) {
+	.arrow-spoiler {
+		width: 15px;
+		height: 13px;
+	}
+
+	.arrow-download {
+		width: 20px;
+		height: 20px;
+	}
+}

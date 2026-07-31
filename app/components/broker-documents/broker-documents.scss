@@ -1,0 +1,186 @@
+.section-broker-license {
+	padding: 0 0 70px;
+	background: var(--backgrounds-white, #fff);
+}
+
+.broker-license {
+	position: relative;
+	display: grid;
+	grid-template-columns: 1fr 500px;
+	gap: 20px;
+	height: 485px;
+	background: var(--backgrounds-blue-ocean, #6794da);
+	border-radius: 40px;
+	    padding: 70px;
+	overflow: hidden;
+	align-items: center;
+	isolation: isolate;
+
+	&::before {
+		content: '';
+		position: absolute;
+		right: -209px;
+		bottom: -479px;
+		width: 709px;
+		height: 709px;
+		border-radius: 50%;
+		background: var(--backgrounds-grey-blue, #cad9f6);
+		z-index: -1;
+	}
+
+	&__content {
+		max-width: 317px;
+		height: 100%;
+	}
+
+	&__title {
+		margin: 0 0 24px;
+		font: 500 36px/1.1 var(--font-family);
+		color: var(--backgrounds-white, #fff);
+		max-width: 436px;
+	}
+
+	&__text {
+		margin: 0 0 0;
+		font: 400 12px/1.3 var(--font-family);
+		color: var(--backgrounds-white, #fff);
+		max-width: 349px;
+	}
+
+	&__btn {
+		.button__icon {
+			display: none;
+		}
+	}
+
+	&__image-wrap {
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+		height: 100%;
+	}
+
+	&__image {
+		display: block;
+		width: 100%;
+		max-width: 490px;
+		height: auto;
+		object-fit: contain;
+		transform: translateY(43px);
+	}
+}
+
+.section-broker-partners-intro {
+	// padding: 4px 0 6px;
+	background: var(--backgrounds-white, #fff);
+}
+
+.broker-partners-intro {
+	max-width: 579px;
+
+	&__title {
+		margin: 0 0 14px;
+		font: 500 36px/1.1 var(--font-family);
+		color: var(--text-dark-blue, #0f171f);
+	}
+
+	&__text {
+		margin: 0;
+		font: 400 16px/1.45 var(--font-family);
+		color: #2e3442;
+	}
+}
+
+.tariffs-hero--broker-documents .tariffs-hero__title,
+.tariffs-hero--broker-documents .tariffs-hero__subtitle {
+	margin-bottom: 36px !important;
+}
+
+@media (min-width: 1025px) {
+	.broker-license::before {
+		width: 918px;
+		height: 918px;
+	}
+}
+
+@media (max-width: 1024px) {
+	.broker-license {
+		grid-template-columns: 1fr;
+		padding: 36px 26px;
+		height: auto;
+		min-height: 796px;
+	}
+
+	.broker-license__image {
+
+		width: 392px;
+		    transform: none;
+			position: absolute;
+			right: -74px;
+	}
+
+	.broker-partners-intro {
+		max-width: 560px;
+	}
+}
+
+@media (max-width: 767px) {
+	.tariffs-hero--broker-documents .tariffs-hero__title,
+	.tariffs-hero--broker-documents .tariffs-hero__subtitle {
+		max-width: 265px;
+		margin-bottom: 20px !important;
+		padding: 0;
+	}
+
+	.tariffs-hero--broker-documents .tariffs-hero__title {
+		font-size: 24px;
+		font-weight: 500;
+		line-height: 1;
+		max-width: 261px;
+		margin-bottom: 23px !important;
+	}
+
+	.tariffs-hero--broker-documents .tariffs-hero__subtitle {
+		max-width: 246px;
+	}
+
+	.section-broker-license {
+		padding-top: 24px;
+	}
+
+	.broker-license {
+		border-radius: 40px;
+		padding: 34px 32px 30px 30px;
+	}
+
+	.broker-license__title {
+		font-size: 24px;
+		line-height: 1.1;
+		margin-bottom: 42px;
+	}
+
+	.broker-license__text {
+		font-size: 12px;
+	}
+
+	.broker-license::before {
+		width: 918px;
+		height: 918px;
+		right: -454px;
+		bottom: -425px;
+	}
+
+	.broker-license__image {
+		width: 400px;
+		right: -77px;
+		bottom: 26px;
+	}
+
+	.broker-partners-intro__title {
+		font-size: 28px;
+	}
+
+	.broker-partners-intro__text {
+		font-size: 14px;
+	}
+}

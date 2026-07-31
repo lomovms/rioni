@@ -1,0 +1,35 @@
+mixin afterRegistrationWelcome()
+	//- Окошко «после регистрации» (показывается inline через Magnific Popup)
+	#after-registration-welcome.popup.popup-after-registration.mfp-hide.mfp-with-anim(aria-hidden="true")
+		.popup-after-registration__inner
+			.popup-after-registration__icon(aria-hidden="true")
+				//- Простая иконка конверта с улыбкой (вместо изображения)
+				svg(width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg")
+					rect(x="9" y="17" width="56" height="42" rx="8" fill="#FFDD77")
+					path(d="M13 20L37 38L61 20" stroke="#F1B233" stroke-width="4" stroke-linecap="round" stroke-linejoin="round")
+					path(d="M23 45C23 38 51 38 51 45" fill="#FFDD77")
+					circle(cx="29" cy="33" r="3" fill="#2C4D90")
+					circle(cx="45" cy="33" r="3" fill="#2C4D90")
+					path(d="M31 39C34 42 40 42 43 39" stroke="#2C4D90" stroke-width="3" stroke-linecap="round")
+			h2.popup-after-registration__title Добро пожаловать, #[span.popup-after-registration__username]!
+			p.popup-after-registration__subtitle Теперь вам доступны к пользованию следующие разделы:
+
+			ul.popup-after-registration__list
+				li.popup-after-registration__item
+					img.popup-after-registration__item-icon(src="./assets/images/required/analytics-icon-1.png" alt="" aria-hidden="true")
+					div.popup-after-registration__item-text
+						a.popup-after-registration__item-link(href="#") Раздел обучения и тестирования
+						p.popup-after-registration__item-desc Узнайте свой финансовый уровень и совершенствуйте свои знания в различных отраслях инвестирования, в том числе с помощью расширенной базы полезных статей и видеокурсов
+
+				li.popup-after-registration__item
+					img.popup-after-registration__item-icon(src="./assets/images/required/analytics-icon-2.png" alt="" aria-hidden="true")
+					div.popup-after-registration__item-text
+						a.popup-after-registration__item-link(href="#") Демо торговля для новичков
+						p.popup-after-registration__item-desc Избегайте от сомнений и прокачайте свой уровень инвестора на реальных инструментах торговли с помощью демо-режима
+
+				li.popup-after-registration__item
+					img.popup-after-registration__item-icon(src="./assets/images/required/cloud.png" alt="" aria-hidden="true")
+					div.popup-after-registration__item-text
+						a.popup-after-registration__item-link(href="#") Доступ к аналитике и профобзорам
+						p.popup-after-registration__item-desc Будьте в курсе последних новостей в экономике и следите за обзорами инвестиционных специалистов
+

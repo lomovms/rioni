@@ -1,0 +1,71 @@
+extends template/layout
+
+block variables
+	- var title = 'Документы брокера — Rioni';
+	- var menuHeader = [
+	-   { title: 'О нас', href: 'about.html' },
+	-   { title: 'Услуги', href: 'services.html' },
+	-   { title: 'Инструменты', href: 'products.html' },
+	-   { title: 'Тарифы', href: 'tariffs.html' },
+	-   { title: 'Обучение', href: '#' },
+	-   { title: 'Рынок', href: 'market.html' },
+	-   { title: 'Документы', href: 'documents.html' }
+	- ];
+	- var showTopbar = false
+	- var headerCta = { text: 'Открыть счет', href: '#registration-form' };
+
+block content
+	section.section-tariffs-hero
+		.container
+			.tariffs-hero.tariffs-hero--broker-documents
+				h1.tariffs-hero__title Документация финансового брокера Rioni Capital
+				p.tariffs-hero__subtitle Здесь будут описания и важная информация по официальным документам компании, условиям обслуживания клиентов, раскрытию данных и правовым аспектам работы финансового брокера.
+				a.button.button--outline(href="#")
+					span.button__text К странице с документами
+					span.button__icon
+						i.icon.icon-arrow-right-blue
+
+	section.section-broker-license
+		.container
+			.broker-license
+				.broker-license__content
+					h2.broker-license__title Лицензии и регулирование
+					p.broker-license__text Мы соблюдаем требования регуляторов и действуем в рамках международных стандартов. В этом разделе размещаются ключевые сведения о лицензиях, регистрационных данных и юридической документации.
+				.broker-license__image-wrap
+					img.broker-license__image(src="./assets/images/required/license.png" alt="Лицензии и регулирование")
+
+	section.section-broker-partners-intro
+		.container
+			.broker-partners-intro
+				h2.broker-partners-intro__title Партнеры
+				p.broker-partners-intro__text Мы сотрудничаем с международными сервисами и технологическими поставщиками, чтобы обеспечить надежную инфраструктуру, прозрачные процессы и удобные инструменты для клиентов.
+
+	section.section-partners
+		.container
+			.partners
+				- var partnersList = [{img:"./assets/images/required/prime.png",text:"A globally-renowned charting platform integrated with the DXtrade backend for trade execution"},{img:"./assets/images/required/kenmore.png",text:"A globally-renowned charting platform integrated with the DXtrade backend for trade execution"},{img:"./assets/images/required/propguru.png", text:"A globally-renowned charting platform integrated with the DXtrade backend for trade execution"},{img:"./assets/images/required/propguru.png", text:"A globally-renowned charting platform integrated with the DXtrade backend for trade execution"},{img:"./assets/images/required/prime.png",text:"A globally-renowned charting platform integrated with the DXtrade backend for trade execution"}]
+				.partners__marquee
+					.partners__track
+						each partner in partnersList
+							.partner-card
+								.partner-card__image
+									img(src=partner.img alt=partner.text)
+								.partner-card__text= partner.text
+						each partner in partnersList
+							.partner-card(aria-hidden="true")
+								.partner-card__image
+									img(src=partner.img alt="")
+								.partner-card__text= partner.text
+					.partners__track.partners__track--reverse
+						each partner in partnersList
+							.partner-card
+								.partner-card__image
+									img(src=partner.img alt=partner.text)
+								.partner-card__text= partner.text
+						each partner in partnersList
+							.partner-card(aria-hidden="true")
+								.partner-card__image
+									img(src=partner.img alt="")
+								.partner-card__text= partner.text
+
+	+sectionForm()

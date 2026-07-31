@@ -1,5 +1,5 @@
 /**
- * Бегущая строка в секции «Новости»: плавно вперёд, потом назад (не бесконечная в одну сторону).
+ * Бегущая строка в секции «Новости»: бесшовное движение справа налево.
  */
 (function () {
 	const wrap = document.querySelector('.news-ticker__wrap');
@@ -9,32 +9,32 @@
 	function startTicker() {
 		if (typeof gsap === 'undefined') return;
 
-		// Измеряем после отрисовки (шрифты и ширина контейнера уже есть)
 		const wrapWidth = wrap.offsetWidth;
-		let textWidth = text.scrollWidth;
+		const base = (text.dataset.tickerText || text.textContent || '').trim();
+		if (!wrapWidth || !base) return;
 
-		// Если текст короче видимой области — дублируем содержимое, чтобы была прокрутка
-		if (textWidth <= wrapWidth && text.textContent) {
-			const base = text.textContent.trim();
-			while (text.scrollWidth <= wrapWidth * 1.5) {
-				text.textContent += '  ' + base;
-			}
-			textWidth = text.scrollWidth;
+		text.dataset.tickerText = base;
+
+		let segment = base;
+		text.textContent = segment;
+
+		while (text.scrollWidth < wrapWidth + 80) {
+			segment += '   ' + base;
+			text.textContent = segment;
 		}
 
-		const distance = Math.max(0, textWidth - wrapWidth);
-		if (distance <= 0) return;
+		const loopSegment = segment + '   ';
+		text.textContent = loopSegment + loopSegment;
+
+		const segmentWidth = text.scrollWidth / 2;
+		if (segmentWidth <= 0) return;
 
 		gsap.set(text, { x: 0 });
-		const tl = gsap.timeline({ repeat: -1, repeatDelay: 0.5 });
-		tl.to(text, {
-			x: -distance,
-			duration: 12,
-			ease: 'none'
-		}).to(text, {
-			x: 0,
-			duration: 12,
-			ease: 'none'
+		gsap.to(text, {
+			x: -segmentWidth,
+			duration: Math.max(12, segmentWidth / 90),
+			ease: 'none',
+			repeat: -1
 		});
 	}
 

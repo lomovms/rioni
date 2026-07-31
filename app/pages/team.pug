@@ -1,0 +1,148 @@
+extends template/layout
+
+block variables
+	- var title = 'Команда — Rioni';
+	- var menuHeader = [
+	-   { title: 'О нас', href: 'about.html' },
+	-   { title: 'Услуги', href: 'services.html' },
+	-   { title: 'Инструменты', href: 'products.html' },
+	-   { title: 'Тарифы', href: 'tariffs.html' },
+	-   { title: 'Обучение', href: '#' },
+	-   { title: 'Рынок', href: 'market.html' },
+	-   { title: 'Документы', href: 'documents.html' }
+	- ];
+	- var showTopbar = false
+	- var headerCta = { text: 'Открыть счет', href: '#registration-form' };
+	- var careerTabs = [
+	-   {
+	-     id: 'all',
+	-     label: 'Все вакансии',
+	-     jobs: [
+	-       { title: 'Senior Trader', href: 'career.html' },
+	-       { title: 'Биржевой аналитик', href: 'career.html' },
+	-       { title: 'Брокер', href: 'career.html' }
+	-     ]
+	-   },
+	-   {
+	-     id: 'analytics',
+	-     label: 'Аналитика',
+	-     jobs: [
+	-       { title: 'Биржевой аналитик', href: 'career.html' },
+	-       { title: 'Quant Analyst', href: 'career.html' }
+	-     ]
+	-   },
+	-   {
+	-     id: 'brokers',
+	-     label: 'Брокеры',
+	-     jobs: [
+	-       { title: 'Брокер', href: 'career.html' },
+	-       { title: 'Account Executive', href: 'career.html' }
+	-     ]
+	-   },
+	-   {
+	-     id: 'it',
+	-     label: 'IT-специалисты',
+	-     jobs: [
+	-       { title: 'Frontend Developer', href: 'career.html' },
+	-       { title: 'Backend Engineer', href: 'career.html' }
+	-     ]
+	-   }
+	- ];
+
+block content
+	.team-page
+		section.section-team-hero
+			.container
+				.team-hero(style="background-image: url('./assets/images/required/gray.png')")
+					h1.team-hero__title Тут будет заголовок про команду
+					p.team-hero__subtitle а тут подзаголовок с важными словами
+
+		section.section-team-members
+			.container
+				h2.team-members__title Эксперты
+				.team-members__grid
+					a.team-card(href="#team-member-popup" data-popup)
+						.team-card__media.team-card__media--placeholder Фото эксперта
+						.team-card__body
+							h3.team-card__name Имя Фамилия
+							p.team-card__text Текстовое описание эксперта. Здесь будет краткая информация о специализации и опыте.
+					a.team-card(href="#team-member-popup" data-popup)
+						.team-card__media.team-card__media--placeholder Фото эксперта
+						.team-card__body
+							h3.team-card__name Имя Фамилия
+							p.team-card__text Текстовое описание эксперта. Здесь будет краткая информация о специализации и опыте.
+					a.team-card(href="#team-member-popup" data-popup)
+						.team-card__media.team-card__media--placeholder Фото эксперта
+						.team-card__body
+							h3.team-card__name Имя Фамилия
+							p.team-card__text Текстовое описание эксперта. Здесь будет краткая информация о специализации и опыте.
+					a.team-card(href="#team-member-popup" data-popup)
+						.team-card__media.team-card__media--placeholder Фото эксперта
+						.team-card__body
+							h3.team-card__name Имя Фамилия
+							p.team-card__text Текстовое описание эксперта. Здесь будет краткая информация о специализации и опыте.
+
+		section.section-team-management
+			.container
+				h2.team-members__title Руководство
+				.team-members__grid
+					a.team-card.team-card--management(href="#team-member-popup" data-popup)
+						.team-card__media.team-card__media--placeholder Фото руководителя
+						.team-card__body
+							h3.team-card__name Имя Фамилия
+							p.team-card__text Текстовое описание руководителя. Здесь будет роль и управленческий профиль.
+					a.team-card.team-card--management(href="#team-member-popup" data-popup)
+						.team-card__media.team-card__media--placeholder Фото руководителя
+						.team-card__body
+							h3.team-card__name Имя Фамилия
+							p.team-card__text Текстовое описание руководителя. Здесь будет роль и управленческий профиль.
+					a.team-card.team-card--management(href="#team-member-popup" data-popup)
+						.team-card__media.team-card__media--placeholder Фото руководителя
+						.team-card__body
+							h3.team-card__name Имя Фамилия
+							p.team-card__text Текстовое описание руководителя. Здесь будет роль и управленческий профиль.
+					a.team-card.team-card--management(href="#team-member-popup" data-popup)
+						.team-card__media.team-card__media--placeholder Фото руководителя
+						.team-card__body
+							h3.team-card__name Имя Фамилия
+							p.team-card__text Текстовое описание руководителя. Здесь будет роль и управленческий профиль.
+
+		section.section-team-careers
+			.container
+				.team-careers
+					.team-careers__head
+						h2.team-careers__title Карьера в Rioni Capital
+						p.team-careers__subtitle Развивайтесь вместе
+						.tariffs-tabs.team-careers__tabs
+							.tariffs-tabs__controls(role='tablist' aria-label='Вакансии Rioni Capital')
+								each tab, index in careerTabs
+									button.tariffs-tabs__control(class=index === 0 ? 'tariffs-tabs__control--active' : '' type='button' data-tariff-tab=tab.id role='tab' aria-selected=index === 0 ? 'true' : 'false')= tab.label
+
+							each tab, index in careerTabs
+								.tariffs-tabs__panel(class=index === 0 ? 'tariffs-tabs__panel--active' : '' data-tariff-panel=tab.id role='tabpanel')
+									.team-careers__list
+										each job in tab.jobs
+											a.team-careers__item(href=job.href)
+												.team-careers__item-inner
+													.team-careers__item-head
+														h3.team-careers__item-title= job.title
+														span.team-careers__item-arrow(aria-hidden='true')
+															svg(width='49' height='16' viewBox='0 0 49 16' fill='none' xmlns='http://www.w3.org/2000/svg')
+																path(d='M48.7071 8.70711C49.0976 8.31658 49.0976 7.68342 48.7071 7.29289L42.3431 0.928932C41.9526 0.538408 41.3195 0.538408 40.9289 0.928932C40.5384 1.31946 40.5384 1.95262 40.9289 2.34315L46.5858 8L40.9289 13.6569C40.5384 14.0474 40.5384 14.6805 40.9289 15.0711C41.3195 15.4616 41.9526 15.4616 42.3431 15.0711L48.7071 8.70711ZM0 9H48V7H0V9Z' fill='currentColor')
+
+		+sectionForm()
+
+		#team-member-popup.team-member-popup.mfp-hide.mfp-with-anim(aria-hidden="true")
+			.team-member-popup__grid
+				.team-member-popup__aside
+					.team-member-popup__photo
+						img(src="./assets/images/required/person.png" alt="Бадри Гобечия")
+					h3.team-member-popup__name Бадри Гобечия
+				.team-member-popup__content
+					.team-member-popup__tags
+						span.team-member-popup__tag.team-member-popup__tag--blue Опыт 25 лет
+						span.team-member-popup__tag Руководитель
+						span.team-member-popup__tag Инвестор
+					.team-member-popup__text
+						p Руководитель с многолетним опытом в области финансов, инвестиций, банковского бизнеса и стратегического управления. Его профессиональная карьера охватывает более 25 лет работы в финансовом секторе, включая руководство инвестиционными компаниями, пенсионными структурами и банковскими организациями, а также участие в реализации сложных корпоративных и инвестиционных проектов.
+						p На протяжении карьеры Бадри занимал позиции исполнительного директора, партнёра, председателя совета и мажоритарного акционера в инвестиционных и финансовых структурах. В этих ролях он отвечал за разработку стратегий, развитие инвестиционных продуктов, управление ключевыми портфелями, взаимодействие с инвесторами, государственными органами и международными юридическими и маркетинговыми структурами.

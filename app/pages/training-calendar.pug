@@ -1,0 +1,46 @@
+﻿extends template/layout
+
+block variables
+	- var title = 'Календарь обучения — Rioni';
+	- var menuHeader = [
+	-   { title: 'О нас', href: 'about.html' },
+	-   { title: 'Услуги', href: 'services.html' },
+	-   { title: 'Инструменты', href: 'products.html' },
+	-   { title: 'Тарифы', href: 'tariffs.html' },
+	-   { title: 'Обучение', href: '#' },
+	-   { title: 'Рынок', href: 'market.html' },
+	-   { title: 'Документы', href: 'documents.html' }
+	- ];
+	- var showTopbar = false
+	- var headerCta = { text: 'Открыть счет', href: '#registration-form' };
+
+block content
+	section.section-training-calendar
+		.container
+			.training-calendar-page
+				.training-calendar-page__head
+					h1.training-calendar-page__title Календарь обучения
+					p.training-calendar-page__text Следите за расписанием курсов, стримов и встреч с экспертами Rioni Capital.
+				.learning-schedule
+					.learning-schedule__tabs
+						button.learning-schedule__tab.learning-schedule__tab--active(type="button") Расписание курсов
+						button.learning-schedule__tab(type="button") Расписание стримов
+						button.learning-schedule__tab(type="button") Расписание встреч с экспертами
+					.learning-schedule__header
+						.learning-schedule__left
+							button.learning-schedule__period(type="button") На неделю
+							button.learning-schedule__calendar-btn(type="button" aria-label="Календарь")
+								img(src="./assets/images/required/calendar.png" alt="" aria-hidden="true")
+							button.learning-schedule__nav(type="button" aria-label="Назад") ‹
+							button.learning-schedule__nav(type="button" aria-label="Вперед") ›
+							p.learning-schedule__range 4 августа – 10 августа 2025г
+						.learning-schedule__timezone
+							span.learning-schedule__timezone-icon ◷
+							span 10:53 (UTS+7)
+					.learning-schedule__grid
+						each day in ['Пн 4','Вт 5','Ср 6','Чт 7','Пт 8','Сб 9','Вс 10']
+							article.learning-schedule__day
+								h3.learning-schedule__day-title= day
+								if day === 'Пн 4' || day === 'Пт 8' || day === 'Вс 10'
+									p.learning-schedule__day-text 13:00 (UTS+7)
+									p.learning-schedule__day-text Основы торговли

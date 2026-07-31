@@ -59,10 +59,15 @@
         "webpack-merge": "^4.2.2"
     },
     "dependencies": {
+        "country-telephone-data": "^0.6.3",
+        "flatpickr": "^4.6.13",
         "gsap": "^3.13.0",
+        "imagesloaded": "^4.1.4",
+        "inputmask": "^5.0.9",
         "jquery": "^3.5.1",
         "lazyload": "^2.0.0-rc.2",
         "magnific-popup": "^1.1.0",
+        "masonry-layout": "^4.2.2",
         "normalize.css": "^8.0.1",
         "nouislider": "^15.7.1",
         "object-fit-images": "^3.2.4",

@@ -1,0 +1,128 @@
+extends template/layout
+
+block variables
+	- var title = 'Доверие и уважение — Rioni Capital';
+	- var menuHeader = [
+	-   { title: 'О нас', href: 'about.html' },
+	-   { title: 'Услуги', href: 'services.html' },
+	-   { title: 'Тарифы', href: 'tariffs.html' },
+	-   { title: 'Обучение', href: 'training.html' },
+	-   { title: 'Рынок', href: 'market.html' },
+	-   { title: 'Документы', href: 'documents.html' }
+	- ];
+	- var showTopbar = false;
+	- var headerCta = { text: 'Открыть счет', href: '#registration-form' };
+
+block content
+	section.content-hero
+		.hero-container
+			.content-hero-layout
+				picture
+					source(media="(max-width: 767px)" srcset="./assets/images/required/product-inner-hero.png")
+					img(src="./assets/images/required/product-inner-hero.png" alt="Почему выбирают Rioni Capital")
+				div
+					h1 Почему выбирают Rioni Capital
+					p Собранные в одной экосистеме глобальные рынки, аналитика и современные торговые технологии — это то, что мы в Rioni Capital адаптировали для клиентов с развивающихся рынков и добавили нашу фирменную грузинскую поддержку клиентов.
+					a.button.button--light(href="documents.html")
+						span.button__text К странице с документами
+						span.button__icon
+							i.icon.icon-arrow-right-blue
+
+	section.trust-content
+		.container
+			.trust-reasons
+				h2 Почему нам доверяют?
+				.trust-grid
+					article
+						img(src="./assets/images/required/video.jpg" alt="Прозрачность и открытость")
+						h3 Прозрачность и открытость
+						p Мы раскрываем информацию в объёме, предусмотренном законодательством Грузии, требованиями регулятора и внутренними стандартами компании.
+					article
+						img(src="./assets/images/required/analytics-cover.jpg" alt="Независимый контроль")
+						h3 Независимый контроль
+						p Компания регулярно проходит независимые аудиторские проверки, а также процедуры due diligence международных партнёров.
+					article
+						img(src="./assets/images/required/slide2.jpg" alt="Современное регулирование")
+						h3 Современное регулирование финансового рынка
+						p Регулирование финансового рынка Грузии развивается с учётом европейских стандартов и лучших международных практик.
+					article
+						img(src="./assets/images/required/slide3.jpg" alt="Работа в соответствии с законодательством")
+						h3 Деятельность в соответствии с законодательством Грузии
+						p Внутренние документы и корпоративные стандарты учитывают лучшие европейские практики регулирования инвестиционных услуг.
+
+			.trust-differences
+				h2 Чем мы отличаемся
+				.trust-cards
+					article
+						img(src="./assets/images/required/news-main.jpg" alt="")
+						div
+							h3 Единый брокерский счет
+							p Доступ к ведущим мировым фондовым рынкам через единый брокерский счёт.
+					article
+						img(src="./assets/images/required/third-level-money-history-hero.png" alt="")
+						div
+							h3 Разнообразие инструментов
+							p Широкий выбор акций, ETF, облигаций, опционов и фьючерсов.
+					article
+						img(src="./assets/images/required/analytics-cover.jpg" alt="")
+						div
+							h3 Собственная аналитика
+							p Регулярные обзоры финансовых рынков и инвестиционные исследования.
+					article
+						img(src="./assets/images/required/clients.png" alt="")
+						div
+							h3 Персональная поддержка
+							p Клиентская поддержка и возможность работать с персональным менеджером.
+					article
+						img(src="./assets/images/required/slide1.jpg" alt="")
+						div
+							h3 Гибкий график торговли
+							p Торговля в основные, пре- и пострыночные торговые сессии.
+					article
+						img(src="./assets/images/required/platform.png" alt="")
+						div
+							h3 Торговая платформа DxFina
+							p Веб-платформа и мобильные приложения для торговли и контроля портфеля.
+
+			a.trust-banner(href="documents.html" style="background-image: url('./assets/images/required/gray.png')")
+				h2 Кодекс этики Rioni Capital
+				p Доверие имеет первостепенное значение, и мы прилагаем все усилия, чтобы заслужить и сохранить доверие клиентов.
+				span Открыть документ →
+
+			.trust-social
+				h2 Социальные проекты
+				.trust-social-layout
+					.market__news-grid
+						article.market__article.market__article--featured
+							a.market__article-link(href="article.html")
+								.market__article-img-wrap
+									img.market__article-img(src="./assets/images/required/news-main.jpg" alt="Социальный проект Rioni Capital")
+								.market__article-overlay
+									time.market__article-date(datetime="2026-07-22") 22 июля, 2026
+									p.market__article-text Открытие нового офиса. Две фотостудии, зал для йоги и бассейн. Первые впечатления участников клуба проектного офиса в Москве
+						article.market__article
+							a.market__article-link(href="article.html")
+								time.market__article-date(datetime="2026-06-18") 18 июня, 2026
+								p.market__article-text Поддержка образовательных инициатив
+						article.market__article
+							a.market__article-link(href="article.html")
+								time.market__article-date(datetime="2026-05-12") 12 мая, 2026
+								p.market__article-text Партнёрство с региональными фондами
+					a.trust-social-banner(href="#" aria-label="Рекламный баннер")
+						img(src="./assets/images/required/baner2.jpg" alt="Рекламный баннер")
+
+			.market__feed
+				.market__feed-head
+					h2.market__feed-title Лента новостей
+					button.market__feed-filters(type="button")
+						span.market__feed-filters-text Фильтры
+						span.market__feed-filters-icon(aria-hidden="true")
+				ul.market__feed-list
+					- var trustFeed = 'Открытие нового офиса. Две фотостудии, зал для йоги и бассейн. Первые впечатления участников клуба проектного офиса в Москве';
+					each item in Array(8)
+						li.market__feed-item
+							a.market__feed-link(href="article.html")
+								span.market__feed-time 12:30
+								span.market__feed-text= trustFeed
+
+	+sectionFormWithFile({ prefix: 'trust' })

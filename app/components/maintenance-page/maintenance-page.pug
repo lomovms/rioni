@@ -1,0 +1,11 @@
+//- Страница «Режим технического обслуживания»: полноэкранный фон + центральная плашка
+mixin maintenancePage(data)
+	- var d = data || {};
+	- var bgImage = d.bgImage || 'required/maintenance-bg.jpg';
+	section.maintenance-page
+		.maintenance-page__bg(style="background-image: url('./assets/images/" + bgImage + "')")
+		.maintenance-page__plaque
+			h1.maintenance-page__title Режим технического обслуживания
+			p.maintenance-page__text В данный момент сайт находится на техническом обслуживании.
+			p.maintenance-page__text Мы постараемся закончить проверку как можно скорее!
+			p.maintenance-page__apology Приносим свои извинения за доставленные неудобства

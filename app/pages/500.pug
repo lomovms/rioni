@@ -1,0 +1,25 @@
+extends template/layout
+
+block variables
+	- var title = 'Ошибка сервера — Rioni';
+	- var menuHeader = [
+	-   { title: 'О нас', href: 'about.html' },
+	-   { title: 'Услуги', href: 'services.html' },
+	-   { title: 'Тарифы', href: 'tariffs.html' },
+	-   { title: 'Обучение', href: '#' },
+	-   { title: 'Рынок', href: 'market.html' },
+	-   { title: 'Документы', href: 'documents.html' }
+	- ];
+	- var showTopbar = false
+	- var headerCta = { text: 'Открыть счет', href: '#registration-form' };
+
+block content
+	+errorPage({
+		title: 'Ошибка обращения к серверу',
+		subtitle: 'Мы уже работаем над исправлением, <br> попробуйте обновить страницу позднее. <br> Приносим извинения за временные неудобства',
+		btnText: 'Вернуться на главную',
+		btnHref: 'index.html',
+		image: 'required/cloud2.png',
+		variant: '500',
+		btnModifier: 'outline'
+	})

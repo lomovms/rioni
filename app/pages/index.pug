@@ -1,18 +1,20 @@
 extends template/layout
+include ../components/trust-slider/trust-slider
 //- include ../components/menu/menu
 
 block variables
 	- var title = 'Главная — Rioni';
 	- var menuHeader = [
-	-   { title: 'О нас', href: '#' },
-	-   { title: 'Услуги', href: '#' },
+	-   { title: 'О нас', href: 'about.html' },
+	-   { title: 'Услуги', href: 'services.html' },
+	-   { title: 'Инструменты', href: 'products.html' },
 	-   { title: 'Тарифы', href: '#' },
 	-   { title: 'Обучение', href: '#' },
-	-   { title: 'Рынок', href: '#' },
-	-   { title: 'Документы', href: '#' }
+	-   { title: 'Рынок', href: 'market.html' },
+	-   { title: 'Документы', href: 'documents.html' }
 	- ];
-	- var showTopbar = true
-	- var headerCta = { text: 'Открыть счет', href: '#' };
+	- var showTopbar = false
+	- var headerCta = { text: 'Открыть счет', href: '#registration-form' };
 
 block content
 	//- h1 Тест
@@ -21,28 +23,37 @@ block content
 
 	//- svg
 	//- 	use(xlink:href="/assets/images/required/sprite.svg#accordion")
-	.container
-		+hero({
-				topbar: true,
-				topbarLinks: [
-					{ text: 'Для физических лиц', href: '#' },
-					{ text: 'Для юридических лиц', href: '#' }
-				],
-				bg: 'required/hero-main.jpg',
-				align: 'right',
-				pretitle: '',
-				title: 'Rioni Capital –<br>европейский брокер<br>с грузинским колоритом',
-				subtitle: 'Мы объединяем европейские стандарты, инновационные<br> технологии и тёплый грузинский сервис, чтобы вы могли <br> инвестировать уверенно и прозрачно',
-				button: { text: 'Открыть счет', url: '#' },
-				animate: 'fade'
-			})
-		section.section-features
+	+hero({
+			topbar: true,
+			topbarLinks: [
+				{ text: 'Для физических лиц', href: '#' },
+				{ text: 'Для юридических лиц', href: '#' }
+			],
+			bg: 'required/hero-main.png',
+			bgMobile: 'required/hero-main-mobile.jpg',
+			mod: 'main',
+			align: 'right',
+			pretitle: '',
+			title: 'Rioni Capital –<br>европейский брокер<br>с грузинским колоритом',
+			subtitle: 'Мы объединяем европейские стандарты, инновационные технологии и тёплый грузинский сервис, чтобы вы могли <br class="hidden-xs--small hidden-xs">инвестировать уверенно и прозрачно',
+			button: { text: 'Открыть счет', url: '#' },
+			animate: 'fade'
+		})
+	section.section-features
+		.container
 			.features__center
-				h1.features__title
+				h1.features__title.features__title--desktop.hidden-xs--small.hidden-xs
 					span.line Откройте для себя
 					span.line все грани
 					span.line инвестирования
 					span.line вместе с Rioni Capital
+				h1.features__title.features__title--mobile
+					span.line Откройте
+					span.line для себя
+					span.line все грани
+					span.line инвестирования
+					span.line вместе
+					span.line с Rioni Capital
 			.features
 				a.float-card.float-card--1(data-strength="0.10")
 					img(src="./assets/images/required/card1.png" alt="")
@@ -89,7 +100,7 @@ block content
 							img.device__gif-desktop(src="./assets/images/required/gif.png" alt="")
 					// Рамка телефона
 					.device.device--mobile
-						img.device__frame(src="./assets/images/required/monitor-frame.png" alt="")
+						img.device__frame(src="./assets/images/required/phone-frame.png" alt="")
 						.device__screen
 							img.device__gif-mobile(src="./assets/images/required/gif.png" alt="")
 
@@ -118,99 +129,94 @@ block content
 							data-gif-mobile="./assets/images/required/gif.png")
 	section.section-planet(id="planet")
 		.container.planet__container-wrap
-			.planet__controls
-				button.planet__play(type="button") Запустить анимацию
-				.planet__progress-wrap
-					label.planet__progress-label(for="planet-progress") Прогресс
-					input.planet__progress-input#planet-progress(type="range" min="0" max="100" value="0" aria-label="Прогресс анимации")
-			.planet__light
-				img(src="./assets/images/required/light.png" alt="")
-			.planet__light2
-				img(src="./assets/images/required/light2.png" alt="")
-			.planet__container
-				.planet__globe
-					img.planet__earth(src="./assets/images/required/earth.png" alt="")
-					img.planet__clients(src="./assets/images/required/clients.png" alt="")
-			.planet__title-wrap
-				h2.planet__title Rioni Capital -<br>инвестируй<br>по всему миру
-			.planet__content
-				.planet__stats
-					.planet__stat
-						span.planet__stat-num 160
-						span.planet__stat-label Рынков
-					.planet__stat
-						span.planet__stat-num 36
-						span.planet__stat-label Стран
-					.planet__stat
-						span.planet__stat-num 28
-						span.planet__stat-label Валют
-				p.planet__text Инвестируйте по всему миру в акции, опционы, фьючерсы, валюты, облигации и фонды с единой унифицированной платформы.
+			.planet__desktop
+				.planet__controls
+					button.planet__play(type="button") Запустить анимацию
+					.planet__progress-wrap
+						label.planet__progress-label(for="planet-progress") Прогресс
+						input.planet__progress-input#planet-progress(type="range" min="0" max="1000" step="1" value="0" aria-label="Прогресс анимации")
+						output.planet__progress-value(for="planet-progress") 0.0%
+				.planet__light
+					img(src="./assets/images/required/light.png" alt="")
+				.planet__light2
+					img(src="./assets/images/required/light2.png" alt="")
+				.planet__container
+					.planet__globe
+						img.planet__earth(src="./assets/images/required/earth.png" alt="")
+						img.planet__clients(src="./assets/images/required/clients.png" alt="")
+				.planet__title-wrap
+					h2.planet__title Rioni Capital -<br>инвестируй<br>по всему миру
+				.planet__content
+					.planet__stats
+						.planet__stat
+							span.planet__stat-num 160
+							span.planet__stat-label Рынков
+						.planet__stat
+							span.planet__stat-num 36
+							span.planet__stat-label Стран
+						.planet__stat
+							span.planet__stat-num 28
+							span.planet__stat-label Валют
+					p.planet__text Инвестируйте по всему миру в акции, опционы, фьючерсы, валюты, облигации и фонды с единой унифицированной платформы.
+
+			.planet__mobile
+				.planet__mobile-screen.planet__mobile-screen--hero
+					h2.planet__mobile-title Rioni Capital -<br>инвестируй<br>по всему миру
+					.planet__mobile-globe.planet__mobile-globe--hero
+						img.planet__mobile-earth(src="./assets/images/required/earth.png" alt="")
+				.planet__mobile-screen.planet__mobile-screen--details
+					.planet__mobile-copy
+						h2.planet__mobile-title.planet__mobile-title--left Rioni Capital -<br>инвестируй<br>по всему миру
+						.planet__mobile-stats
+							.planet__mobile-stat
+								span.planet__mobile-stat-num 160
+								span.planet__mobile-stat-label Рынков
+							.planet__mobile-stat
+								span.planet__mobile-stat-num 36
+								span.planet__mobile-stat-label Стран
+							.planet__mobile-stat
+								span.planet__mobile-stat-num 28
+								span.planet__mobile-stat-label Валют
+						p.planet__mobile-text Инвестируйте по всему миру в акции, опционы, фьючерсы, валюты, облигации и фонды с единой унифицированной платформы.
+					.planet__mobile-globe.planet__mobile-globe--details
+						img.planet__mobile-light(src="./assets/images/required/light2.png" alt="")
+						img.planet__mobile-earth(src="./assets/images/required/earth.png" alt="")
+						img.planet__mobile-clients(src="./assets/images/required/clients.png" alt="")
+	- var partnersList = [{img:"./assets/images/required/prime.png",text:"A globally-renowned charting platform integrated with the DXtrade backend for trade execution"},{img:"./assets/images/required/kenmore.png",text:"A globally-renowned charting platform integrated with the DXtrade backend for trade execution"},{img:"./assets/images/required/propguru.png", text:"A globally-renowned charting platform integrated with the DXtrade backend for trade execution"},{img:"./assets/images/required/propguru.png", text:"A globally-renowned charting platform integrated with the DXtrade backend for trade execution"},{img:"./assets/images/required/prime.png",text:"A globally-renowned charting platform integrated with the DXtrade backend for trade execution"}]
 	section.section-partners
 		.container
 			.partners
-				each partner in [{img:"./assets/images/required/prime.png",text:"A globally-renowned charting platform integrated with the DXtrade backend for trade execution"},{img:"./assets/images/required/kenmore.png",text:"A globally-renowned charting platform integrated with the DXtrade backend for trade execution"},{img:"./assets/images/required/propguru.png", text:"A globally-renowned charting platform integrated with the DXtrade backend for trade execution"},{img:"./assets/images/required/propguru.png", text:"A globally-renowned charting platform integrated with the DXtrade backend for trade execution"},{img:"./assets/images/required/prime.png",text:"A globally-renowned charting platform integrated with the DXtrade backend for trade execution"},]
-					.partner-card
-						.partner-card__image
-							img(src=partner.img alt=partner.text)
-						.partner-card__text= partner.text
+				.partners__intro
+					h2.partners__title Партнеры
+					p.partners__text Мы сотрудничаем с ведущими компаниями и организациями в области финансов и инвестиций.
+						br
+						| Наши партнеры - это профессионалы, которые помогают нам обеспечить высокий уровень сервиса и надежности
+				.partners__marquee
+					.partners__track
+						each partner in partnersList
+							.partner-card
+								.partner-card__image
+									img(src=partner.img alt=partner.text)
+								.partner-card__text= partner.text
+						each partner in partnersList
+							.partner-card(aria-hidden="true")
+								.partner-card__image
+									img(src=partner.img alt="")
+								.partner-card__text= partner.text
+					.partners__track.partners__track--reverse
+						each partner in partnersList
+							.partner-card
+								.partner-card__image
+									img(src=partner.img alt=partner.text)
+								.partner-card__text= partner.text
+						each partner in partnersList
+							.partner-card(aria-hidden="true")
+								.partner-card__image
+									img(src=partner.img alt="")
+								.partner-card__text= partner.text
 
 	//- Слайдер «колода карт» перед формой
-	section.section-trust
-		.container
-			.trust-slider
-				.trust-slider__header
-					.trust-slider__icon-wrap
-						img.trust-slider__icon#trust-header-icon(src="./assets/images/required/lock.png" alt="" width="48" height="48")
-					h2.trust-slider__title#trust-header-title Надежность и безопасность финансовых операций
-					p.trust-slider__subtitle#trust-header-subtitle Rioni Capital придерживается высоких стандартов безопасности и гарантирует надежность и безопасность своих услуг
-				.trust-slider__stack#trust-stack
-					.trust-slider__slide.trust-slider__slide--top(data-header-icon="./assets/images/required/lock.png" data-header-title="Надежность и безопасность финансовых операций" data-header-subtitle="Rioni Capital придерживается высоких стандартов безопасности и гарантирует надежность и безопасность своих услуг")
-						.trust-slider__slide-bg(style="background-image: url('./assets/images/required/slide1.jpg')")
-						.trust-slider__slide-overlay
-							.trust-slider__point
-								.trust-slider__point-title Прозрачность операций:
-								.trust-slider__point-desc Полная прозрачность всех
-									br
-									| условий, комиссий и финансовых
-									br
-									| операций
-							.trust-slider__point
-								.trust-slider__point-title Соблюдение регуляторных требований:
-								.trust-slider__point-desc Обеспечивает возможность, надежность и законность всех проводимых операций
-							.trust-slider__point
-								.trust-slider__point-title Высокие стандарты защиты данных:
-								.trust-slider__point-desc Использование новейших технологий шифрования и защиты данных клиента
-						.trust-slider__slide-icon
-							img(src="./assets/images/required/slide-icon1.png" alt="")
-					.trust-slider__slide(data-header-icon="./assets/images/required/binokle.png" data-header-title="Современные решения и прогнозирование" data-header-subtitle="Rioni Capital использует в своих разработках новые технологии и лучшие финансовые инструменты")
-						.trust-slider__slide-bg(style="background-image: url('./assets/images/required/slide2.jpg')")
-						.trust-slider__slide-overlay
-							.trust-slider__point
-								.trust-slider__point-title Прозрачность операций:
-								.trust-slider__point-desc Полная прозрачность всех условий, комиссий и финансовых операций
-							.trust-slider__point
-								.trust-slider__point-title Соблюдение регуляторных требований:
-								.trust-slider__point-desc Обеспечивает возможность, надежность и законность всех проводимых операций
-							.trust-slider__point
-								.trust-slider__point-title Высокие стандарты защиты данных:
-								.trust-slider__point-desc Использование новейших технологий шифрования и защиты данных клиента
-						.trust-slider__slide-icon
-							img(src="./assets/images/required/slide-icon2.png" alt="")
-					.trust-slider__slide(data-header-icon="./assets/images/required/hand.png" data-header-title="Удобство и простота внутренних процессов" data-header-subtitle="Rioni Capital предоставляет удобные и понятные финансовые инструменты для широкого круга пользователей")
-						.trust-slider__slide-bg(style="background-image: url('./assets/images/required/slide3.jpg')")
-						.trust-slider__slide-overlay
-							.trust-slider__point
-								.trust-slider__point-title Интуитивно понятный интерфейс:
-								.trust-slider__point-desc Дополнительное использование передовых алгоритмов и AI для анализа рынка и прогнозирования
-							.trust-slider__point
-								.trust-slider__point-title Расширенная языковая поддержка:
-								.trust-slider__point-desc Применение технологии блокчейн для обеспечения безопасности и минимизации рисков мошенничества
-							.trust-slider__point
-								.trust-slider__point-title Профессиональное обучение:
-								.trust-slider__point-desc Сотрудничество с крупными торговыми платформами и финансовыми сервисами для управления инвестициями
-						.trust-slider__slide-icon
-							img(src="./assets/images/required/slide-icon3.png" alt="")
+	+trustSlider(trustSlider)
 
 	//- Секция формы обратной связи перед футером
 	+sectionForm()
-

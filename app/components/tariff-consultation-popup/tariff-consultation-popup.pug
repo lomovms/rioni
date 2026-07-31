@@ -1,0 +1,26 @@
+mixin tariffConsultationPopup()
+	#tariff-consultation-popup.popup.tariff-consultation-popup.mfp-hide.mfp-with-anim(aria-hidden="true")
+		.tariff-consultation-popup__inner
+			h2.tariff-consultation-popup__title Бесплатная консультация специалистов Rioni Capital
+			form.tariff-consultation-popup__form(action="#" method="post")
+				.tariff-consultation-popup__field
+					label.tariff-consultation-popup__label(for="tariff-consult-name") Ваше имя
+					input#tariff-consult-name.tariff-consultation-popup__input(type="text" name="name" required)
+				.tariff-consultation-popup__field
+					label.tariff-consultation-popup__label(for="tariff-consult-email") E-mail
+					input#tariff-consult-email.tariff-consultation-popup__input(type="email" name="email" required)
+				.tariff-consultation-popup__field
+					label.tariff-consultation-popup__label(for="tariff-consult-phone") Номер телефона
+					input#tariff-consult-phone.tariff-consultation-popup__input(type="tel" name="phone" required)
+				.tariff-consultation-popup__field
+					label.tariff-consultation-popup__label(for="tariff-consult-comment") Комментарий
+					textarea#tariff-consult-comment.tariff-consultation-popup__input.tariff-consultation-popup__textarea(name="comment" rows="4")
+				label.tariff-consultation-popup__agree
+					input.tariff-consultation-popup__checkbox(type="checkbox" name="consent" value="1" required)
+					span.tariff-consultation-popup__agree-text
+						| Даю согласие на обработку
+						a.tariff-consultation-popup__link(href="#") персональных данных
+				button.tariff-consultation-popup__submit(type="submit") Отправить
+				p.tariff-consultation-popup__privacy
+					| Нажимая кнопку “Отправить” вы принимаете
+					a.tariff-consultation-popup__link(href="#") политику конфиденциальности

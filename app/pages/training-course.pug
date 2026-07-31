@@ -1,0 +1,182 @@
+extends template/layout
+
+block variables
+	- var title = 'Курс обучения — Rioni';
+	- var menuHeader = [
+	-   { title: 'О нас', href: 'about.html' },
+	-   { title: 'Услуги', href: 'services.html' },
+	-   { title: 'Инструменты', href: 'products.html' },
+	-   { title: 'Тарифы', href: 'tariffs.html' },
+	-   { title: 'Обучение', href: '#' },
+	-   { title: 'Рынок', href: 'market.html' },
+	-   { title: 'Документы', href: 'documents.html' }
+	- ];
+	- var showTopbar = false
+	- var headerCta = { text: 'Открыть счет', href: '#registration-form' };
+	- var recommendedBooks = [
+	-   { image: 'book1.jpg', title: "Everything You've Heard About Investing Is Wrong!", author: 'William H. Gross' },
+	-   { image: 'book2.jpg', title: 'The Intelligent Investor', author: 'Benjamin Graham' },
+	-   { image: 'book3.jpg', title: 'Security Analysis', author: 'Benjamin Graham & David Dodd' },
+	-   { image: 'book4.jpg', title: 'One Up on Wall Street', author: 'Peter Lynch' },
+	-   { image: 'book4.jpg', title: 'One Up on Wall Street', author: 'Peter Lynch' }
+	- ];
+
+block content
+	section.section-course-hero
+		.container
+			a.course-hero__back(href="#")
+				span.course-hero__back-arrow ←
+				| Вернуться назад
+			.course-hero-card
+				.course-hero-card__left
+					h1.course-hero-card__title Название курса
+					.course-hero-card__progress(aria-label="1 из 8 уроков пройден")
+						p.course-hero-card__progress-text 1/8 уроков пройден
+						.course-hero-card__progress-track
+							.course-hero-card__progress-segment.course-hero-card__progress-segment--completed
+							.course-hero-card__progress-segment
+							.course-hero-card__progress-segment
+							.course-hero-card__progress-segment
+							.course-hero-card__progress-segment
+							.course-hero-card__progress-segment
+							.course-hero-card__progress-segment
+							.course-hero-card__progress-segment
+							.course-hero-card__progress-divider(style="left: 12.5%")
+							.course-hero-card__progress-divider(style="left: 25%")
+							.course-hero-card__progress-divider(style="left: 37.5%")
+							.course-hero-card__progress-divider(style="left: 50%")
+							.course-hero-card__progress-divider(style="left: 62.5%")
+							.course-hero-card__progress-divider(style="left: 75%")
+							.course-hero-card__progress-divider(style="left: 87.5%")
+					.course-hero-card__stats
+						.course-hero-card__stat
+							span.course-hero-card__stat-label Всего уроков
+							span.course-hero-card__stat-value
+								img.course-hero-card__stat-icon(src="./assets/images/required/all.svg" alt="" aria-hidden="true")
+								| 8 видео
+						.course-hero-card__stat
+							span.course-hero-card__stat-label Длительность
+							span.course-hero-card__stat-value
+								img.course-hero-card__stat-icon(src="./assets/images/required/time.svg" alt="" aria-hidden="true")
+								| 120 минут
+						.course-hero-card__stat
+							span.course-hero-card__stat-label Уровень сложности
+							span.course-hero-card__stat-value
+								img.course-hero-card__stat-icon(src="./assets/images/required/level.svg" alt="" aria-hidden="true")
+								| Новичок
+				.course-hero-card__avatar
+					img(src="./assets/images/required/avatar.png" alt="Аватар автора курса")
+
+	section.section-course-description
+		.container
+			h2.course-description__title Описание курса
+			p.course-description__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in lacinia felis, ut convallis felis. Donec id lorem ipsum. Ut in lacinia felis, ut convallis felis. Donec id lorem ipsum. Ut in lacinia felis, ut convallis felis. Donec id lorem ipsum.
+
+	section.section-course-lessons(data-course-lessons)
+		.container
+			h2.course-lessons__title Уроки курса
+			.course-lessons__grid
+				article.course-lesson-card.course-lesson-card--completed
+					.course-lesson-card__media
+						img(src="./assets/images/required/curse1.png" alt="Урок 1")
+						.course-lesson-card__badge
+							img(src="./assets/images/required/chek.png" alt="" aria-hidden="true")
+							span 67 баллов
+					.course-lesson-card__body
+						h3.course-lesson-card__title 1 урок из курса
+						p.course-lesson-card__text Тут написать подзаголовок об истории успеха или провала на инвестиционном рынке
+				article.course-lesson-card.course-lesson-card--completed
+					.course-lesson-card__media
+						img(src="./assets/images/required/curse2.png" alt="Урок 2")
+						.course-lesson-card__badge
+							img(src="./assets/images/required/chek.png" alt="" aria-hidden="true")
+							span 80 баллов
+					.course-lesson-card__body
+						h3.course-lesson-card__title 2 урок из курса
+						p.course-lesson-card__text Тут написать подзаголовок об истории успеха или провала на инвестиционном рынке
+				article.course-lesson-card
+					.course-lesson-card__media
+						img(src="./assets/images/required/curse3.png" alt="Урок 3")
+					.course-lesson-card__body
+						h3.course-lesson-card__title 3 урок из курса
+						p.course-lesson-card__text Тут написать подзаголовок об истории успеха или провала на инвестиционном рынке
+				article.course-lesson-card
+					.course-lesson-card__media
+						img(src="./assets/images/required/curse4.png" alt="Урок 4")
+					.course-lesson-card__body
+						h3.course-lesson-card__title 4 урок из курса
+						p.course-lesson-card__text Тут написать подзаголовок об истории успеха или провала на инвестиционном рынке
+				article.course-lesson-card.course-lesson-card--extra(hidden)
+					.course-lesson-card__media
+						img(src="./assets/images/required/curse1.png" alt="Урок 5")
+					.course-lesson-card__body
+						h3.course-lesson-card__title 5 урок из курса
+						p.course-lesson-card__text Тут написать подзаголовок об истории успеха или провала на инвестиционном рынке
+				article.course-lesson-card.course-lesson-card--extra(hidden)
+					.course-lesson-card__media
+						img(src="./assets/images/required/curse2.png" alt="Урок 6")
+					.course-lesson-card__body
+						h3.course-lesson-card__title 6 урок из курса
+						p.course-lesson-card__text Тут написать подзаголовок об истории успеха или провала на инвестиционном рынке
+			.course-lessons__more
+				button.course-lessons__more-btn(type="button" data-course-show-all)
+					span.course-lessons__more-icon ▾
+					span.course-lessons__more-text Показать все уроки
+
+	section.section-course-webinar(data-course-webinar-banner)
+		.container
+			.course-webinar
+				button.course-webinar__close(type="button" data-course-webinar-close aria-label="Закрыть") ×
+				.course-webinar__content
+					h2.course-webinar__title Вебинар по маржинальной торговле
+					p.course-webinar__text Не пропустите разбор темы 2-го курса с нашими специалистами. Записывайтесь уже сейчас и участвуйте в открытом обсуждении
+					a.course-webinar__btn.button.button--light(href="#")
+						span.button__text Записаться на вебинар
+						span.button__icon
+							i.icon.icon-arrow-right-blue
+
+	section.section-course-schedule
+		.container
+			.course-schedule
+				.course-schedule__tabs
+					button.course-schedule__tab.course-schedule__tab--active(type="button") Расписание курсов
+					button.course-schedule__tab(type="button") Расписание стримов
+					button.course-schedule__tab(type="button") Расписание встреч с экспертами
+				.course-schedule__header
+					.course-schedule__range 4 августа – 10 августа 2025г
+					.course-schedule__timezone 10:53 (UTS+7)
+				.course-schedule__grid
+					.course-schedule__day
+						.course-schedule__day-name Пн 4
+						.course-schedule__day-item 13:00 (UTS+7) основы торговли + ссылка
+					.course-schedule__day
+						.course-schedule__day-name Вт 5
+					.course-schedule__day
+						.course-schedule__day-name Ср 6
+					.course-schedule__day
+						.course-schedule__day-name Чт 7
+					.course-schedule__day
+						.course-schedule__day-name Пт 8
+						.course-schedule__day-item 13:00 (UTS+7) основы торговли
+					.course-schedule__day
+						.course-schedule__day-name Сб 9
+					.course-schedule__day
+						.course-schedule__day-name Вс 10
+						.course-schedule__day-item 13:00 (UTS+7) основы торговли
+
+	section.section-learning-books
+		.container
+			.learning-books
+				h2.learning-books__title Список рекомендуемой литературы
+				.learning-books__slider-wrap
+					button.learning-books__prev(type="button" data-learning-books-prev aria-label="Показать предыдущие книги" hidden)
+					.learning-books__grid(data-learning-books-grid)
+						each book in recommendedBooks
+							article.learning-book-card
+								.learning-book-card__image
+									img(src=`./assets/images/required/${book.image}` alt=book.title)
+								h3.learning-book-card__title= book.title
+								p.learning-book-card__author= book.author
+					button.learning-books__next(type="button" data-learning-books-next aria-label="Показать следующие книги" hidden)
+
+	+sectionForm({ prefix: 'training-course' })

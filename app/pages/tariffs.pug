@@ -1,0 +1,148 @@
+extends template/layout
+
+block variables
+	- var title = 'Тарифы — Rioni';
+	- var productDesc = 'Тут краткое описание продукта для подведения клиента к покупке Тут краткое описание продукта для подведения клиента к покупке Тут краткое описание продукта для';
+	- var productTabs = [{ id: 'retail', label: 'Физическим лицам', items: [{ title: 'Инвест. консультирование', desc: productDesc }, { title: 'Модельный портфель', desc: productDesc }, { title: 'Маржинальная торговля', desc: productDesc }, { title: 'Кредит ценными бумагами', desc: productDesc }] }, { id: 'business', label: 'Юридическим лицам', items: [{ title: 'Корпоративный брокерский счёт', desc: productDesc }, { title: 'Казначейские операции', desc: productDesc }, { title: 'Хеджирование рисков', desc: productDesc }, { title: 'Валютные продукты', desc: productDesc }] }, { id: 'institutional', label: 'Институциональным клиентам', items: [{ title: 'Prime Brokerage', desc: productDesc }, { title: 'Управление ликвидностью', desc: productDesc }, { title: 'DMA и алгоритмы', desc: productDesc }, { title: 'Кастодиальные решения', desc: productDesc }] }];
+	- var menuHeader = [{ title: 'О нас', href: 'about.html' }, { title: 'Услуги', href: 'services.html' }, { title: 'Тарифы', href: 'tariffs.html' }, { title: 'Обучение', href: '#' }, { title: 'Рынок', href: 'market.html' }, { title: 'Документы', href: 'documents.html' }];
+	- var showTopbar = false
+	- var headerCta = { text: 'Открыть счет', href: '#registration-form' };
+
+block content
+	section.section-tariffs-hero
+		.container
+			.tariffs-hero
+				h1.tariffs-hero__title Специально созданные планы для простого и эффективного инвестирования
+				p.tariffs-hero__subtitle Выбирайте из индивидуальных планов, которые адаптируются к размеру вашего бизнеса, финансовым показателям и целям роста — обеспечивая бесшовную масштабируемость, эффективность затрат и максимальную ценность на каждом этапе с гибким ценообразованием и расширенной финансовой информацией.
+
+	section.section-tariffs-tabs
+		.container
+			.tariffs-tabs
+				.tariffs-tabs__controls(role='tablist' aria-label='Тарифные планы')
+					button.tariffs-tabs__control.tariffs-tabs__control--active(type='button' data-tariff-tab='retail' role='tab' aria-selected='true') Физическим лицам
+					button.tariffs-tabs__control(type='button' data-tariff-tab='business' role='tab' aria-selected='false') Юридическим лицам
+					button.tariffs-tabs__control(type='button' data-tariff-tab='institutional' role='tab' aria-selected='false') Институциональным клиентам
+
+				.tariffs-tabs__panel.tariffs-tabs__panel--active(data-tariff-panel='retail' role='tabpanel')
+					.tariffs-cards
+						.tariff-card
+							h3.tariff-card__title Новичок
+							p.tariff-card__desc Небольшое описание тарифа и портрета клиента, которому этот тариф подходит
+							a.tariff-card__btn.button(href='#tariff-consultation-popup' data-popup)
+								span.button__text Узнать подробнее
+							a.tariff-card__link(href='#')
+								span.tariff-card__link-text Что входит в тарифный план
+								span.tariff-card__link-icon
+									svg.tariff-card__arrow(width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+										path(d="M16.5303 6.05377C16.8232 5.76087 16.8232 5.286 16.5303 4.99311L11.7574 0.220137C11.4645 -0.0727568 10.9896 -0.0727568 10.6967 0.220137C10.4038 0.51303 10.4038 0.987904 10.6967 1.2808L14.9393 5.52344L10.6967 9.76608C10.4038 10.059 10.4038 10.5338 10.6967 10.8267C10.9896 11.1196 11.4645 11.1196 11.7574 10.8267L16.5303 6.05377ZM0 5.52344V6.27344H16V5.52344V4.77344H0V5.52344Z" fill="currentColor")
+
+						.tariff-card.tariff-card--featured
+							span.tariff-card__badge лучший выбор
+							h3.tariff-card__title Стандарт
+							p.tariff-card__desc Небольшое описание тарифа и портрета клиента, которому этот тариф подходит
+							a.tariff-card__btn.button.button--outline(href='#tariff-consultation-popup' data-popup)
+								span.button__text Узнать подробнее
+							a.tariff-card__link(href='#')
+								span.tariff-card__link-text Что входит в тарифный план
+								span.tariff-card__link-icon
+									svg.tariff-card__arrow(width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+										path(d="M16.5303 6.05377C16.8232 5.76087 16.8232 5.286 16.5303 4.99311L11.7574 0.220137C11.4645 -0.0727568 10.9896 -0.0727568 10.6967 0.220137C10.4038 0.51303 10.4038 0.987904 10.6967 1.2808L14.9393 5.52344L10.6967 9.76608C10.4038 10.059 10.4038 10.5338 10.6967 10.8267C10.9896 11.1196 11.4645 11.1196 11.7574 10.8267L16.5303 6.05377ZM0 5.52344V6.27344H16V5.52344V4.77344H0V5.52344Z" fill="currentColor")
+
+						.tariff-card
+							h3.tariff-card__title Профи
+							p.tariff-card__desc Небольшое описание тарифа и портрета клиента, которому этот тариф подходит
+							a.tariff-card__btn.button(href='#tariff-consultation-popup' data-popup)
+								span.button__text Узнать подробнее
+							a.tariff-card__link(href='#')
+								span.tariff-card__link-text Что входит в тарифный план
+								span.tariff-card__link-icon
+									svg.tariff-card__arrow(width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+										path(d="M16.5303 6.05377C16.8232 5.76087 16.8232 5.286 16.5303 4.99311L11.7574 0.220137C11.4645 -0.0727568 10.9896 -0.0727568 10.6967 0.220137C10.4038 0.51303 10.4038 0.987904 10.6967 1.2808L14.9393 5.52344L10.6967 9.76608C10.4038 10.059 10.4038 10.5338 10.6967 10.8267C10.9896 11.1196 11.4645 11.1196 11.7574 10.8267L16.5303 6.05377ZM0 5.52344V6.27344H16V5.52344V4.77344H0V5.52344Z" fill="currentColor")
+
+				.tariffs-tabs__panel(data-tariff-panel='business' role='tabpanel')
+					.tariffs-consultation
+						.tariffs-consultation__media
+							img(src="./assets/images/required/snow.png" alt="Индивидуальный план для юридических лиц")
+						.tariffs-consultation__content
+							h3.tariffs-consultation__title Подберите индивидуальный план на бесплатной консультации со специалистом Rioni Capital
+							a.tariffs-consultation__btn.button(href='#tariff-consultation-popup' data-popup)
+								span.button__text Получить консультацию
+							p.tariffs-consultation__note Нажимая кнопку "Получить консультацию" вы принимаете политику конфиденциальности
+
+				.tariffs-tabs__panel(data-tariff-panel='institutional' role='tabpanel')
+					.tariffs-consultation
+						.tariffs-consultation__media
+							img(src="./assets/images/required/snow.png" alt="Индивидуальный план для институциональных клиентов")
+						.tariffs-consultation__content
+							h3.tariffs-consultation__title Подберите индивидуальный план на бесплатной консультации со специалистом Rioni Capital
+							a.tariffs-consultation__btn.button(href='#tariff-consultation-popup' data-popup)
+								span.button__text Получить консультацию
+							p.tariffs-consultation__note Нажимая кнопку "Получить консультацию" вы принимаете политику конфиденциальности
+
+	section.section-tariffs-banner
+		.container
+			.tariffs-banner
+				.tariffs-banner__bg(style="background-image: url('./assets/images/required/seasonal-banner.jpg')")
+				.tariffs-banner__overlay
+					span.tariffs-banner__tag Pro investment
+					h2.tariffs-banner__title Баннер с сезонной акцией
+					p.tariffs-banner__text Пройдите тестирование, чтобы определить уровень подготовки и подобрать оптимальный тариф
+					.tariffs-banner__actions
+						a.tariffs-banner__btn.hero__btn.button(href="#")
+							span.button__text Пройти тестирование
+							span.button__icon
+								i.icon.icon-arrow-right
+
+	section.section-products
+		.container
+			.products
+				h2.products__title Продукты
+				p.products__subtitle Продукты Rioni Capital отражают основные форматы работы клиента с компанией и решения, которые могут использоваться в зависимости от его целей, статуса и характера задач. Для частных и корпоративных клиентов доступны разные продуктовые модели — от стандартного брокерского счёта до решений, связанных с управлением активами, хеджированием и привлечением капитала
+				.tariffs-tabs.products__tabs
+					.tariffs-tabs__controls(role='tablist' aria-label='Продукты Rioni Capital')
+						each tab, index in productTabs
+							button.tariffs-tabs__control(class=index === 0 ? 'tariffs-tabs__control--active' : '' type='button' data-tariff-tab=tab.id role='tab' aria-selected=index === 0 ? 'true' : 'false')= tab.label
+
+					each tab, index in productTabs
+						.tariffs-tabs__panel(class=index === 0 ? 'tariffs-tabs__panel--active' : '' data-tariff-panel=tab.id role='tabpanel')
+							.products__list
+								each item in tab.items
+									.products__item
+										.products__item-inner
+											span.products__item-title= item.title
+											p.products__item-desc= item.desc
+
+	section.section-faq
+		.container
+			.faq
+				h2.faq__title Дополнительно
+				.faq__list
+					.faq__item.faq__item--open
+						button.faq__head(type="button" aria-expanded="true" aria-controls="faq-body-1" id="faq-head-1")
+							span.faq__head-text Дополнительные комиссии и расходы клиента
+							+arrowSpoiler()
+						.faq__body(id="faq-body-1" role="region" aria-labelledby="faq-head-1")
+							p.faq__body-text Тут будет текст с ответом на вопрос и в зависимости от количества символов и строк будет увеличиваться или уменьшаться размер фрейма
+					.faq__item
+						button.faq__head(type="button" aria-expanded="false" aria-controls="faq-body-2" id="faq-head-2")
+							span.faq__head-text Общие условия применения Тарифов Брокера
+							+arrowSpoiler()
+						.faq__body(id="faq-body-2" role="region" aria-labelledby="faq-head-2" hidden)
+							p.faq__body-text Тут будет текст с ответом на вопрос.
+					.faq__item
+						button.faq__head(type="button" aria-expanded="false" aria-controls="faq-body-3" id="faq-head-3")
+							span.faq__head-text Информация о расходах, возмещаемых клиентом в связи с исполнением поручения
+							+arrowSpoiler()
+						.faq__body(id="faq-body-3" role="region" aria-labelledby="faq-head-3" hidden)
+							p.faq__body-text Тут будет текст с ответом на вопрос.
+					.faq__item
+						button.faq__head(type="button" aria-expanded="false" aria-controls="faq-body-4" id="faq-head-4")
+							span.faq__head-text Документы на брокерское обслуживание
+							+arrowSpoiler()
+						.faq__body(id="faq-body-4" role="region" aria-labelledby="faq-head-4" hidden)
+							p.faq__body-text Тут будет текст с ответом на вопрос.
+					a.faq__link(href="#" download)
+						span.faq__link-text Приложение №2 к Регламенту обслуживания Клиентов «Rioni Capital». Тарифы на услуги Брокера
+						+arrowSpoiler(class="arrow-download")
+
+	+sectionForm({ prefix: 'tariffs' })

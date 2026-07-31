@@ -6,15 +6,24 @@ mixin header(data)
 	- var d = data || {};
 	- var menu = d.menu || []; // [{title:'О нас', href:'#'}, ...]
 	- var cta  = d.cta || { text: 'Открыть счет', href: '#' }; // или {text:'Личный кабинет', href:'#'}
+	- var isAuthorized = !!d.isAuthorized;
 	- var lang = d.lang || { code: 'ru', flag: 'required/flag-ru.svg' }; // пример
+	- var langOptions = d.langOptions || [
+	-   { code: 'ru', flag: 'required/flag-ru.svg' },
+	-   { code: 'ge', flag: 'required/flag-ge.svg' },
+	-   { code: 'en', flag: 'required/flag-en.png' }
+	- ];
+	- var logoPath = (d.logo && d.logo.length) ? d.logo : 'required/logo-rioni.svg';
 	- var cls  = 'header' + (typeof pr !== 'undefined' ? pr : '') + (typeof mod !== 'undefined' ? mod : '');
 
 	header(class=cls)
 		.container
 			.header__row
-				a.header__logo(href="/")
-					+img('required/logo-rioni.svg', 'header__logo-img lazyload', '', 'RIONI capital')
+				a.header__logo.header__logo--mobile(href="/")
+					img.header__logo-img(src=`./assets/images/${logoPath}` alt="RIONI capital")
 				.header__inner
+					a.header__logo.header__logo--menu(href="/")
+						img.header__logo-img(src=`./assets/images/${logoPath}` alt="RIONI capital")
 					// Навигация
 					button.header__burger(type="button" aria-controls="headerNav" aria-expanded="false")
 							span.header__burger-line
@@ -23,17 +32,24 @@ mixin header(data)
 					nav.header__nav
 						ul.header__menu
 							each item in menu
-								li.header__item
-									a.header__link(href=item.href)= item.title
+								if item.title !== 'Инструменты'
+									li.header__item
+										a.header__link(href=item.href)= item.title
 
 					// Правый блок:  язык / CTA / иконки
 					.header__controls
 
-						// язык-«пилюля»
-						a.header__lang(href="#")
-							// можно заменить на svg флаг
-							+img(lang.flag, 'header__lang-flag lazyload', '', lang.code.toUpperCase())
-							span.header__lang-caret
+						// язык-«пилюля» с dropdown
+						.header__lang.js-header-lang
+							button.header__lang-trigger(type="button" aria-haspopup="listbox" aria-expanded="false")
+								img.header__lang-flag.header__lang-flag--current(src=`./assets/images/${lang.flag}` alt=lang.code.toUpperCase())
+								span.header__lang-caret(aria-hidden="true")
+							ul.header__lang-menu(role="listbox" aria-hidden="true")
+								each option in langOptions
+									if option.code !== lang.code
+										li.header__lang-item
+											button.header__lang-option(type="button" data-lang-code=option.code data-lang-flag=option.flag aria-label=option.code.toUpperCase())
+												img.header__lang-flag(src=`./assets/images/${option.flag}` alt=option.code.toUpperCase())
 
 						//- a.header__cta(href=cta.href)= cta.text
 						//- a.header__cta(href=cta.href data-hover=cta.text)
@@ -41,7 +57,7 @@ mixin header(data)
 						//- a.header__cta(href="#")
 						//- 	span.text-default= cta.text
 						//- 	span.text-hover= cta.text
-						a.header__cta(href="#")
+						a.header__cta(href=cta.href || "#")&attributes(cta.href === '#registration-form' ? {'data-popup': ''} : {})
 							.header__cta-texts
 								span.text-default= cta.text
 								span.text-hover= cta.text
@@ -49,12 +65,46 @@ mixin header(data)
 						// две круглые иконки справа (плейсхолдеры, подставишь свои svg)
 						//- a.header__icon(href="#", aria-label="Профиль")
 						//- 	span.header__icon-user.icon.icon--user
-						a.header__icon.header__icon--login(href="#", aria-label="Вход")
-							span.header__icon-door.icon--exit
+						if isAuthorized
+							a.header__icon.header__icon--profile(href="lk.html" aria-label="Профиль")
+								svg(width="15" height="19" viewBox="0 0 15 19" fill="none" xmlns="http://www.w3.org/2000/svg")
+									path(d="M9.41241 9.56641C11.0569 8.73847 13.0538 9.55373 13.6497 11.2959L14.8245 14.7295C15.5406 16.8231 13.9845 19 11.7718 19H3.22881C1.01875 19 -0.537009 16.8279 0.174125 14.7354L1.33819 11.3105C1.93295 9.56043 3.9406 8.74109 5.59307 9.56934C6.79414 10.1713 8.21249 10.1707 9.41241 9.56641ZM7.50518 0C10.0723 0 12.1536 2.01472 12.1536 4.5C12.1536 6.98528 10.0723 9 7.50518 9C4.93814 8.99986 2.85674 6.9852 2.85674 4.5C2.85674 2.0148 4.93814 0.000140079 7.50518 0Z" fill="#0C342C")
+							a.header__icon.header__icon--login(href="#" aria-label="Выйти")
+								span.header__icon-door.icon--exit
+						else
+							a.header__icon.header__icon--login(href="#login-form" data-popup aria-label="Вход")
+								span.header__icon-door.icon--exit
 
 				// выпадающее меню для мобилы (анимируем высоту и позицию)
 				.header__drawer(id="headerNav")
-					ul.header__drawer-menu
-						each item in menu
+					button.header__drawer-backdrop(type="button" aria-label="Закрыть меню")
+					.header__drawer-panel
+						button.header__drawer-close(type="button" aria-label="Закрыть меню")
+							svg(width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg")
+								g(opacity="0.7")
+									rect(width="19" height="19" rx="9.5" fill="white")
+									path(d="M6 6L13 13M13 6L9.5 9.5L6 13" stroke="#0C342C" stroke-width="2")
+						ul.header__drawer-menu
 							li.header__drawer-item
-								a.header__drawer-link(href=item.href)= item.title
+								a.header__drawer-link(href="index.html") Главная
+							each item in menu
+								li.header__drawer-item
+									a.header__drawer-link(href=item.href)= item.title
+						.header__drawer-actions
+							a.header__drawer-btn.header__drawer-btn--login(href="#login-form" data-popup)
+								span.header__drawer-btn-text Войти
+								span.header__drawer-btn-icon.icon.icon--exit
+							a.header__drawer-btn(href="#registration-form" data-popup) Зарегистрироваться
+						.header__drawer-socials
+							a.header__drawer-social(href="#" aria-label="Instagram")
+								span.form-block__social-icon.form-block__social-icon--instagram
+							a.header__drawer-social(href="#" aria-label="LinkedIn")
+								span.form-block__social-icon.form-block__social-icon--linkedin
+							a.header__drawer-social(href="#" aria-label="Facebook")
+								span.form-block__social-icon.form-block__social-icon--facebook
+							a.header__drawer-social(href="#" aria-label="TikTok")
+								span.form-block__social-icon.form-block__social-icon--tiktok
+							a.header__drawer-social(href="#" aria-label="X")
+								span.form-block__social-icon.form-block__social-icon--x
+							a.header__drawer-social(href="#" aria-label="YouTube")
+								span.form-block__social-icon.form-block__social-icon--youtube

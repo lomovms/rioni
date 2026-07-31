@@ -1,0 +1,33 @@
+extends template/layout
+
+block variables
+	- var title = 'Тест попапов — Rioni';
+	- var menuHeader = [
+	-   { title: 'О нас', href: 'about.html' },
+	-   { title: 'Услуги', href: 'index.html#services' },
+	-   { title: 'Тарифы', href: 'tariffs.html' },
+	-   { title: 'Рынок', href: 'market.html' },
+	-   { title: 'Документы', href: 'documents.html' }
+	- ];
+	- var showTopbar = false;
+	- var headerCta = { text: 'Открыть счет', href: '#registration-form' };
+
+block content
+	section.section.popups-test
+		.container.popups-test
+			h1.popups-test__title Тест системных попапов
+			p.popups-test__lead
+				| Попап с cookie показывается сам при первом заходе на любую страницу (пока не нажали «Принять все» или «только обязательные»). Чтобы снова увидеть баннер, в консоли выполните:&nbsp;
+				code localStorage.removeItem('rioni_cookie_consent')
+			p.popups-test__note
+				strong Онбординг
+				|  — демо-сценарий «вернуться к регистрации». Имя в тексте берётся из&nbsp;
+				code rioni_last_login
+				|  (после успешного «Создайте аккаунт») или подставляется «друг».
+			ul.popups-test__list
+				li
+					a.popups-test__link(href="#onboarding-resume-popup" data-popup) Продолжить онбординг
+				li
+					a.popups-test__link(href="#auth-required-popup" data-popup) Нужна авторизация (войти / зарегистрироваться)
+				li
+					a.popups-test__link(href="#broker-account-required-popup" data-popup) Нужен брокерский счет

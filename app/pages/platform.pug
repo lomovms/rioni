@@ -1,0 +1,98 @@
+extends template/layout
+
+block variables
+	- var title = 'Платформа — Rioni';
+	- var menuHeader = [
+	-   { title: 'О нас', href: 'about.html' },
+	-   { title: 'Услуги', href: 'services.html' },
+	-   { title: 'Инструменты', href: 'products.html' },
+	-   { title: 'Тарифы', href: 'tariffs.html' },
+	-   { title: 'Обучение', href: '#' },
+	-   { title: 'Рынок', href: 'market.html' },
+	-   { title: 'Документы', href: 'documents.html' }
+	- ];
+	- var showTopbar = false
+	- var headerCta = { text: 'Открыть счет', href: '#registration-form' };
+
+block content
+	section.section-tariffs-hero
+		.container
+			.tariffs-hero
+				h1.tariffs-hero__title Современная торговая платформа dxFINA
+				p.tariffs-hero__subtitle Dvexperts — мировой лидер в разработке программного обеспечения для финансовых рынков. Наша торговая платформа — это результат многолетней экспертизы, передовых технологий и глубокой интеграции с потребностями брокеров, банков и профессиональных трейдеров.
+				a.button.button--outline(href="#")
+					span.button__text Открыть учебный счет
+					span.button__icon
+						i.icon.icon-arrow-right-blue
+
+	section.section-services.section-services--platform(id="services")
+		.container
+			.services.services--platform
+				h2.services__platform-title Возможности платформы
+				.services__left
+					ul.services__progress
+						li.service__bar
+							.service__bar-fill
+						li.service__bar
+							.service__bar-fill
+						li.service__bar
+							.service__bar-fill
+						li.service__bar
+							.service__bar-fill
+					.service__content
+						h3.service__title Брокерские услуги и инвестиционное консультирование
+						p.service__desc Профессиональный инвестиционный консалтинг помогает клиентам разрабатывать индивидуальные стратегии для достижения любых финансовых целей — рост, получение дохода или управление рисками. || Расширенный доступ к различным финансовым рынкам, и торговля ценными бумагами — акции, облигации и ETF.
+
+				.services__right.services__right--platform
+					img.services__platform-image.device__gif-desktop(src="./assets/images/required/platform-big.png" alt="Платформа dxFINA")
+					img.services__platform-image.services__platform-image--mobile.device__gif-mobile(src="./assets/images/required/platform.png" alt="Платформа dxFINA")
+
+				.services__swiper.swiper
+					.swiper-wrapper
+						.swiper-slide(
+							data-title="Брокерские услуги и инвестиционное консультирование"
+							data-desc="Профессиональный инвестиционный консалтинг помогает клиентам разрабатывать индивидуальные стратегии для достижения любых финансовых целей — рост, получение дохода или управление рисками. || Расширенный доступ к различным финансовым рынкам, и торговля ценными бумагами — акции, облигации и ETF."
+							data-gif-desktop="./assets/images/required/platform-big.png"
+							data-gif-mobile="./assets/images/required/platform.png")
+						.swiper-slide(
+							data-title="Управление портфелем и рисками"
+							data-desc="Контролируйте структуру портфеля и отслеживайте ключевые показатели эффективности. || Настраивайте риск-параметры и быстро адаптируйтесь к изменениям рынка."
+							data-gif-desktop="./assets/images/required/platform-big.png"
+							data-gif-mobile="./assets/images/required/platform.png")
+						.swiper-slide(
+							data-title="Новости, сигналы и оповещения"
+							data-desc="Получайте рыночные обновления и оперативные уведомления в режиме реального времени. || Настраивайте индивидуальные сигналы под стратегию и профиль риска."
+							data-gif-desktop="./assets/images/required/platform-big.png"
+							data-gif-mobile="./assets/images/required/platform.png")
+						.swiper-slide(
+							data-title="Обучение и сопровождение"
+							data-desc="Используйте обучающие материалы и встроенные подсказки внутри платформы. || Совмещайте обучение и практику для повышения эффективности работы."
+							data-gif-desktop="./assets/images/required/platform-big.png"
+							data-gif-mobile="./assets/images/required/platform.png")
+
+	section.section-principles.section-principles--platform
+		.container
+			h2.principles__title Преимущества работы с dxFINA
+			.principles__cards
+				.principles__card
+					.principles__card-icon
+						img.principles__card-icon-img(src="./assets/images/required/team-2 1.svg" alt="" aria-hidden="true")
+					h3.principles__card-title Надёжность высочайшего уровня
+					p.principles__card-text Платформа выдерживает высокий объём одновременных подключений и обработки рыночных данных без сбоев. Ей доверяют крупнейшие брокеры в США, Европе и Азии.
+				.principles__card
+					.principles__card-icon
+						img.principles__card-icon-img(src="./assets/images/required/team-2 1.svg" alt="" aria-hidden="true")
+					h3.principles__card-title Гибкость и кастомизация
+					p.principles__card-text Возможность адаптировать интерфейс, функциональность и логику платформы под конкретные нужды вашего бизнеса.
+				.principles__card
+					.principles__card-icon
+						img.principles__card-icon-img(src="./assets/images/required/team-2 1.svg" alt="" aria-hidden="true")
+					h3.principles__card-title Высокая скорость исполнения
+					p.principles__card-text Быстрая обработка ордеров, минимальные задержки — ключевой фактор успеха на любом финансовом рынке.
+				.principles__card
+					.principles__card-icon
+						img.principles__card-icon-img(src="./assets/images/required/team-2 1.svg" alt="" aria-hidden="true")
+					h3.principles__card-title Полная экосистема
+					p.principles__card-text Поддержка торговли акциями, опционами, фьючерсами, криптовалютами. Мобильные, web- и десктоп-клиенты, а также серверные решения.
+
+	+sectionForm()

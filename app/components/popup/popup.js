@@ -1,9 +1,48 @@
 import 'magnific-popup';
 
+(function patchMfpRaceCondition() {
+	var proto = $.magnificPopup.proto;
+	var pendingCloseTimer = null;
+
+	var origClose = proto.close;
+	proto.close = function () {
+		var inst = $.magnificPopup.instance;
+		if (!inst || !inst.isOpen) return;
+
+		if (pendingCloseTimer) {
+			clearTimeout(pendingCloseTimer);
+			pendingCloseTimer = null;
+		}
+
+		inst.isOpen = false;
+
+		if (inst.st.removalDelay && !inst.isLowIE && inst.supportsTransition) {
+			inst._addClassToMFP('mfp-removing');
+			pendingCloseTimer = setTimeout(function () {
+				pendingCloseTimer = null;
+				inst._close();
+			}, inst.st.removalDelay);
+		} else {
+			inst._close();
+		}
+	};
+
+	var origOpen = proto.open;
+	proto.open = function (data) {
+		if (pendingCloseTimer) {
+			clearTimeout(pendingCloseTimer);
+			pendingCloseTimer = null;
+			var inst = $.magnificPopup.instance;
+			if (inst) inst._close();
+		}
+		return origOpen.apply(this, arguments);
+	};
+})();
+
 class Popup {
 
 	constructor() {
-		this.initialize();
+		$(document).ready(() => this.initialize());
 	}
 
 	initialize() {
@@ -51,34 +90,40 @@ class Popup {
 					this.st.mainClass = 'mfp-zoom-in';
                 },
 				open: function() {
+					let mp = $.magnificPopup.instance;
+					let href = (mp.currItem.el && mp.currItem.el[0] && $(mp.currItem.el[0]).attr('href')) || mp.currItem.src || '';
+					if (href && href.indexOf('#') === 0) {
+						let el = document.getElementById(href.slice(1));
+						if (el) el.setAttribute('aria-hidden', 'false');
+					}
+					if (href === '#registration-form') {
+						document.dispatchEvent(new CustomEvent('rioni:registration-form-opened'));
+					}
 					// загружаем карты, если они есть во всплывающих окнах
-					let mp = $.magnificPopup.instance,
-						id = $(mp.currItem.el[0]).attr('href');
-
-					let map = $(id).find('[data-map]'),
-						mapSingle = $(id).find('[data-map-single]');
-
-					// карта с множеством меток
+					let map = $(href).find('[data-map]'),
+						mapSingle = $(href).find('[data-map-single]');
 					map.each(function (index, el) {
 						let load = $(el).attr('data-map');
-
 						if (load == 'load') {
 							$(el).attr('data-map', '');
-
-							Window.loadMap($(el), true, 'init');
+							if (typeof Window !== 'undefined' && Window.loadMap) Window.loadMap($(el), true, 'init');
 						}
 					});
-
-					// карта с одной меткой
 					mapSingle.each(function (index, el) {
 						let load = $(el).attr('data-map-single');
-
 						if (load == 'load') {
 							$(el).attr('data-map-single', '');
-
-							Window.loadMap($(el), true, 'initSingle');
+							if (typeof Window !== 'undefined' && Window.loadMap) Window.loadMap($(el), true, 'initSingle');
 						}
 					});
+				},
+				afterClose: function() {
+					if (!this.currItem) return;
+					let href = (this.currItem.el && this.currItem.el[0] && $(this.currItem.el[0]).attr('href')) || this.currItem.src || '';
+					if (href && href.indexOf('#') === 0) {
+						let el = document.getElementById(href.slice(1));
+						if (el) el.setAttribute('aria-hidden', 'true');
+					}
 				}
             }
 		});

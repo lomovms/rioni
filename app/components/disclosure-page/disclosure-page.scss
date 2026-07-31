@@ -1,0 +1,280 @@
+.disclosure {
+	padding: 145px 0 0;
+	background: var(--backgrounds-white);
+	color: var(--text-dark-blue);
+
+	& + .section-form {
+		border-radius: 0;
+	}
+}
+
+.disclosure-intro {
+	max-width: 580px;
+	margin: 0 auto 68px;
+	text-align: center;
+
+	h1 {
+		margin-bottom: 28px;
+		font-size: 36px;
+		font-weight: 500;
+		line-height: 1.12;
+	}
+
+	p {
+		margin: 0 auto 28px;
+		max-width: 530px;
+		font-size: 16px;
+		line-height: 1.45;
+	}
+}
+
+.disclosure-search {
+	position: relative;
+	display: block;
+
+	span {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip: rect(0 0 0 0);
+	}
+
+	input {
+		width: 100%;
+		min-height: 56px;
+		padding: 0 58px 0 24px;
+		border: 0;
+		border-radius: 999px;
+		outline: 0;
+		background: var(--backgrounds-grey-blue);
+		color: inherit;
+		font: inherit;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='%230f171f' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-4-4'/%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-position: right 22px center;
+	}
+}
+
+.disclosure-banner {
+	display: grid;
+	place-items: center;
+	min-height: 213px;
+	margin-bottom: 36px;
+	padding: 30px;
+	border-radius: 30px;
+	background-position: center;
+	background-size: cover;
+	color: #fff;
+	text-align: center;
+
+	h2 {
+		font-size: 36px;
+		font-weight: 500;
+	}
+}
+
+.disclosure-section {
+	position: relative;
+	margin-bottom: 70px;
+
+	> h2 {
+		margin-bottom: 24px;
+		font-size: 26px;
+		font-weight: 500;
+		line-height: 1.25;
+	}
+
+	section + section {
+		margin-top: 14px;
+	}
+
+	h3,
+	.disclosure-note {
+		margin: 0 0 10px;
+		color: var(--backgrounds-blue-ocean);
+		font-size: 16px;
+		font-weight: 400;
+	}
+}
+
+.disclosure-note {
+	text-align: right;
+}
+
+.disclosure-list {
+	display: grid;
+	gap: 14px;
+
+	details,
+	.disclosure-file {
+		border-radius: 16px;
+		background: var(--backgrounds-light-blue);
+	}
+
+	summary,
+	.disclosure-file {
+		position: relative;
+		display: flex;
+		align-items: center;
+		min-height: 72px;
+		padding: 18px 64px 18px 28px;
+		color: inherit;
+		font-size: 16px;
+		line-height: 1.35;
+		text-decoration: none;
+	}
+
+	summary {
+		cursor: pointer;
+		list-style: none;
+
+		&::-webkit-details-marker {
+			display: none;
+		}
+
+		&::after {
+			content: '↓';
+			position: absolute;
+			right: 28px;
+			top: 50%;
+			font-size: 28px;
+			line-height: 1;
+			transform: translateY(-52%);
+		}
+	}
+
+	details[open] summary::after {
+		content: '↑';
+	}
+
+	details > div {
+		padding: 22px 28px 28px;
+		border: 3px solid var(--backgrounds-light-blue);
+		border-top: 0;
+		border-radius: 0 0 16px 16px;
+		background: #fff;
+
+		p,
+		ul,
+		ol {
+			font-size: 16px;
+			line-height: 1.55;
+		}
+	}
+
+	.disclosure-file::after {
+		content: '';
+		position: absolute;
+		right: 28px;
+		top: 50%;
+		width: 22px;
+		height: 28px;
+		transform: translateY(-50%);
+		background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 30'%3E%3Cpath fill='%232c65a5' d='M4 0h10l6 6v20a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4Z'/%3E%3Cpath fill='%23fff' d='M13 1v7h6M6 16h8v2H6zm0 5h8v2H6z'/%3E%3C/svg%3E") center / contain no-repeat;
+	}
+}
+
+.disclosure-cta {
+	display: block;
+	min-height: 245px;
+	padding: 48px 40px;
+	border-radius: 30px;
+	background-position: center;
+	background-size: cover;
+	color: #fff;
+	text-decoration: none;
+
+	h2 {
+		margin-bottom: 16px;
+		font-size: 34px;
+		font-weight: 500;
+	}
+
+	p {
+		max-width: 550px;
+		margin-bottom: 24px;
+		font-size: 16px;
+		line-height: 1.45;
+	}
+
+	span {
+		display: inline-flex;
+		padding: 10px 18px;
+		border-radius: 999px;
+		background: #fff;
+		color: var(--text-dark-blue);
+	}
+}
+
+@media (max-width: 767px) {
+	.disclosure {
+		padding-top: 105px;
+	}
+
+	.disclosure-intro {
+		margin-bottom: 40px;
+
+		h1 {
+			margin-bottom: 16px;
+			font-size: 24px;
+		}
+
+		p {
+			font-size: 13px;
+		}
+	}
+
+	.disclosure-banner {
+		min-height: 133px;
+		margin-bottom: 28px;
+		border-radius: 22px;
+
+		h2 {
+			font-size: 24px;
+		}
+	}
+
+	.disclosure-section {
+		margin-bottom: 42px;
+
+		> h2 {
+			font-size: 20px;
+		}
+	}
+
+	.disclosure-list {
+		gap: 10px;
+
+		summary,
+		.disclosure-file {
+			min-height: 64px;
+			padding: 15px 52px 15px 18px;
+			font-size: 13px;
+		}
+
+		summary::after,
+		.disclosure-file::after {
+			right: 18px;
+		}
+
+		details > div {
+			padding: 18px;
+
+			p,
+			ul,
+			ol {
+				font-size: 13px;
+			}
+		}
+	}
+
+	.disclosure-cta {
+		min-height: 220px;
+		padding: 32px 24px;
+
+		h2 {
+			font-size: 24px;
+		}
+	}
+}

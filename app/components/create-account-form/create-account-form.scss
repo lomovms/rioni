@@ -1,0 +1,509 @@
+// Модальная форма «Создайте аккаунт» — тот же стиль, что и registration-form
+$ca-bg: #e8f0f8;
+$ca-text: var(--backgrounds-dark-blue, #2e4376);
+$ca-text-light: var(--text-dark-grey, #2a2a2a);
+$ca-btn: #23395b;
+$ca-input-bg: var(--backgrounds-white, #fff);
+$ca-radius: 30px;
+$ca-border: rgba(30, 58, 95, 0.12);
+$ca-link: #00a4d1;
+$ca-error: #c00;
+$ca-checkbox-checked: var(--elements-green-extra, #4ba67c);
+
+.create-account-form {
+	background: $ca-bg;
+	border-radius: $ca-radius;
+	max-width: 762px;
+	margin: 0 auto;
+	overflow: hidden;
+	position: relative;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+	display: flex;
+	align-items: stretch;
+	min-height: 480px;
+	max-height: 520px;
+
+	&__inner {
+		display: flex;
+		align-items: stretch;
+		min-height: 100%;
+		overflow: hidden;
+		gap: 0;
+		flex: 1;
+
+		.create-account-form--recommendations-open & {
+			gap: 87px;
+			align-items: center;
+		}
+
+		@media (max-width: 767px) {
+			min-height: auto;
+			height: auto;
+			max-height: none;
+			gap: 0;
+			align-items: stretch;
+		}
+	}
+
+	&__form-side {
+		display: grid;
+		grid-template-columns: 1fr 1.1fr;
+		flex: 1;
+		min-width: 0;
+		overflow: hidden;
+		height: 100%;
+
+		@media (max-width: 767px) {
+			grid-template-columns: 1fr;
+		}
+
+		.create-account-form--recommendations-open & {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	&__brand {
+		position: relative;
+		padding: 40px 32px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		background: var(--backgrounds-white, #fff);
+		border-radius: 30px 60px 60px 30px;
+
+		@media (max-width: 767px) {
+			padding: 24px 20px 16px;
+		}
+
+		.create-account-form--recommendations-open & {
+			display: none;
+		}
+	}
+
+	&__logo-top {
+		position: absolute;
+		top: 24px;
+		left: 9px;
+		@media (max-width: 767px) {
+			position: static;
+			margin-bottom: 16px;
+		}
+	}
+
+	&__logo-img {
+		display: block;
+		height: 44px;
+		max-width: 100%;
+	}
+
+	&__logo-main {
+		margin-bottom: 20px;
+		.create-account-form__logo-img {
+			max-height: 156px;
+			width: auto;
+			height: auto;
+		}
+		@media (max-width: 767px) {
+			display: none;
+		}
+	}
+
+	&__tagline {
+		margin: 0;
+		font: 400 15px/1.2 var(--font-family, inherit);
+		color: $ca-text;
+		text-align: center;
+		max-width: 232px;
+	}
+
+	&__right {
+		padding: 40px 57px 36px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		@media (max-width: 767px) {
+			padding: 24px 20px 28px;
+		}
+	}
+
+	&__title {
+		margin: 0 0 19px;
+		font: 500 20px/1.3 var(--font-family, inherit);
+		color: $ca-text;
+	}
+
+	&__subtitle {
+		margin: 0 0 12px;
+		font: 400 10px/1.45 var(--font-family, inherit);
+		color: $ca-text-light;
+	}
+
+	&__link {
+		color: $ca-link;
+		margin-left: 4px;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	&__field {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+
+		&--error .create-account-form__input {
+			border-color: $ca-error;
+			box-shadow: 0 0 0 2px rgba($ca-error, 0.15);
+			&:focus {
+				border-color: $ca-error;
+				box-shadow: 0 0 0 2px rgba($ca-error, 0.25);
+			}
+		}
+
+		&--checkbox {
+			flex-direction: row;
+			align-items: flex-start;
+
+			&.create-account-form__field--error
+				.create-account-form__checkbox-label {
+				color: $ca-error;
+			}
+			&.create-account-form__field--error .create-account-form__checkbox {
+				accent-color: $ca-error;
+				outline: 1px solid $ca-error;
+			}
+		}
+	}
+
+	&__label {
+		font: 400 12px/1.3 var(--font-family, inherit);
+		color: #99abbd;
+	}
+
+	&__input {
+		width: 100%;
+		font: 400 12px/1.4 var(--font-family, inherit);
+		color: $ca-text;
+		background: $ca-input-bg;
+		border: none;
+		border-radius: 8px;
+		padding: 8px 10px;
+		outline: none;
+		height: 30px;
+		transition: border-color 0.2s, box-shadow 0.2s;
+
+		&::placeholder {
+			color: rgba(30, 58, 95, 0.45);
+		}
+		&:focus {
+			border-color: $ca-text-light;
+			box-shadow: 0 0 0 2px rgba(30, 58, 95, 0.08);
+		}
+	}
+
+	&__password-wrap {
+		position: relative;
+		display: flex;
+		align-items: center;
+	}
+
+	&__input--password {
+		padding-right: 36px;
+	}
+
+	&__toggle-password {
+		position: absolute;
+		right: 8px;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 18px;
+		height: 18px;
+		padding: 0;
+		background: none;
+		border: none;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0.6;
+		&:hover {
+			opacity: 1;
+		}
+	}
+
+	&__toggle-icon {
+		position: absolute;
+		width: 16px;
+		height: 16px;
+		pointer-events: none;
+		&--hidden {
+			background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231e3a5f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24'/%3E%3Cline x1='1' y1='1' x2='23' y2='23'/%3E%3C/svg%3E")
+				center/contain no-repeat;
+		}
+		&--visible {
+			display: none;
+			background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231e3a5f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E")
+				center/contain no-repeat;
+		}
+	}
+
+	&__checkbox-label {
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 4px;
+		cursor: pointer;
+		font: 400 10px/1.45 var(--font-family, inherit);
+		color: $ca-text;
+
+		&::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 13px;
+			height: 13px;
+			border-radius: 4px;
+			background: var(--backgrounds-white, #fff);
+			border: 1px solid $ca-border;
+			flex-shrink: 0;
+			box-sizing: border-box;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 13px;
+			height: 13px;
+			background-image: url("data:image/svg+xml,%3Csvg width='7' height='9' viewBox='0 0 7 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 5L3.27273 8L6 1' stroke='%234BA67C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' /%3E%3C/svg%3E");
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: 7px 9px;
+			opacity: 0;
+			pointer-events: none;
+			transition: opacity 0.2s ease;
+		}
+
+		&:has(.create-account-form__checkbox:checked)::after {
+			opacity: 1;
+		}
+	}
+
+	&__checkbox {
+		position: relative;
+		z-index: 1;
+		width: 13px;
+		height: 13px;
+		margin: 0;
+		flex-shrink: 0;
+		opacity: 0;
+		cursor: pointer;
+	}
+
+	&__checkbox-text {
+		flex: 1;
+		gap: 3px;
+		display: flex;
+	}
+
+	&__checkbox-link {
+		color: $ca-link;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	&__submit {
+		margin-top: 16px;
+		padding: 6px 20px;
+		font: 400 12px/1.3 var(--font-family, inherit);
+		color: var(--backgrounds-white, #fff);
+		background: var(--backgrounds-blue, #2c4d90);
+		border: none;
+		border-radius: 8px;
+		height: 30px;
+		cursor: pointer;
+		transition: background 0.2s, transform 0.05s;
+		&:hover {
+			background: darken($ca-btn, 6%);
+		}
+		&:active {
+			transform: scale(0.99);
+		}
+	}
+
+	&__error-note {
+		margin-top: 6px;
+		padding: 8px 10px;
+		border-radius: 8px;
+		background: rgba(255, 255, 255, 0.7);
+		border: 1px solid rgba(30, 58, 95, 0.12);
+	}
+
+	&__error-note-text {
+		margin: 0;
+		font: 400 10px/1.45 var(--font-family, inherit);
+		color: var(--text-dark-grey, #2a2a2a);
+	}
+
+	&__error-note-text + &__error-note-text {
+		margin-top: 4px;
+	}
+
+	// ——— Панель рекомендаций: слева inner (весь текст), справа кнопка «свернуть» ———
+	&__recommendations {
+		width: 0;
+		min-width: 0;
+		overflow: hidden;
+		background: rgba(67, 101, 236, 0.08);
+		display: flex;
+		flex-direction: row;
+		align-items: stretch;
+		flex-shrink: 0;
+
+		.create-account-form--recommendations-open & {
+			width: 352px;
+			border-radius: $ca-radius 0 0 $ca-radius;
+		}
+
+		@media (max-width: 767px) {
+			flex-direction: column;
+			position: fixed;
+			top: auto;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			width: 100%;
+			min-width: 0;
+			max-height: 85vh;
+			z-index: 10;
+			border-radius: 16px 16px 0 0;
+			box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.12);
+			transform: translateY(100%);
+			overflow: visible;
+			pointer-events: none;
+
+			.create-account-form--recommendations-open & {
+				pointer-events: auto;
+			}
+		}
+	}
+
+	&__recommendations-close {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+		justify-content: center;
+		margin-top: 30px;
+
+		gap: 4px;
+		padding-right: 13px;
+		background: none;
+		border: none;
+		cursor: pointer;
+		font: 400 15px/1.45 var(--font-family, inherit);
+		color: $ca-link;
+		flex-shrink: 0;
+		align-self: stretch;
+
+		&:hover {
+			text-decoration: underline;
+		}
+
+		@media (max-width: 767px) {
+			width: 100%;
+			padding: 16px 20px;
+			border-left: none;
+			border-bottom: 1px solid $ca-border;
+		}
+	}
+
+	&__recommendations-close-text {
+		font-weight: 500;
+		font-size: 8px;
+		color: #00a4d1;
+	}
+
+	&__recommendations-close-arrow {
+		display: inline-block;
+		width: 8px;
+		height: 8px;
+		border-right: 2px solid currentColor;
+		border-bottom: 2px solid currentColor;
+		transform: rotate(315deg);
+		margin-bottom: 2px;
+	}
+
+	&__recommendations-inner {
+		flex: 1;
+		min-width: 0;
+		overflow-y: auto;
+		padding: 30px 0 30px 40px;
+		-webkit-overflow-scrolling: touch;
+
+		@media (max-width: 767px) {
+			padding: 16px 20px 28px;
+		}
+	}
+
+	&__recommendations-title {
+		margin: 0 0 8px;
+		font: 500 10px/1.35 var(--font-family, inherit);
+		color: var(--text-dark-grey, #2a2a2a);
+	}
+
+	&__recommendations-list {
+		margin: 0 0 15px;
+		font: 400 8px/1.5 var(--font-family, inherit);
+		color: var(--text-light-grey, #a7a7a7);
+
+		li {
+			margin-bottom: 8px;
+		}
+	}
+
+	&__recommendations-passwords {
+		display: flex;
+		gap: 16px;
+		margin-top: 15px;
+
+		@media (max-width: 767px) {
+			flex-direction: column;
+			gap: 12px;
+		}
+	}
+
+	&__recommendations-passwords-col {
+		flex: 1;
+		min-width: 0;
+	}
+
+	&__recommendations-heading {
+		font: 500 10px/1.35 var(--font-family, inherit);
+		color: var(--text-dark-grey, #2a2a2a);
+		margin-bottom: 7px;
+
+		.create-account-form__recommendations-passwords & {
+			margin-top: 0;
+		}
+	}
+
+	&__recommendations-examples {
+		margin: 0 0 4px;
+		font: 400 8px/1.45 var(--font-family, inherit);
+		color: var(--text-light-grey, #a7a7a7);
+		word-break: break-all;
+		white-space: pre-line;
+	}
+}

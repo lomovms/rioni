@@ -1,0 +1,309 @@
+// Окно входа (визуально как регистрация, но с перестановкой колонок)
+
+$lf-bg: #e8f0f8;
+$lf-text: var(--backgrounds-dark-blue, #2e4376);
+$lf-text-light: var(--text-dark-grey, #2a2a2a);
+$lf-btn: #23395b;
+$lf-input-bg: var(--backgrounds-white, #fff);
+$lf-radius: 30px;
+$lf-border: rgba(30, 58, 95, 0.12);
+$lf-link: #00a4d1;
+$lf-error: #c00;
+
+.login-form {
+	background: $lf-bg;
+	border-radius: $lf-radius;
+	max-width: 762px;
+	margin: 0 auto;
+	overflow: hidden;
+	position: relative;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+
+	display: flex;
+	height: 100%;
+
+	&__inner {
+		flex: 1;
+		display: grid;
+		grid-template-columns: 1fr 380px;
+		min-height: 520px;
+
+		@media (max-width: 767px) {
+			grid-template-columns: 1fr;
+			min-height: auto;
+		}
+	}
+
+	&__form-side {
+		padding: 40px 57px 36px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		position: relative;
+
+		@media (max-width: 767px) {
+			padding: 24px 20px 28px;
+		}
+	}
+
+	&__logo-top {
+		position: absolute;
+		top: 24px;
+		left: 9px;
+		@media (max-width: 767px) {
+			position: static;
+			margin-bottom: 16px;
+		}
+	}
+
+	&__logo-top-img {
+		display: block;
+		height: 44px;
+		width: auto;
+	}
+
+	&__title {
+		margin: 0 0 19px;
+		font: 500 18px/1.3 var(--font-family, inherit);
+		color: $lf-text;
+	}
+
+	&__subtitle {
+		margin: 0 0 16px;
+		font: 400 12px/1.45 var(--font-family, inherit);
+		color: $lf-text-light;
+	}
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	&__field {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+
+		&--error {
+			.login-form__input {
+				border-color: $lf-error;
+				box-shadow: 0 0 0 2px rgba($lf-error, 0.15);
+				&:focus {
+					border-color: $lf-error;
+					box-shadow: 0 0 0 2px rgba($lf-error, 0.25);
+				}
+			}
+		}
+	}
+
+	&__label {
+		font: 400 10px/1.3 var(--font-family, inherit);
+		color: #99abbd;
+	}
+
+	&__input {
+		width: 100%;
+		font: 400 10px/1.4 var(--font-family, inherit);
+		color: $lf-text;
+		background: $lf-input-bg;
+		border: none;
+		border-radius: 8px;
+		padding: 8px 10px;
+		outline: none;
+		height: 30px;
+		transition: border-color 0.2s, box-shadow 0.2s;
+
+		&::placeholder {
+			color: rgba(30, 58, 95, 0.45);
+		}
+		&:focus {
+			border-color: $lf-text-light;
+			box-shadow: 0 0 0 2px rgba(30, 58, 95, 0.08);
+		}
+	}
+
+	&__password-wrap {
+		position: relative;
+		display: flex;
+		align-items: center;
+	}
+
+	&__input--password {
+		padding-right: 36px;
+	}
+
+	&__toggle-password {
+		position: absolute;
+		right: 8px;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 18px;
+		height: 18px;
+		padding: 0;
+		background: none;
+		border: none;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0.6;
+
+		&:hover {
+			opacity: 1;
+		}
+	}
+
+	&__toggle-icon {
+		position: absolute;
+		width: 16px;
+		height: 16px;
+		pointer-events: none;
+
+		&--hidden {
+			background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231e3a5f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24'/%3E%3Cline x1='1' y1='1' x2='23' y2='23'/%3E%3C/svg%3E")
+				center / contain no-repeat;
+		}
+
+		&--visible {
+			display: none;
+			background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231e3a5f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E")
+				center / contain no-repeat;
+		}
+	}
+
+	&__forgot {
+		align-self: flex-end;
+		margin: 2px 0 8px;
+		font: 400 10px/1.4 var(--font-family, inherit);
+		color: $lf-link;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	&__submit {
+		margin-top: 16px;
+		padding: 6px 20px;
+		font: 400 10px/1.3 var(--font-family, inherit);
+		color: var(--backgrounds-white, #fff);
+		background: var(--backgrounds-blue, #2c4d90);
+		border: none;
+		border-radius: 8px;
+		height: 30px;
+		cursor: pointer;
+		transition: background 0.2s, transform 0.05s;
+		&:hover {
+			background: darken($lf-btn, 6%);
+		}
+		&:active {
+			transform: scale(0.99);
+		}
+	}
+
+	&__register {
+		margin: 8px 0 0;
+		font: 400 10px/1.45 var(--font-family, inherit);
+		color: $lf-text-light;
+		text-align: center;
+	}
+
+	&__register-link {
+		color: $lf-link;
+		text-decoration: underline;
+		margin-left: 4px;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
+	// Правая часть — бренд
+	&__brand {
+		position: relative;
+		padding: 40px 32px;
+		background: var(--backgrounds-white, #fff);
+		border-radius: 60px 30px 30px 60px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+
+		@media (max-width: 767px) {
+			padding: 24px 20px 16px;
+		}
+	}
+
+	&__logo-main {
+		margin-bottom: 20px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__logo-main-img {
+		max-height: 156px;
+		width: auto;
+		height: auto;
+	}
+
+	&__tagline {
+		margin: 0;
+		font: 400 15px/1.2 var(--font-family, inherit);
+		color: $lf-text;
+		text-align: center;
+		max-width: 232px;
+	}
+}
+
+@media (max-width: 767px) {
+	.login-form {
+		max-width: calc(100vw - 24px);
+		height: auto;
+		background: var(--backgrounds-white, #fff);
+		border-radius: 24px;
+
+		&__brand {
+			display: none;
+		}
+
+		&__inner {
+			display: block;
+			min-height: 0;
+		}
+
+		&__form-side {
+			padding: 52px 18px 24px;
+		}
+
+		&__title {
+			font-size: 20px;
+			text-align: center;
+			color: var(--text-green, #0c342c);
+		}
+
+		&__subtitle {
+			font-size: 13px;
+			text-align: center;
+		}
+
+		&__label {
+			font-size: 12px;
+		}
+
+		&__input {
+			height: 40px;
+			font-size: 12px;
+			background: #f4f8fb;
+		}
+
+		&__submit {
+			height: 40px;
+			font-size: 12px;
+			background: var(--text-green, #0c342c);
+		}
+	}
+}

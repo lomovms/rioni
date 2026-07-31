@@ -1,0 +1,136 @@
+extends template/layout
+
+block variables
+	- var title = 'Раскрытие информации — Rioni Capital';
+	- var menuHeader = [
+	-   { title: 'О нас', href: 'about.html' },
+	-   { title: 'Услуги', href: 'services.html' },
+	-   { title: 'Тарифы', href: 'tariffs.html' },
+	-   { title: 'Обучение', href: 'training.html' },
+	-   { title: 'Рынок', href: 'market.html' },
+	-   { title: 'Документы', href: 'documents.html' }
+	- ];
+	- var showTopbar = false;
+	- var headerCta = { text: 'Открыть счет', href: '#registration-form' };
+
+block content
+	section.disclosure
+		.container
+			header.disclosure-intro
+				h1 Раскрытие информации
+					br
+					| Rioni Capital
+				p Здесь собраны документы, подтверждающие статус брокера, безопасность сделок, регулирование процессов и прозрачность торговых операций.
+				label.disclosure-search
+					span Искать по запросу
+					input(type="search" placeholder="Искать по запросу" aria-label="Поиск по раскрытию информации" data-disclosure-search)
+
+			.disclosure-banner(style="background-image: url('./assets/images/required/seasonal-banner.jpg')")
+				h2 Обязательное раскрытие
+
+			.disclosure-section
+				h2 Лицензия
+				.disclosure-list
+					a.disclosure-file(href="#" target="_blank" rel="noopener")
+						span Лицензия брокерской компании
+					a.disclosure-file(href="#" target="_blank" rel="noopener")
+						span Решение Национального банка Грузии о выдаче лицензии
+					details
+						summary Номер и дата выдачи лицензии
+						div
+							p Лицензия выдана Национальным банком Грузии. Здесь редактор может разместить любой текст, таблицу или ссылку.
+					details
+						summary Виды деятельности, разрешённые лицензией
+						div
+							p Брокерское обслуживание, инвестиционное консультирование и иные операции в рамках действующей лицензии.
+
+			.disclosure-section
+				h2 Финансовая отчётность
+				.disclosure-years(data-disclosure-years)
+					section(data-report-year="2026")
+						h3 За 2026 год
+						.disclosure-list
+							a.disclosure-file(href="#" target="_blank" rel="noopener")
+								span Промежуточная финансовая отчётность за 3 месяца
+							a.disclosure-file(href="#" target="_blank" rel="noopener")
+								span Промежуточная финансовая отчётность за 6 месяцев
+							a.disclosure-file(href="#" target="_blank" rel="noopener")
+								span Промежуточная финансовая отчётность за 9 месяцев
+					section(data-report-year="2025")
+						h3 За 2025 год
+						.disclosure-list
+							a.disclosure-file(href="#" target="_blank" rel="noopener")
+								span Годовая финансовая отчётность
+					section(data-report-year="2024")
+						h3 За 2024 год
+						.disclosure-list
+							a.disclosure-file(href="#" target="_blank" rel="noopener")
+								span Годовая финансовая отчётность
+					section(data-report-year="2023")
+						h3 За 2023 год
+						.disclosure-list
+							a.disclosure-file(href="#" target="_blank" rel="noopener")
+								span Годовая финансовая отчётность
+
+			.disclosure-section
+				h2 Заключения независимого аудитора
+				.disclosure-list
+					a.disclosure-file(href="#" target="_blank" rel="noopener")
+						span Аудиторское заключение за 2025 год
+					a.disclosure-file(href="#" target="_blank" rel="noopener")
+						span Аудиторское заключение за 2024 год
+					a.disclosure-file(href="#" target="_blank" rel="noopener")
+						span Аудиторское заключение за 2023 год
+
+			.disclosure-section
+				h2 Раскрытие информации по требованиям Национального банка Грузии
+				.disclosure-list
+					details
+						summary Информация, подлежащая публичному раскрытию
+						div
+							p Здесь будет текст с ответом. Высота блока автоматически зависит от объёма материала.
+					a.disclosure-file(href="#" target="_blank" rel="noopener")
+						span Публичные предписания и решения регулятора
+					details(open)
+						summary Информация об изменении, ограничении, приостановлении или прекращении действия лицензии
+						div
+							p Тут будет текст с ответом на вопрос. Внутри можно использовать абзацы, списки и ссылки без дополнительных классов.
+					a.disclosure-file(href="#" target="_blank" rel="noopener")
+						span Иные сведения, подлежащие раскрытию в соответствии с законодательством Грузии
+
+			.disclosure-banner(style="background-image: url('./assets/images/required/gray.png')")
+				h2 Раскрытие по инициативе компании
+
+			.disclosure-section
+				h2 Корпоративные решения
+				.disclosure-list
+					a.disclosure-file(href="#" target="_blank" rel="noopener")
+						span Решения общего собрания участников
+					a.disclosure-file(href="#" target="_blank" rel="noopener")
+						span Решения об изменении уставного капитала
+					details
+						summary Решения о реорганизации компании
+						div
+							p Информация публикуется по мере появления существенных корпоративных решений.
+
+			.disclosure-section
+				h2 Технические уведомления
+				p.disclosure-note * Документы доступны только на грузинском языке
+				.disclosure-list
+					a.disclosure-file(href="#" target="_blank" rel="noopener")
+						span Плановые технические работы
+					details
+						summary Существенные технические сбои
+						div
+							p Актуальная информация о статусе сервисов и сроках восстановления работы.
+					details
+						summary Временная недоступность торговых платформ или личного кабинета
+						div
+							p Уведомление будет опубликовано редактором при возникновении события.
+
+			a.disclosure-cta(href="documents.html" style="background-image: url('./assets/images/required/seasonal-banner.jpg')")
+				h2 Документация Rioni Capital
+				p Перейдите к полному списку документов компании.
+				span Перейти к документам →
+
+	+sectionForm({ prefix: 'disclosure' })

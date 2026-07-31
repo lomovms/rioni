@@ -1,0 +1,796 @@
+// Модальная форма «Регистрация профиля» — светлый фон, две колонки (бренд + форма)
+$reg-bg: #e8f0f8;
+$reg-text: var(--backgrounds-dark-blue, #2e4376);
+$reg-text-light: var(--text-dark-grey, #2a2a2a);
+$reg-btn: #23395b;
+$reg-input-bg: var(--backgrounds-white, #fff);
+$reg-radius: 30px;
+$reg-border: rgba(30, 58, 95, 0.12);
+$reg-link: #00a4d1;
+$reg-error: #c00;
+$reg-checkbox-checked: var(--elements-green-extra, #4ba67c);
+
+.registration-form {
+	background: $reg-bg;
+	border-radius: $reg-radius;
+	max-width: 762px;
+	margin: 0 auto;
+	overflow: hidden;
+	position: relative;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+
+	// Растягиваем контент формы на всю доступную высоту попапа
+	height: 100%;
+	display: flex;
+
+	&__inner {
+		display: grid;
+		grid-template-columns: 380px 1fr;
+		min-height: 520px;
+		flex: 1;
+
+		@media (max-width: 767px) {
+			grid-template-columns: 1fr;
+			min-height: auto;
+		}
+	}
+
+	&__brand {
+		position: relative;
+		padding: 40px 32px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		background: var(--backgrounds-white, #fff);
+		border-radius: 30px 60px 60px 30px;
+
+		@media (max-width: 767px) {
+			padding: 24px 20px 16px;
+		}
+	}
+
+	&__logo-top {
+		position: absolute;
+		top: 24px;
+		left: 9px;
+		@media (max-width: 767px) {
+			position: static;
+			margin-bottom: 16px;
+		}
+	}
+
+	&__logo-img {
+		display: block;
+		height: 45px;
+		max-width: 100%;
+	}
+
+	&__logo-main {
+		margin-bottom: 20px;
+		.registration-form__logo-img {
+			max-height: 156px;
+			width: auto;
+			height: auto;
+		}
+		@media (max-width: 767px) {
+			display: none;
+		}
+	}
+
+	&__tagline {
+		margin: 0;
+		font: 400 15px/1.2 var(--font-family, inherit);
+		color: var(--backgrounds-dark-blue, #2e4376);
+		text-align: center;
+		max-width: 232px;
+	}
+
+	&__right-logo {
+		display: none;
+	}
+
+	&[data-state='code'] &__right-logo {
+		display: block;
+		// margin-bottom: 24px;
+		flex-shrink: 0;
+		position: absolute;
+		left: 22px;
+		top: 24px;
+	}
+
+	&__right-logo-img {
+		display: block;
+		height: 48px;
+		width: auto;
+		max-width: 100%;
+		object-fit: contain;
+	}
+
+	&__right {
+		padding: 40px 50px 36px;
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		justify-content: center;
+
+		@media (max-width: 767px) {
+			padding: 24px 20px 28px;
+		}
+	}
+
+	&__title {
+		margin: 0 0 19px;
+		font: 500 18px/1.3 var(--font-family, inherit);
+		color: $reg-text;
+	}
+
+	&__body {
+		// flex: 1;
+		display: none;
+		flex-direction: column;
+
+		&--form {
+			display: flex;
+		}
+		&--loading,
+		&--success,
+		&--error,
+		&--lockout {
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			padding: 10px 0;
+		}
+	}
+
+	// Переключение состояний через data-state на корне
+	&[data-state='form'] .registration-form__body--form {
+		display: flex;
+		justify-content: center;
+	}
+	&[data-state='form'] .registration-form__body--loading,
+	&[data-state='form'] .registration-form__body--success,
+	&[data-state='form'] .registration-form__body--error,
+	&[data-state='form'] .registration-form__body--code,
+	&[data-state='form'] .registration-form__body--lockout {
+		display: none !important;
+	}
+
+	&[data-state='loading'] .registration-form__body--form,
+	&[data-state='loading'] .registration-form__body--success,
+	&[data-state='loading'] .registration-form__body--error,
+	&[data-state='loading'] .registration-form__body--code,
+	&[data-state='loading'] .registration-form__body--lockout {
+		display: none !important;
+	}
+	&[data-state='loading'] .registration-form__body--loading {
+		display: flex;
+	}
+
+	&[data-state='code'] .registration-form__body--form,
+	&[data-state='code'] .registration-form__body--loading,
+	&[data-state='code'] .registration-form__body--success,
+	&[data-state='code'] .registration-form__body--error,
+	&[data-state='code'] .registration-form__body--lockout {
+		display: none !important;
+	}
+	&[data-state='code'] .registration-form__body--code {
+		display: flex;
+	}
+	&[data-state='code'] .registration-form__title {
+		display: none;
+	}
+	&[data-state='code'] .registration-form__brand,
+	&[data-state='lockout'] .registration-form__brand {
+		display: none !important;
+	}
+	&[data-state='code'] .registration-form__inner,
+	&[data-state='lockout'] .registration-form__inner {
+		grid-template-columns: 1fr;
+	}
+
+	&[data-state='code'] .registration-form__right {
+		justify-content: center;
+		align-items: center;
+	}
+
+	&[data-state='code'] .registration-form__body--code {
+		flex: 1 0 auto;
+		flex-direction: column;
+		justify-content: flex-start;
+		min-height: 0;
+		margin-top: 130px;
+	}
+
+	&[data-state='success'] .registration-form__body--form,
+	&[data-state='success'] .registration-form__body--loading,
+	&[data-state='success'] .registration-form__body--error,
+	&[data-state='success'] .registration-form__body--code,
+	&[data-state='success'] .registration-form__body--lockout {
+		display: none !important;
+	}
+	&[data-state='success'] .registration-form__body--success {
+		display: flex;
+	}
+
+	&[data-state='error'] .registration-form__body--form,
+	&[data-state='error'] .registration-form__body--loading,
+	&[data-state='error'] .registration-form__body--success,
+	&[data-state='error'] .registration-form__body--code,
+	&[data-state='error'] .registration-form__body--lockout {
+		display: none !important;
+	}
+	&[data-state='error'] .registration-form__body--error {
+		display: flex;
+	}
+
+	&[data-state='lockout'] .registration-form__title,
+	&[data-state='lockout'] .registration-form__body--form,
+	&[data-state='lockout'] .registration-form__body--loading,
+	&[data-state='lockout'] .registration-form__body--success,
+	&[data-state='lockout'] .registration-form__body--error,
+	&[data-state='lockout'] .registration-form__body--code {
+		display: none !important;
+	}
+	&[data-state='lockout'] .registration-form__body--lockout {
+		display: flex;
+	}
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+
+	&__field {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+
+		&--error {
+			.registration-form__input {
+				border-color: $reg-error;
+				box-shadow: 0 0 0 2px rgba($reg-error, 0.15);
+				&:focus {
+					border-color: $reg-error;
+					box-shadow: 0 0 0 2px rgba($reg-error, 0.25);
+				}
+			}
+		}
+	}
+
+	&__label {
+		font: 400 12px/1.3 var(--font-family, inherit);
+		color: #99abbd;
+	}
+
+	&__input {
+		width: 100%;
+		font: 400 12px/1.4 var(--font-family, inherit);
+		color: $reg-text;
+		background: $reg-input-bg;
+		border: none;
+		border-radius: 8px;
+		padding: 8px 10px;
+		outline: none;
+		height: 40px;
+		transition: border-color 0.2s, box-shadow 0.2s;
+
+		&::placeholder {
+			color: rgba(30, 58, 95, 0.45);
+		}
+		&:focus {
+			border-color: $reg-text-light;
+			box-shadow: 0 0 0 2px rgba(30, 58, 95, 0.08);
+		}
+	}
+
+	&__phone {
+		display: flex;
+		align-items: stretch;
+		gap: 10px;
+	}
+
+	&__country {
+		position: relative;
+		display: flex;
+		align-items: stretch;
+		flex-shrink: 0;
+		background: $reg-input-bg;
+		border: 1px solid $reg-border;
+		border-radius: 8px;
+		overflow: visible;
+		width: 50px;
+		height: 40px;
+	}
+
+	&__country-trigger {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		height: 100%;
+		padding: 0 6px;
+		cursor: pointer;
+		outline: none;
+		&:focus-visible {
+			box-shadow: 0 0 0 2px rgba(30, 58, 95, 0.2);
+		}
+	}
+
+	&__country-flag {
+		width: 14px;
+		height: 14px;
+		display: block;
+		background-size: 14px 14px;
+		background-repeat: no-repeat;
+		background-position: center;
+		flex-shrink: 0;
+	}
+
+	&__country-arrow {
+		width: 14px;
+		height: 14px;
+		display: block;
+		background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.64645 10.3537C6.84171 10.5489 7.15829 10.5489 7.35355 10.3537L10.5355 7.17167C10.7308 6.97641 10.7308 6.65983 10.5355 6.46457C10.3403 6.2693 10.0237 6.2693 9.82843 6.46457L7 9.29299L4.17157 6.46457C3.97631 6.2693 3.65973 6.2693 3.46447 6.46457C3.2692 6.65983 3.2692 6.97641 3.46447 7.17167L6.64645 10.3537ZM7 10H6.5V10.0001H7H7.5V10H7Z' fill='%23A7A7A7'/%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: 14px 14px;
+		flex-shrink: 0;
+		transition: transform 0.2s;
+		.registration-form__country.is-open & {
+			transform: rotate(180deg);
+		}
+	}
+
+	&__country-dropdown {
+		position: absolute;
+		left: 0;
+		top: 100%;
+		margin-top: 4px;
+		min-width: 50px;
+		max-height: 184px;
+		overflow-y: auto;
+		background: $reg-input-bg;
+		border: 1px solid $reg-border;
+		border-radius: 8px;
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+		z-index: 10;
+		display: none;
+		.registration-form__country.is-open & {
+			display: block;
+		}
+	}
+
+	&__country-option {
+		display: flex;
+		align-items: center;
+		padding: 10px 16px 10px 44px;
+		cursor: pointer;
+		min-height: 44px;
+		background-size: 24px 18px;
+		background-repeat: no-repeat;
+		background-position: 14px center;
+		&:hover {
+			background-color: rgba(30, 58, 95, 0.06);
+		}
+	}
+
+	&__country-code {
+		font: 500 15px/1.3 var(--font-family, inherit);
+		color: $reg-text;
+	}
+
+	&__country-select {
+		position: absolute;
+		opacity: 0;
+		pointer-events: none;
+		width: 0;
+		height: 0;
+	}
+
+	&__agree {
+		margin: 0;
+	}
+
+	&__checkbox-label {
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 4px;
+		cursor: pointer;
+		font: 400 12px/1.45 var(--font-family, inherit);
+		color: $reg-text;
+
+		// Кастомный чекбокс: белый квадрат с закруглёнными углами
+		&::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 16px;
+			height: 16px;
+			border-radius: 4px;
+			background: var(--backgrounds-white, #fff);
+			border: 1px solid $reg-border;
+			flex-shrink: 0;
+			box-sizing: border-box;
+		}
+
+		// Галочка при отмеченном состоянии
+		&::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 16px;
+			height: 16px;
+			background-image: url("data:image/svg+xml,%3Csvg width='7' height='9' viewBox='0 0 7 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 5L3.27273 8L6 1' stroke='%234BA67C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' /%3E%3C/svg%3E");
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: 9px 9px;
+			opacity: 0;
+			pointer-events: none;
+			transition: opacity 0.2s ease;
+		}
+
+		&:has(.registration-form__checkbox:checked)::after {
+			opacity: 1;
+		}
+	}
+
+	&__checkbox {
+		position: relative;
+		z-index: 1;
+		width: 16px;
+		height: 16px;
+		margin: 0;
+		flex-shrink: 0;
+		opacity: 0;
+		cursor: pointer;
+	}
+
+	&__checkbox-text {
+		flex: 1;
+		gap: 3px;
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	&__link {
+		color: #00a4d1;
+	}
+
+	&__support-link {
+		display: block;
+		margin-top: 4px;
+	}
+
+	&__submit {
+		margin-top: 16px;
+		padding: 6px 20px;
+		font: 400 12px/1.3 var(--font-family, inherit);
+		color: var(--backgrounds-white, #fff);
+		background: var(--backgrounds-blue, #2c4d90);
+		border: none;
+		border-radius: 8px;
+		height: 40px;
+		cursor: pointer;
+		transition: background 0.2s, transform 0.05s;
+		&:hover {
+			background: darken($reg-btn, 6%);
+		}
+		&:active {
+			transform: scale(0.99);
+		}
+	}
+
+	&__login {
+		margin: 0 auto;
+		margin-top: 6px;
+		font: 400 12px/1.45 var(--font-family, inherit);
+		color: $reg-text-light;
+	}
+	&__login-link {
+		color: #00a4d1;
+		text-decoration: underline;
+		margin-left: 4px;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
+	// Состояние: ввод кода подтверждения
+	&__body--code {
+		align-items: center;
+		text-align: left;
+	}
+
+	&__code-back {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		margin: 0 0 24px;
+		padding: 0;
+		font: 500 15px/1.4 var(--font-family, inherit);
+		color: $reg-link;
+		background: none;
+		border: none;
+		cursor: pointer;
+		position: absolute;
+		left: 30px;
+		top: 97px;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	&__code-back-arrow {
+		width: 11px;
+		height: 8px;
+		display: block;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: 11px 8px;
+		background-image: url("data:image/svg+xml,%3Csvg width='11' height='8' viewBox='0 0 11 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.146446 3.32809C-0.0488157 3.52335 -0.0488157 3.83993 0.146446 4.03519L3.32843 7.21717C3.52369 7.41244 3.84027 7.41244 4.03553 7.21717C4.2308 7.02191 4.2308 6.70533 4.03553 6.51007L1.20711 3.68164L4.03553 0.853214C4.2308 0.657951 4.2308 0.341369 4.03553 0.146107C3.84027 -0.0491555 3.52369 -0.0491555 3.32843 0.146107L0.146446 3.32809ZM10.5 3.68164V3.18164L0.5 3.18164V3.68164V4.18164L10.5 4.18164V3.68164Z' fill='%2300A4D1' /%3E%3C/svg%3E");
+	}
+
+	&__code-title {
+		margin: 0 0 8px;
+		font: 500 18px/1.3 var(--font-family, inherit);
+		color: $reg-text;
+	}
+
+	&__code-hint {
+		margin: 0 0 24px;
+		font: 400 12px/1.45 var(--font-family, inherit);
+		color: $reg-text-light;
+	}
+	&__code-phone {
+		font-weight: 600;
+		color: $reg-text;
+	}
+
+	&__code-inputs {
+		display: flex;
+		gap: 10px;
+		margin-bottom: 16px;
+		.registration-form__code-digit {
+			width: 40px;
+			height: 40px;
+			text-align: center;
+			font: 600 26px/1.3 var(--font-family, inherit);
+			color: $reg-text;
+			background: $reg-input-bg;
+			border: 1px solid $reg-border;
+			border-radius: 10px;
+			padding: 0;
+			&:focus {
+				border-color: $reg-text-light;
+				box-shadow: 0 0 0 2px rgba(30, 58, 95, 0.08);
+				outline: none;
+			}
+		}
+		&--error .registration-form__code-digit {
+			border-color: $reg-error;
+			&:focus {
+				border-color: $reg-error;
+				box-shadow: 0 0 0 2px rgba($reg-error, 0.2);
+			}
+		}
+	}
+
+	&__code-error {
+		margin: 0 0 16px;
+		font: 400 14px/1.45 var(--font-family, inherit);
+		color: $reg-error;
+		&[aria-hidden='true'] {
+			display: none;
+		}
+	}
+
+	&__code-resend {
+		margin: 0 0 24px;
+		font: 400 12px/1.45 var(--font-family, inherit);
+		color: $reg-text-light;
+	}
+	&__code-resend-link {
+		color: $reg-link;
+		margin-left: 4px;
+		&:hover {
+			text-decoration: underline;
+		}
+		&.is-disabled {
+			pointer-events: none;
+			opacity: 0.7;
+		}
+	}
+
+	&__code-resend-timer {
+		margin-left: 2px;
+	}
+
+	&__code-support {
+		margin: 0;
+		margin-top: auto;
+		padding-top: 24px;
+		font: 400 14px/1.45 var(--font-family, inherit);
+		color: $reg-text-light;
+	}
+
+	// Состояния loading / success / error
+	&__loading-text {
+		font: 500 18px/1.4 var(--font-family, inherit);
+		color: $reg-text;
+	}
+
+	&__success-icon {
+		width: 56px;
+		height: 56px;
+		border-radius: 50%;
+		background: $reg-checkbox-checked;
+		margin-bottom: 16px;
+		flex-shrink: 0;
+		// иконка галочки — можно через ::after или svg
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 13l4 4L19 7'/%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: 28px;
+	}
+
+	&__success-title {
+		margin: 0 0 8px;
+		font: 500 20px/1.3 var(--font-family, inherit);
+		color: $reg-text;
+	}
+	&__success-text {
+		margin: 0;
+		font: 400 15px/1.5 var(--font-family, inherit);
+		color: $reg-text-light;
+		max-width: 320px;
+	}
+
+	&__error-title {
+		margin: 0 0 8px;
+		font: 500 18px/1.3 var(--font-family, inherit);
+		color: $reg-error;
+	}
+	&__error-text {
+		margin: 0 0 16px;
+		font: 400 14px/1.5 var(--font-family, inherit);
+		color: $reg-text-light;
+	}
+	&__retry {
+		padding: 10px 20px;
+		font: 500 14px/1.3 var(--font-family, inherit);
+		color: var(--backgrounds-white, #fff);
+		background: $reg-btn;
+		border: none;
+		border-radius: 8px;
+		cursor: pointer;
+		&:hover {
+			background: darken($reg-btn, 6%);
+		}
+	}
+
+	// Состояние: превышено количество попыток (блокировка)
+	&__lockout-icon {
+		width: 113px;
+		height: 113px;
+		margin-bottom: 24px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+	}
+	&__lockout-img {
+		width: 100%;
+		height: 100%;
+	}
+	&__lockout-title {
+		margin: 0 0 16px;
+		font: 500 20px/1.3 var(--font-family, inherit);
+		color: $reg-text;
+		max-width: 380px;
+	}
+	&__lockout-text {
+		margin: 0 0 8px;
+		font: 400 15px/1.5 var(--font-family, inherit);
+		color: $reg-text-light;
+		max-width: 360px;
+	}
+	&__lockout-duration {
+		display: block;
+		margin-top: 8px;
+		font-weight: 600;
+		color: $reg-error;
+	}
+	&__lockout-support {
+		margin: 24px 0 0;
+		font: 400 14px/1.45 var(--font-family, inherit);
+		color: $reg-text-light;
+	}
+}
+
+@media (max-width: 767px) {
+	.registration-form {
+		max-width: calc(100vw - 24px);
+		height: auto;
+		background: var(--backgrounds-white, #fff);
+		border-radius: 24px;
+
+		&__brand {
+			display: none;
+		}
+
+		&__inner {
+			display: block;
+			min-height: 0;
+		}
+
+		&__right {
+			padding: 52px 18px 24px;
+		}
+
+		&__title {
+			font-size: 20px;
+			text-align: center;
+			color: var(--text-green, #0c342c);
+		}
+
+		&__input,
+		&__country {
+			background: #f4f8fb;
+		}
+
+		&__submit {
+			background: var(--text-green, #0c342c);
+		}
+
+		&__login {
+			text-align: center;
+		}
+	}
+}
+
+// Кнопка закрытия MFP — круг 19×19, внутри крестик 7×7
+.mfp-container .mfp-close {
+	top: 23px;
+	right: 21px;
+	width: 19px;
+	height: 19px;
+	padding: 0;
+	background: $reg-btn;
+	color: var(--backgrounds-white, #fff);
+	border: none;
+	border-radius: 50%;
+	opacity: 1;
+	z-index: 10;
+	font-size: 0;
+	text-indent: -9999px;
+	overflow: visible;
+	position: absolute;
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		width: 7px;
+		height: 1px;
+		background: var(--backgrounds-white, #fff);
+		transform: translate(-50%, -50%);
+	}
+	&::before {
+		transform: translate(-50%, -50%) rotate(45deg);
+	}
+	&::after {
+		transform: translate(-50%, -50%) rotate(-45deg);
+	}
+	&:hover {
+		background: darken($reg-btn, 8%);
+	}
+}

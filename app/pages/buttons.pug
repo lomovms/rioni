@@ -1,0 +1,79 @@
+extends template/layout
+
+block variables
+	- var title = 'Кнопки — Rioni';
+	- var menuHeader = [
+	-   { title: 'О нас', href: 'about.html' },
+	-   { title: 'Услуги', href: 'services.html' },
+	-   { title: 'Инструменты', href: 'products.html' },
+	-   { title: 'Тарифы', href: 'tariffs.html' },
+	-   { title: 'Обучение', href: '#' },
+	-   { title: 'Рынок', href: 'market.html' },
+	-   { title: 'Документы', href: 'documents.html' }
+	- ];
+	- var showTopbar = false
+	- var headerCta = { text: 'Открыть счет', href: '#registration-form' };
+
+block content
+	section.section-buttons-showcase
+		.container
+			.buttons-showcase
+				h1.buttons-showcase__title Все кнопки
+				p.buttons-showcase__subtitle Витрина основных вариантов кнопок проекта для быстрой проверки состояний и визуальных стилей.
+
+				.buttons-showcase__group
+					h2.buttons-showcase__group-title Светлый фон
+					.buttons-showcase__row
+						.buttons-showcase__item
+							span.buttons-showcase__label `button`
+							a.button(href="#")
+								span.button__text Основная кнопка
+								span.button__icon
+									i.icon.icon-arrow-right
+						.buttons-showcase__item
+							span.buttons-showcase__label `button--blue`
+							a.button.button--blue(href="#")
+								span.button__text Голубая кнопка
+								span.button__icon
+									i.icon.icon-arrow-light
+						.buttons-showcase__item
+							span.buttons-showcase__label `button--outline`
+							a.button.button--outline(href="#")
+								span.button__text Outline кнопка
+								span.button__icon
+									i.icon.icon-arrow-right-blue
+						.buttons-showcase__item
+							span.buttons-showcase__label `button--blue2`
+							a.button.button--blue2(href="#")
+								span.button__text Синяя кнопка
+								span.button__icon
+									i.icon.icon-arrow-right-blue2
+
+				.buttons-showcase__group.buttons-showcase__group--dark
+					h2.buttons-showcase__group-title Темный фон
+					.buttons-showcase__row
+						.buttons-showcase__item
+							span.buttons-showcase__label `button--light`
+							a.button.button--light(href="#")
+								span.button__text Светлая кнопка
+								span.button__icon
+									i.icon.icon-arrow-right-blue
+						.buttons-showcase__item
+							span.buttons-showcase__label `button--blue`
+							a.button.button--blue(href="#")
+								span.button__text CTA кнопка
+								span.button__icon
+									i.icon.icon-arrow-light
+
+				.buttons-showcase__group
+					h2.buttons-showcase__group-title Кнопки в формах
+					.buttons-showcase__row
+						.buttons-showcase__item
+							span.buttons-showcase__label `form-block__submit`
+							button.form-block__submit(type="button") Отправить заявку
+						.buttons-showcase__item
+							span.buttons-showcase__label `hero__btn button--outline`
+							a.hero__btn.button.button--outline(href="#")
+								span.button__text Открыть счет
+								span.button__icon
+									i.icon.icon-arrow-right-blue

@@ -1,0 +1,80 @@
+extends template/layout
+
+block variables
+	- var title = 'Документы — Rioni';
+	- var menuHeader = [
+	-   { title: 'О нас', href: 'about.html' },
+	-   { title: 'Услуги', href: 'services.html' },
+	-   { title: 'Тарифы', href: 'tariffs.html' },
+	-   { title: 'Обучение', href: '#' },
+	-   { title: 'Рынок', href: 'market.html' },
+	-   { title: 'Документы', href: 'documents.html' }
+	- ];
+	- var showTopbar = false
+	- var headerCta = { text: 'Открыть счет', href: '#registration-form' };
+
+block content
+	section.section-docs-hero
+		.container
+			.docs-hero
+				h1.docs-hero__title Документация финансового
+					br
+					| брокера Rioni Capital
+				p.docs-hero__text Здесь написать текст о том, что на этой странице собраны все необходимые документы подтверждающие статус брокера, безопасность сделок, регулирование процессов и прозрачность всех тороговых операций, а также дополнительные документы для юр. лиц
+				form.docs-hero__search(action="#" method="get" role="search")
+					label.docs-hero__search-label(for="docs-search")
+					input.docs-hero__search-input#docs-search(type="search" name="q" placeholder="Искать по запросу" aria-label="Поиск по документам")
+					button.docs-hero__search-btn(type="submit" aria-label="Найти")
+						span.docs-hero__search-icon
+
+	section.section-docs
+		.container
+			h2.docs__heading Документы Риони Капитал
+			.docs__box
+				.docs__cols
+					.docs__col
+						h3.docs__category Уставные документы
+						ul.docs__list
+							li.docs__item
+								a.docs__link(href="#" download)
+									span.docs__icon(aria-hidden="true")
+										+arrowSpoiler(class="arrow-download")
+									span.docs__name Rioni Capital устав.PDF
+									span.docs__size 257 мб
+							li.docs__item
+								a.docs__link(href="#" download)
+									span.docs__icon(aria-hidden="true")
+										+arrowSpoiler(class="arrow-download")
+									span.docs__name Rioni Capital учредительское соглашение.PDF
+									span.docs__size 257 мб
+						h3.docs__category Кодекс этики
+						ul.docs__list
+							li.docs__item
+								a.docs__link(href="#" download)
+									span.docs__icon(aria-hidden="true")
+										+arrowSpoiler(class="arrow-download")
+									span.docs__name Кодекс этики.PDF
+									span.docs__size 257 мб
+						h3.docs__category Выписка из реестра
+						ul.docs__list
+							li.docs__item
+								a.docs__link(href="#" download)
+									span.docs__icon(aria-hidden="true")
+										+arrowSpoiler(class="arrow-download")
+									span.docs__name Выписка из реестра.PDF
+									span.docs__size 257 мб
+					.docs__col
+						h3.docs__category Политики ООО «РИОНИ Капитал»
+						ul.docs__list
+							- var n = 0;
+							while n < 8
+								- n++
+								li.docs__item
+									a.docs__link(href="#" download)
+										span.docs__icon(aria-hidden="true")
+											+arrowSpoiler(class="arrow-download")
+										span.docs__name Название документа.PDF
+										span.docs__size 257 мб
+				p.docs__note * Документы доступны на грузинском языке
+
+	+sectionForm({ prefix: 'documents' })

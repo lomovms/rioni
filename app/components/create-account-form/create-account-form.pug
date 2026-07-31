@@ -1,0 +1,65 @@
+//- Модальная форма «Создайте аккаунт» (логин + пароль). Открывать по ссылке href="#create-account-form" data-popup
+//- По клику на «рекомендаций» форма сдвигается влево, справа панель рекомендаций; на мобильном панель выезжает снизу (GSAP)
+mixin createAccountForm()
+	#create-account-form.create-account-form.mfp-hide.mfp-with-anim(aria-hidden="true")
+		.create-account-form__inner
+			.create-account-form__form-side
+				.create-account-form__brand
+					.create-account-form__logo-top
+						img.create-account-form__logo-img(src="./assets/images/required/logo-rioni.svg" alt="RIONI capital" width="120" height="40")
+					.create-account-form__logo-main(aria-hidden="true")
+						img.create-account-form__logo-img(src="./assets/images/required/logo-form.svg" alt="")
+					p.create-account-form__tagline Rioni Capital – европейский брокер с грузинским колоритом
+
+				.create-account-form__right
+					h2.create-account-form__title Создайте аккаунт
+					p.create-account-form__subtitle Придумайте логин и пароль на основе
+						a.create-account-form__link(href="#" data-create-account-recommendations) рекомендаций
+
+					form.create-account-form__form(action="#" method="post" data-create-account-form)
+						.create-account-form__field
+							label.create-account-form__label(for="create-account-login") Логин
+							input.create-account-form__input(id="create-account-login" type="text" name="login" placeholder="" required autocomplete="username")
+						.create-account-form__field
+							label.create-account-form__label(for="create-account-password") Пароль
+							.create-account-form__password-wrap
+								input.create-account-form__input.create-account-form__input--password(id="create-account-password" type="password" name="password" placeholder="" required autocomplete="new-password")
+								button.create-account-form__toggle-password(type="button" aria-label="Показать пароль" data-create-account-toggle-password)
+									span.create-account-form__toggle-icon.create-account-form__toggle-icon--hidden(aria-hidden="true")
+									span.create-account-form__toggle-icon.create-account-form__toggle-icon--visible(aria-hidden="true")
+						.create-account-form__field
+							label.create-account-form__label(for="create-account-password-repeat") Повторите пароль
+							.create-account-form__password-wrap
+								input.create-account-form__input.create-account-form__input--password(id="create-account-password-repeat" type="password" name="password_repeat" placeholder="" required autocomplete="new-password")
+								button.create-account-form__toggle-password(type="button" aria-label="Показать пароль" data-create-account-toggle-password)
+									span.create-account-form__toggle-icon.create-account-form__toggle-icon--hidden(aria-hidden="true")
+									span.create-account-form__toggle-icon.create-account-form__toggle-icon--visible(aria-hidden="true")
+						.create-account-form__error-note
+							p.create-account-form__error-note-text Для создания аккаунта, вам необходимо подтвердить адрес электронной почты указанный при регистрации профиля
+							p.create-account-form__error-note-text Ссылку для подтверждения отправили на почту arespochty@mail.ru
+						button.create-account-form__submit(type="submit") Создать аккаунт
+
+			.create-account-form__recommendations(data-create-account-recommendations-panel)
+				.create-account-form__recommendations-inner
+					h3.create-account-form__recommendations-title Рекомендации по созданию логина:
+					ul.create-account-form__recommendations-list
+						li Длина не менее 8 символов, но не более 32;
+						li Может состоять из строчных латинских букв, цифр, подчеркивания, точки и минуса.
+					h3.create-account-form__recommendations-title Рекомендации по созданию пароля:
+					ul.create-account-form__recommendations-list
+						li Длина не менее 12 символов. Чем больше символов, тем надёжнее пароль, но количество символов не должно превышать 36;
+						li Состоит из нескольких несвязанных слов или букв;
+						li Содержит в себе прописные (заглавные) и строчные латинские буквы;
+						li Содержит в себе цифры или спец. символы (кроме пробела);
+						li Не используйте цифры или буквы идущие друг за другом на раскладке вашего девайса;
+						li Не создавайте пароль на основе личной информации (имя, дата рождения, ИНН и т.д.)
+					.create-account-form__recommendations-passwords
+						.create-account-form__recommendations-passwords-col
+							p.create-account-form__recommendations-heading Сильные пароли
+							p.create-account-form__recommendations-examples= 'RIFXY-3Y,XD*h\\s\nL!%9#ENVs9b:.XbDxDb<\nvx92PC!VpoJb#22'
+						.create-account-form__recommendations-passwords-col
+							p.create-account-form__recommendations-heading Слабые пароли
+							p.create-account-form__recommendations-examples= 'qwerty1234567\nVasiliy_Ivanov\n12.02.1998'
+				button.create-account-form__recommendations-close(type="button" data-create-account-recommendations-close aria-label="Свернуть")
+					span.create-account-form__recommendations-close-text свернуть
+					span.create-account-form__recommendations-close-arrow

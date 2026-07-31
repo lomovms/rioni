@@ -1,0 +1,39 @@
+mixin loginForm()
+	//- Окно входа (две колонки: слева форма, справа бренд)
+	#login-form.login-form.mfp-hide.mfp-with-anim(aria-hidden="true")
+		.login-form__inner
+			//- Левая часть: форма логина
+			.login-form__form-side
+				.login-form__logo-top
+					img.login-form__logo-top-img(src="./assets/images/required/logo-rioni.svg" alt="RIONI capital" width="120" height="40")
+
+				h2.login-form__title Добро пожаловать!
+				p.login-form__subtitle Войдите в личный кабинет Rioni Capital, чтобы продолжить работу с инвестиционными инструментами.
+
+				form.login-form__form(action="#" method="post" data-login-form)
+					.login-form__field
+						label.login-form__label(for="login") Логин
+						input.login-form__input.login-form__input--login(id="login" type="text" name="login" placeholder="Логин" autocomplete="username" required)
+
+					.login-form__field
+						label.login-form__label(for="login-password") Пароль
+						.login-form__password-wrap
+							input.login-form__input.login-form__input--password(id="login-password" type="password" name="password" placeholder="Пароль" autocomplete="current-password" required data-login-password)
+							button.login-form__toggle-password(type="button" aria-label="Показать пароль" data-login-toggle-password)
+								span.login-form__toggle-icon.login-form__toggle-icon--hidden(aria-hidden="true")
+								span.login-form__toggle-icon.login-form__toggle-icon--visible(aria-hidden="true")
+
+					a.login-form__forgot(href="#password-recovery-popup" data-popup) Забыли пароль?
+
+					button.login-form__submit(type="submit") Войти
+
+				p.login-form__register
+					| Еще нет аккаунта?
+					a.login-form__register-link(href="#registration-form" data-popup) Зарегистрируйтесь
+
+			//- Правая часть: бренд
+			.login-form__brand
+				.login-form__logo-main(aria-hidden="true")
+					img.login-form__logo-main-img(src="./assets/images/required/logo-form.svg" alt="" )
+
+				p.login-form__tagline Rioni Capital – европейский брокер с грузинским колоритом

@@ -1,0 +1,144 @@
+extends template/layout
+
+block variables
+	- var title = 'Услуги — Rioni';
+	- var menuHeader = [
+	-   { title: 'О нас', href: 'about.html' },
+	-   { title: 'Услуги', href: 'services.html' },
+	-   { title: 'Инструменты', href: 'products.html' },
+	-   { title: 'Тарифы', href: 'tariffs.html' },
+	-   { title: 'Обучение', href: '#' },
+	-   { title: 'Рынок', href: 'market.html' },
+	-   { title: 'Документы', href: 'documents.html' }
+	- ];
+	- var showTopbar = false
+	- var headerCta = { text: 'Открыть счет', href: '#registration-form' };
+
+block content
+	+hero({
+		attr: { class: 'hero--services' },
+		topbar: false,
+		bg: 'required/hero2.jpg',
+		bgMobile: 'required/hero2-m.jpg',
+		align: 'left',
+		pretitle: '',
+		title: 'Rioni Capital <br><span class="hero-roulette__lead">- это</span> <span class="hero-roulette" aria-label="управление ликвидностью, управление рисками, управление капиталом, услуги на рынке капитала, услуги для финансовых институтов"><span class="hero-roulette__viewport"><span class="hero-roulette__track"><div class="hero-roulette__item"><span class="hero-roulette__item-text">управление ликвидностью</span></div><div class="hero-roulette__item"><span class="hero-roulette__item-text">управление рисками</span></div><div class="hero-roulette__item"><span class="hero-roulette__item-text">управление капиталом</span></div><div class="hero-roulette__item"><span class="hero-roulette__item-text">услуги на рынке капитала</span></div><div class="hero-roulette__item"><span class="hero-roulette__item-text">услуги для финансовых институтов</span></div><div class="hero-roulette__item" aria-hidden="true"><span class="hero-roulette__item-text">управление ликвидностью</span></div></span></span></span>',
+		subtitle: '',
+		button: { text: 'Открыть счет', url: '#', modifier: 'outline' },
+		animate: 'fade'
+	})
+
+	section.section-services-catalog
+		.container
+			.services-catalog
+				h2.services-catalog__title Услуги Rioni Capital
+				.services-catalog__tabs(role='tablist' aria-label='Категории услуг')
+					button.services-catalog__tab.services-catalog__tab--active(type='button' data-services-tab='retail' role='tab' aria-selected='true') Физическим лицам
+					button.services-catalog__tab(type='button' data-services-tab='business' role='tab' aria-selected='false') Юридическим лицам
+					button.services-catalog__tab(type='button' data-services-tab='institutional' role='tab' aria-selected='false') Институциональным клиентам
+
+				.services-catalog__panel.services-catalog__panel--active(data-services-panel='retail' role='tabpanel')
+					.services-catalog__grid
+						button.services-card(type='button')
+							span.services-card__title Брокерское
+								br
+								| обслуживание
+							span.services-card__icon
+						button.services-card(type='button')
+							span.services-card__title Доверительное
+								br
+								| управление
+							span.services-card__icon
+						button.services-card(type='button')
+							span.services-card__title Обучение
+								br
+								| и консультации
+							span.services-card__icon
+						button.services-card(type='button')
+							span.services-card__title Аналитическое
+								br
+								|  сопровождение
+							span.services-card__icon
+					button.services-catalog__more(type='button' data-services-more hidden)
+						span.services-catalog__more-text Показать еще
+						span.services-catalog__more-icon(aria-hidden='true')
+
+				.services-catalog__panel(data-services-panel='business' role='tabpanel')
+					.services-catalog__grid
+						button.services-card(type='button')
+							span.services-card__title Расчётно-кассовое обслуживание
+							span.services-card__icon
+						button.services-card(type='button')
+							span.services-card__title Корпоративное брокерское обслуживание
+							span.services-card__icon
+						button.services-card(type='button')
+							span.services-card__title Валютный контроль
+							span.services-card__icon
+						button.services-card(type='button')
+							span.services-card__title Финансовый консалтинг
+							span.services-card__icon
+					button.services-catalog__more(type='button' data-services-more hidden)
+						span.services-catalog__more-text Показать еще
+						span.services-catalog__more-icon(aria-hidden='true')
+
+				.services-catalog__panel(data-services-panel='institutional' role='tabpanel')
+					.services-catalog__grid
+						button.services-card(type='button')
+							span.services-card__title Prime Brokerage
+							span.services-card__icon ↓
+						button.services-card(type='button')
+							span.services-card__title DMA и алгоритмы
+							span.services-card__icon ↓
+						button.services-card(type='button')
+							span.services-card__title Custody и отчётность
+							span.services-card__icon ↓
+						button.services-card(type='button')
+							span.services-card__title Аналитика рынка
+							span.services-card__icon ↓
+					button.services-catalog__more(type='button' data-services-more hidden)
+						span.services-catalog__more-text Показать еще
+						span.services-catalog__more-icon(aria-hidden='true')
+
+	section.section-analytics-banner
+		.container
+			.analytics-intro
+				h2.analytics-intro__title Аналитика
+				p.analytics-intro__subtitle Тут написать про разнообразие и выбор продуктов для инвесторов разных уровней и оборотов
+			.analytics-banner(style="background-image: url('./assets/images/required/analytics-cover.jpg')")
+				.analytics-banner__overlay
+					.analytics-banner__top
+						.analytics-banner__label
+							img.analytics-banner__label-icon(src="./assets/images/required/analytics-icon-1.png" alt="" aria-hidden="true")
+							span.analytics-banner__label-text Инвестобзоры
+						time.analytics-banner__date(datetime="2025-02-22") 22 февраля
+					.analytics-banner__article
+						.analytics-banner__category
+							img.analytics-banner__category-icon(src="./assets/images/required/analytics-icon-2.png" alt="" aria-hidden="true")
+							span.analytics-banner__category-text Еженедельные обзоры
+						h2.analytics-banner__title Фьючерсы на товарные контракты. Еженедельный обзор и тактические идеи
+						p.analytics-banner__text Результаты первого квартала текущего года оказались неоднозначными для разных видов сырьевых товаров. Нефтяные котировки опустились до многомесячных минимумов, в то время как цены на золото и серебро застыли вблизи рекордных максимумов
+						a.analytics-banner__cta.button.button--light(href="#")
+							span.button__text Смотреть отчет
+							span.button__icon
+								i.icon.icon-arrow-right-blue
+
+	section.section-steps-bs
+		.container
+			.steps-bs
+				.steps-bs__item.steps-bs__item--1
+					h3.steps-bs__title Шаг 1
+					p.steps-bs__text Регистрация, открытие учебного счета, обучение торговле, знакомство с доступными инструментами
+				.steps-bs__item.steps-bs__item--2
+					h3.steps-bs__title Шаг 2
+					p.steps-bs__text Прохождение процедуры открытия брокерского счета
+				.steps-bs__item.steps-bs__item--3
+					h3.steps-bs__title Шаг 3
+					p.steps-bs__text Настройка профиля, прохождение тестирования для определения риск-профиля
+				.steps-bs__row-4
+					.steps-bs__item.steps-bs__item--4
+						h3.steps-bs__title Шаг 4
+						p.steps-bs__text Открытый доступ к мировым финансам
+					a.steps-bs__btn.button(href="#")
+						span.button__text Открыть счет
+
+	+sectionForm({ prefix: 'services' })

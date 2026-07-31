@@ -1,0 +1,118 @@
+//- Три системных попапа: cookie (показ при первом визите), возврат к регистрации («онбординг»), запрос авторизации
+//- Онбординг — сценарий «продолжить регистрацию с того места, где остановились»; имя в шапке: localStorage rioni_last_login или «друг»
+
+mixin cookieConsentPopup()
+	#cookie-consent-popup.site-popup.site-popup--cookie.mfp-hide.mfp-with-anim(aria-hidden="true" role="dialog" aria-labelledby="cookie-consent-title" aria-modal="true")
+		.site-popup__inner.site-popup__inner--cookie
+			.site-popup__cookie-visual(aria-hidden="true")
+				img.site-popup__cookie-icon(src="./assets/images/required/cookie.png" alt="" width="72" height="72" loading="lazy" decoding="async")
+			.site-popup__cookie-body
+				h2#cookie-consent-title.site-popup__title.site-popup__title--cookie Файлы cookie
+				p.site-popup__text
+					| Сайт использует cookie-файлы чтобы сделать ваше пребывание на нем максимально удобным. Оставаясь на сайте, вы даёте своё
+					= ' '
+					a.site-popup__inline-link(href="#" target="_blank" rel="noopener") согласие на использование cookie-файлов
+				.site-popup__actions.site-popup__actions--cookie
+					button.site-popup__btn.site-popup__btn--primary(type="button" data-cookie-accept="all") Принять все
+					button.site-popup__btn.site-popup__btn--outline(type="button" data-cookie-accept="essential") Принять только обязательные
+
+mixin onboardingResumePopup()
+	#onboarding-resume-popup.site-popup.site-popup--onboarding.mfp-hide.mfp-with-anim(aria-hidden="true" role="dialog" aria-labelledby="onboarding-resume-title" aria-modal="true")
+		.site-popup__inner
+			h2#onboarding-resume-title.site-popup__title
+				| С возвращением, #[span.site-popup__name#onboarding-resume-name друг]! Хотите продолжить регистрацию на том месте где вы остановились?
+			button.site-popup__btn.site-popup__btn--blue(type="button" data-onboarding-continue) Продолжить онбординг
+
+mixin authRequiredPopup()
+	#auth-required-popup.site-popup.site-popup--auth.mfp-hide.mfp-with-anim(aria-hidden="true" role="dialog" aria-labelledby="auth-required-title" aria-modal="true")
+		.site-popup__inner
+			h2#auth-required-title.site-popup__title Обучение доступно только авторизированным пользователям Rioni Capital
+			p.site-popup__text.site-popup__text--muted Для того чтобы начать обучение вам необходимо зарегистрироваться на сайте
+			a.site-popup__btn.site-popup__btn--primary(href="#registration-form" data-popup) Зарегистрироваться
+
+mixin brokerAccountRequiredPopup()
+	#broker-account-required-popup.site-popup.site-popup--auth.mfp-hide.mfp-with-anim(aria-hidden="true" role="dialog" aria-labelledby="broker-account-required-title" aria-modal="true")
+		.site-popup__inner
+			h2#broker-account-required-title.site-popup__title Все материалы по обучению доступны только клиентам Rioni Capital
+			p.site-popup__text.site-popup__text--muted Для того чтобы продолжить обучение вам необходимо открыть брокерский счет
+			a.site-popup__btn.site-popup__btn--primary(href="#registration-form" data-popup) Открыть счет
+
+mixin accessDeniedPopup()
+	#access-denied-popup.site-popup.site-popup--auth.mfp-hide.mfp-with-anim(aria-hidden="true" role="dialog" aria-labelledby="access-denied-title" aria-modal="true")
+		.site-popup__inner
+			h2#access-denied-title.site-popup__title Доступ запрещен
+			p.site-popup__text.site-popup__text--muted У вас нет прав для выполнения этого действия. Войдите в аккаунт с нужным уровнем доступа.
+			a.site-popup__btn.site-popup__btn--primary(href="#login-form" data-popup) Войти
+			p.site-popup__auth-alt
+				| Нет аккаунта?&nbsp;
+				a.site-popup__auth-alt-link(href="#registration-form" data-popup) Зарегистрироваться
+
+mixin soonAvailablePopup()
+	#soon-available-popup.site-popup.site-popup--soon.mfp-hide.mfp-with-anim(aria-hidden="true" role="dialog" aria-labelledby="soon-available-title" aria-modal="true")
+		.site-popup__inner.site-popup__inner--soon
+			h2#soon-available-title.site-popup__title.site-popup__title--soon Скоро будет доступно!
+			p#soon-available-text.site-popup__text.site-popup__text--soon Регистрация временно закрыта. Мы сообщим, когда сервис будет готов к запуску.
+			button.site-popup__btn.site-popup__btn--blue(type="button" data-soon-available-close) Понятно
+
+mixin registrationSomethingWrongPopup()
+	#registration-something-wrong-popup.site-popup.site-popup--status.mfp-hide.mfp-with-anim(aria-hidden="true" role="dialog" aria-labelledby="registration-something-wrong-title" aria-modal="true")
+		.site-popup__inner.site-popup__inner--status
+			.site-popup__status-top
+				img.site-popup__status-logo(src="./assets/images/required/logo-rioni.svg" alt="Rioni Capital" width="120" height="40")
+			a.site-popup__status-back(href="#registration-form" data-popup)
+				span.site-popup__status-back-arrow(aria-hidden="true")
+				| Назад
+			.site-popup__status-center
+				.site-popup__status-visual(aria-hidden="true")
+					img.site-popup__status-icon(src="./assets/images/required/error.png" alt="" width="114" height="114")
+				h2#registration-something-wrong-title.site-popup__status-title Что-то пошло не так
+				p.site-popup__status-text Связь прервалась из-за плохого соединения с интернетом, попробуйте перезагрузить страницу
+			p.site-popup__status-support
+				| Возникли трудности?
+				a.site-popup__status-support-link(href="#") Обратитесь в службу поддержки
+
+mixin registrationServiceUnavailablePopup()
+	#registration-service-unavailable-popup.site-popup.site-popup--status.mfp-hide.mfp-with-anim(aria-hidden="true" role="dialog" aria-labelledby="registration-service-unavailable-title" aria-modal="true")
+		.site-popup__inner.site-popup__inner--status
+			.site-popup__status-top
+				img.site-popup__status-logo(src="./assets/images/required/logo-rioni.svg" alt="Rioni Capital" width="120" height="40")
+			a.site-popup__status-back(href="#registration-form" data-popup)
+				span.site-popup__status-back-arrow(aria-hidden="true")
+				| Назад
+			.site-popup__status-center
+				.site-popup__status-visual(aria-hidden="true")
+					img.site-popup__status-icon(src="./assets/images/required/logo.svg" alt="" width="114" height="114")
+				h2#registration-service-unavailable-title.site-popup__status-title Сервис временно недоступен
+				p.site-popup__status-text Мы уже работаем над устранением ошибки Попробуйте повторить позднее
+			p.site-popup__status-support
+				| Возникли трудности?
+				a.site-popup__status-support-link(href="#") Обратитесь в службу поддержки
+
+mixin registrationBannedPopup()
+	#registration-banned-popup.site-popup.site-popup--status.mfp-hide.mfp-with-anim(aria-hidden="true" role="dialog" aria-labelledby="registration-banned-title" aria-modal="true")
+		.site-popup__inner.site-popup__inner--status
+			.site-popup__status-top
+				img.site-popup__status-logo(src="./assets/images/required/logo-rioni.svg" alt="Rioni Capital" width="120" height="40")
+			.site-popup__status-center.site-popup__status-center--compact
+				.site-popup__status-visual(aria-hidden="true")
+					img.site-popup__status-icon(src="./assets/images/required/ban.png" alt="" width="114" height="114")
+				h2#registration-banned-title.site-popup__status-title Вход недоступен для данного пользователя
+				p.site-popup__status-text К сожалению, на данный момент мы не готовы предоставить вам доступ к материалам Rioni Capital исходя из внутренней политики компании. Если решение будет пересмотрено, вы получите уведомление на электронную почту
+
+mixin registrationCompletedPopup()
+	#registration-completed-popup.site-popup.site-popup--status.site-popup--status-soft.mfp-hide.mfp-with-anim(aria-hidden="true" role="dialog" aria-labelledby="registration-completed-title" aria-modal="true")
+		.site-popup__inner.site-popup__inner--status
+			.site-popup__status-top
+				img.site-popup__status-logo(src="./assets/images/required/logo-rioni.svg" alt="Rioni Capital" width="120" height="40")
+			a.site-popup__status-back(href="#registration-form" data-popup)
+				span.site-popup__status-back-arrow(aria-hidden="true")
+				| Назад
+			.site-popup__status-center
+				.site-popup__status-visual.site-popup__status-visual--soft(aria-hidden="true")
+					img.site-popup__status-icon(src="./assets/images/required/mail.png" alt="" width="114" height="114")
+				h2#registration-completed-title.site-popup__status-title Регистрация завершена!
+				p.site-popup__status-text Брокерский счет формируется, вы получите уведомление об открытии на почту
+					span.site-popup__status-email#registration-completed-email takoytotam@mail.ru
+			p.site-popup__status-support
+				| Возникли трудности?
+				a.site-popup__status-support-link(href="#") Обратитесь в службу поддержки

@@ -1,0 +1,89 @@
+// Окошко «после регистрации» (inline popup)
+
+.popup-after-registration {
+	max-width: 760px;
+	background: var(--backgrounds-white, #fff);
+	border-radius: 28px;
+	padding: 52px 70px 44px;
+}
+
+.popup-after-registration__inner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+
+.popup-after-registration__icon {
+	width: 74px;
+	height: 74px;
+	margin-bottom: 22px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.popup-after-registration__title {
+	margin: 0;
+	font: 500 26px/1.2 var(--font-family, inherit);
+	color: var(--text-dark-blue, #0f171f);
+}
+
+.popup-after-registration__subtitle {
+	margin: 14px 0 0;
+	font: 400 16px/1.6 var(--font-family, inherit);
+	color: #2f3b52;
+	max-width: 520px;
+}
+
+.popup-after-registration__list {
+	margin: 26px 0 0;
+	padding: 0;
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 22px;
+	width: 100%;
+}
+
+.popup-after-registration__item {
+	display: grid;
+	grid-template-columns: 44px 1fr;
+	gap: 14px;
+	align-items: start;
+	text-align: left;
+}
+
+.popup-after-registration__item-icon {
+	width: 44px;
+	height: 44px;
+	object-fit: contain;
+	display: block;
+}
+
+.popup-after-registration__item-link {
+	color: var(--backgrounds-blue, #2c4d90);
+	font: 600 16px/1.25 var(--font-family, inherit);
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.popup-after-registration__item-desc {
+	margin: 6px 0 0;
+	color: #5a6b7d;
+	font: 400 14px/1.5 var(--font-family, inherit);
+}
+
+@media (max-width: 767px) {
+	.popup-after-registration {
+		padding: 40px 18px 28px;
+	}
+
+	.popup-after-registration__list {
+		margin-top: 18px;
+	}
+}
+

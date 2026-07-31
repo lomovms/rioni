@@ -1,19 +1,34 @@
 // Секция «Наши принципы» — светлые карточки в ряд
 .section-principles {
-	padding: 64px 20px 80px;
+	position: relative;
+	z-index: 4;
+	padding: 70px 0 3px;
+	background: var(--backgrounds-white, #fff);
+	&--codex {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
 }
 
 .principles__title {
-	margin: 0 0 12px 0;
-	font: 700 32px/1.2 var(--font-family);
+	margin: 0 0 12px;
+	font: 500 36px/1.2 var(--font-family);
 	color: var(--text-dark-blue);
 }
 
+.section-principles--codex {
+	.principles__title {
+	margin: 0 0 29px;
+}
+}
+
+
 .principles__subtitle {
 	margin: 0 0 40px 0;
-	font: 400 16px/1.5 var(--font-family);
+	font: 400 14px/1.2 var(--font-family);
 	color: var(--text-dark-grey);
-	max-width: 600px;
+	max-width: 320px;
+	margin-bottom: 24px !important;
 }
 
 .principles__cards {
@@ -33,41 +48,35 @@
 .principles__card {
 	position: relative;
 	background: var(--backgrounds-light-blue);
-	border-radius: 20px;
-	padding: 28px 24px;
-	overflow: hidden;
+	border-radius: 40px;
+	padding: 28px 26px 42px;
+	min-height: 206px;
+	overflow: visible;
 	transition: box-shadow 0.2s ease;
 
-	// Круг #6794DA в месте иконки, при ховере увеличивается и перекрывает всю карточку
+	// Фон раскрывается окружностью из центра иконки без масштабирования слоя с текстом.
 	&::before {
 		content: '';
 		position: absolute;
-		left: 24px;
-		top: 28px;
-		width: 48px;
-		height: 48px;
-		border-radius: 50%;
-		background: #6794da;
-		transform: scale(0);
-		transform-origin: 24px 24px; // центр круга = центр иконки
-		transition: transform 0.5s ease-out;
+		inset: 0;
+		border-radius: inherit;
+		background: var(--backgrounds-blue-ocean, #6794da);
+		clip-path: circle(0 at 56px 60px);
+		transition: clip-path 0.5s ease-out;
 		pointer-events: none;
 		z-index: 0;
 	}
 
 	&:hover {
-		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-
 		&::before {
-			// круг увеличивается так, чтобы перекрыть всю карточку
-			transform: scale(15);
+			clip-path: circle(150% at 56px 60px);
 		}
 
 		.principles__card-icon {
 			background-color: var(--backgrounds-white);
 
-			&::after {
-				background-color: var(--backgrounds-blue-ocean);
+			.principles__card-icon-img {
+				filter: brightness(0) saturate(100%) invert(60%) sepia(35%) saturate(861%) hue-rotate(181deg) brightness(91%) contrast(86%);
 			}
 		}
 
@@ -81,37 +90,32 @@
 .principles__card-icon {
 	position: relative;
 	z-index: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	width: 64px;
 	height: 64px;
 	border-radius: 50%;
 	background-color: var(--backgrounds-blue-ocean);
 	margin-bottom: 20px;
 	transition: background-color 0.35s ease;
+}
 
-	// человечки — через mask, чтобы менять цвет при ховере
-	&::after {
-		content: '';
-		position: absolute;
-		inset: 0;
-		background-color: var(--backgrounds-white);
-		transition: background-color 0.35s ease;
-		mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E");
-		mask-size: 24px 24px;
-		mask-position: center;
-		mask-repeat: no-repeat;
-		-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E");
-		-webkit-mask-size: 24px 24px;
-		-webkit-mask-position: center;
-		-webkit-mask-repeat: no-repeat;
-	}
+.principles__card-icon-img {
+	display: block;
+	width: 39px;
+	height: 39px;
+	object-fit: contain;
+	filter: brightness(0) invert(1);
+	transition: filter 0.35s ease;
 }
 
 .principles__card-title {
 	position: relative;
 	z-index: 1;
-	margin: 0 0 12px 0;
-	font: 600 18px/1.3 var(--font-family);
-	color: var(--text-dark-blue);
+	margin: 0 0 11px 0;
+	font: 400 26px/1.3 var(--font-family);
+	color: var(--text-dark-blue, #0f171f);
 	transition: color 0.35s ease;
 }
 
@@ -119,9 +123,10 @@
 	position: relative;
 	z-index: 1;
 	margin: 0;
-	font: 400 14px/1.5 var(--font-family);
+	font: 400 14px/1.3 var(--font-family);
 	color: var(--text-dark-grey);
 	transition: color 0.35s ease;
+	    max-width: 220px;
 }
 
 @media (max-width: 1024px) {
@@ -147,80 +152,110 @@
 	}
 
 	.principles__card-text {
-		font-size: 13px;
+		font-size: 14px;
 	}
 }
 
 @media (max-width: 600px) {
 	.section-principles {
-		padding: 32px 16px 48px;
+		padding: 40px 0 0;
 	}
 
 	.principles__title {
 		font-size: 24px;
-		margin-bottom: 8px;
+		margin-bottom: 20px;
+		line-height: 110%;
+	}
+
+	.section-principles--codex {
+		.principles__title {
+			margin-bottom: 20px;
+		}
 	}
 
 	.principles__subtitle {
-		margin-bottom: 24px;
-		font-size: 14px;
+
+		font-size: 12px;
+		margin-bottom: 20px !important;
+	}
+
+	.principles__cards {
+		gap: 12px;
 	}
 
 	.principles__card {
-		padding: 20px 16px;
-		border-radius: 16px;
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) 64px;
+		grid-template-areas:
+			'title icon'
+			'text text';
+		align-items: center;
+		column-gap: 16px;
+		row-gap: 12px;
+		padding: 29px 29px 49px;
+		border-radius: 40px;
 	}
 
 	.principles__card-icon {
-		width: 40px;
-		height: 40px;
-		margin-bottom: 16px;
+		grid-area: icon;
+		width: 64px;
+		height: 64px;
+		margin-bottom: 0;
 		background-size: 20px 20px;
 	}
 
 	.principles__card-title {
-		font-size: 16px;
-		margin-bottom: 8px;
+		grid-area: title;
+		font-size: 22px;
+		margin-bottom: 0;
+		line-height: 1;
 	}
 
 	.principles__card-text {
+		grid-area: text;
 		font-size: 13px;
 	}
 }
 
 // Секция «Инструменты» — тёмно-зелёные карточки 2×2
 .section-tools {
-	padding: 0 20px 80px;
+	position: relative;
+	z-index: 4;
+	padding: 70px 0 70px;
+	background: var(--backgrounds-white, #fff);
+	border-radius: 0 0 100px 100px;
+	overflow: hidden;
 }
 
 .tools__title {
 	margin: 0 0 12px 0;
-	font: 700 32px/1.2 var(--font-family);
+	font: 500 36px/1.2 var(--font-family);
 	color: var(--text-dark-blue);
 }
 
 .tools__subtitle {
 	margin: 0 0 40px 0;
-	font: 400 16px/1.5 var(--font-family);
+	font: 400 14px/1.2 var(--font-family);
 	color: var(--text-dark-grey);
-	max-width: 600px;
+	max-width: 400px;
+	margin-bottom: 24px !important;
 }
 
 .tools__grid {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	gap: 24px;
+	gap: 20px;
 	@media (max-width: 768px) {
 		grid-template-columns: 1fr;
-		gap: 16px;
+		gap: 10px;
 	}
 }
 
 .tools__card {
 	position: relative;
-	background: #0c342c;
-	border-radius: 20px;
-	padding: 32px 28px;
+	background: var(--text-green, #0c342c);
+	border-radius: 40px;
+	padding: 50px 40px 60px;
 	color: var(--backgrounds-white);
 	transition: box-shadow 0.2s ease;
 	overflow: hidden;
@@ -233,9 +268,9 @@
 		border-radius: inherit;
 		background: linear-gradient(
 			90deg,
-			#0c342c 0%,
-			#4ba67c 50%,
-			#0c342c 100%
+			var(--text-green, #0c342c) 0%,
+			var(--elements-green-extra, #4ba67c) 50%,
+			var(--text-green, #0c342c) 100%
 		);
 		background-size: 200% 100%;
 		background-position: 0 0; // левый край градиента прижат к левому краю карточки
@@ -261,14 +296,14 @@
 }
 
 .tools__card-title {
-	margin: 0 0 12px 0;
-	font: 600 20px/1.3 var(--font-family);
+	margin: 0 0 20px 0;
+	font: 400 26px/1.3 var(--font-family);
 	color: var(--backgrounds-white);
 }
 
 .tools__card-text {
 	margin: 0;
-	font: 400 14px/1.5 var(--font-family);
+	font: 400 18px/1.2 var(--font-family);
 	color: rgba(255, 255, 255, 0.9);
 }
 
@@ -301,7 +336,7 @@
 
 @media (max-width: 600px) {
 	.section-tools {
-		padding: 0 16px 48px;
+		padding: 40px 0 64px;
 	}
 
 	.tools__title {
@@ -310,53 +345,252 @@
 	}
 
 	.tools__subtitle {
-		margin-bottom: 24px;
-		font-size: 14px;
+		margin-bottom: 20px;
+		font-size: 12px;
 	}
 
 	.tools__card {
-		padding: 24px 20px;
-		border-radius: 16px;
+		padding: 30px;
+		border-radius: 40px;
 	}
 
 	.tools__card-title {
-		font-size: 17px;
-		margin-bottom: 8px;
+		font-size: 22px;
+		margin-bottom: 20px;
 	}
 
 	.tools__card-text {
-		font-size: 13px;
+		font-size: 14px;
+	}
+}
+
+// Цитата после «Инструменты»: фоновый параллакс-экран под верхними секциями.
+// Сам экран управляется через JS в режимах top / fixed / bottom, чтобы не конфликтовать с футером.
+.section-about-quote {
+	--about-quote-peek: 220px;
+	--about-quote-vh: 100vh;
+	--about-quote-vh-negative: -100vh;
+	position: relative;
+	z-index: 3;
+	isolation: isolate;
+	margin-top: calc(var(--about-quote-vh-negative) + var(--about-quote-peek));
+	background: var(--text-dark-blue, #0f171f);
+	overflow: hidden;
+}
+
+.section-about-quote__track {
+	position: relative;
+	min-height: calc(var(--about-quote-vh) + var(--about-quote-vh));
+	@media (min-width: 992px) {
+		min-height: calc(var(--about-quote-vh) + 626px);
+	}
+}
+
+.section-about-quote__sticky {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: var(--about-quote-vh);
+	display: flex;
+	align-items: stretch;
+	justify-content: center;
+	box-sizing: border-box;
+	padding: 0;
+	background: var(--text-dark-blue, #0f171f);
+	z-index: 1;
+	transform: translateZ(0);
+	backface-visibility: hidden;
+}
+
+.section-about-quote__sticky.is-fixed {
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+.section-about-quote__sticky.is-bottom {
+	top: auto;
+	bottom: 0;
+}
+
+.section-about-quote__inner {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	width: 100%;
+	max-width: 1180px;
+	height: var(--about-quote-vh);
+	justify-content: center;
+	gap: 56px;
+	transform: translateY(72px);
+}
+
+.section-about-quote__copy {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	padding: 0 24px;
+}
+
+.section-about-quote__text {
+	padding-bottom: 14px;
+}
+
+.section-about-quote__title {
+	margin: 0 0 3px !important;
+	font: 700 clamp(44px, 7vw, 100px) / 0.95 var(--font-family);
+	letter-spacing: -0.04em;
+	background: none;
+	-webkit-text-fill-color: var(--backgrounds-white, #fff);
+	color: var(--backgrounds-white, #fff);
+}
+
+.section-about-quote__text {
+	margin: 0;
+	font: 700 70px / 0.92 var(--font-family);
+	background: linear-gradient(176deg, var(--backgrounds-white, #fff) 0%, #7fa8eb 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	color: transparent;
+	max-width: 1080px;
+}
+
+.section-about-quote__accent {
+	color: var(--backgrounds-grey-blue, #cad9f6);
+}
+
+.section-about-quote__logo {
+	position: relative;
+	z-index: 1;
+	display: block;
+	width: clamp(180px, 18vw, 260px);
+	flex-shrink: 0;
+}
+
+.section-about-quote__logo-img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+@media (max-width: 600px) {
+	.section-about-quote {
+		--about-quote-peek: 120px;
+	}
+
+	.section-about-quote__title,
+	.section-about-quote__text {
+		padding-bottom: 6px;
+	}
+
+	.section-about-quote__sticky {
+		padding: 0;
+	}
+
+	.section-about-quote__inner {
+		height: var(--about-quote-vh);
+		max-width: 360px;
+		gap: 36px;
+		transform: translateY(40px);
+	}
+
+	.section-about-quote__copy {
+		padding: 0;
+	}
+
+	.section-about-quote__title {
+		margin-bottom: 14px;
+		font-size: 46px;
+		line-height: 0.94;
+		background: linear-gradient(176deg, var(--backgrounds-white, #fff) 0%, #7fa8eb 100%);
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		color: transparent;
+	}
+
+	.section-about-quote__text {
+		font-size: 32px;
+		line-height: 0.96;
+		background: linear-gradient(176deg, var(--backgrounds-white, #fff) 0%, #7fa8eb 100%);
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		color: transparent;
+	}
+
+	.section-about-quote__logo {
+		width: 99px;
 	}
 }
 
 // Секция «Новости» — главная карточка слева, две справа, кнопка «Больше новостей» (текст + стрелка один элемент)
 .section-news {
+	position: relative;
+	z-index: 4;
+	isolation: isolate;
+	transform: translateZ(0);
 	padding: 64px 0 0;
-	background: #fff;
+	background: var(--backgrounds-white, #fff);
+	border-radius: 100px 100px 0 0;
+	overflow: hidden;
+	.container {
+		padding: 0;
+	}
+}
+
+@media (max-width: 768px) {
+	.section-tools {
+		border-radius: 0 0 60px 60px;
+	}
+
+	.section-news {
+		border-radius: 60px 60px 0 0;
+	}
+
+	.section-news .container {
+		padding: 0;
+	}
 }
 
 .news__title {
-	margin: 0 0 32px 0;
-	font: 700 32px/1.2 var(--font-family);
-	color: var(--text-dark-blue);
+	    margin: 0 0 28px;
+    font: 500 36px / 1.2 var(--font-family);
+    color: var(--text-dark-blue);
 }
 
 .news__grid {
 	display: grid;
-	grid-template-columns: 1fr 380px;
+	grid-template-columns: 482px minmax(0, 1fr);
 	gap: 24px;
 	align-items: stretch;
 	@media (max-width: 1024px) {
 		grid-template-columns: 1fr;
-		gap: 20px;
+		gap: 12px;
 	}
 }
 
+
 .news__main {
-	background: #fff;
-	border-radius: 20px;
+	width: 100%;
+	max-width: 482px;
+	background: var(--backgrounds-light-blue);
+	border-radius: 40px;
 	overflow: hidden;
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+	transition: background 0.45s ease;
+}
+
+.news__main:hover {
+	background: var(--backgrounds-grey-blue, #cad9f6);
 }
 
 .news__main-link {
@@ -370,44 +604,75 @@
 .news__main-img-wrap {
 	position: relative;
 	width: 100%;
-	padding-bottom: 56%;
+	height: 296px;
 	overflow: hidden;
-	background: var(--backgrounds-light-blue);
+	background: #dfe9f8;
 }
 
 .news__main-img {
-	position: absolute;
-	left: 0;
-	top: 0;
+	display: block;
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
 }
 
 .news__main-heading {
-	margin: 20px 24px 8px;
-	font: 700 20px/1.3 var(--font-family);
+	margin: 0 0 22px;
+	font: 400 26px/1.2 var(--font-family);
 	color: var(--text-dark-blue);
 }
 
 .news__main-text {
-	margin: 0 24px 24px;
-	font: 400 15px/1.5 var(--font-family);
+	margin: 0;
+	font: 400 18px/1.2 var(--font-family);
 	color: var(--text-dark-grey);
-	flex: 1;
+	// max-width: 368px;
+}
+
+.news__main-link {
+	.news__main-heading,
+	.news__main-text {
+		padding-left: 40px;
+		padding-right: 40px;
+	}
+
+	.news__main-text {
+		padding-bottom: 28px;
+	}
+}
+
+.news__main-link::after {
+	content: '';
+	display: block;
+	min-height: 0;
+}
+
+.news__main-link > .news__main-heading {
+	padding-top: 26px;
+}
+
+.news__main-link > .news__main-text {
+	box-sizing: border-box;
 }
 
 .news__side {
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
+	height: 100%;
+
 }
 
 .news__card {
 	background: var(--backgrounds-light-blue);
-	border-radius: 20px;
-	padding: 24px;
-	flex: 1;
+	border-radius: 40px;
+	padding: 40px;
+	flex: 1 1 auto;
+	transition: background 0.45s ease;
+}
+
+.news__card:hover {
+	background: var(--backgrounds-grey-blue, #cad9f6);
 }
 
 .news__card-link {
@@ -418,41 +683,84 @@
 }
 
 .news__card-heading {
-	margin: 0 0 8px 0;
-	font: 700 18px/1.3 var(--font-family);
+	margin: 0 0 18px;
+	font: 400 26px/1.15 var(--font-family);
 	color: var(--text-dark-blue);
 }
 
 .news__card-text {
 	margin: 0;
-	font: 400 14px/1.5 var(--font-family);
+	font: 400 18px/1.45 var(--font-family);
 	color: var(--text-dark-grey);
+	max-width: unset;
 }
 
 .news__more {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 70px;
+	gap: 20px;
+	width: 100%;
+	text-decoration: none;
+	color: inherit;
+}
+
+.news__more-copy {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	min-height: 227px;
+	padding: 32px;
+	background: var(--backgrounds-light-blue);
+	border-radius: 40px;
+	transition: background 0.45s ease;
+}
+
+.news__more:hover .news__more-copy {
+	background: var(--backgrounds-grey-blue, #cad9f6);
+}
+
+.news__more-title {
+	margin: 0 0 18px;
+	font: 400 26px/1.2 var(--font-family);
+	color: var(--text-dark-blue);
+}
+
+.news__more-text {
+	font: 400 18px/1.2 var(--font-family);
+	color: var(--text-dark-grey);
+	max-width: 526px;
+}
+
+.news__more-icon {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
-	width: 100%;
-	min-height: 56px;
-	padding: 0 24px;
+	justify-content: center;
+	min-height: 227px;
+	background: var(--backgrounds-light-blue);
+	border-radius: 30px;
 	text-decoration: none;
-	border-radius: 20px;
-	// стрелка справа — часть одной кнопки
-	.button__icon {
-		position: static;
-		right: auto;
-		margin-left: 12px;
-	}
+	transition: background 0.45s ease, transform 0.45s ease;
+}
+
+.news__more:hover .news__more-icon {
+	background: var(--backgrounds-white, #fff);
+	transform: translateX(10px);
+}
+
+.news__more-icon svg {
+	display: block;
 }
 
 // Бегущая строка внизу: тёмная полоса, белый текст, движение вперёд → назад (не бесконечная)
 .news-ticker {
-	width: 100%;
-	margin-top: 64px;
+	width: 100vw;
+	margin-left: calc(50% - 50vw);
+	margin-right: calc(50% - 50vw);
+
 	overflow: hidden;
-	background: #0c342c;
-	padding: 16px 0;
+	background: var(--text-green, #0c342c);
+	padding: 35px 0;
+	margin-top: 64px;
 }
 
 .news-ticker__wrap {
@@ -462,48 +770,112 @@
 .news-ticker__text {
 	display: inline-block;
 	white-space: nowrap;
-	font: 600 16px/1.4 var(--font-family);
-	color: #fff;
+	font: 400 26px/1.4 var(--font-family);
+	color: var(--backgrounds-white, #fff);
 	padding: 0 24px;
 	will-change: transform;
 }
 
 @media (max-width: 768px) {
 	.section-news {
-		padding: 48px 16px 0;
+		padding: 40px 16px 0 !important;
 	}
 
 	.news__title {
-		font-size: 26px;
+		font-size: 24px;
 		margin-bottom: 24px;
 	}
 
 	.news__main-heading {
-		margin: 16px 20px 8px;
-		font-size: 18px;
+		margin-bottom: 12px;
+		font-size: 22px;
 	}
 
 	.news__main-text {
-		margin: 0 20px 20px;
-		font-size: 14px;
+		font-size: 12px;
+	}
+
+	.news__main {
+		max-width: none;
+		border-radius: 30px;
+	}
+
+	.news__main-img-wrap {
+		height: 240px;
+	}
+
+	.news__main-link {
+		.news__main-heading,
+		.news__main-text {
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+
+		.news__main-text {
+			padding-bottom: 16px;
+		}
+	}
+
+	.news__main-link > .news__main-heading {
+		padding-top: 16px;
+	}
+
+	.news__main-link > .news__main-text {
+		min-height: auto;
 	}
 
 	.news__card {
 		padding: 20px;
+		border-radius: 30px;
+	}
+
+	.news__card-heading,
+	.news__more-title {
+		margin-bottom: 12px;
+		font-size: 22px;
+	}
+
+	.news__card-text,
+	.news__more-text {
+		font-size: 12px;
+	}
+	.news__side {
+		    gap: 12px;
 	}
 
 	.news__more {
-		min-height: 48px;
-		padding: 0 20px;
-		border-radius: 16px;
+		grid-template-columns: minmax(0, 1fr) 56px;
+		gap: 12px;
+	}
+
+	.news__more-copy {
+		height: 156px;
+		min-height: 156px;
+		padding: 20px 20px 30px;
+		border-radius: 30px;
+
+	}
+
+	.news__more-icon {
+		height: 156px;
+		min-height: 156px;
+		border-radius: 30px;
+	}
+
+	.news__more-icon svg {
+		width: 24px;
+		height: 22px;
 	}
 
 	.news-ticker {
 		margin-top: 48px;
-		padding: 12px 0;
+		padding: 24px 0 26px;
 	}
 
 	.news-ticker__text {
-		font-size: 14px;
+		display: block;
+		width: 100%;
+		font-size: 22px;
+		text-align: center;
 	}
 }

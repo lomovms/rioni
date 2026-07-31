@@ -1,0 +1,244 @@
+extends template/layout
+
+block variables
+	- var title = 'Обучение — Rioni';
+	- var menuHeader = [
+	-   { title: 'О нас', href: 'about.html' },
+	-   { title: 'Услуги', href: 'services.html' },
+	-   { title: 'Инструменты', href: 'products.html' },
+	-   { title: 'Тарифы', href: 'tariffs.html' },
+	-   { title: 'Обучение', href: '#' },
+	-   { title: 'Рынок', href: 'market.html' },
+	-   { title: 'Документы', href: 'documents.html' }
+	- ];
+	- var showTopbar = false
+	- var headerCta = { text: 'Открыть счет', href: '#registration-form' };
+	- var recommendedBooks = [
+	-   { image: 'book1.jpg', title: "Everything You've Heard About Investing Is Wrong!", author: 'William H. Gross' },
+	-   { image: 'book2.jpg', title: 'The Intelligent Investor', author: 'Benjamin Graham' },
+	-   { image: 'book3.jpg', title: 'Security Analysis', author: 'Benjamin Graham & David Dodd' },
+	-   { image: 'book4.jpg', title: 'One Up on Wall Street', author: 'Peter Lynch' },
+	-   { image: 'book4.jpg', title: 'One Up on Wall Street', author: 'Peter Lynch' }
+	- ];
+
+block content
+	section.section-training-hero
+		.container
+			.training-hero
+				h1.training-hero__title Учитесь инвестировать просто
+				p.training-hero__subtitle Повышайте уровень знаний и закрепляйте результаты тестированием, отслеживайте прогресс и растите
+				form.training-hero__search(action="#" method="get" role="search")
+					label.training-hero__search-label(for="learn-search")
+					input.training-hero__search-input#learn-search(type="search" name="q" placeholder="Искать по запросу" aria-label="Поиск по обучению")
+					button.training-hero__search-btn(type="submit" aria-label="Найти")
+						span.training-hero__search-icon
+
+	section.section-learning-profile
+		.container
+			.learning-profile
+				.learning-profile__top
+					.learning-profile__avatar
+						img(src="./assets/images/required/avatar.png" alt="Аватар пользователя")
+					.learning-profile__info
+						.learning-profile__head
+							.learning-profile__identity
+								h2.learning-profile__name Никнейм
+								p.learning-profile__status Статус: Новичок
+							a.button.button--blue.learning-profile__edit(href="#")
+								span.button__text Перейти к торговле
+								span.button__icon
+									i.icon.icon-arrow-light
+						.learning-profile__progress
+							.learning-profile__progress-meta
+								span.learning-profile__progress-title
+								span.learning-profile__progress-value 27/100 уроков
+							.learning-profile__progress-track
+								.learning-profile__progress-fill(style="width: 27%")
+						.learning-profile__actions
+							a.learning-profile__action.learning-profile__action--continue(href="#")
+								span.learning-profile__action-icon
+									svg(width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg")
+										path(d="M15.75 8.36249C16.4167 8.74739 16.4167 9.70964 15.75 10.0945L1.5 18.3218C0.833332 18.7067 0 18.2256 0 17.4558V1.00127C0 0.231473 0.833334 -0.249652 1.5 0.135249L15.75 8.36249Z" fill="#4BA67C")
+								span.learning-profile__action-text Продолжить обучение
+							a.learning-profile__action(href="#")
+								span.learning-profile__action-icon
+									img(src="./assets/images/required/calendar.png" alt="" aria-hidden="true")
+								span.learning-profile__action-text Мой календарь
+							a.learning-profile__action(href="#")
+								span.learning-profile__action-icon
+									svg(width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg")
+										path(d="M10.1931 0.923643C10.7055 -0.308296 12.4507 -0.308296 12.9631 0.923643L15.0616 5.96897C15.2776 6.48833 15.766 6.84318 16.3267 6.88813L21.7735 7.3248C23.1035 7.43143 23.6428 9.09119 22.6295 9.95919L18.4796 13.5141C18.0524 13.88 17.8658 14.4541 17.9963 15.0013L19.2642 20.3165C19.5738 21.6143 18.1619 22.6401 17.0233 21.9446L12.36 19.0963C11.88 18.8031 11.2763 18.8031 10.7962 19.0963L6.13297 21.9446C4.99432 22.6401 3.58245 21.6143 3.89203 20.3165L5.1599 15.0013C5.29041 14.4541 5.10385 13.88 4.67667 13.5141L0.526739 9.95919C-0.486567 9.09119 0.0527227 7.43143 1.3827 7.3248L6.82956 6.88813C7.39025 6.84318 7.87866 6.48833 8.09467 5.96897L10.1931 0.923643Z" fill="#6794DA")
+								span.learning-profile__action-text Мои курсы
+
+	section.section-learning-courses(data-learning-courses)
+		.container
+			.learning-tabs
+				.learning-tabs__controls(role="tablist" aria-label="Фильтры обучения")
+					button.learning-tabs__control.learning-tabs__control--active(type="button" data-learning-tab="all" aria-selected="true") Базовый минимум
+					button.learning-tabs__control(type="button" data-learning-tab="active" aria-selected="false") Роскошный максимум
+					button.learning-tabs__control(type="button" data-learning-tab="completed" aria-selected="false") Название раздела
+					button.learning-tabs__control(type="button") Название раздела
+
+				.learning-tabs__panel.learning-tabs__panel--active(data-learning-panel="all")
+					.learning-courses__heading Название раздела
+					.learning-courses__grid
+						a.learning-course-card.learning-course-card--completed(href="#")
+							.learning-course-card__media
+								img(src="./assets/images/required/curse1.png" alt="Курс 1")
+								.learning-course-card__completed-badge
+									img(src="./assets/images/required/chek.png" alt="" aria-hidden="true")
+									span 67 баллов
+							.learning-course-card__body
+								h3.learning-course-card__title Название курса
+								p.learning-course-card__text Тут написать подзаголовок об истории успеха или провала на инвестиционном рынке
+						a.learning-course-card.learning-course-card--completed(href="#")
+							.learning-course-card__media
+								img(src="./assets/images/required/curse2.png" alt="Курс 2")
+								.learning-course-card__completed-badge
+									img(src="./assets/images/required/chek.png" alt="" aria-hidden="true")
+									span 80 баллов
+							.learning-course-card__body
+								h3.learning-course-card__title Название курса
+								p.learning-course-card__text Тут написать подзаголовок об истории успеха или провала на инвестиционном рынке
+						a.learning-course-card(href="#")
+							.learning-course-card__media
+								img(src="./assets/images/required/curse3.png" alt="Курс 3")
+							.learning-course-card__body
+								h3.learning-course-card__title Название курса
+								p.learning-course-card__text Тут написать подзаголовок об истории успеха или провала на инвестиционном рынке
+						a.learning-course-card(href="#")
+							.learning-course-card__media
+								img(src="./assets/images/required/curse4.png" alt="Курс 4")
+							.learning-course-card__body
+								h3.learning-course-card__title Название курса
+								p.learning-course-card__text Тут написать подзаголовок об истории успеха или провала на инвестиционном рынке
+						a.learning-course-card.learning-course-card--extra(href="#")
+							.learning-course-card__media
+								img(src="./assets/images/required/curse1.png" alt="Курс 5")
+							.learning-course-card__body
+								h3.learning-course-card__title Макроэкономика для инвестора
+								p.learning-course-card__text Ключевые индикаторы и их влияние на рынки.
+						a.learning-course-card.learning-course-card--extra(href="#")
+							.learning-course-card__media
+								img(src="./assets/images/required/curse2.png" alt="Курс 6")
+							.learning-course-card__body
+								h3.learning-course-card__title Торговые сценарии
+								p.learning-course-card__text Сценарный анализ и адаптация к рыночной волатильности.
+						a.learning-course-card.learning-course-card--extra(href="#")
+							.learning-course-card__media
+								img(src="./assets/images/required/curse3.png" alt="Курс 7")
+							.learning-course-card__body
+								h3.learning-course-card__title Психология трейдинга
+								p.learning-course-card__text Дисциплина, риск-менеджмент и работа с ошибками.
+						a.learning-course-card.learning-course-card--extra(href="#")
+							.learning-course-card__media
+								img(src="./assets/images/required/curse4.png" alt="Курс 8")
+							.learning-course-card__body
+								h3.learning-course-card__title Финансовое планирование
+								p.learning-course-card__text Цели, горизонты и долгосрочная стратегия капитала.
+					.learning-courses__more
+						button.learning-courses__more-btn(type="button" data-learning-show-all)
+							span.learning-courses__more-arrow(aria-hidden="true")
+								svg(width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg")
+									path(d="M0.75 0.75L5.25 4.75L9.75 0.75" stroke="#2A2A2A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round")
+							span.learning-courses__more-text Показать все курсы
+
+				.learning-tabs__panel(data-learning-panel="active")
+					.learning-courses__heading Раздел курсов
+					p.learning-tabs__empty Здесь будут активные курсы пользователя.
+
+				.learning-tabs__panel(data-learning-panel="completed")
+					.learning-courses__heading Раздел курсов
+					p.learning-tabs__empty Здесь будут пройденные курсы пользователя.
+
+	section.section-learning-test-banner(data-learning-test-banner)
+		.container
+			.learning-test-banner
+				button.learning-test-banner__close(type="button" data-learning-test-banner-close aria-label="Закрыть") ×
+				.learning-test-banner__content
+					h2.learning-test-banner__title Пройдите тестирование
+					p.learning-test-banner__text Чтобы открыть доступ к бесплатному вебинару с экспертом, вам необходимо пройти тестирование по просмотру уровней курса «Название курса»
+					a.learning-test-banner__btn.button(href="#")
+						span.button__text Перейти к тестированию
+						span.button__icon
+							i.icon.icon-arrow-right
+
+	section.section-learning-schedule
+		.container
+			.learning-schedule
+				.learning-schedule__tabs
+					button.learning-schedule__tab.learning-schedule__tab--active(type="button") Расписание курсов
+					button.learning-schedule__tab(type="button") Расписание стримов
+					button.learning-schedule__tab(type="button") Расписание встреч с экспертами
+				.learning-schedule__header
+					.learning-schedule__left
+						button.learning-schedule__period(type="button") На неделю
+						button.learning-schedule__calendar-btn(type="button" aria-label="Календарь")
+							img(src="./assets/images/required/calendar.png" alt="" aria-hidden="true")
+						button.learning-schedule__nav(type="button" aria-label="Назад") ‹
+						button.learning-schedule__nav(type="button" aria-label="Вперед") ›
+						p.learning-schedule__range 4 августа – 10 августа 2025г
+					.learning-schedule__timezone
+						span.learning-schedule__timezone-icon ◷
+						span 10:53 (UTS+7)
+				.learning-schedule__datepicker(data-learning-schedule-datepicker)
+					input#learning-schedule-datepicker.learning-schedule__datepicker-input(type="text" aria-label="Выберите дату")
+				.learning-schedule__grid
+					article.learning-schedule__day
+						h3.learning-schedule__day-title Пн 4
+						span.learning-schedule__day-star.learning-schedule__day-star--filled(aria-hidden="true")
+							svg(width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg")
+								path(d="M7.36061 0.307229C7.5314 -0.103417 8.11313 -0.103417 8.28393 0.30723L10.0855 4.63877C10.1575 4.81188 10.3203 4.93017 10.5072 4.94515L15.1835 5.32005C15.6268 5.35559 15.8066 5.90884 15.4688 6.19818L11.906 9.25011C11.7636 9.37208 11.7014 9.56347 11.7449 9.74585L12.8334 14.3091C12.9366 14.7417 12.466 15.0836 12.0864 14.8518L8.08289 12.4065C7.92288 12.3087 7.72165 12.3087 7.56164 12.4065L3.55811 14.8518C3.17856 15.0836 2.70793 14.7417 2.81113 14.3091L3.89963 9.74585C3.94313 9.56347 3.88094 9.37208 3.73855 9.25011L0.175734 6.19817C-0.162034 5.90884 0.0177295 5.35559 0.461057 5.32005L5.13731 4.94515C5.32421 4.93017 5.48701 4.81188 5.55902 4.63877L7.36061 0.307229Z" fill="#6794DA")
+						p.learning-schedule__day-text 13:00 (UTS+7)
+						p.learning-schedule__day-text Основы торговли
+					article.learning-schedule__day
+						h3.learning-schedule__day-title Вт 5
+						span.learning-schedule__day-star(aria-hidden="true")
+							svg(width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg")
+								path(d="M9.62402 4.83105C9.76803 5.17698 10.0933 5.41324 10.4668 5.44336L15.1436 5.81836L11.5811 8.87012C11.2963 9.11407 11.1718 9.49755 11.2588 9.8623L12.3467 14.4248L8.34375 11.9795C8.02373 11.784 7.6208 11.784 7.30078 11.9795L3.29785 14.4248L4.38574 9.8623C4.47275 9.49755 4.34826 9.11407 4.06348 8.87012L0.500977 5.81836L5.17773 5.44336C5.55122 5.41324 5.8765 5.17698 6.02051 4.83105L7.82227 0.499023L9.62402 4.83105Z" stroke="#6794DA")
+					article.learning-schedule__day
+						h3.learning-schedule__day-title Ср 6
+						span.learning-schedule__day-star(aria-hidden="true")
+							svg(width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg")
+								path(d="M9.62402 4.83105C9.76803 5.17698 10.0933 5.41324 10.4668 5.44336L15.1436 5.81836L11.5811 8.87012C11.2963 9.11407 11.1718 9.49755 11.2588 9.8623L12.3467 14.4248L8.34375 11.9795C8.02373 11.784 7.6208 11.784 7.30078 11.9795L3.29785 14.4248L4.38574 9.8623C4.47275 9.49755 4.34826 9.11407 4.06348 8.87012L0.500977 5.81836L5.17773 5.44336C5.55122 5.41324 5.8765 5.17698 6.02051 4.83105L7.82227 0.499023L9.62402 4.83105Z" stroke="#6794DA")
+					article.learning-schedule__day
+						h3.learning-schedule__day-title Чт 7
+						span.learning-schedule__day-star(aria-hidden="true")
+							svg(width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg")
+								path(d="M9.62402 4.83105C9.76803 5.17698 10.0933 5.41324 10.4668 5.44336L15.1436 5.81836L11.5811 8.87012C11.2963 9.11407 11.1718 9.49755 11.2588 9.8623L12.3467 14.4248L8.34375 11.9795C8.02373 11.784 7.6208 11.784 7.30078 11.9795L3.29785 14.4248L4.38574 9.8623C4.47275 9.49755 4.34826 9.11407 4.06348 8.87012L0.500977 5.81836L5.17773 5.44336C5.55122 5.41324 5.8765 5.17698 6.02051 4.83105L7.82227 0.499023L9.62402 4.83105Z" stroke="#6794DA")
+					article.learning-schedule__day
+						h3.learning-schedule__day-title Пт 8
+						span.learning-schedule__day-star.learning-schedule__day-star--filled(aria-hidden="true")
+							svg(width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg")
+								path(d="M7.36061 0.307229C7.5314 -0.103417 8.11313 -0.103417 8.28393 0.30723L10.0855 4.63877C10.1575 4.81188 10.3203 4.93017 10.5072 4.94515L15.1835 5.32005C15.6268 5.35559 15.8066 5.90884 15.4688 6.19818L11.906 9.25011C11.7636 9.37208 11.7014 9.56347 11.7449 9.74585L12.8334 14.3091C12.9366 14.7417 12.466 15.0836 12.0864 14.8518L8.08289 12.4065C7.92288 12.3087 7.72165 12.3087 7.56164 12.4065L3.55811 14.8518C3.17856 15.0836 2.70793 14.7417 2.81113 14.3091L3.89963 9.74585C3.94313 9.56347 3.88094 9.37208 3.73855 9.25011L0.175734 6.19817C-0.162034 5.90884 0.0177295 5.35559 0.461057 5.32005L5.13731 4.94515C5.32421 4.93017 5.48701 4.81188 5.55902 4.63877L7.36061 0.307229Z" fill="#6794DA")
+						p.learning-schedule__day-text 13:00 (UTS+7)
+						p.learning-schedule__day-text Основы торговли
+					article.learning-schedule__day
+						h3.learning-schedule__day-title Сб 9
+						span.learning-schedule__day-star(aria-hidden="true")
+							svg(width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg")
+								path(d="M9.62402 4.83105C9.76803 5.17698 10.0933 5.41324 10.4668 5.44336L15.1436 5.81836L11.5811 8.87012C11.2963 9.11407 11.1718 9.49755 11.2588 9.8623L12.3467 14.4248L8.34375 11.9795C8.02373 11.784 7.6208 11.784 7.30078 11.9795L3.29785 14.4248L4.38574 9.8623C4.47275 9.49755 4.34826 9.11407 4.06348 8.87012L0.500977 5.81836L5.17773 5.44336C5.55122 5.41324 5.8765 5.17698 6.02051 4.83105L7.82227 0.499023L9.62402 4.83105Z" stroke="#6794DA")
+					article.learning-schedule__day
+						h3.learning-schedule__day-title Вс 10
+						span.learning-schedule__day-star.learning-schedule__day-star--filled(aria-hidden="true")
+							svg(width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg")
+								path(d="M7.36061 0.307229C7.5314 -0.103417 8.11313 -0.103417 8.28393 0.30723L10.0855 4.63877C10.1575 4.81188 10.3203 4.93017 10.5072 4.94515L15.1835 5.32005C15.6268 5.35559 15.8066 5.90884 15.4688 6.19818L11.906 9.25011C11.7636 9.37208 11.7014 9.56347 11.7449 9.74585L12.8334 14.3091C12.9366 14.7417 12.466 15.0836 12.0864 14.8518L8.08289 12.4065C7.92288 12.3087 7.72165 12.3087 7.56164 12.4065L3.55811 14.8518C3.17856 15.0836 2.70793 14.7417 2.81113 14.3091L3.89963 9.74585C3.94313 9.56347 3.88094 9.37208 3.73855 9.25011L0.175734 6.19817C-0.162034 5.90884 0.0177295 5.35559 0.461057 5.32005L5.13731 4.94515C5.32421 4.93017 5.48701 4.81188 5.55902 4.63877L7.36061 0.307229Z" fill="#6794DA")
+						p.learning-schedule__day-text 13:00 (UTS+7)
+						p.learning-schedule__day-text Основы торговли
+
+	section.section-learning-books
+		.container
+			.learning-books
+				h2.learning-books__title Список рекомендуемой литературы
+				.learning-books__slider-wrap
+					button.learning-books__prev(type="button" data-learning-books-prev aria-label="Показать предыдущие книги" hidden)
+					.learning-books__grid(data-learning-books-grid)
+						each book in recommendedBooks
+							article.learning-book-card
+								.learning-book-card__image
+									img(src=`./assets/images/required/${book.image}` alt=book.title)
+								h3.learning-book-card__title= book.title
+								p.learning-book-card__author= book.author
+					button.learning-books__next(type="button" data-learning-books-next aria-label="Показать следующие книги" hidden)
+
+	+sectionForm({ prefix: 'training' })

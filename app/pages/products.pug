@@ -1,0 +1,159 @@
+extends template/layout
+
+block variables
+	- var title = 'Услуги / Инструменты / Продукты — Rioni';
+	- var menuHeader = [
+	-   { title: 'О нас', href: 'about.html' },
+	-   { title: 'Услуги', href: 'services.html' },
+	-   { title: 'Инструменты', href: 'products.html' },
+	-   { title: 'Тарифы', href: 'tariffs.html' },
+	-   { title: 'Обучение', href: '#' },
+	-   { title: 'Рынок', href: 'market.html' },
+	-   { title: 'Документы', href: 'documents.html' }
+	- ];
+	- var showTopbar = false;
+	- var headerCta = { text: 'Зарегистрироваться', href: '#registration-form' };
+	- var headerMod = 'products';
+	- var recommendedBooks = [
+	-   { image: 'book1.jpg', title: "Everything You've Heard About Investing Is Wrong!", author: 'William H. Gross' },
+	-   { image: 'book2.jpg', title: 'The Intelligent Investor', author: 'Benjamin Graham' },
+	-   { image: 'book3.jpg', title: 'Security Analysis', author: 'Benjamin Graham & David Dodd' },
+	-   { image: 'book4.jpg', title: 'One Up on Wall Street', author: 'Peter Lynch' },
+	-   { image: 'book4.jpg', title: 'One Up on Wall Street', author: 'Peter Lynch' }
+	- ];
+
+block content
+	// Hero — слайдер в контейнере: картинка с маской, текст и кнопки; прогресс по горизонтали
+	section.hero.hero--products
+		.container.hero-products__container
+			.hero-products__slider.swiper(data-hero-products-slider)
+				.swiper-wrapper
+					.swiper-slide
+						.hero-products__slide-inner
+							.hero-products__media-full
+								img(src="./assets/images/required/product.jpg" alt="")
+							.hero-products__content
+								.hero-products__content-inner
+									h1.hero-products__title Рынок акций и ETF
+									p.hero-products__text Удобный доступ к российскому фондовому рынку, аналитическая поддержка и инструменты для формирования портфеля.
+									a.hero-products__btn.button.button--blue(href="market.html")
+										span.button__text Читать подробно
+										span.button__icon
+											i.icon.icon-arrow-light
+					.swiper-slide
+						.hero-products__slide-inner
+							.hero-products__media-full
+								img(src="./assets/images/required/product.jpg" alt="")
+							.hero-products__content
+								.hero-products__content-inner
+									h1.hero-products__title Второй слайд
+									p.hero-products__text Описание второго слайда с кнопкой и картинкой.
+									a.hero-products__btn.button.button--blue(href="platform.html")
+										span.button__text Читать подробно
+										span.button__icon
+											i.icon.icon-arrow-light
+					.swiper-slide
+						.hero-products__slide-inner
+							.hero-products__media-full
+								img(src="./assets/images/required/product.jpg" alt="")
+							.hero-products__content
+								.hero-products__content-inner
+									h1.hero-products__title Третий слайд
+									p.hero-products__text Текст и кнопка для третьего слайда.
+									a.hero-products__btn.button.button--blue(href="tariffs.html")
+										span.button__text Читать подробно
+										span.button__icon
+											i.icon.icon-arrow-light
+					.swiper-slide
+						.hero-products__slide-inner
+							.hero-products__media-full
+								img(src="./assets/images/required/product.jpg" alt="")
+							.hero-products__content
+								.hero-products__content-inner
+									h1.hero-products__title Четвёртый слайд
+									p.hero-products__text Четвёртый слайд героя.
+									a.hero-products__btn.button.button--blue(href="documents.html")
+										span.button__text Читать подробно
+										span.button__icon
+											i.icon.icon-arrow-light
+			.hero-products__progress(data-hero-products-progress)
+				button.hero-products__bar(type="button" aria-label="Слайд 1")
+					span.hero-products__bar-fill
+				button.hero-products__bar(type="button" aria-label="Слайд 2")
+					span.hero-products__bar-fill
+				button.hero-products__bar(type="button" aria-label="Слайд 3")
+					span.hero-products__bar-fill
+				button.hero-products__bar(type="button" aria-label="Слайд 4")
+					span.hero-products__bar-fill
+
+	section.section-learning-books.section-learning-books--products
+		.container
+			.learning-books.learning-books--products
+				h2.learning-books__title Список рекомендуемой литературы
+				.learning-books__slider-wrap
+					button.learning-books__prev(type="button" data-learning-books-prev aria-label="Показать предыдущие книги" hidden)
+					.learning-books__grid(data-learning-books-grid)
+						each book in recommendedBooks
+							article.learning-book-card
+								.learning-book-card__image
+									img(src=`./assets/images/required/${book.image}` alt=book.title)
+								h3.learning-book-card__title= book.title
+								p.learning-book-card__author= book.author
+					button.learning-books__next(type="button" data-learning-books-next aria-label="Показать следующие книги" hidden)
+
+	// Синий блок: Инструменты (слайдер) + две карточки
+	section.section-instruments
+		.container
+			h2.section-instruments__title Широкий выбор инструментов при открытии брокерского счёта
+			.instruments__slider-wrap
+				button.instruments__arrow.instruments__arrow--prev(type="button" aria-label="Назад" data-instruments-prev)
+				.instruments__slider.swiper(data-instruments-slider)
+					.swiper-wrapper
+						.swiper-slide
+							.instrument-card
+								h3.instrument-card__title Название инструмента
+								p.instrument-card__text Удобная платформа с доступом к основным мировым биржам.
+								.instrument-card__icon(aria-hidden="true")
+									.instrument-card__icon-visual
+						.swiper-slide
+							.instrument-card
+								h3.instrument-card__title Название инструмента
+								p.instrument-card__text Опыт и навыки команды наших специалистов помогут вам освоить управление финансами.
+								.instrument-card__icon(aria-hidden="true")
+									.instrument-card__icon-visual
+						.swiper-slide
+							.instrument-card
+								h3.instrument-card__title Название инструмента
+								p.instrument-card__text Удобная платформа с доступом к основным мировым биржам.
+								.instrument-card__icon(aria-hidden="true")
+									.instrument-card__icon-visual
+						.swiper-slide
+							.instrument-card
+								h3.instrument-card__title Название инструмента
+								p.instrument-card__text Опыт и навыки команды наших специалистов помогут вам освоить управление финансами.
+								.instrument-card__icon(aria-hidden="true")
+									.instrument-card__icon-visual
+				button.instruments__arrow.instruments__arrow--next(type="button" aria-label="Вперёд" data-instruments-next)
+			.instruments__bottom
+				.instruments-card
+					.instruments-card__content
+						h3.instruments-card__title Страница с тарифами
+						p.instruments-card__text Опыт и навыки команды наших специалистов помогут вам освоить управление финансами
+						a.instruments-card__btn.button.button--blue(href="tariffs.html")
+							span.button__text К тарифам
+							span.button__icon
+								i.icon.icon-arrow-light
+					.instruments-card__media
+						.instruments-card__placeholder(aria-hidden="true")
+				.instruments-card
+					.instruments-card__content
+						h3.instruments-card__title Страница документы
+						p.instruments-card__text Опыт и навыки команды наших специалистов помогут вам освоить управление финансами
+						a.instruments-card__btn.button.button--blue(href="documents.html")
+							span.button__text К документам
+							span.button__icon
+								i.icon.icon-arrow-light
+					.instruments-card__media
+						.instruments-card__placeholder(aria-hidden="true")
+
+	+sectionForm({ prefix: 'products' })

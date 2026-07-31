@@ -7,32 +7,46 @@ block variables
 	-   { title: 'Услуги', href: 'index.html#services' },
 	-   { title: 'Тарифы', href: '#' },
 	-   { title: 'Обучение', href: '#' },
-	-   { title: 'Рынок', href: '#' },
-	-   { title: 'Документы', href: '#' }
+	-   { title: 'Рынок', href: 'market.html' },
+	-   { title: 'Документы', href: 'documents.html' }
 	- ];
 	- var showTopbar = false
 	- var headerMod = 'about'
-	- var headerCta = { text: 'Зарегистрироваться', href: '#' };
+	- var headerCta = { text: 'Зарегистрироваться', href: '#registration-form' };
 
 block content
 	section.hero-about
 		.container.hero-about__container
 			.hero-about__stairs
 				.hero-about__stair
-					img(src="./assets/images/required/stair1.png" alt="")
+					picture
+						source(srcset="./assets/images/required/stair1-m.png" media="(max-width: 767px)")
+						img(src="./assets/images/required/stair1.png" alt="")
 				.hero-about__stair
-					img(src="./assets/images/required/stair2.png" alt="")
+					picture
+						source(srcset="./assets/images/required/stair2-m.png" media="(max-width: 767px)")
+						img(src="./assets/images/required/stair2.png" alt="")
 				.hero-about__stair
-					img(src="./assets/images/required/stair3.png" alt="")
+					picture
+						source(srcset="./assets/images/required/stair3-m.png" media="(max-width: 767px)")
+						img(src="./assets/images/required/stair3.png" alt="")
 				.hero-about__stair
-					img(src="./assets/images/required/stair4.png" alt="")
+					picture
+						source(srcset="./assets/images/required/stair4-m.png" media="(max-width: 767px)")
+						img(src="./assets/images/required/stair4.png" alt="")
 				.hero-about__stair
-					img(src="./assets/images/required/stair5.png" alt="")
+					picture
+						source(srcset="./assets/images/required/stair5-m.png" media="(max-width: 767px)")
+						img(src="./assets/images/required/stair5.png" alt="")
 			.hero-about__content
-				h1.hero-about__title Rioni Capital – ваш надежный партнер в сфере финансовых продуктов и инвестиций
-				//- p.hero-about__subtitle Мы объединяем европейские стандарты, инновационные технологии и прозрачный сервис для уверенного инвестирования.
+				h1.hero-about__title
+					| Rioni Capital –
+					span.hero-about__title-subline ваш надежный партнер в сфере финансовых продуктов и инвестиций
+				p.hero-about__subtitle Тут сделать контейнер для классического подзаголовка на главной странице, чтобы мы могли при необходимости добавить доп текст
 			.hero-about__bottom
-				img.hero-about__bottom-img(src="./assets/images/required/hero-about.jpg" alt="")
+				picture
+					source(media="(max-width: 767px)" srcset="./assets/images/required/main-m.png")
+					img.hero-about__bottom-img(src="./assets/images/required/hero-about.jpg" alt="")
 				.hero-about__bottom-text
 					p.hero-about__bottom-caption Общая стоимость инвестиционных портфелей клиентов Rioni Capital
 					p.hero-about__bottom-value $134million
@@ -53,18 +67,25 @@ block content
 			.principles__cards
 				.principles__card
 					.principles__card-icon
+						img.principles__card-icon-img(src="./assets/images/required/team-2 1.svg" alt="" aria-hidden="true")
 					h3.principles__card-title Команда профессионалов
 					p.principles__card-text Опыт и навыки команды наших специалистов помогут вам освоить управление финансами
 				.principles__card
 					.principles__card-icon
+						img.principles__card-icon-img(src="./assets/images/required/team-2 1.svg" alt="" aria-hidden="true")
 					h3.principles__card-title Лицензии и партнерства
 					p.principles__card-text Опыт и навыки команды наших специалистов помогут вам освоить управление финансами
 				.principles__card
 					.principles__card-icon
-					h3.principles__card-title Доверие и уважение
+						img.principles__card-icon-img(src="./assets/images/required/team-2 1.svg" alt="" aria-hidden="true")
+					h3.principles__card-title
+						| Доверие и
+						br
+						| уважение
 					p.principles__card-text Опыт и навыки команды наших специалистов помогут вам освоить управление финансами
 				.principles__card
 					.principles__card-icon
+						img.principles__card-icon-img(src="./assets/images/required/team-2 1.svg" alt="" aria-hidden="true")
 					h3.principles__card-title Удобная торговая платформа
 					p.principles__card-text Опыт и навыки команды наших специалистов помогут вам освоить управление финансами
 
@@ -76,7 +97,9 @@ block content
 			.tools__grid
 				.tools__card
 					h3.tools__card-title Рынок акций и ETF
-					p.tools__card-text Откройте для себя мир новых возможностей, инвестируя в акции ведущих мировых компаний
+					p.tools__card-text Откройте для себя мир новых возможностей,
+						br
+						| инвестируя в акции ведущих мировых компаний
 				.tools__card
 					h3.tools__card-title Рынок Fixed income и Валютный рынок
 					p.tools__card-text Диверсифицируйте портфель и защищайте свои инвестиции от рыночных колебаний
@@ -87,6 +110,22 @@ block content
 					h3.tools__card-title Товарный рынок
 					p.tools__card-text Улучшайте свою инвестиционную стратегию и расширяйте возможности инвестирования
 
+	// Цитата: sticky + дорожка прокрутки (как зона раскрытия футера), без второго fixed-слоя — не конфликтует с footer-parallax-cover
+	section.section-about-quote(aria-label="Rioni Capital")
+		.section-about-quote__track
+			.section-about-quote__sticky
+				.container.section-about-quote__inner
+					.section-about-quote__copy
+						p.section-about-quote__title “Rioni Capital”
+						p.section-about-quote__text
+							| Осваивай мир инвестиций
+							br
+							| по собственному,
+							br
+							span.section-about-quote__accent неповторимому маршруту
+					a.section-about-quote__logo(href="index.html")
+						img.section-about-quote__logo-img(src="./assets/images/required/logo-white.svg" alt="Rioni Capital")
+
 	// Секция «Новости»
 	section.section-news
 		.container
@@ -96,17 +135,20 @@ block content
 					a.news__main-link(href="#")
 						.news__main-img-wrap
 							img.news__main-img(src="./assets/images/required/news-main.jpg" alt="")
-						h3.news__main-heading Новости
+						h3.news__main-heading Публичный реестр зарегистрировал ООО «Риони Капитал»
 						p.news__main-text Любая острая тема с экспертным мнением, вырезки, новости/можно даже онлайн трансляцию новостей пустить сюда
 				.news__side
 					.news__card
 						a.news__card-link(href="#")
 							h3.news__card-heading Новости
 							p.news__card-text Любая острая тема с экспертным мнением, вырезки, новости/можно даже онлайн трансляцию новостей пустить сюда, кратко и в небольшом объеме
-					a.news__more.button.button--light(href="#")
-						span.button__text Больше новостей
-						span.button__icon
-							i.icon.icon-arrow-right-blue
+					a.news__more(href="#")
+						span.news__more-copy
+							span.news__more-title Больше новостей
+							span.news__more-text Любая острая тема с экспертным мнением, вырезки, новости/можно даже онлайн трансляцию новостей пустить сюда, кратко и в небольшом объеме
+						span.news__more-icon(aria-hidden="true")
+							svg(width="32" height="30" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg")
+								path(d="M31.4142 16.1427C32.1953 15.3617 32.1953 14.0954 31.4142 13.3143L18.6863 0.58638C17.9052 -0.194669 16.6389 -0.194669 15.8579 0.58638C15.0768 1.36743 15.0768 2.63376 15.8579 3.41481L27.1716 14.7285L15.8579 26.0422C15.0768 26.8233 15.0768 28.0896 15.8579 28.8707C16.6389 29.6517 17.9052 29.6517 18.6863 28.8707L31.4142 16.1427ZM0 14.7285V16.7285H30V14.7285V12.7285H0V14.7285Z" fill="#0F171F")
 		.news-ticker
 			.news-ticker__wrap
 				.news-ticker__text(data-ticker) Бегущая строка главные новости для компании Бегущая строка главные новости для компании Бегущая строка главные новости для компании

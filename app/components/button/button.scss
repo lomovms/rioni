@@ -15,6 +15,10 @@
 	transition: background 0.3s ease;
 	position: relative;
 
+	&:has(> .button__icon) {
+		margin-right: 60px;
+	}
+
 	&__text {
 		display: inline-block;
 		transition: transform 0.3s ease;
@@ -30,7 +34,7 @@
 	&:hover {
 		.button__text {
 			transform: scale(1.05); // текст увеличивается
-			color: #fff;
+			color: var(--backgrounds-white, #fff);
 		}
 
 		.button__icon {
@@ -40,15 +44,58 @@
 
 	// Модификатор: светлый фон (для CTA-бара на тёмном фоне), стрелка — icon-arrow-right-blue.svg
 	&--light {
-		background: #dceef9;
+		background: var(--backgrounds-light-blue, #edf6ff);
 		color: var(--text-dark-blue);
 
 		&:hover {
-			background: #dceef9;
-
+			background: var(--backgrounds-light-blue, #edf6ff);
 			.button__text {
 				color: var(--text-dark-blue);
 			}
 		}
+	}
+
+	// Модификатор: белая кнопка с синей обводкой (для карточки «лучший выбор»)
+	&--outline {
+		background: var(--backgrounds-light-blue, #edf6ff);
+		color: var(--text-dark-blue, #0f171f);
+		// border: 2px solid var(--backgrounds-blue-ocean, #6794da);
+
+		&:hover {
+			background: #f0f5ff;
+			.button__text {
+				color: var(--text-dark-blue, #0f171f);
+			}
+		}
+	}
+
+	// Модификатор: голубая кнопка (для страниц ошибок и т.п.)
+	&--blue {
+		background: var(--backgrounds-blue-ocean, #6794da);
+		color: var(--backgrounds-white, #fff);
+
+		&:hover {
+			background: #5a82c4;
+			.button__text {
+				color: var(--backgrounds-white, #fff);
+			}
+		}
+	}
+	&--blue2 {
+		background: var(--backgrounds-blue, #2c4d90);
+		color: var(--backgrounds-white, #fff);
+
+		&:hover {
+			background: var(--backgrounds-blue, #2c4d90);
+			.button__text {
+				color: var(--backgrounds-white, #fff);
+			}
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.button:has(> .button__icon) {
+		margin-right: 56px;
 	}
 }

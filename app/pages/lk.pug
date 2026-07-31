@@ -1,0 +1,114 @@
+﻿extends template/layout
+
+block variables
+	- var title = 'Личный кабинет — Rioni';
+	- var menuHeader = [
+	-   { title: 'О нас', href: 'about.html' },
+	-   { title: 'Услуги', href: 'services.html' },
+	-   { title: 'Инструменты', href: 'products.html' },
+	-   { title: 'Тарифы', href: 'tariffs.html' },
+	-   { title: 'Обучение', href: '#' },
+	-   { title: 'Рынок', href: 'market.html' },
+	-   { title: 'Документы', href: 'documents.html' }
+	- ];
+	- var showTopbar = false
+	- var headerCta = { text: 'открыть счет', href: '#registration-form' };
+	- var isAuthorized = true
+
+block content
+	section.section-lk-page
+		.container
+			.lk-page
+				.lk-page__left
+					.lk-profile-card
+						.lk-profile-card__head
+							h1.lk-profile-card__title Здравствуйте, Иван Иванович!
+							button.lk-profile-card__edit(type="button" aria-label="Редактировать профиль")
+								img(src="./assets/images/required/edit.png" alt="" aria-hidden="true")
+						.lk-profile-card__avatar
+							img(src="./assets/images/required/avatar.png" alt="Аватар профиля")
+						button.lk-profile-card__upload(type="button")
+							| Загрузить аватар
+							span.lk-profile-card__upload-arrow ↓
+
+						.lk-profile-card__fields
+							.lk-profile-card__field
+								span.lk-profile-card__field-label Логин
+								.lk-profile-card__field-row
+									span.lk-profile-card__field-value Ivan2002
+									button.lk-profile-card__field-edit(type="button" aria-label="Редактировать логин")
+										img(src="./assets/images/required/edit.png" alt="" aria-hidden="true")
+							.lk-profile-card__field
+								span.lk-profile-card__field-label Пароль
+								.lk-profile-card__field-row
+									span.lk-profile-card__field-value(data-lk-password-value data-password-hidden="true" data-password="Qwerty123!") ********
+									span.lk-profile-card__field-icons
+										button.lk-profile-card__field-eye(type="button" aria-label="Показать пароль" data-lk-password-toggle)
+											span.lk-profile-card__field-eye-icon.lk-profile-card__field-eye-icon--hidden(aria-hidden="true")
+											span.lk-profile-card__field-eye-icon.lk-profile-card__field-eye-icon--visible(aria-hidden="true")
+										button.lk-profile-card__field-edit(type="button" aria-label="Редактировать пароль")
+											img(src="./assets/images/required/edit.png" alt="" aria-hidden="true")
+							.lk-profile-card__field
+								span.lk-profile-card__field-label Почта
+								.lk-profile-card__field-row
+									span.lk-profile-card__field-value ivanovivan@mail.ru
+									button.lk-profile-card__field-edit(type="button" aria-label="Редактировать почту")
+										img(src="./assets/images/required/edit.png" alt="" aria-hidden="true")
+							.lk-profile-card__field
+								span.lk-profile-card__field-label Телефон
+								.lk-profile-card__field-row
+									span.lk-profile-card__field-value +955 950 54 54
+									button.lk-profile-card__field-edit(type="button" aria-label="Редактировать телефон")
+										img(src="./assets/images/required/edit.png" alt="" aria-hidden="true")
+
+						.lk-profile-card__consent
+							label.registration-form__checkbox-label
+								input.registration-form__checkbox(type="checkbox" name="lk-promo" value="1" checked)
+								span.registration-form__checkbox-text Согласие на получение рекламных рассылок
+
+						.lk-profile-card__bottom
+							a.lk-profile-card__bottom-link(href="#") Выйти из аккаунта
+							a.lk-profile-card__bottom-link(href="#") Удалить аккаунт
+
+				.lk-page__right
+					h2.lk-page__title Прогресс обучения
+					.lk-progress-card
+						.lk-progress-card__head
+							.lk-progress-card__identity
+								h3.lk-progress-card__name Никнейм
+								p.lk-progress-card__status Статус: Новичок
+							a.lk-progress-card__cta.button.button--blue(href="#")
+								span.button__text Перейти к торговле
+						.lk-progress-card__progress-meta
+							span Пройдено
+							span 27/100 уроков
+						.lk-progress-card__progress-track
+							.lk-progress-card__progress-fill(style="width: 27%;")
+						.lk-progress-card__actions
+							a.lk-progress-card__action(href="#")
+								span.lk-progress-card__action-icon
+									svg(width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg")
+										path(d="M15.75 8.36249C16.4167 8.74739 16.4167 9.70964 15.75 10.0945L1.5 18.3218C0.833332 18.7067 0 18.2256 0 17.4558V1.00127C0 0.231473 0.833334 -0.249652 1.5 0.135249L15.75 8.36249Z" fill="#4BA67C")
+								span Продолжить обучение
+							a.lk-progress-card__action(href="#")
+								span.lk-progress-card__action-icon
+									img(src="./assets/images/required/calendar.png" alt="" aria-hidden="true")
+								span Мой календарь
+							a.lk-progress-card__action(href="#")
+								span.lk-progress-card__action-icon
+									svg(width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg")
+										path(d="M10.1931 0.923643C10.7055 -0.308296 12.4507 -0.308296 12.9631 0.923643L15.0616 5.96897C15.2776 6.48833 15.766 6.84318 16.3267 6.88813L21.7735 7.3248C23.1035 7.43143 23.6428 9.09119 22.6295 9.95919L18.4796 13.5141C18.0524 13.88 17.8658 14.4541 17.9963 15.0013L19.2642 20.3165C19.5738 21.6143 18.1619 22.6401 17.0233 21.9446L12.36 19.0963C11.88 18.8031 11.2763 18.8031 10.7962 19.0963L6.13297 21.9446C4.99432 22.6401 3.58245 21.6143 3.89203 20.3165L5.1599 15.0013C5.29041 14.4541 5.10385 13.88 4.67667 13.5141L0.526739 9.95919C-0.486567 9.09119 0.0527227 7.43143 1.3827 7.3248L6.82956 6.88813C7.39025 6.84318 7.87866 6.48833 8.09467 5.96897L10.1931 0.923643Z" fill="#6794DA")
+								span Мои курсы
+
+					section.section-lk-banner
+						.tariffs-banner
+							.tariffs-banner__bg(style="background-image: url('./assets/images/required/seasonal-banner.jpg')")
+							.tariffs-banner__overlay
+								span.tariffs-banner__tag Pro investment
+								h2.tariffs-banner__title Баннер с сезонной акцией
+								p.tariffs-banner__text Пройдите тестирование, чтобы определить уровень подготовки и подобрать оптимальный тариф
+								.tariffs-banner__actions
+									a.tariffs-banner__btn.hero__btn.button(href="#")
+										span.button__text Забрать спец предложение
+										span.button__icon
+											i.icon.icon-arrow-right

@@ -19,3 +19,47 @@
 @import '../components/trust-slider/trust-slider.scss';
 @import '../components/hero-about/hero-about.scss';
 @import '../components/about-content/about-content.scss';
+@import '../components/services/services.scss';
+@import '../components/team/team.scss';
+@import '../components/tariffs/tariffs.scss';
+@import '../components/arrow-spoiler/arrow-spoiler.scss';
+@import '../components/documents/documents.scss';
+@import '../components/broker-documents/broker-documents.scss';
+@import '../components/market/market.scss';
+@import '../components/article/article.scss';
+@import '../components/news-page/news-page.scss';
+@import '../components/after-registration-welcome/after-registration-welcome.scss';
+@import '../components/login-form/login-form.scss';
+@import '../components/password-recovery-popup/password-recovery-popup.scss';
+@import '../components/error-page/error-page.scss';
+@import '../components/maintenance-page/maintenance-page.scss';
+@import '../components/products/products.scss';
+@import '../components/buttons-page/buttons-page.scss';
+@import '../components/platform-page/platform-page.scss';
+@import '../components/dictionary-page/dictionary-page.scss';
+@import '../components/training-page/training-page.scss';
+@import '../components/training-course-page/training-course-page.scss';
+@import '../components/lesson-page/lesson-page.scss';
+@import '../components/lk-page/lk-page.scss';
+@import '../components/registration-form/registration-form.scss';
+@import '../components/create-account-form/create-account-form.scss';
+@import '../components/site-popups/site-popups.scss';
+@import '../components/tariff-consultation-popup/tariff-consultation-popup.scss';
+@import '../components/disclosure-page/disclosure-page.scss';
+@import '../components/trust-page/trust-page.scss';
+@import '../components/content-page/content-page.scss';
+@import '../components/product-trust/product-trust.scss';
+
+@media (max-width: 768px) {
+	[class^='section-'],
+	[class*=' section-'] {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.partners,
+	.review__answer {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}

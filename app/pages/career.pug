@@ -1,0 +1,135 @@
+extends template/layout
+
+block variables
+	- var title = 'Senior Trader — Rioni';
+	- var menuHeader = [
+	-   { title: 'О нас', href: 'about.html' },
+	-   { title: 'Услуги', href: 'services.html' },
+	-   { title: 'Инструменты', href: 'products.html' },
+	-   { title: 'Тарифы', href: 'tariffs.html' },
+	-   { title: 'Обучение', href: '#' },
+	-   { title: 'Рынок', href: 'market.html' },
+	-   { title: 'Документы', href: 'documents.html' }
+	- ];
+	- var showTopbar = false
+	- var headerCta = { text: 'Зарегистрироваться', href: '#registration-form' };
+	- var headerLogo = 'required/logo-white.svg';
+
+block content
+	.career-page
+		section.section-career-detail
+			.container
+				a.career-detail__back(href='team.html') ← к вакансиям
+				.career-detail
+					h1.career-detail__title Senior Trader
+					.career-detail__meta
+						p
+							strong Формат работы:
+							|  полная занятость, on-site
+							br
+							strong График:
+							|  понедельник - пятница, 10:00-19:00
+							br
+							strong Локация:
+							|  офис
+							br
+							strong Количество вакансий:
+							|  1
+							br
+							strong Вознаграждение:
+							|  конкурентный оклад + годовой бонус
+					p.career-detail__lead Мы ищем опытного и дисциплинированного Senior Trader, который будет участвовать в исполнении торговых операций компании в рамках утвержденных процедур, лимитов и внутренних политик. Эта позиция предполагает работу с финансовыми инструментами, мониторинг рыночной ситуации, участие в реализации торговых идей и обеспечение качественного исполнения операций с учетом интересов клиентов, рыночных условий и регуляторных требований.
+
+					.faq.career-faq
+						.faq__list
+							.faq__item
+								button.faq__head(type='button' aria-expanded='false' aria-controls='career-faq-body-1' id='career-faq-head-1')
+									span.faq__head-text Чем предстоит заниматься
+									span.career-faq__plus(aria-hidden='true')
+								.faq__body(id='career-faq-body-1' role='region' aria-labelledby='career-faq-head-1' hidden)
+									p.faq__body-text Исполнять торговые поручения, отслеживать рыночные условия, контролировать соблюдение лимитов и готовить краткие комментарии по сделкам для внутренних команд.
+							.faq__item
+								button.faq__head(type='button' aria-expanded='false' aria-controls='career-faq-body-2' id='career-faq-head-2')
+									span.faq__head-text Опыт, который мы ожидаем
+									span.career-faq__plus(aria-hidden='true')
+								.faq__body(id='career-faq-body-2' role='region' aria-labelledby='career-faq-head-2' hidden)
+									p.faq__body-text Опыт работы с биржевыми инструментами, уверенное понимание риск-метрик, дисциплина в исполнении процедур и способность быстро принимать решения в динамичной среде.
+							.faq__item
+								button.faq__head(type='button' aria-expanded='false' aria-controls='career-faq-body-3' id='career-faq-head-3')
+									span.faq__head-text Мы предлагаем
+									span.career-faq__plus(aria-hidden='true')
+								.faq__body(id='career-faq-body-3' role='region' aria-labelledby='career-faq-head-3' hidden)
+									p.faq__body-text Участие в развитии брокерского бизнеса, прозрачную систему вознаграждения, сильную команду и рабочую среду, где ценятся точность, ответственность и профессиональный рост.
+
+				p.career-detail__note Если вы готовы применять свои навыки и развиваться в динамичной финансовой среде, вместе с Rioni Capital, заполните анкету и отправьте заявку через наш сайт. Мы открыты к сильным кандидатам и внимательно рассматриваем каждый отклик.
+
+				form.career-apply(action='#' method='post' enctype='multipart/form-data')
+					.career-apply__row
+						.career-apply__field
+							label.career-apply__label(for='career-name') *ФИО
+							input.career-apply__input(id='career-name' type='text' name='name' required)
+						label.career-apply__field.career-apply__field--file(for='career-resume' data-file-zone)
+							span.career-apply__label *Загрузить резюме ↓
+							input.career-apply__file(id='career-resume' type='file' name='resume' accept='.pdf,.doc,.docx' required)
+							span.career-apply__file-info(data-file-name)
+								span.career-apply__file-name
+								button.career-apply__file-clear(type='button' aria-label='Удалить файл' data-file-clear) ×
+					.career-apply__field
+						label.career-apply__label(for='career-portfolio') Ссылка на портфолио
+						input.career-apply__input(id='career-portfolio' type='url' name='portfolio')
+					.career-apply__field
+						label.career-apply__label(for='career-story') *Краткий рассказ о себе
+						textarea.career-apply__textarea(id='career-story' name='story' rows='3' required)
+					button.career-apply__submit(type='submit') Отправить
+
+		section.section-career-application
+			.container
+				.form-block.form-block--career
+					.form-block__left
+						.form-block__info
+							h2.form-block__title Нет подходящей вакансии?
+							p.form-block__text Присылайте свое резюме в наш HR-отдел и специалисты Rioni Capital проконсультируют вас
+						.form-block__img-wrap
+							img.form-block__img(src='./assets/images/required/form-img2.jpg' alt='')
+					.form-block__right
+						form.form-block__form.form-block__form--file(action='#' method='post' enctype='multipart/form-data' data-form-block-file)
+							.form-block__field
+								label.form-block__label(for='career-about') *Расскажите о себе
+								textarea.form-block__input.form-block__textarea(id='career-about' name='about' rows='3' required)
+							.form-block__field
+								label.form-block__label(for='career-file') *Загрузить резюме/портфолио ↓
+								.form-block__file-zone(data-file-zone)
+									input.form-block__file-input(id='career-file' type='file' name='file' accept='.pdf,.doc,.docx' aria-label='Загрузить резюме или портфолио' required data-file-input)
+									.form-block__file-placeholder
+										span.form-block__file-icon(aria-hidden='true')
+								.form-block__file-name(data-file-name)
+									span.form-block__file-name-text
+									button.form-block__file-clear(type='button' aria-label='Удалить файл' data-file-clear) ×
+							.form-block__agree.form-block__field
+								label.form-block__checkbox-label
+									input.form-block__checkbox(type='checkbox' name='consent' value='1' required)
+									span.form-block__checkbox-text Даю согласие на обработку
+										a.form-block__link(href='#')  персональных данных
+							button.form-block__submit(type='submit') Отправить
+							p.form-block__privacy Нажимая кнопку “Отправить” вы принимаете
+								a.form-block__link(href='#')  политику конфиденциальности
+						.form-block__success(aria-hidden='true')
+							.form-block__success-inner
+								.form-block__success-icon(aria-hidden='true')
+									svg.form-block__success-icon-svg(width='41' height='47' viewBox='0 0 41 47' fill='none' xmlns='http://www.w3.org/2000/svg')
+										path(d='M4 27.8343L17.6983 41.9612C18.1854 42.4635 19.0244 42.3232 19.3216 41.6897L37 4.00098' stroke='white' stroke-width='8' stroke-linecap='round')
+								h3.form-block__success-title Ваша заявка принята!
+								p.form-block__success-text В ближайшее время мы свяжемся с вами.
+					.form-block__socials
+						a.form-block__social(href='#' aria-label='Instagram')
+							span.form-block__social-icon.form-block__social-icon--instagram
+						a.form-block__social(href='#' aria-label='LinkedIn')
+							span.form-block__social-icon.form-block__social-icon--linkedin
+						a.form-block__social(href='#' aria-label='Facebook')
+							span.form-block__social-icon.form-block__social-icon--facebook
+						a.form-block__social(href='#' aria-label='TikTok')
+							span.form-block__social-icon.form-block__social-icon--tiktok
+						a.form-block__social(href='#' aria-label='X')
+							span.form-block__social-icon.form-block__social-icon--x
+						a.form-block__social(href='#' aria-label='YouTube')
+							span.form-block__social-icon.form-block__social-icon--youtube

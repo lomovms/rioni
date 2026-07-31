@@ -1,0 +1,33 @@
+extends template/layout
+include ../components/content-page/content-page
+
+block variables
+	- var title = 'Истории знаменитых инвесторов — Rioni Capital';
+	- var menuHeader = [{ title: 'О нас', href: 'about.html' }, { title: 'Услуги', href: 'services.html' }, { title: 'Тарифы', href: 'tariffs.html' }, { title: 'Обучение', href: 'training.html' }, { title: 'Рынок', href: 'market.html' }, { title: 'Документы', href: 'documents.html' }];
+	- var showTopbar = false;
+	- var headerCta = { text: 'Открыть счет', href: '#registration-form' };
+	- var pageData = {
+	-   title: 'Истории знаменитых',
+	-   titleLine: 'инвесторов',
+	-   intro: 'Люди, чьи идеи, решения и ошибки повлияли на развитие инвестиционного мира.',
+	-   heroImage: 'required/famous-investors-hero.png',
+	-   heroImageMobile: 'required/famous-investors-hero.png',
+	-   heroLink: { text: 'К странице с документами', href: 'documents.html' },
+	-   contentTitle: 'Инвесторы, изменившие подход к капиталу',
+	-   toc: [
+	-     { title: 'Истории денег', href: 'third-level.html' },
+	-     { title: 'Истории знаменитых инвесторов', href: 'famous-investors.html' },
+	-     { title: 'Рынок акций и ETF', href: 'product-inner.html' }
+	-   ],
+	-   tocCurrent: 1,
+	-   sections: [
+	-     { id: 'graham', title: 'Бенджамин Грэм', floatImage: 'required/person.png', floatSide: 'left', html: '<p>Бенджамин Грэм считается основателем стоимостного инвестирования. Он предложил оценивать бизнес отдельно от колебаний рыночной цены и покупать активы с запасом прочности.</p><p>Его подход строился на дисциплине, анализе отчётности и готовности ждать. Главным риском Грэм считал не волатильность, а переплату за актив без достаточного качества.</p><p>Идеи Грэма легли в основу многих современных методов фундаментального анализа.</p>' },
+	-     { id: 'buffett', title: 'Уоррен Баффетт', floatImage: 'required/person.png', floatSide: 'right', html: '<p>Уоррен Баффетт развил идеи своего учителя и сместил фокус с просто дешёвых компаний на качественный бизнес с устойчивым преимуществом.</p><p>Его стратегия показывает ценность долгого горизонта, понятной бизнес-модели и рационального управления капиталом.</p>' },
+	-     { id: 'lynch', title: 'Питер Линч', html: '<p>Питер Линч напоминал инвесторам, что идеи часто находятся в повседневной жизни. Однако наблюдение должно подтверждаться цифрами, конкурентными преимуществами и оценкой рисков.</p>' },
+	-     { id: 'principles', title: 'Что объединяет великих инвесторов', html: '<ul><li>понимание бизнеса до покупки актива;</li><li>дисциплина и независимость решений;</li><li>достаточно длинный инвестиционный горизонт;</li><li>контроль цены и риска.</li></ul>' }
+	-   ],
+	-   banner: { title: 'Инвестиционный словарь', text: 'Изучите термины, которые встречаются в историях и аналитических материалах.', button: 'Перейти к словарю', href: 'dictionary.html', image: 'required/seasonal-banner.jpg' }
+	- };
+
+block content
+	+contentPage(pageData)

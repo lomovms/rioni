@@ -1,0 +1,29 @@
+extends template/layout
+include ../components/content-page/content-page
+
+block variables
+	- var title = 'Страница третьего уровня — Rioni Capital';
+	- var menuHeader = [{ title: 'О нас', href: 'about.html' }, { title: 'Услуги', href: 'services.html' }, { title: 'Тарифы', href: 'tariffs.html' }, { title: 'Обучение', href: 'training.html' }, { title: 'Рынок', href: 'market.html' }, { title: 'Документы', href: 'documents.html' }];
+	- var showTopbar = false;
+	- var headerCta = { text: 'Открыть счет', href: '#registration-form' };
+	- var pageData = {
+	-   title: 'Истории денег',
+	-   intro: 'Как менялись деньги, рынки и инвестиционные инструменты — от первых монет до цифровой экономики.',
+	-   heroImage: 'required/third-level-money-history-hero.png',
+	-   heroImageMobile: 'required/third-level-money-history-hero.png',
+	-   heroLink: { text: 'К странице с документами', href: 'documents.html' },
+	-   contentTitle: 'Заголовок этой части контента',
+	-   toc: [
+	-     { title: 'Истории денег', href: 'third-level.html' },
+	-     { title: 'Истории знаменитых инвесторов', href: 'famous-investors.html' },
+	-     { title: 'Рынок акций и ETF', href: 'product-inner.html' }
+	-   ],
+	-   tocCurrent: 0,
+	-   sections: [
+	-     { id: 'content', wideImage: 'required/video.jpg', html: '<h3>Размер заголовка 2</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in lacinia felis, ut convallis felis. Donec id lorem posuere lorem laoreet euismod. Etiam et ipsum ut neque faucibus porta. Nulla felis erat, rutrum eget magna in, lacinia pulvinar ante.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in lacinia felis, ut convallis felis. Donec id lorem posuere lorem laoreet euismod. Etiam et ipsum ut neque faucibus porta. Nulla felis erat, rutrum eget magna in, lacinia pulvinar ante.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in lacinia felis, ut convallis felis. Donec id lorem posuere lorem laoreet euismod. Etiam et ipsum ut neque faucibus porta. Nulla felis erat, rutrum eget magna in, lacinia pulvinar ante.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in lacinia felis, ut convallis felis. Donec id lorem posuere lorem laoreet euismod. Etiam et ipsum ut neque faucibus porta. Nulla felis erat, rutrum eget magna in, lacinia pulvinar ante.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in lacinia felis, ut convallis felis. Donec id lorem posuere lorem laoreet euismod. Etiam et ipsum ut neque faucibus porta. Nulla felis erat, rutrum eget magna in, lacinia pulvinar ante.</p>' }
+	-   ],
+	-   banner: { title: 'Глоссарий инвестора', text: 'Чтобы открыть доступ к бесплатному вебинару с экспертом, вам необходимо пройти тестирование по просмотренному ранее курсу “Название курса”', button: 'Перейти к словарю', href: 'dictionary.html', image: 'required/seasonal-banner.jpg' }
+	- };
+
+block content
+	+contentPage(pageData)

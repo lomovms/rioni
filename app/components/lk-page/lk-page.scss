@@ -1,0 +1,334 @@
+.section-lk-page {
+	padding: 150px 0 44px;
+	background: var(--backgrounds-white, #fff);
+}
+
+.lk-page {
+	display: grid;
+	grid-template-columns: minmax(360px, 480px) minmax(0, 1fr);
+	gap: 18px;
+	align-items: start;
+
+	&__title {
+		margin: 0 0 14px;
+		font: 500 20px/0.95 var(--font-family);
+		color: var(--text-dark-blue, #0f171f);
+	}
+}
+
+.lk-profile-card {
+	padding: 15px;
+	border: 1px solid #e8f8ff;
+	border-radius: 20px;
+	background: var(--backgrounds-white, #fff);
+	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
+	&__head {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		background: var(--backgrounds-light-blue, #edf6ff);
+		border-radius: 10px;
+		padding: 19px 14px 63px;
+	}
+
+	&__title {
+		margin: 0;
+		font: 500 20px/1.2 var(--font-family);
+		color: var(--backgrounds-blue, #2c4d90);
+	}
+
+	&__edit,
+	&__field-edit {
+		border: 0;
+		padding: 0;
+
+		background: transparent;
+		line-height: 0;
+		cursor: pointer;
+	}
+
+	&__edit img,
+	&__field-edit img {
+		width: 18px;
+		height: 18px;
+		display: block;
+	}
+
+	&__avatar {
+		width: 126px;
+		height: 126px;
+		margin: -50px auto 8px;
+		border-radius: 85px;
+		overflow: hidden;
+		background: var(--backgrounds-white, #fff);
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+	}
+
+	&__avatar img {
+		width: 105px;
+		height: 105px;
+		border-radius: 63px;
+		object-fit: cover;
+		display: block;
+	}
+
+	&__upload {
+		margin: 0 auto 20px;
+		display: flex;
+		width: fit-content;
+		align-items: center;
+		gap: 4px;
+		border: 0;
+		background: transparent;
+		color: var(--backgrounds-blue-ocean, #6794da);
+		font: 400 14px/1.2 var(--font-family);
+		cursor: pointer;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	&__upload-arrow {
+		font-size: 14px;
+	}
+
+	&__fields {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 16px 28px;
+		margin-bottom: 20px;
+	}
+
+	&__field-label {
+		display: block;
+		margin-bottom: 4px;
+		font: 400 14px/1.2 var(--font-family);
+		color: var(--backgrounds-blue-ocean, #6794da);
+	}
+
+	&__field-row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 8px;
+	}
+
+	&__field-value {
+		font: 400 18px/1.2 var(--font-family);
+		color: var(--text-dark-blue, #0f171f);
+	}
+
+	&__field-icons {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	&__field-eye {
+		width: 16px;
+		height: 16px;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		cursor: pointer;
+		opacity: 0.65;
+		position: relative;
+	}
+
+	&__field-eye:hover {
+		opacity: 1;
+	}
+
+	&__field-eye-icon {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 16px;
+		height: 16px;
+		pointer-events: none;
+	}
+
+	&__field-eye-icon--hidden {
+		background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231e3a5f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24'/%3E%3Cline x1='1' y1='1' x2='23' y2='23'/%3E%3C/svg%3E")
+			center / contain no-repeat;
+	}
+
+	&__field-eye-icon--visible {
+		display: none;
+		background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231e3a5f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E")
+			center / contain no-repeat;
+	}
+
+	&__consent {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		padding: 12px 20px;
+		background: var(--backgrounds-light-blue, #edf6ff);
+		border-radius: 10px;
+		margin-bottom: 20px;
+	}
+
+	.registration-form__checkbox-label {
+		font: 400 14px/1.2 var(--font-family);
+		color: var(--text-dark-blue, #0f171f);
+		gap: 8px;
+	}
+
+	&__bottom {
+		display: flex;
+		justify-content: space-between;
+		gap: 12px;
+	}
+
+	&__bottom-link {
+		color: var(--backgrounds-blue-ocean, #6794da);
+		text-decoration: none;
+		font: 400 16px/1.2 var(--font-family);
+	}
+}
+
+.lk-progress-card {
+	border: 1px solid #e2edf7;
+	border-radius: 20px;
+	background: var(--backgrounds-white, #fff);
+	padding: 16px 14px;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+	margin-bottom: 16px;
+
+	&__head {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 12px;
+		margin-bottom: 55px;
+	}
+
+	&__name {
+		margin: 0 0 4px;
+		font: 600 18px/1.2 var(--font-family);
+		color: #31599d;
+	}
+
+	&__status {
+		margin: 0;
+		font: 400 14px/1.2 var(--font-family);
+		color: #2e3442;
+	}
+
+	&__cta {
+		min-height: 36px;
+	}
+
+	&__progress-meta {
+		display: flex;
+		justify-content: space-between;
+		gap: 8px;
+		margin-bottom: 8px;
+		font: 500 16px/1.2 var(--font-family);
+		color: #2e3442;
+	}
+
+	&__progress-track {
+		height: 8px;
+		border-radius: 999px;
+		background: #d9e5f6;
+		overflow: hidden;
+		margin-bottom: 14px;
+	}
+
+	&__progress-fill {
+		height: 100%;
+		background: var(--backgrounds-blue-ocean, #6794da);
+	}
+
+	&__actions {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 8px;
+	}
+
+	&__action {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		width: 100%;
+		min-height: 44px;
+		justify-content: center;
+		padding: 8px 10px;
+		border-radius: 10px;
+		background: var(--backgrounds-light-blue, #edf6ff);
+		text-decoration: none;
+		color: #2e3442;
+		font: 500 14px/1.2 var(--font-family);
+	}
+
+	&__action-icon {
+		width: 20px;
+		height: 20px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+	}
+
+	&__action-icon img,
+	&__action-icon svg {
+		width: 100%;
+		height: 100%;
+		display: block;
+		object-fit: contain;
+	}
+}
+
+.section-lk-banner {
+	.tariffs-banner {
+		min-height: 213px;
+		border-radius: 30px;
+	}
+
+	.tariffs-banner__overlay {
+		padding: 30px;
+	}
+
+	.tariffs-banner__title {
+		font-size: 20px;
+	}
+}
+
+@media (max-width: 991px) {
+	.lk-page {
+		grid-template-columns: 1fr;
+	}
+
+	.lk-profile-card__fields {
+		grid-template-columns: 1fr;
+	}
+
+	.lk-progress-card__actions {
+		grid-template-columns: 1fr;
+	}
+
+	.lk-progress-card__action {
+		justify-content: center;
+	}
+
+	.section-lk-banner {
+		.tariffs-banner {
+			min-height: 320px;
+		}
+
+		.tariffs-banner__overlay {
+			padding-top: 86px;
+		}
+
+		.tariffs-banner__tag {
+			top: 16px;
+			right: 16px;
+			max-width: unquote('calc(100% - 32px)');
+		}
+	}
+}

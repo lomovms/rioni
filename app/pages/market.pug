@@ -1,0 +1,201 @@
+extends template/layout
+
+block variables
+	- var title = 'Рынок — Rioni';
+	- var marketActiveTab = typeof marketActiveTab !== 'undefined' ? marketActiveTab : 'news';
+	- var menuHeader = [
+	-   { title: 'О нас', href: 'about.html' },
+	-   { title: 'Услуги', href: 'services.html' },
+	-   { title: 'Тарифы', href: 'tariffs.html' },
+	-   { title: 'Обучение', href: '#' },
+	-   { title: 'Рынок', href: 'market.html' },
+	-   { title: 'Документы', href: 'documents.html' }
+	- ];
+	- var showTopbar = false
+	- var headerCta = { text: 'Открыть счет', href: '#registration-form' };
+
+block content
+	section.section-market
+		.container
+			.market
+
+
+				.market__body
+					.market__main
+						.market__header
+							.market__header-top
+								h1.market__title Рынок
+								.market__datetime
+									.market__date
+										span.market__date-today Сегодня
+										time.market__date-value(datetime="2025-04-06") 6 апреля 2025г
+									.market__time-wrap
+										button.market__time(type="button" aria-haspopup="listbox" aria-expanded="false") 10:53 (UTS+7)
+											span.market__time-arrow
+							nav.market__tabs.is-open(aria-label="Разделы рынка")
+								a.market__tab(href="market.html" class=marketActiveTab === 'news' && 'market__tab--active') Новости
+								a.market__tab(href="market-macro.html" class=marketActiveTab === 'macro' && 'market__tab--active') Макроэкономика
+								a.market__tab(href="market-forecasts.html" class=marketActiveTab === 'forecasts' && 'market__tab--active') Прогнозы экспертов
+								a.market__tab(href="market-reviews.html" class=marketActiveTab === 'reviews' && 'market__tab--active') Обзоры
+								a.market__tab(href="market-calendar.html" class=marketActiveTab === 'calendar' && 'market__tab--active') Календарь
+								button.market__tabs-toggle(type="button" aria-label="Показать разделы рынка" aria-expanded="true" data-market-tabs-toggle)
+									span.market__tabs-toggle-dots
+										span
+										span
+										span
+						.market__search-wrap
+							form.market__search(role="search")
+								label.market__search-label(for="market-search")
+								input.market__search-input#market-search(type="search" name="q" placeholder="Поиск" aria-label="Поиск по разделу")
+						.market__news-grid
+							article.market__article.market__article--featured
+								a.market__article-link(href="#")
+									.market__article-img-wrap
+										img.market__article-img(src="./assets/images/required/news-main.jpg" alt="")
+									.market__article-overlay
+										time.market__article-date(datetime="2022-12-22") 22 декабря, 2022 + время
+										p.market__article-text Открытие нового офиса. Две фотостудии, зал для йоги и бассейн. Первые впечатления участников клуба проектного офиса в Москве
+							- var n = 0;
+							while n < 4
+								- n++
+								article.market__article
+									a.market__article-link(href="#")
+										time.market__article-date(datetime="2022-12-22") 22 декабря, 2022
+										p.market__article-text Открытие нового офиса. Две фотостудии, зал для йоги и бассейн. Первые впечатления участников клуба проектного офиса в Москве
+						.market__feed
+							.market__feed-head
+								h2.market__feed-title Лента новостей
+								button.market__feed-filters(type="button")
+									span.market__feed-filters-text Фильтры
+									span.market__feed-filters-icon(aria-hidden="true")
+							ul.market__feed-list
+								li.market__feed-item
+									a.market__feed-link(href="#")
+										span.market__feed-time 12:30!
+										span.market__feed-text Открытие нового офиса. Две фотостудии, зал для йоги и бассейн. Первые впечатления участников клуба
+								li.market__feed-item
+									a.market__feed-link(href="#")
+										span.market__feed-time 12:30
+										span.market__feed-text Открытие нового офиса. Две фотостудии, зал для йоги и бассейн. Первые впечатления участников клуба
+								li.market__feed-item
+									a.market__feed-link(href="#")
+										span.market__feed-time 12:30
+										span.market__feed-text Открытие нового офиса. Две фотостудии, зал для йоги и бассейн. Первые впечатления участников клуба
+
+					aside.market__sidebar
+						.market-widget.market-widget--banner
+							.market-widget__inner
+								p.market-widget__title Рекламный баннер
+								p.market-widget__text Тут написать любую нашу рекламу продукта или важную информацию, которую мы хотим донести до клиента
+								a.market-widget__btn.button(href="#")
+									span.button__text подробнее
+									span.button__icon
+										i.icon.icon-arrow-right
+
+						.market-widget.market-widget--quotes(data-market-widget="quotes")
+							.market-widget__header
+								.market-widget__heading-row
+									h3.market-widget__heading Список котировок
+									button.market-widget__dropdown(type="button" aria-label="Развернуть список" data-quotes-dropdown)
+										span.market-widget__dropdown-arrow
+								.market-widget__actions
+									button.market-widget__action(type="button" aria-label="Добавить") +
+									button.market-widget__action(type="button" aria-label="Убрать") −
+									button.market-widget__action(type="button" aria-label="Ещё") …
+							.market-widget__body
+								.market-quotes
+									table.market-quotes__table
+										thead.market-quotes__head
+											tr
+												th.market-quotes__th Инструм
+												th.market-quotes__th Посл. ц.
+												th.market-quotes__th Изм.
+												th.market-quotes__th Изм. %
+										tbody.market-quotes__body(data-quotes-list)
+											tr.market-quotes__row
+												td.market-quotes__cell IRUS
+												td.market-quotes__cell 62,40
+												td.market-quotes__cell.market-quotes__cell--neg -62,40
+												td.market-quotes__cell.market-quotes__cell--neg -1,96%
+											tr.market-quotes__row
+												td.market-quotes__cell RTSI
+												td.market-quotes__cell 120 000
+												td.market-quotes__cell.market-quotes__cell--neg -1 200
+												td.market-quotes__cell.market-quotes__cell--neg -0,99%
+											tr.market-quotes__row
+												td.market-quotes__cell SPX
+												td.market-quotes__cell 5 432,10
+												td.market-quotes__cell.market-quotes__cell--pos +12,50
+												td.market-quotes__cell.market-quotes__cell--pos +0,23%
+											tr.market-quotes__row
+												td.market-quotes__cell NDQ
+												td.market-quotes__cell 17 890,00
+												td.market-quotes__cell.market-quotes__cell--neg -45,20
+												td.market-quotes__cell.market-quotes__cell--neg -0,25%
+									.market-quotes__subsection
+										.market-quotes__subtitle АКЦИИ
+										table.market-quotes__table
+											tbody.market-quotes__body(data-quotes-stocks)
+												tr.market-quotes__row
+													td.market-quotes__cell SBER
+													td.market-quotes__cell 285,50
+													td.market-quotes__cell.market-quotes__cell--pos +2,30
+													td.market-quotes__cell.market-quotes__cell--pos +0,81%
+												tr.market-quotes__row
+													td.market-quotes__cell GAZP
+													td.market-quotes__cell 128,40
+													td.market-quotes__cell.market-quotes__cell--neg -0,80
+													td.market-quotes__cell.market-quotes__cell--neg -0,62%
+												tr.market-quotes__row
+													td.market-quotes__cell LKOH
+													td.market-quotes__cell 5 890,00
+													td.market-quotes__cell.market-quotes__cell--pos +120,00
+													td.market-quotes__cell.market-quotes__cell--pos +2,08%
+												tr.market-quotes__row
+													td.market-quotes__cell VTBR
+													td.market-quotes__cell 0,2850
+													td.market-quotes__cell.market-quotes__cell--neg -0,0020
+													td.market-quotes__cell.market-quotes__cell--neg -0,70%
+
+						.market-widget.market-widget--futures(data-market-widget="futures")
+							.market-widget__header
+								h3.market-widget__heading ФЬЮЧЕРСЫ
+							.market-widget__body
+								.market-futures(data-futures-container)
+									.market-futures__item
+										span.market-futures__name BR1!
+										span.market-futures__value 70,10
+										span.market-futures__change.market-futures__change--neg -0,22
+										span.market-futures__change.market-futures__change--neg -0,31%
+									.market-futures__item
+										.market-futures__row
+											span.market-futures__name USDRUB_TOM
+											.market-futures__icons
+												button.market-futures__icon(type="button" aria-label="Копировать")
+												button.market-futures__icon(type="button" aria-label="Ссылка")
+												button.market-futures__icon(type="button" aria-label="Ещё")
+										p.market-futures__sub Доллар США / Российский рубль Том
+										span.market-futures__meta RUS
+									.market-futures__status
+										span.market-futures__status-dot
+										span.market-futures__status-text Рынок открыт
+									.market-futures__news
+										a.market-futures__news-link(href="#")
+											span.market-futures__news-time 15 часов назад
+											span.market-futures__news-text Рубль подрос в ожидании ответа президента РФ....
+											span.market-futures__news-arrow
+
+						.market-widget.market-widget--seasonality
+							.market-widget__header
+								h3.market-widget__heading Сезонность
+							.market-widget__body
+								.market-seasonality(data-seasonality-container)
+									.market-seasonality__chart
+									.market-seasonality__axis
+										span.market-seasonality__axis-label янв.
+										span.market-seasonality__axis-label май
+										span.market-seasonality__axis-label Sept.
+
+						.market-widget.market-widget--banner
+							.market-widget__inner
+								p.market-widget__text Тут написать любую нашу рекламу продукта или важную информацию, которую мы хотим донести до клиента

@@ -1,0 +1,915 @@
+.section-tariffs-hero {
+	padding: 178px 0 34px;
+	background: var(--backgrounds-white, #fff);
+}
+
+.tariffs-hero {
+	text-align: center;
+	max-width: 980px;
+	margin: 0 auto;
+
+	&__title {
+		margin: 0 auto 24px;
+		width: 526px;
+		max-width: 526px;
+		font: 500 36px/1.1 var(--font-family);
+		color: #0f171f;
+		margin-bottom: 36px !important;
+	}
+
+	&__subtitle {
+		margin: 0 auto;
+		margin-bottom: 36px !important;
+		width: 526px;
+		max-width: 526px;
+		font: 400 14px/1.25 var(--font-family);
+		color: #2e3442;
+	}
+}
+
+.section-tariffs-tabs {
+	padding: 0 0 37px;
+	background: var(--backgrounds-white, #fff);
+}
+
+.tariffs-tabs {
+	&__controls {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		gap: 12px;
+		margin-bottom: 28px;
+	}
+
+	&__control {
+		border: none;
+		border-radius: 30px;
+		background: var(--backgrounds-light-blue, #fff);
+		color: var(--backgrounds-blue-ocean);
+		padding: 12px 24px;
+		font: 500 18px/1.2 var(--font-family);
+		cursor: pointer;
+		transition: background 0.25s ease, color 0.25s ease,
+			border-color 0.25s ease;
+
+		&--active {
+			background: var(--backgrounds-blue-ocean, #6794da);
+			color: var(--backgrounds-white, #fff);
+			border-color: var(--backgrounds-blue-ocean, #6794da);
+		}
+
+		&:hover:not(&--active) {
+			border-color: var(--backgrounds-blue-ocean, #6794da);
+			color: var(--backgrounds-blue-ocean, #6794da);
+		}
+	}
+
+	&__panel {
+		display: none;
+
+		&--active {
+			display: block;
+			animation: fadeIn 0.28s ease;
+		}
+	}
+}
+
+.tariffs-cards {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 24px;
+	justify-content: center;
+	align-items: center;
+}
+
+.tariffs-consultation {
+	display: grid;
+	grid-template-columns: minmax(280px, 453px) minmax(0, 1fr);
+	gap: 16px;
+	align-items: stretch;
+
+	&__media,
+	&__content {
+		border-radius: 20px;
+		overflow: hidden;
+		min-height: 248px;
+	}
+
+	&__media img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	&__content {
+		padding: 40px;
+		background: var(--backgrounds-light-blue, #edf6ff);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+
+	&__title {
+		margin: 0 0 10px;
+		max-width: 560px;
+		font: 400 26px/1.25 var(--font-family);
+		color: #2e3442;
+	}
+
+	&__btn {
+		width: 100%;
+		max-width: 560px;
+		height: 45px;
+		margin-bottom: 10px;
+		justify-content: center;
+		background: linear-gradient(
+			136deg,
+			#4a78c1 0%,
+			#427cac 19.09%,
+			#1c5ca0 61.26%,
+			#23395b 100%
+		);
+		color: var(--backgrounds-white, #fff);
+	}
+
+	&__note {
+		margin: 0;
+		max-width: 560px;
+		font: 400 12px/1.3 var(--font-family);
+		color: #2e3442;
+	}
+}
+
+.tariff-card {
+	position: relative;
+	border-radius: 30px;
+	background: var(--backgrounds-light-blue, #edf6ff);
+	padding: 40px 40px 34px;
+	min-height: 349px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	text-align: left;
+	overflow: hidden;
+
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(176deg, var(--backgrounds-white, #fff) 0%, #7fa8eb 100%);
+		opacity: 0;
+		transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+		will-change: opacity;
+	}
+
+	> * {
+		position: relative;
+		z-index: 1;
+	}
+
+	&:hover {
+		&::before {
+			opacity: 1;
+		}
+	}
+
+	&__badge {
+		position: absolute;
+		top: 45px;
+		right: 40px;
+		padding: 3px 8px;
+		border-radius: 30px;
+		background: var(--backgrounds-grey-blue, #cad9f6);
+		color: var(--text-dark-blue, #0f171f);
+		font: 400 12px/1.2 var(--font-family);
+	}
+
+	&__title {
+		margin: 0 0 15px;
+		font: 400 26px/1.2 var(--font-family);
+		color: var(--text-green, #0c342c);
+	}
+
+	&__desc {
+		margin: 0 0 24px;
+		font: 400 18px/1.3 var(--font-family);
+		color: #2e3442;
+		flex: 1;
+		margin-bottom: 24px !important;
+	}
+
+	&__btn {
+		margin-bottom: 25px;
+		justify-content: center;
+		width: 100%;
+
+		&:not(.button--outline) {
+			background: linear-gradient(
+				136deg,
+				#4a78c1 0%,
+				#427cac 19.09%,
+				#1c5ca0 61.26%,
+				#23395b 100%
+			);
+			color: var(--backgrounds-white, #fff);
+		}
+	}
+
+	&__link {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		color: var(--text-dark-blue, #0f171f);
+		text-decoration: none;
+		font: 400 18px/1.3 var(--font-family);
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	&__link-icon {
+		display: inline-flex;
+		align-items: center;
+		flex-shrink: 0;
+	}
+
+	&__arrow {
+		display: block;
+	}
+
+	// Карточка «лучший выбор»: синий градиент, белый текст
+	&--featured {
+		background: linear-gradient(
+			136deg,
+			#4a78c1 0%,
+			#427cac 19.09%,
+			#1c5ca0 61.26%,
+			#23395b 100%
+		);
+		min-height: 371px;
+		color: var(--backgrounds-white, #fff);
+
+		.tariff-card__title,
+		.tariff-card__desc {
+			color: var(--backgrounds-white, #fff);
+		}
+
+		.tariff-card__badge {
+			background: rgba(255, 255, 255, 0.9);
+			color: #2e3442;
+		}
+
+		.tariff-card__link {
+			color: var(--backgrounds-white, #fff);
+
+			&:hover {
+				color: rgba(255, 255, 255, 0.9);
+			}
+		}
+
+		&::before {
+			display: none;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(
+				249deg,
+				#4a78c1 6.55%,
+				#427cac 48.87%,
+				#1c5ca0 76.78%,
+				#23395b 100%
+			);
+			opacity: 0;
+			transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+			will-change: opacity;
+		}
+
+		&:hover::after {
+			opacity: 1;
+		}
+	}
+}
+
+// Баннер с сезонной акцией (после табов с тарифами)
+.section-tariffs-banner {
+	padding: 0 0 80px;
+	background: var(--backgrounds-white, #fff);
+	border-radius: 0 0 100px 100px;
+}
+
+.tariffs-banner {
+	position: relative;
+	border-radius: 30px;
+	overflow: hidden;
+	background-color: #5a7a6a; // fallback, если нет картинки
+	height: 213px;
+	display: flex;
+	align-items: flex-end;
+	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
+	&__bg {
+		position: absolute;
+		inset: 0;
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+
+	&__overlay {
+		position: relative;
+		width: 100%;
+		padding: 30px;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 16px;
+	}
+
+	&__tag {
+		position: absolute;
+		top: 23px;
+		right: 30px;
+		border-radius: 10px;
+		padding: 8px 20px;
+		background: var(--backgrounds-light-green, #e7f8f0);
+		color: var(--text-green, #0c342c);
+		font: 400 14px/1.2 var(--font-family);
+	}
+
+	&__title {
+		margin: 0;
+		max-width: 520px;
+		font: 400 26px/1.2 var(--font-family);
+		color: var(--backgrounds-white, #fff);
+	}
+
+	&__text {
+		margin: 0;
+		max-width: 480px;
+		font: 400 18px/1.2 var(--font-family);
+		color: rgba(255, 255, 255, 0.95);
+		margin-bottom: 0 !important;
+	}
+
+	&__actions {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		flex-wrap: wrap;
+	}
+
+	&__btn {
+		// Как hero__btn: тёмно-зелёный фон, белая стрелка из .button__icon
+		background: var(--text-green, #0c342c) !important;
+		color: var(--backgrounds-white, #fff);
+
+		&:hover {
+			background: #0f4238 !important;
+			color: var(--backgrounds-white, #fff);
+		}
+	}
+}
+
+// Секция «Продукты»: пункты обрезаны наполовину, при ховере раскрываются и сдвигают вниз
+.section-products {
+	padding: 0 0 80px;
+	background: var(--text-dark-blue, #0f171f);
+}
+
+.products {
+	padding: 100px 0 40px;
+	color: var(--backgrounds-white, #fff);
+
+	&__title {
+		margin: 0 0 12px 50px;
+		font: 500 36px/1.2 var(--font-family);
+		color: var(--backgrounds-white, #fff);
+	}
+
+	&__subtitle {
+		margin: 0 0 32px 50px;
+		font: 400 14px/1.5 var(--font-family);
+		color: var(--backgrounds-grey-blue, #cad9f6);
+		max-width: 50%;
+		margin-bottom: 24px !important;
+	}
+
+	&__tabs {
+		.tariffs-tabs__controls {
+			margin: 0 0 51px 50px;
+		}
+
+		.tariffs-tabs__control {
+			border: 0;
+			background: var(--backgrounds-white, #fff);
+			color: var(--backgrounds-blue-ocean, #6794da);
+
+			&:hover:not(.tariffs-tabs__control--active) {
+				border-color: transparent;
+				color: var(--backgrounds-blue-ocean, #6794da);
+			}
+
+			&.tariffs-tabs__control--active {
+				background: var(--backgrounds-blue-ocean, #6794da);
+				color: var(--backgrounds-white, #fff);
+			}
+		}
+	}
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__item {
+		overflow: hidden;
+		    max-height: 109px;
+		transition: max-height 0.45s ease, background 0.25s ease;
+		border-bottom: 1px solid rgba(103, 148, 218, 0.5);
+
+		&:first-child {
+			border-top: 1px solid rgba(103, 148, 218, 0.5);
+		}
+
+		&:hover {
+			max-height: 220px;
+
+			.products__item-inner {
+				background: var(--additional-dark-blue-animate, #142b40);
+			}
+		}
+	}
+
+	&__item-inner {
+		display: grid;
+		grid-template-columns: auto auto;
+		gap: 24px;
+		align-items: center;
+		justify-content: space-between;
+		padding: 37px 50px;
+		transition: background 0.25s ease;
+	}
+
+	&__item-title {
+		font: 500 28px/1.25 var(--font-family);
+		color: var(--backgrounds-white, #fff);
+	}
+
+	&__item-desc {
+		margin: 0;
+		font: 400 14px/1.2 var(--font-family);
+		color: var(--backgrounds-grey-blue, #cad9f6);
+		max-width: 300px;
+		min-height: 117px;
+		display: flex;
+		align-items: center;
+	}
+}
+
+// Секция FAQ (спойлеры): только стрелка без rect; последний пункт — ссылка для скачивания
+.section-faq {
+	padding: 70px 0 0px;
+	background: var(--backgrounds-white, #fff);
+	border-radius: 100px 100px 0 0;
+}
+
+.faq {
+	background: var(--backgrounds-white, #fff);
+
+	// В пунктах FAQ (спойлерах) только стрелка, без rect; у ссылки на скачивание — полная иконка
+	&__title {
+		margin: 0 0 28px;
+		font: 500 36px/1.2 var(--font-family);
+		color: var(--text-dark-blue, #0f171f);
+	}
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	&__item {
+		background: var(--backgrounds-white, #fff);
+		border-radius: 16px;
+		overflow: hidden;
+		// min-height: 80px;
+	}
+
+	&__head {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		padding: 24px 30px;
+		background: var(--backgrounds-light-blue, #edf6ff);
+		border: 1px solid var(--backgrounds-light-blue, #edf6ff);
+		border-radius: 16px;
+		cursor: pointer;
+		text-align: left;
+		font-family: inherit;
+		transition: background 0.2s ease;
+		position: relative;
+		z-index: 1;
+
+		&:hover {
+			background: var(--backgrounds-grey-blue, #cad9f6);
+		}
+	}
+
+	&__head-text {
+		flex: 1;
+		font: 400 18px/1.3 var(--font-family);
+		color: var(--text-dark-blue, #0f171f);
+	}
+
+	// Последний пункт — ссылка для скачивания (не спойлер), иконка-стрелка с модификатором .arrow-download
+	&__link {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		padding: 22px 30px;
+		background: var(--backgrounds-light-blue, #edf6ff);
+		border-radius: 16px;
+		text-decoration: none;
+		font: 400 18px/1.3 var(--font-family);
+		color: var(--text-dark-blue, #0f171f);
+		transition: background 0.2s ease;
+
+		&:hover {
+			background: var(--backgrounds-blue-ocean, #6794da);
+			color: var(--backgrounds-white, #fff);
+		}
+
+	}
+
+	&__link-text {
+		flex: 1;
+	}
+
+	&__body {
+		position: relative;
+		z-index: 0;
+		overflow: hidden;
+		height: 0;
+		box-sizing: border-box;
+		padding-top: 0;
+		padding-bottom: 0;
+		background: var(--backgrounds-white, #fff);
+		border-radius: 0 0 16px 16px;
+		border: 3px solid var(--backgrounds-light-blue, #edf6ff);
+		border-top-width: 0;
+		margin-top: -15px;
+
+		.faq__item--open & {
+			height: auto;
+			padding-top: 30px;
+			padding-bottom: 30px;
+		}
+	}
+
+	&__body-text {
+		margin: 0;
+		padding: 0 30px;
+		font: 400 18px/1.55 var(--font-family);
+		color: #2e3442;
+	}
+
+	// Открытый пункт — стрелка смотрит вверх
+	&__item--open .arrow-spoiler {
+		transform: rotate(180deg);
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (max-width: 1279px) {
+	// .tariffs-hero {
+	// 	&__title {
+	// 		font-size: 52px;
+	// 	}
+
+	// 	&__subtitle {
+	// 		font-size: 24px;
+	// 	}
+	// }
+}
+
+@media (max-width: 991px) {
+	.section-tariffs-hero {
+		padding-top: 90px;
+		padding-bottom: 40px;
+	}
+
+	.tariffs-hero {
+		&__title {
+			font-size: 24px;
+			max-width: 100%;
+			margin-bottom: 12px !important;
+			padding: 0 16px;
+			overflow-wrap: break-word;
+		}
+
+		&__subtitle {
+			font-size: 12px;
+			max-width: 100%;
+			margin-bottom: 21px !important;
+			padding: 0 16px;
+		}
+	}
+
+	.tariffs-tabs__controls {
+		margin-bottom: 24px;
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		overflow-y: hidden;
+		-webkit-overflow-scrolling: touch;
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+		gap: 10px;
+		padding-bottom: 4px;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+
+	.tariffs-tabs__control {
+		font-size: 16px;
+		padding: 10px 18px;
+		flex: 0 0 auto;
+		white-space: nowrap;
+	}
+
+	.tariffs-cards {
+		display: flex;
+		flex-wrap: nowrap;
+		gap: 16px;
+		overflow-x: auto;
+		overflow-y: hidden;
+		scroll-snap-type: x mandatory;
+		-webkit-overflow-scrolling: touch;
+		scrollbar-width: thin;
+		padding-bottom: 8px;
+		padding-right: 16px;
+		padding-left: 16px;
+		justify-content: flex-start;
+	}
+
+	.tariffs-consultation {
+		grid-template-columns: 1fr;
+		gap: 12px;
+
+		&__media,
+		&__content {
+			min-height: 220px;
+			border-radius: 24px;
+		}
+
+		&__content {
+			padding: 28px 20px 22px;
+		}
+
+		&__title {
+			margin-bottom: 20px;
+			font-size: 20px;
+		}
+
+		&__btn {
+			max-width: none;
+			margin-right: 0 !important;
+		}
+	}
+
+	.tariff-card {
+		flex: 0 0 auto;
+		width: 295px;
+		min-width: 295px;
+		max-width: 295px;
+		height: 291px;
+		min-height: 291px;
+		scroll-snap-align: start;
+		padding: 30px;
+		border-radius: 24px;
+		box-sizing: border-box;
+
+		&__title {
+			font-size: 22px;
+		}
+
+		&__desc {
+			font-size: 14px;
+			margin-bottom: 20px;
+		}
+
+		&__btn {
+			width: 100%;
+			font-size: 12px;
+			margin-bottom: 24px;
+		}
+
+		&--featured .tariff-card__badge {
+			top: 30px;
+			right: 16px;
+			font-size: 12px;
+			padding: 4px 12px;
+		}
+
+		&__link {
+			width: 100%;
+			font-size: 14px;
+		}
+
+		&__link-text {
+			text-align: center;
+		}
+	}
+
+	.section-tariffs-banner {
+		padding-bottom: 48px;
+		border-radius: 0 0 60px 60px;
+	}
+
+	.tariffs-banner {
+		min-height: 215px;
+		border-radius: 30px;
+		// align-items: flex-end;
+
+		&__overlay {
+			padding: 30px;
+			gap: 6px;
+		}
+
+		&__tag {
+			top: -2px;
+			left: 30px;
+			max-width: fit-content;
+			border-radius: 10px;
+			padding: 5px 12px;
+			font-size: 14px;
+		}
+
+		&__title {
+			font-size: 22px;
+		}
+
+		&__text {
+			font-size: 15px;
+		}
+
+		&__actions {
+			gap: 10px;
+			width: 100%;
+		}
+
+		&__btn {
+			// width: 100%;
+			// justify-content: center;
+			    font-size: 12px;
+		}
+	}
+
+	.section-products {
+		padding-bottom: 48px;
+	}
+
+	.products {
+		padding: 32px 4px 28px;
+		border-radius: 24px;
+
+		&__title {
+			font-size: 24px;
+			margin-left: 0;
+			margin-bottom: 12px;
+		}
+
+		&__subtitle {
+			font-size: 12px;
+			max-width: 100%;
+			margin-left: 0;
+			margin-bottom: 20px !important;
+		}
+
+		&__tabs {
+			.tariffs-tabs__controls {
+				margin: 0 0 20px;
+			}
+		}
+
+		&__item-inner {
+			grid-template-columns: minmax(0, 1fr) minmax(95px, 103px);
+			gap: 20px;
+			padding: 20px 0;
+		}
+
+		&__item-title {
+			font-size: 20px;
+		}
+
+		&__item-desc {
+			font-size: 10px;
+			max-width: 103px;
+		}
+
+		&__item {
+			max-height: none;
+		}
+
+		&__item:hover {
+			max-height: none;
+		}
+	}
+
+	.section-faq {
+		border-radius: 60px 60px 0 0;
+		padding-top: 40px;
+	}
+
+	.faq {
+		// padding: 28px 20px 24px;
+		// border-radius: 24px;
+
+		&__title {
+			font-size: 24px;
+			margin-bottom: 20px;
+		}
+
+		&__list {
+			gap: 8px;
+		}
+
+		&__head {
+			padding: 14px 18px;
+			min-width: 0;
+			overflow: hidden;
+			border-radius: 10px;
+		}
+
+		&__head-text {
+			font-size: 12px;
+			text-overflow: ellipsis;
+		}
+
+		&__body-text {
+			padding: 0 18px 16px;
+			font-size: 12px;
+		}
+		&__item {
+			    min-height: 45px;
+				border-radius: 10px;
+				  min-width: 0;
+		}
+		&__head-text {
+				display: block;
+				min-width: 0;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+		&__link {
+			font-size: 12px;
+			padding: 20px 15px 20px 18px;
+			min-width: 0;
+			max-height: 45px;
+			border-radius: 10px;
+		}
+		&__link-text {
+			display: block;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			min-width: 0;
+		}
+	}
+
+	.career-page .career-faq.faq {
+		.faq__head {
+			padding: 18px 20px;
+		}
+
+		.faq__head-text {
+			font-size: 20px;
+			white-space: normal;
+			text-overflow: clip;
+		}
+	}
+}

@@ -1,0 +1,86 @@
+.section-training-hero--dictionary .container {
+	max-width: 1280px;
+}
+
+.section-training-hero--dictionary .training-hero {
+	border-radius: 0;
+}
+
+.section-dictionary {
+	padding: 0 0 0;
+	background: var(--backgrounds-white, #fff);
+}
+
+.dictionary {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+	&__group {
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+		align-items: start;
+	}
+
+	&__letter {
+		margin: 0;
+		width: 100%;
+		padding: 18px 17px;
+		border-radius: 12px;
+		background: var(--backgrounds-light-blue, #edf6ff);
+		font: 400 18px/1 var(--font-family);
+		color: var(--text-dark-blue, #0f171f);
+		text-align: left;
+	}
+
+	&__items {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		padding-left: 20px;
+	}
+
+	&__item {
+		margin: 0 0 0 !important;
+		font: 400 18px/1.15 var(--font-family);
+		color: var(--text-dark-blue, #0f171f);
+		text-align: left;
+	}
+}
+
+@media (max-width: 767px) {
+	.section-training-hero.section-training-hero--dictionary {
+		background-image: url('../assets/images/required/dictionary-m.png');
+		background-size: cover;
+		background-position: center;
+	}
+
+	.training-hero.training-hero--dictionary {
+		background-image: none !important;
+		justify-content: center;
+	}
+
+	.section-dictionary {
+		padding-top: 33px;
+	}
+
+	.dictionary {
+		gap: 14px;
+
+		&__group {
+			flex-direction: column;
+			gap: 20px;
+		}
+
+		&__letter {
+			// font-size: 20px;
+			// border-radius: 10px;
+		}
+
+		&__item {
+			// font-size: 16px;
+			// line-height: 1.35;
+		}
+	}
+}

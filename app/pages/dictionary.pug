@@ -1,0 +1,48 @@
+﻿extends template/layout
+
+block variables
+	- var title = 'Словарь — Rioni';
+	- var menuHeader = [
+	-   { title: 'О нас', href: 'about.html' },
+	-   { title: 'Услуги', href: 'services.html' },
+	-   { title: 'Инструменты', href: 'products.html' },
+	-   { title: 'Тарифы', href: 'tariffs.html' },
+	-   { title: 'Обучение', href: '#' },
+	-   { title: 'Рынок', href: 'market.html' },
+	-   { title: 'Документы', href: 'documents.html' }
+	- ];
+	- var showTopbar = false
+	- var headerCta = { text: 'Открыть счет', href: '#registration-form' };
+
+block content
+	section.section-training-hero.section-training-hero--dictionary
+		.container
+			.training-hero.training-hero--dictionary(style="background-image: url('./assets/images/required/dictionary.png')")
+				h1.training-hero__title Краткий словарь начинающего инвестора
+				p.training-hero__subtitle Повышайте уровень знаний и закрепляйте результаты тестированием, отслеживайте прогресс и растите
+				form.training-hero__search(action="#" method="get" role="search")
+					label.training-hero__search-label(for="dictionary-search")
+					input.training-hero__search-input#dictionary-search(type="search" name="q" placeholder="Искать по запросу" aria-label="Поиск по словарю")
+					button.training-hero__search-btn(type="submit" aria-label="Найти")
+						span.training-hero__search-icon
+
+	section.section-dictionary
+		.container
+			.dictionary
+				.dictionary__group
+					h2.dictionary__letter A
+					.dictionary__items
+						p.dictionary__item Акции - долевые ценные бумаги, которые предоставляют их владельцам право на долю в капитале компании и часть ее прибыли.
+
+				.dictionary__group
+					h2.dictionary__letter Б
+					.dictionary__items
+						p.dictionary__item Брокер - посредник между покупателем и продавцом на фондовом рынке.
+						p.dictionary__item Биржа - организованный рынок, на котором совершаются сделки с ценными бумагами.
+
+				.dictionary__group
+					h2.dictionary__letter В
+					.dictionary__items
+						p.dictionary__item Волатильность - степень изменения цены финансового актива за определенный период времени.
+
+	+sectionForm({ prefix: 'dictionary' })

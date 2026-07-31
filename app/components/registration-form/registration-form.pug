@@ -1,0 +1,125 @@
+//- Модальная форма «Регистрация профиля». Открывается по клику на header__cta (href="#registration-form" data-popup).
+//- Состояния: default (форма), loading, success, error — переключаются в registration-form.js
+mixin registrationForm()
+	#registration-form.registration-form.mfp-hide.mfp-with-anim(aria-hidden="true" data-state="form")
+		.registration-form__inner
+			//- Левая колонка: логотип и слоган
+			.registration-form__brand
+				.registration-form__logo-top
+					img.registration-form__logo-img(src="./assets/images/required/logo-rioni.svg" alt="RIONI capital" width="120" height="40")
+				.registration-form__logo-main(aria-hidden="true")
+					img.registration-form__logo-img(src="./assets/images/required/logo-form.svg" alt="")
+				p.registration-form__tagline Rioni Capital – европейский брокер с грузинским колоритом
+
+			//- Правая колонка: форма и варианты состояний
+			.registration-form__right
+				.registration-form__right-logo(aria-hidden="true")
+					img.registration-form__logo-img(src="./assets/images/required/logo-rioni.svg" alt="Rioni Capital")
+				h2.registration-form__title Регистрация профиля
+
+				//- Состояние: форма (default)
+				.registration-form__body.registration-form__body--form(data-state="form")
+					form.registration-form__form(action="#" method="post" data-registration-form)
+						.registration-form__field
+							label.registration-form__label(for="reg-name") Имя
+							input.registration-form__input(id="reg-name" type="text" name="name" placeholder="Имя" required autocomplete="name")
+						.registration-form__field
+							label.registration-form__label(for="reg-phone") Номер телефона
+							.registration-form__phone
+								.registration-form__country.js-reg-country-select
+									.registration-form__country-trigger(role="button" tabindex="0" aria-haspopup="listbox" aria-expanded="false" aria-label="Страна")
+										span.registration-form__country-flag(id="reg-country-flag")
+										span.registration-form__country-arrow
+									.registration-form__country-dropdown(role="listbox" aria-hidden="true")
+										.registration-form__country-option(role="option" data-value="ru" data-code="+7" tabindex="0")
+											span.registration-form__country-code +7
+										.registration-form__country-option(role="option" data-value="ge" data-code="+995" tabindex="0")
+											span.registration-form__country-code +995
+										.registration-form__country-option(role="option" data-value="am" data-code="+374" tabindex="0")
+											span.registration-form__country-code +374
+										.registration-form__country-option(role="option" data-value="es" data-code="+34" tabindex="0")
+											span.registration-form__country-code +34
+										.registration-form__country-option(role="option" data-value="pt" data-code="+351" tabindex="0")
+											span.registration-form__country-code +351
+										.registration-form__country-option(role="option" data-value="fr" data-code="+33" tabindex="0")
+											span.registration-form__country-code +33
+										.registration-form__country-option(role="option" data-value="gr" data-code="+30" tabindex="0")
+											span.registration-form__country-code +30
+										.registration-form__country-option(role="option" data-value="kg" data-code="+996" tabindex="0")
+											span.registration-form__country-code +996
+									select.registration-form__country-select(id="reg-country" name="country" aria-label="Страна" data-reg-country-select)
+										option(value="ru" selected) RU
+										option(value="ge") GE
+										option(value="am") AM
+										option(value="es") ES
+										option(value="pt") PT
+										option(value="fr") FR
+										option(value="gr") GR
+										option(value="kg") KG
+								input.registration-form__input.registration-form__input--phone(id="reg-phone" type="tel" name="phone" placeholder="" autocomplete="tel" required)
+						.registration-form__field
+							label.registration-form__label(for="reg-email") E-mail
+							input.registration-form__input(id="reg-email" type="email" name="email" placeholder="E-mail" required autocomplete="email")
+						.registration-form__agree.registration-form__field
+							label.registration-form__checkbox-label
+								input.registration-form__checkbox(type="checkbox" name="consent" value="1" required)
+								span.registration-form__checkbox-text Я согласен с
+									a.registration-form__link(href="#") Rioni T&C
+									| и
+									a.registration-form__link(href="#") Уведомлением о конфиденциальности
+						.registration-form__agree.registration-form__field
+							label.registration-form__checkbox-label
+								input.registration-form__checkbox(type="checkbox" name="promo" value="1")
+								span.registration-form__checkbox-text Я согласен на получение рекламных рассылок
+						button.registration-form__submit(type="submit") Зарегистрироваться
+					p.registration-form__login Уже есть аккаунт?
+						a.registration-form__login-link(href="#login-form" data-popup) Войти
+
+				//- Состояние: ввод кода подтверждения
+				.registration-form__body.registration-form__body--code(data-state="code" aria-hidden="true")
+					button.registration-form__code-back(type="button" data-reg-code-back aria-label="Назад")
+						span.registration-form__code-back-arrow
+						| Назад
+					h2.registration-form__code-title Введите код подтверждения
+					p.registration-form__code-hint Код отправлен на номер телефона
+						strong.registration-form__code-phone(data-reg-code-phone) +7 (999) 999-99-99
+					.registration-form__code-inputs(data-reg-code-inputs)
+						input.registration-form__code-digit(type="text" inputmode="numeric" maxlength="1" data-reg-code-digit aria-label="Цифра 1" autocomplete="one-time-code")
+						input.registration-form__code-digit(type="text" inputmode="numeric" maxlength="1" data-reg-code-digit aria-label="Цифра 2")
+						input.registration-form__code-digit(type="text" inputmode="numeric" maxlength="1" data-reg-code-digit aria-label="Цифра 3")
+						input.registration-form__code-digit(type="text" inputmode="numeric" maxlength="1" data-reg-code-digit aria-label="Цифра 4")
+						input.registration-form__code-digit(type="text" inputmode="numeric" maxlength="1" data-reg-code-digit aria-label="Цифра 5")
+						input.registration-form__code-digit(type="text" inputmode="numeric" maxlength="1" data-reg-code-digit aria-label="Цифра 6")
+					p.registration-form__code-error(role="alert" aria-live="polite" data-reg-code-error aria-hidden="true") Неверный код подтверждения. Введите код повторно
+					p.registration-form__code-resend
+						| Не пришел код?
+						a.registration-form__code-resend-link(href="#" data-reg-code-resend) Отправить повторно через
+							span.registration-form__code-resend-timer(data-reg-resend-timer) 30
+					p.registration-form__code-support Возникли трудности?
+						a.registration-form__link.registration-form__support-link(href="#") Обратитесь в службу поддержки
+
+				//- Состояние: загрузка (отправка)
+				.registration-form__body.registration-form__body--loading(data-state="loading" aria-hidden="true")
+					.registration-form__loading-text Отправка…
+
+				//- Состояние: успех
+				.registration-form__body.registration-form__body--success(data-state="success" aria-hidden="true")
+					.registration-form__success-icon(aria-hidden="true")
+					p.registration-form__success-title Регистрация завершена
+					p.registration-form__success-text Проверьте почту и следуйте инструкциям для активации аккаунта.
+
+				//- Состояние: ошибка
+				.registration-form__body.registration-form__body--error(data-state="error" aria-hidden="true")
+					p.registration-form__error-title Ошибка отправки
+					p.registration-form__error-text Попробуйте позже или свяжитесь с поддержкой.
+					button.registration-form__retry(type="button" data-reg-retry) Повторить
+
+				//- Состояние: превышено количество попыток ввода кода
+				.registration-form__body.registration-form__body--lockout(data-state="lockout" aria-hidden="true")
+					.registration-form__lockout-icon
+						img.registration-form__lockout-img(src="./assets/images/required/lock2.png" alt="")
+					h2.registration-form__lockout-title Превышено количество попыток по вводу проверочного кода
+					p.registration-form__lockout-text В целях безопасности вход в личный кабинет временно недоступен. Вы сможете повторить попытку входа
+						span.registration-form__lockout-duration через 30 минут
+					p.registration-form__lockout-support Возникли трудности?
+						a.registration-form__link.registration-form__support-link(href="#") Обратитесь в службу поддержки

@@ -1,0 +1,200 @@
+extends template/layout
+
+block variables
+	- var title = 'Новости — Rioni';
+	- var menuHeader = [
+	-   { title: 'О нас', href: 'about.html' },
+	-   { title: 'Услуги', href: 'services.html' },
+	-   { title: 'Тарифы', href: 'tariffs.html' },
+	-   { title: 'Обучение', href: 'training.html' },
+	-   { title: 'Рынок', href: 'market.html' },
+	-   { title: 'Документы', href: 'documents.html' }
+	- ];
+	- var showTopbar = false
+	- var headerCta = { text: 'Зарегистрироваться', href: '#registration-form' };
+	- var newsCards = [
+	-   { title: 'Название новости', text: 'Тут написать кусок текста/подзаголовок новости, буквально 4 строчки не больше...', date: '22 декабря, 2022', image: 'news-main.jpg' },
+	-   { title: 'Название новости', text: 'Тут написать кусок текста/подзаголовок новости, буквально 4 строчки не больше...', date: '22 декабря, 2022', image: 'analytics-cover.jpg' },
+	-   { title: 'Название новости', text: 'Тут написать кусок текста/подзаголовок новости, буквально 4 строчки не больше...', date: '22 декабря, 2022', image: 'baner2.jpg' },
+	-   { title: 'Название новости', text: 'Тут написать кусок текста/подзаголовок новости, буквально 4 строчки не больше...', date: '22 декабря, 2022', image: 'product.jpg' },
+	-   { title: 'Название новости', text: 'Тут написать кусок текста/подзаголовок новости, буквально 4 строчки не больше...', date: '22 декабря, 2022', image: 'video.jpg' },
+	-   { title: 'Название новости', text: 'Тут написать кусок текста/подзаголовок новости, буквально 4 строчки не больше...', date: '22 декабря, 2022', image: 'seasonal-banner.jpg' },
+	-   { title: 'Название новости', text: 'Тут написать кусок текста/подзаголовок новости, буквально 4 строчки не больше...', date: '22 декабря, 2022', image: 'hero-about.jpg' },
+	-   { title: 'Название новости', text: 'Тут написать кусок текста/подзаголовок новости, буквально 4 строчки не больше...', date: '22 декабря, 2022', image: 'baner.jpg' },
+	-   { title: 'Название новости', text: 'Тут написать кусок текста/подзаголовок новости, буквально 4 строчки не больше...', date: '22 декабря, 2022', image: 'slide1.jpg' },
+	-   { title: 'Название новости', text: 'Тут написать кусок текста/подзаголовок новости, буквально 4 строчки не больше...', date: '22 декабря, 2022', image: 'slide2.jpg' },
+	-   { title: 'Название новости', text: 'Тут написать кусок текста/подзаголовок новости, буквально 4 строчки не больше...', date: '22 декабря, 2022', image: 'hero2-m.jpg' },
+	-   { title: 'Название новости', text: 'Тут написать кусок текста/подзаголовок новости, буквально 4 строчки не больше...', date: '22 декабря, 2022', image: 'lesson.png' }
+	- ];
+	- var memes = [
+	-   { image: 'Frame 1948756645.png', mod: 'tall' },
+	-   { image: 'Frame 1948756650.png', mod: 'medium' },
+	-   { image: 'Frame 1948756651.png', mod: 'small' },
+	-   { image: 'Frame 1948756650.png', mod: 'tall' },
+	-   { image: 'Frame 1948756651.png', mod: 'small' },
+	-   { image: 'Frame 1948756645.png', mod: 'medium' },
+	-   { image: 'Frame 1948756651.png', mod: 'tall' },
+	-   { image: 'Frame 1948756650.png', mod: 'small' },
+	-   { image: 'Frame 1948756645.png', mod: 'medium' },
+	-   { image: 'Frame 1948756650.png', mod: 'medium' },
+	-   { image: 'Frame 1948756651.png', mod: 'small' },
+	-   { image: 'Frame 1948756645.png', mod: 'tall' }
+	- ];
+
+block content
+	section.section-news-page
+		.container
+			.news-page
+				.news-page__body
+					.news-page__main
+						h1.news-page__title Новости Rioni Capital
+						form.news-page__search(role="search")
+							label.news-page__search-label(for="news-search")
+							input.news-page__search-input#news-search(type="search" name="q" placeholder="Поиск" aria-label="Поиск по новостям")
+
+						.news-page__cards(data-news-page-cards)
+							each item, index in newsCards
+								article.news-page-card(class=index >= 4 ? 'news-page-card--extra' : '')
+									a.news-page-card__link(href="article.html")
+										.news-page-card__image
+											img(src=`./assets/images/required/${item.image}` alt=item.title)
+										.news-page-card__body
+											h2.news-page-card__title= item.title
+											p.news-page-card__text= item.text
+											time.news-page-card__date(datetime="2022-12-22")= item.date
+
+						button.news-page__more(type="button" data-news-page-more="cards")
+							span.news-page__more-arrow(aria-hidden="true")
+							span Показать больше
+
+						.news-page__memes
+							h2.news-page__memes-title Немного юмора:
+								br
+								| Расслабьтесь и Улыбнитесь
+							p.news-page__memes-text Инвестиции и финансовые рынки могут утомить, поэтому всегда полезно посмеяться и сделать свою жизнь более приятной. Разбавьте жизнь веселыми мемами!
+							.news-page__masonry(data-news-page-masonry)
+								each meme, index in memes
+									article(class=`news-meme-card news-meme-card--${meme.mod} ${index >= 8 ? 'news-meme-card--extra' : ''}`)
+										img.news-meme-card__img(src=`./assets/images/required/mem/${meme.image}` alt="Мем")
+
+						button.news-page__more(type="button" data-news-page-more="memes")
+							span.news-page__more-arrow(aria-hidden="true")
+							span Показать больше
+
+					aside.news-page__sidebar
+						.market-widget.market-widget--banner
+							.market-widget__inner
+								p.market-widget__title Рекламный баннер
+								p.market-widget__text Тут написать любую нашу рекламу продукта или важную информацию, которую мы хотим донести до клиента
+								a.market-widget__btn.button(href="#")
+									span.button__text подробнее
+									span.button__icon
+										i.icon.icon-arrow-right
+
+						.market-widget.market-widget--quotes(data-market-widget="quotes")
+							.market-widget__header
+								.market-widget__heading-row
+									h3.market-widget__heading Список котировок
+									button.market-widget__dropdown(type="button" aria-label="Развернуть список" data-quotes-dropdown)
+										span.market-widget__dropdown-arrow
+								.market-widget__actions
+									button.market-widget__action(type="button" aria-label="Добавить") +
+									button.market-widget__action(type="button" aria-label="Убрать") −
+									button.market-widget__action(type="button" aria-label="Ещё") …
+							.market-widget__body
+								.market-quotes
+									table.market-quotes__table
+										thead.market-quotes__head
+											tr
+												th.market-quotes__th Инструм
+												th.market-quotes__th Посл. ц.
+												th.market-quotes__th Изм.
+												th.market-quotes__th Изм. %
+										tbody.market-quotes__body
+											tr.market-quotes__row
+												td.market-quotes__cell IRUS
+												td.market-quotes__cell 3 121,57
+												td.market-quotes__cell.market-quotes__cell--neg -62,40
+												td.market-quotes__cell.market-quotes__cell--neg -1,96%
+											tr.market-quotes__row
+												td.market-quotes__cell RTSI
+												td.market-quotes__cell 1 135,27
+												td.market-quotes__cell.market-quotes__cell--neg -22,68
+												td.market-quotes__cell.market-quotes__cell--neg -1,96%
+											tr.market-quotes__row
+												td.market-quotes__cell SPX
+												td.market-quotes__cell 5 521,52
+												td.market-quotes__cell.market-quotes__cell--neg -77,78
+												td.market-quotes__cell.market-quotes__cell--neg -1,39%
+											tr.market-quotes__row
+												td.market-quotes__cell NDQ
+												td.market-quotes__cell 19 225,4
+												td.market-quotes__cell.market-quotes__cell--neg -370,54
+												td.market-quotes__cell.market-quotes__cell--neg -1,89%
+									.market-quotes__subsection
+										.market-quotes__subtitle Акции
+										table.market-quotes__table
+											tbody.market-quotes__body
+												tr.market-quotes__row
+													td.market-quotes__cell SBER
+													td.market-quotes__cell 316,38
+													td.market-quotes__cell.market-quotes__cell--pos 0,01
+													td.market-quotes__cell.market-quotes__cell--pos 0,00%
+												tr.market-quotes__row
+													td.market-quotes__cell GAZP
+													td.market-quotes__cell 165,45
+													td.market-quotes__cell.market-quotes__cell--neg -2,26
+													td.market-quotes__cell.market-quotes__cell--neg -1,34%
+												tr.market-quotes__row
+													td.market-quotes__cell LKOH
+													td.market-quotes__cell 7131,0
+													td.market-quotes__cell.market-quotes__cell--pos 1,0
+													td.market-quotes__cell.market-quotes__cell--pos 0,01%
+												tr.market-quotes__row
+													td.market-quotes__cell VTBR
+													td.market-quotes__cell 89,56
+													td.market-quotes__cell.market-quotes__cell--neg -0,30
+													td.market-quotes__cell.market-quotes__cell--neg -0,33%
+
+						.market-widget.market-widget--futures(data-market-widget="futures")
+							.market-widget__header
+								h3.market-widget__heading Фьючерсы
+							.market-widget__body
+								.market-futures
+									.market-futures__item
+										span.market-futures__name BR1!
+										span.market-futures__value 70,10
+										span.market-futures__change.market-futures__change--neg -0,22
+										span.market-futures__change.market-futures__change--neg -0,31%
+									.market-futures__item
+										.market-futures__row
+											span.market-futures__name USDRUB_TOM
+											.market-futures__icons
+												button.market-futures__icon(type="button" aria-label="Копировать")
+												button.market-futures__icon(type="button" aria-label="Ссылка")
+												button.market-futures__icon(type="button" aria-label="Ещё")
+										p.market-futures__sub Доллар США / Российский рубль Том
+										span.market-futures__meta RUS
+									.market-futures__status
+										span.market-futures__status-dot
+										span.market-futures__status-text Рынок открыт
+									.market-futures__news
+										a.market-futures__news-link(href="#")
+											span.market-futures__news-time 15 часов назад
+											span.market-futures__news-text Рубль подрос в ожидании ответа президента РФ...
+											span.market-futures__news-arrow
+
+						.market-widget.market-widget--seasonality
+							.market-widget__header
+								h3.market-widget__heading Сезонность
+							.market-widget__body
+								.market-seasonality
+									.market-seasonality__chart
+									.market-seasonality__axis
+										span.market-seasonality__axis-label янв.
+										span.market-seasonality__axis-label май
+										span.market-seasonality__axis-label сент.
+
+						.market-widget.market-widget--banner
+							.market-widget__inner
+								p.market-widget__text Тут написать любую нашу рекламу продукта/или важную информацию, которую мы хотим донести до клиента

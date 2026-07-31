@@ -1,0 +1,618 @@
+// Страница «Услуги / Инструменты / Продукты»
+// Hero — слайдер: картинка на всю ширину экрана с маской mask.svg, контент сверху
+.hero--products {
+	min-height: auto;
+	background: var(--backgrounds-white, #fff);
+	padding: 0 0 35px;
+	overflow: hidden;
+}
+
+.hero-products__container {
+	overflow: hidden;
+	position: relative;
+	max-width: 1280px;
+
+	@media (max-width: 768px) {
+		padding-left: 0;
+		padding-right: 0;
+		max-width: 100%;
+	}
+}
+
+.hero-products__slider {
+	position: relative;
+	overflow: hidden;
+}
+
+.hero-products__slide-inner {
+	position: relative;
+	min-height: 420px;
+	@media (min-width: 769px) {
+		height: 671px;
+		min-height: 671px;
+	}
+	@media (max-width: 768px) {
+		min-height: 760px;
+	}
+}
+
+// Картинка вписана в контейнер, видна только через маску; пока картинки нет — серая заливка
+.hero-products__media-full {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: #d0d0d0;
+	-webkit-mask-image: url('../assets/images/required/mask.svg');
+	mask-image: url('../assets/images/required/mask.svg');
+	-webkit-mask-size: cover;
+	mask-size: cover;
+	-webkit-mask-position: center;
+	mask-position: center;
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+
+	@media (max-width: 768px) {
+		-webkit-mask-image: url('../assets/images/required/mask-m.svg');
+		mask-image: url('../assets/images/required/mask-m.svg');
+		-webkit-mask-position: top right;
+		mask-position: top right;
+		-webkit-mask-size: 100% auto;
+		mask-size: 100% auto;
+	}
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+
+		@media (max-width: 768px) {
+			object-position: center bottom;
+		}
+	}
+}
+
+.hero-products__content {
+	position: relative;
+	z-index: 2;
+	padding: 271px 100px 32px;
+	@media (max-width: 768px) {
+		position: static;
+		padding: 92px 113px 24px 32px;
+	}
+}
+
+.hero-products__content-inner {
+	max-width: 424px;
+	padding-left: 0;
+	padding-right: 0;
+
+	@media (max-width: 768px) {
+		width: 100%;
+		max-width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+.hero-products__title {
+	font-size: 42px;
+	line-height: 1.2;
+	color: var(--backgrounds-blue);
+	margin: 0 0 24px;
+	font-weight: 500;
+	@media (max-width: 768px) {
+		font-size: 24px;
+	}
+}
+
+.hero-products__text {
+	font-size: 18px;
+	line-height: 1.5;
+	color: var(--text-dark-grey);
+	margin: 0 0 24px;
+
+	@media (max-width: 768px) {
+		font-size: 14px;
+		line-height: 1.35;
+		max-width: 235px;
+	}
+}
+
+.hero-products__btn {
+	margin-top: 8px;
+	background: var(--backgrounds-blue-ocean, #6794da);
+	color: var(--backgrounds-white, #fff);
+	text-wrap: nowrap;
+
+	&:hover {
+		background: var(--backgrounds-blue-ocean, #6794da);
+		color: var(--backgrounds-white, #fff);
+	}
+
+	@media (max-width: 768px) {
+		position: relative;
+		z-index: 3;
+		margin-top: 0;
+		height: 39px;
+		padding: 8px 21px 10px;
+		font-size: 16px;
+
+		.button__icon {
+			right: -60px;
+		}
+	}
+}
+
+// Прогресс как в services__progress, но по горизонтали (полоски, активная — синяя)
+.hero-products__progress {
+	position: absolute;
+	left: 100px;
+	top: auto;
+	bottom: 104px;
+	z-index: 3;
+	display: flex;
+	flex-direction: row;
+	gap: 4px;
+	align-items: center;
+	padding: 0;
+	width: 224px;
+	max-width: none;
+	list-style: none;
+	margin: 0;
+
+	@media (max-width: 768px) {
+		left: 30px;
+		top: auto;
+		bottom: 389px;
+	}
+}
+
+.hero-products__bar {
+	flex: 0 0 28px;
+	max-width: none;
+	height: 4px;
+	border-radius: 999px;
+	background: #6794da;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	overflow: hidden;
+	transition: background 0.25s ease;
+
+	&:hover {
+		background: #2c4d90;
+	}
+	&.is-active {
+		flex-basis: 140px;
+	}
+}
+
+.hero-products__bar-fill {
+	display: block;
+	width: 100%;
+	height: 100%;
+	background: #2c4d90;
+	transform-origin: left center;
+	transform: scaleX(0);
+}
+
+.section-learning-books--products {
+	padding-top: 0;
+	padding-bottom: 56px;
+}
+
+.learning-books--products {
+	.learning-books__title {
+		margin-bottom: 26px;
+		font-size: 24px;
+	}
+}
+
+// --- Синий блок: Инструменты ---
+.section-instruments {
+	background: var(--backgrounds-blue-ocean);
+	padding: 70px 0 87px;
+}
+
+.section-instruments__title {
+	max-width: 670px;
+	font-size: 36px;
+	font-weight: 500;
+	color: var(--backgrounds-white, #fff);
+	margin: 0 0 39px;
+	line-height: 1.1;
+	@media (max-width: 768px) {
+		font-size: 22px;
+		margin-bottom: 28px;
+	}
+}
+
+.instruments__slider-wrap {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0;
+	margin-bottom: 32px;
+}
+
+.instruments__arrow {
+	position: absolute;
+	top: 50%;
+	z-index: 2;
+	width: 54px;
+	height: 39px;
+	border: none;
+	padding: 0;
+	background: transparent;
+	cursor: pointer;
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: opacity 0.2s;
+	&:hover {
+		opacity: 0.9;
+	}
+	&--prev {
+		right: calc(50% + 502.5px);
+		transform: translateY(-50%);
+	}
+	&--next {
+		left: calc(50% + 502.5px);
+		transform: translateY(-50%);
+	}
+	&--prev::after {
+		content: '';
+		width: 54px;
+		height: 39px;
+		background: url('../assets/images/required/icon-arrow-white.svg') center / contain
+			no-repeat;
+		transform: rotate(180deg);
+	}
+	&--next::after {
+		content: '';
+		width: 54px;
+		height: 39px;
+		background: url('../assets/images/required/icon-arrow-white.svg') center / contain
+			no-repeat;
+	}
+}
+
+.instruments__slider {
+	flex: 0 1 1019px;
+	max-width: 1019px;
+	overflow: hidden;
+}
+
+@media (max-width: 1279px) and (min-width: 769px) {
+	.instruments__slider-wrap {
+		justify-content: flex-start;
+		gap: 12px;
+	}
+
+	.instruments__arrow {
+		position: static;
+		transform: none;
+	}
+}
+
+.instruments__slider .swiper-wrapper {
+	align-items: center;
+}
+
+.instruments__slider:not(.swiper-initialized) .swiper-wrapper {
+	display: flex;
+}
+
+.instruments__slider:not(.swiper-initialized) .swiper-slide {
+	flex: 0 0 calc((100% - 8px) / 3);
+	max-width: calc((100% - 8px) / 3);
+}
+
+.instruments__slider .swiper-slide {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: auto;
+	height: auto;
+	padding: 0;
+}
+
+.instrument-card {
+	background: var(--backgrounds-white, #fff);
+	border-radius: 28px;
+	padding: 35px;
+	width: 300px;
+	height: 232px;
+	position: relative;
+	overflow: hidden;
+	transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+
+	&--active {
+		width: 379px;
+		height: 260px;
+		border-radius: 30px;
+		padding: 35px;
+		background: linear-gradient(136deg, #4a78c1 0%, #427cac 19.09%, #1c5ca0 61.26%, #23395b 100%);
+		.instrument-card__title,
+		.instrument-card__text {
+			color: var(--backgrounds-white, #fff);
+		}
+		.instrument-card__icon {
+			background-image: url('../assets/images/required/temp.png');
+			right: 18px;
+			bottom: -40px;
+		}
+
+	}
+	&__title {
+		position: relative;
+		z-index: 1;
+		font-size: 26px;
+		font-weight: 400;
+		color: var(--text-dark-blue);
+		margin: 0 0 12px;
+		line-height: 1.2;
+	}
+	&__text {
+		position: relative;
+		z-index: 1;
+		font-size: 14px;
+		line-height: 1.5;
+		color: var(--text-dark-blue);
+		margin: 0;
+		max-width: 260px;
+	}
+	&__icon {
+		position: absolute;
+		right: -50px;
+		bottom: -70px;
+		width: 155px;
+		height: 155px;
+		border-radius: 30px 30px 0 0;
+		background-image: url('../assets/images/required/temp.png');
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+}
+
+// Две карточки внизу синего блока
+.instruments__bottom {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 24px;
+	@media (max-width: 768px) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.instruments-card {
+	background: var(--backgrounds-white, #fff);
+	border-radius: 28px;
+	padding: 35Px;
+	display: grid;
+	grid-template-columns: 1fr auto;
+	gap: 24px;
+	align-items: flex-start;
+	height: 269px;
+	box-shadow: none;
+	@media (max-width: 768px) {
+		grid-template-columns: 1fr;
+		height: auto;
+	}
+	&__content {
+		min-width: 0;
+	}
+	&__title {
+		font-size: 26px;
+		font-weight: 400;
+		color: var(--text-dark-blue);
+		margin: 0 0 12px;
+		line-height: 1.2;
+	}
+	&__text {
+		font-size: 14px;
+		line-height: 1.5;
+		color: var(--text-dark-blue);
+		margin: 0 0 20px;
+		max-width: 360px;
+	}
+	&__btn {
+		justify-content: center;
+		text-align: center;
+	}
+	&__media {
+		width: 155px;
+		height: 155px;
+		@media (max-width: 768px) {
+			width: 100%;
+			height: 100px;
+		}
+	}
+	&__placeholder {
+		width: 155px;
+		height: 155px;
+		background-image: url('../assets/images/required/temp.png');
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+		border-radius: 28px;
+		display: block;
+		position: relative;
+		overflow: hidden;
+	}
+}
+
+@media (max-width: 768px) {
+	.section-learning-books--products {
+		padding-bottom: 40px;
+	}
+
+	.learning-books--products {
+		.learning-books__title {
+			font-size: 18px;
+			margin-bottom: 18px;
+		}
+	}
+
+	.section-instruments {
+		padding: 44px 0 48px;
+	}
+
+	.section-instruments .container {
+		padding-right: 0;
+	}
+
+	.section-instruments__title {
+		max-width: 320px;
+		padding-right: 16px;
+	}
+
+	.instruments__slider-wrap {
+		display: block;
+		margin-right: 0;
+		margin-bottom: 32px;
+		padding-bottom: 0;
+	}
+
+	.instruments__arrow {
+		position: absolute;
+		z-index: 3;
+		top: 196px;
+		width: 54px;
+		height: 39px;
+	}
+
+	.instruments__arrow--prev {
+		display: none;
+	}
+
+	.instruments__arrow--next {
+		left: auto;
+		right: 33px;
+		transform: none;
+	}
+
+	.instruments__arrow.swiper-button-disabled {
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	.instruments__slider {
+		width: 100%;
+		max-width: none;
+		overflow: hidden;
+	}
+
+	.instruments__slider .swiper-wrapper {
+		align-items: flex-start;
+	}
+
+	.instruments__slider .swiper-slide {
+		width: auto;
+		justify-content: flex-start;
+	}
+
+	.instruments__slider:not(.swiper-initialized) .swiper-slide {
+		flex-basis: auto;
+		max-width: none;
+	}
+
+	.instrument-card {
+		width: 248px;
+		max-width: 248px;
+		height: 188px;
+		padding: 35px;
+		border-radius: 30px;
+
+		&__title {
+			font-size: 24px;
+			line-height: 1.12;
+		}
+
+		&__text {
+			font-size: 14px;
+			line-height: 1.15;
+			max-width: 229px;
+		}
+
+		&__icon {
+			right: -1px;
+			bottom: -1px;
+			width: 126px;
+			height: 126px;
+			border-radius: 30px 30px 0 0;
+		}
+	}
+
+	.instrument-card--active {
+		width: calc(100vw - 135px);
+		max-width: 414px;
+		height: 235px;
+		padding: 30px;
+
+		.instrument-card__title {
+			font-size: 24px;
+		}
+
+		.instrument-card__text {
+			font-size: 14px;
+			max-width: 268px;
+		}
+
+		.instrument-card__icon {
+			right: -1px;
+			bottom: -1px;
+		}
+	}
+
+	.instruments-card {
+		position: relative;
+		overflow: hidden;
+		grid-template-columns: 1fr;
+		padding: 22px 20px;
+		min-height: 0;
+		max-width: 343px;
+
+		&__title {
+			font-size: 24px;
+		}
+
+		&__text {
+			max-width: 229px;
+		}
+
+		&__btn {
+			width: 100%;
+			max-width: 172px;
+			margin-right: 0;
+		}
+
+		&__media {
+			position: absolute;
+			top: 50%;
+			right: -20px;
+			width: 107px;
+			height: 107px;
+			transform: translateY(-50%);
+		}
+
+		&__placeholder {
+			width: 107px;
+			height: 107px;
+			border-radius: 20px;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.instruments__slider:not(.swiper-initialized) .swiper-slide {
+		flex-basis: auto;
+		max-width: none;
+	}
+}

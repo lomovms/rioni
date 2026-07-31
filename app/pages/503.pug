@@ -1,0 +1,20 @@
+extends template/layout
+
+block variables
+	- var title = 'Техническое обслуживание — Rioni';
+	- var menuHeader = [
+	-   { title: 'О нас', href: 'about.html' },
+	-   { title: 'Услуги', href: 'services.html' },
+	-   { title: 'Тарифы', href: 'tariffs.html' },
+	-   { title: 'Обучение', href: '#' },
+	-   { title: 'Рынок', href: 'market.html' },
+	-   { title: 'Документы', href: 'documents.html' }
+	- ];
+	- var showTopbar = false
+	- var headerCta = { text: 'Зарегистрироваться', href: '#registration-form' }
+	- var headerMod = 'light'
+
+block content
+	+maintenancePage({
+		bgImage: 'required/maintenance-bg.jpg'
+	})

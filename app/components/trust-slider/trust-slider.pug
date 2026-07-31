@@ -1,0 +1,47 @@
+mixin trustSlider(data)
+	- var d = data || {};
+	- var slides = d.slides || [];
+	- var firstSlide = slides.length ? slides[0] : null;
+	if firstSlide
+		section.section-trust
+			.container
+				.trust-slider(data-trust-slider data-trust-slider-interval=d.intervalMs || 8000)
+					.trust-slider__header(data-trust-slider-header)
+						.trust-slider__icon-wrap
+							img.trust-slider__icon(
+								src=firstSlide.headerIcon
+								alt=""
+								width="48"
+								height="48"
+								data-trust-slider-header-icon
+							)
+						h2.trust-slider__title(data-trust-slider-header-title)= firstSlide.headerTitle
+						p.trust-slider__subtitle(data-trust-slider-header-subtitle)= firstSlide.headerSubtitle
+					.trust-slider__stack(data-trust-slider-stack)
+						each slide, index in slides
+							article.trust-slider__slide(
+								class=index === 0 ? 'trust-slider__slide--active' : index === 1 ? 'trust-slider__slide--next' : index === 2 ? 'trust-slider__slide--tail' : 'trust-slider__slide--hidden'
+								data-header-icon=slide.headerIcon
+								data-header-title=slide.headerTitle
+								data-header-subtitle=slide.headerSubtitle
+							)
+								.trust-slider__media
+									if slide.media && slide.media.video
+										video.trust-slider__video(
+											playsinline
+											muted
+											preload="metadata"
+											data-trust-slider-video
+										)
+											source(src=slide.media.video type="video/mp4")
+									else
+										.trust-slider__media-bg(style=`background-image: url('${slide.media && slide.media.poster ? slide.media.poster : ''}')`)
+								.trust-slider__slide-overlay
+									if slide.points && slide.points.length
+										each point in slide.points
+											.trust-slider__point
+												h3.trust-slider__point-title= point.title
+												p.trust-slider__point-desc= point.text
+								if slide.cardIcon
+									.trust-slider__slide-icon
+										img(src=slide.cardIcon alt="")

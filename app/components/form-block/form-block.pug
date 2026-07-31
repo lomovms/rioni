@@ -1,6 +1,7 @@
 //- Секция формы обратной связи (section-form). data.prefix — суффикс для id полей (например 'about' → form-name-about)
 mixin sectionForm(data)
 	- var prefix = (data && data.prefix) ? '-' + data.prefix : '';
+	- var maxTextLength = 80;
 	- var idName = 'form-name' + prefix;
 	- var idEmail = 'form-email' + prefix;
 	- var idPhone = 'form-phone' + prefix;
@@ -18,14 +19,16 @@ mixin sectionForm(data)
 					.form-block__img-wrap
 						img.form-block__img(src="./assets/images/required/form-img.jpg" alt="")
 				.form-block__right
-					form.form-block__form(action="#" method="post")
+					form.form-block__form(action="#" method="post" novalidate data-form-block)
 						.form-block__field
 							label.form-block__label(for=idName) Ваше имя
-							input.form-block__input(id=idName type="text" name="name" placeholder="")
+							input.form-block__input(id=idName type="text" name="name" placeholder="" maxlength=maxTextLength required)
+							span.form-block__error(aria-live="polite")
 						.form-block__row
 							.form-block__field
 								label.form-block__label(for=idEmail) E-mail
-								input.form-block__input(id=idEmail type="email" name="email" placeholder="")
+								input.form-block__input(id=idEmail type="email" name="email" placeholder="" maxlength=maxTextLength required)
+								span.form-block__error(aria-live="polite")
 							.form-block__field
 								label.form-block__label(for=idPhone) Номер телефона
 								.form-block__phone
@@ -34,23 +37,31 @@ mixin sectionForm(data)
 											span.form-block__country-flag(id=idCountryFlag)
 											span.form-block__country-arrow
 										.form-block__country-dropdown(role="listbox" aria-hidden="true")
-											.form-block__country-option(role="option" data-value="ru" tabindex="0")
-											.form-block__country-option(role="option" data-value="ge" tabindex="0")
 										select.form-block__country-select(id=idCountry name="country" aria-label="Страна" data-country-select)
-											option(value="ru" selected) RU
-											option(value="ge") GE
-									input.form-block__input.form-block__input--phone(id=idPhone type="tel" name="phone" placeholder="" autocomplete="tel")
+									input.form-block__input.form-block__input--phone(id=idPhone type="tel" name="phone" placeholder="" autocomplete="tel" maxlength=maxTextLength required)
+								span.form-block__error(aria-live="polite")
 						.form-block__field
-							label.form-block__label(for=idComment) *Комментарий
-							textarea.form-block__input.form-block__textarea(id=idComment name="comment" rows="3" placeholder="")
-						.form-block__agree
+							label.form-block__label(for=idComment) Комментарий
+							textarea.form-block__input.form-block__textarea(id=idComment name="comment" rows="3" placeholder="" maxlength=maxTextLength)
+						.form-block__agree.form-block__field
 							label.form-block__checkbox-label
-								input.form-block__checkbox(type="checkbox" name="consent" value="1")
+								input.form-block__checkbox(type="checkbox" name="consent" value="1" required)
 								span.form-block__checkbox-text Даю согласие на обработку
 									a.form-block__link(href="#")  персональных данных
+							span.form-block__error(aria-live="polite")
 						button.form-block__submit(type="submit") Отправить
 						p.form-block__privacy Нажимая кнопку «Отправить» вы принимаете
 							a.form-block__link(href="#")  политику конфиденциальности
+					.form-block__success(aria-hidden="true")
+						.form-block__success-inner
+							.form-block__success-icon(aria-hidden="true")
+								svg.form-block__success-icon-svg(width="41" height="47" viewBox="0 0 41 47" fill="none" xmlns="http://www.w3.org/2000/svg")
+									path(d="M4 27.8343L17.6983 41.9612C18.1854 42.4635 19.0244 42.3232 19.3216 41.6897L37 4.00098" stroke="white" stroke-width="8" stroke-linecap="round")
+							h3.form-block__success-title Ваша заявка успешно отправлена
+							p.form-block__success-text Служба нашей поддержки свяжется с вами в течение трех рабочих дней
+							.form-block__success-footer
+								p.form-block__success-footer-desc Если вам необходимо решить возникшие вопросы сегодня вы можете связаться с нами по номеру телефона или через мессенджер
+								p.form-block__success-footer-contact +995 595 43 66 55 Пн-Пт 9:00-20:00
 			.form-block__socials
 				a.form-block__social(href="#" aria-label="Instagram")
 					span.form-block__social-icon.form-block__social-icon--instagram
@@ -64,3 +75,49 @@ mixin sectionForm(data)
 					span.form-block__social-icon.form-block__social-icon--x
 				a.form-block__social(href="#" aria-label="YouTube")
 					span.form-block__social-icon.form-block__social-icon--youtube
+
+//- Вариант формы с прикреплением файла (Предложения и улучшения). Не вызывать на страницах — только для использования по необходимости.
+mixin sectionFormWithFile(data)
+	- var prefix = (data && data.prefix) ? '-' + (data.prefix) : '-file';
+	- var maxTextLength = 80;
+	- var idReason = 'form-reason' + prefix;
+	- var idFile = 'form-file' + prefix;
+	- var idConsentFile = 'form-consent-file' + prefix;
+	section.section-form.section-form--with-file
+		.container
+			.form-block.form-block--with-file
+				.form-block__left.form-block__left--dark
+					.form-block__info.form-block__info--dark
+						h2.form-block__title Предложения и улучшения
+						p.form-block__text Обратная связь помогает нам выявлять и решать несовершенства в кодексе этики Rioni Capital
+					.form-block__img-wrap
+						img.form-block__img(src="./assets/images/required/form-img.jpg" alt="")
+				.form-block__right
+					form.form-block__form.form-block__form--file(action="#" method="post" enctype="multipart/form-data" novalidate data-form-block-file)
+						.form-block__field
+							label.form-block__label(for=idReason) Причина обращения
+							input.form-block__input(id=idReason type="text" name="reason" placeholder="" maxlength=maxTextLength)
+						.form-block__field
+							label.form-block__label(for=idFile) *Загрузить файл ↓
+							.form-block__file-zone(data-file-zone)
+								input.form-block__file-input(id=idFile type="file" name="file" accept=".pdf,.doc,.docx" aria-label="Загрузить файл" data-file-input)
+								.form-block__file-placeholder
+									span.form-block__file-icon(aria-hidden="true")
+							.form-block__file-name(data-file-name)
+								span.form-block__file-name-text
+								button.form-block__file-clear(type="button" aria-label="Удалить файл" data-file-clear) ×
+						.form-block__agree.form-block__field
+							label.form-block__checkbox-label
+								input.form-block__checkbox(id=idConsentFile type="checkbox" name="consent" value="1" required)
+								span.form-block__checkbox-text Даю согласие на обработку
+									a.form-block__link(href="#")  персональных данных
+						button.form-block__submit(type="submit") Отправить
+						p.form-block__privacy Нажимая кнопку «Отправить» вы принимаете
+							a.form-block__link(href="#")  политику конфиденциальности
+					.form-block__success(aria-hidden="true")
+						.form-block__success-inner
+							.form-block__success-icon(aria-hidden="true")
+								svg.form-block__success-icon-svg(width="41" height="47" viewBox="0 0 41 47" fill="none" xmlns="http://www.w3.org/2000/svg")
+									path(d="M4 27.8343L17.6983 41.9612C18.1854 42.4635 19.0244 42.3232 19.3216 41.6897L37 4.00098" stroke="white" stroke-width="8" stroke-linecap="round")
+							h3.form-block__success-title Ваша заявка принята!
+							p.form-block__success-text В ближайшее время мы свяжемся с вами.

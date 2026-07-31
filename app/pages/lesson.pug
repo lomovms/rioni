@@ -1,0 +1,184 @@
+﻿extends template/layout
+
+block variables
+	- var title = 'Урок — Rioni';
+	- var menuHeader = [
+	-   { title: 'О нас', href: 'about.html' },
+	-   { title: 'Услуги', href: 'services.html' },
+	-   { title: 'Инструменты', href: 'products.html' },
+	-   { title: 'Тарифы', href: 'tariffs.html' },
+	-   { title: 'Обучение', href: '#' },
+	-   { title: 'Рынок', href: 'market.html' },
+	-   { title: 'Документы', href: 'documents.html' }
+	- ];
+	- var showTopbar = false
+	- var headerCta = { text: 'Открыть счет', href: '#registration-form' };
+
+block content
+	section.section-lesson-page
+		.container
+			.lesson-page
+				.lesson-page__main
+					a.lesson-page__back(href="training-course.html") ← Вернуться назад
+					h1.lesson-page__title Урок №2 Название
+					.lesson-page__hero-image
+						img(src="./assets/images/required/lesson.png" alt="Превью видео урока")
+						button.lesson-page__hero-play(type="button" aria-label="Воспроизвести видео")
+							svg(width="87" height="104" viewBox="0 0 87 104" fill="none" xmlns="http://www.w3.org/2000/svg")
+								path(d="M84.4139 48.4539C86.9665 50.0136 86.9665 53.7208 84.4139 55.2804L6.0856 103.141C3.42018 104.77 0 102.852 0 99.7281V4.00629C0 0.882681 3.42018 -1.0356 6.08559 0.593049L84.4139 48.4539Z" fill="white" fill-opacity="0.7")
+
+					section.lesson-page__section
+						h2.lesson-page__section-title Описание урока
+						p.lesson-page__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in lacinia felis, ut convallis felis. Donec id lorem posuere lorem laoreet euismod. Etiam et ipsum ut neque faucibus porta. Nulla felis erat, rutrum eget magna in, lacinia pulvinar ante.
+
+					section.lesson-page__section
+						h2.lesson-page__section-title Таймкоды
+						ul.lesson-page__timelines
+							li.lesson-page__timeline
+								span.lesson-page__timeline-time 00:02:17
+								span.lesson-page__timeline-text Какая-то тема которая затрагивается на данном отрезке
+							li.lesson-page__timeline
+								span.lesson-page__timeline-time 00:02:17
+								span.lesson-page__timeline-text Какая-то тема которая затрагивается на данном отрезке
+							li.lesson-page__timeline
+								span.lesson-page__timeline-time 00:02:17
+								span.lesson-page__timeline-text Какая-то тема которая затрагивается на данном отрезке
+							li.lesson-page__timeline
+								span.lesson-page__timeline-time 00:02:17
+								span.lesson-page__timeline-text Какая-то тема которая затрагивается на данном отрезке
+							li.lesson-page__timeline
+								span.lesson-page__timeline-time 00:02:17
+								span.lesson-page__timeline-text Какая-то тема которая затрагивается на данном отрезке
+
+					section.lesson-page__section
+						.lesson-page__vocab-head
+							h2.lesson-page__section-title Слова к изучению
+							a.lesson-page__dictionary-link(href="dictionary.html")
+								| Финансовый словарь
+								span.lesson-page__dictionary-arrow ›
+						ul.lesson-page__vocab-list
+							li.lesson-page__vocab-item
+								span.lesson-page__vocab-term Волатильность
+								span.lesson-page__vocab-desc  - степень колебания цен на активы в определенный период времени.
+							li.lesson-page__vocab-item
+								span.lesson-page__vocab-term Биржа
+								span.lesson-page__vocab-desc  - организованный рынок, на котором совершаются сделки с ценными бумагами.
+							li.lesson-page__vocab-item
+								span.lesson-page__vocab-term Дивиденды
+								span.lesson-page__vocab-desc  - часть прибыли компании, распределяемая между акционерами.
+
+					section.lesson-page__section.lesson-quiz(data-lesson-quiz)
+						h2.lesson-page__section-title Контрольные вопросы
+						.lesson-quiz__flow(data-lesson-quiz-flow)
+							p.lesson-quiz__question(data-lesson-quiz-question) 1. Вопросы по видео на которые можно ответить самостоятельно, выбрав правильный вариант ответа, несколько вопросов для базовой проверки?
+							.lesson-quiz__answers(data-lesson-quiz-answers)
+								button.lesson-quiz__answer(type="button" data-answer-index="0") Вариант ответа
+								button.lesson-quiz__answer(type="button" data-answer-index="1") Вариант ответа
+								button.lesson-quiz__answer(type="button" data-answer-index="2") Вариант ответа
+								button.lesson-quiz__answer(type="button" data-answer-index="3") Вариант ответа
+							.lesson-quiz__footer
+								button.lesson-quiz__next.button.button--blue(type="button" data-lesson-quiz-next disabled)
+									span.button__text К следующему вопросу
+									span.button__icon
+										i.icon.icon-arrow-light
+								span.lesson-quiz__progress(data-lesson-quiz-progress) 1/4 вопросов
+						.lesson-quiz__results(hidden data-lesson-quiz-results)
+							p.lesson-quiz__results-label Итоги тестирования
+							.lesson-quiz__summary(data-lesson-quiz-summary)
+							.lesson-quiz__review(data-lesson-quiz-review)
+
+					section.lesson-page__section
+						h2.lesson-page__section-title Следующие уроки курса
+						.lesson-page__next-grid.learning-courses__grid
+							a.learning-course-card.learning-course-card--locked(href="#")
+								.learning-course-card__media
+									img(src="./assets/images/required/curse2.png" alt="Урок 2")
+									.learning-course-card__lock-badge
+										img(src="./assets/images/required/lock3.png" alt="" aria-hidden="true")
+								.learning-course-card__body
+									h3.learning-course-card__title 2 урок из курса
+									p.learning-course-card__text Тут написать подзаголовок об истории успеха или провала на инвестиционном рынке
+							a.learning-course-card.learning-course-card--locked(href="#")
+								.learning-course-card__media
+									img(src="./assets/images/required/curse3.png" alt="Урок 3")
+									.learning-course-card__lock-badge
+										img(src="./assets/images/required/lock3.png" alt="" aria-hidden="true")
+								.learning-course-card__body
+									h3.learning-course-card__title 3 урок из курса
+									p.learning-course-card__text Тут написать подзаголовок об истории успеха или провала на инвестиционном рынке
+							a.learning-course-card.learning-course-card--locked(href="#")
+								.learning-course-card__media
+									img(src="./assets/images/required/curse4.png" alt="Урок 4")
+									.learning-course-card__lock-badge
+										img(src="./assets/images/required/lock3.png" alt="" aria-hidden="true")
+								.learning-course-card__body
+									h3.learning-course-card__title 4 урок из курса
+									p.learning-course-card__text Тут написать подзаголовок об истории успеха или провала на инвестиционном рынке
+
+				aside.lesson-page__aside
+					.lesson-widget
+						h3.lesson-widget__title Календарь
+						.lesson-widget__calendar
+							p.lesson-widget__calendar-month Сентябрь 2025
+							.lesson-widget__calendar-grid
+								span Пн
+								span Вт
+								span Ср
+								span Чт
+								span Пт
+								span Сб
+								span Вс
+								span 1
+								span 2
+								span 3
+								span 4
+								span 5
+								span 6
+								span 7
+								span 8
+								span 9
+								span.lesson-widget__calendar-day--active 10
+								span 11
+								span 12
+								span 13
+								span 14
+								span 15
+								span 16
+								span 17
+								span 18
+								span 19
+								span 20
+								span 21
+								span 22
+								span 23
+								span 24
+								span 25
+								span 26
+								span 27
+								span 28
+								span 29
+								span 30
+
+					.market-widget.market-widget--banner
+						.market-widget__inner
+							p.market-widget__title Рекламный баннер
+							p.market-widget__text Тут написать любую нашу рекламу продукта или важную информацию, которую мы хотим донести до клиента
+							a.market-widget__btn.button(href="#")
+								span.button__text Подробнее
+								span.button__icon
+									i.icon.icon-arrow-right
+
+					.lesson-widget
+						h3.lesson-widget__title Статьи по теме
+						.lesson-widget__related
+							a.lesson-widget__related-card(href="#")
+								h4 Название статьи
+								p Краткое описание, для большего понимания содержания данной статьи...
+							a.lesson-widget__related-card(href="#")
+								h4 Название статьи
+								p Краткое описание, для большего понимания содержания данной статьи...
+							a.lesson-widget__related-card(href="#")
+								h4 Название статьи
+								p Краткое описание, для большего понимания содержания данной статьи...
+
+	+sectionForm({ prefix: 'lesson' })

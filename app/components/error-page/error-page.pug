@@ -1,0 +1,24 @@
+//- Блок страницы ошибки: левая колонка (заголовок, подзаголовок, кнопка), правая — картинка
+mixin errorPage(data)
+	- var d = data || {};
+	- var title = d.title || 'Ошибка';
+	- var subtitle = d.subtitle || '';
+	- var btnText = d.btnText || 'Вернуться на главную';
+	- var btnHref = d.btnHref || 'index.html';
+	- var image = d.image || 'required/cloud.png';
+	- var variant = d.variant || '';
+	- var btnMod = d.btnModifier ? ' button--' + d.btnModifier : ' button--blue';
+	section.error-page(class= variant ? 'error-page--' + variant : '')
+		.container
+			.error-page__wrap
+				.error-page__content
+					h1.error-page__title= title
+					if subtitle
+						p.error-page__subtitle!= subtitle
+					.error-page__deco(aria-hidden="true") ;((((
+					a.error-page__btn.button(class=btnMod href=btnHref)
+						span.button__text= btnText
+						span.button__icon
+							i.icon(class= d.btnModifier === 'outline' ? 'icon-arrow-right-blue' : 'icon-arrow-right-blue2')
+				.error-page__image
+					img.error-page__img(src="./assets/images/" + image alt="")

@@ -29,9 +29,10 @@ module.exports = {
 	},
 	output: {
 		path: path.resolve(__dirname, 'build'),
-		filename: `js/[name].[hash].js`,
+		filename: `js/[name].js`,
 		// publicPath: '/'
-		publicPath: '/html/'
+		// publicPath: './'
+		publicPath: '/'
 	},
 	optimization: {
 		splitChunks: {
@@ -79,6 +80,7 @@ module.exports = {
 						loader: 'css-loader',
 						options: {
 							sourceMap: true,
+							url: false
 						}
 					},
 					{
@@ -108,6 +110,7 @@ module.exports = {
 						loader: 'css-loader',
 						options: {
 							sourceMap: true,
+							url: false
 						}
 					},
 					{
@@ -132,43 +135,47 @@ module.exports = {
 		alias: {
 			'~': PATHS.app,
 			'~components': `${PATHS.app}/components`,
-			'~node': 'node_modules/',
+			'~node': 'node_modules/'
 		}
 	},
 	plugins: [
-
 		new webpack.ProvidePlugin({
-            "jQuery": "jquery",
-            "window.jQuery": "jquery",
-            "jquery": "jquery",
-            "window.jquery": "jquery",
-            "$": "jquery",
-			"window.$": "jquery",
+			jQuery: 'jquery',
+			'window.jQuery': 'jquery',
+			jquery: 'jquery',
+			'window.jquery': 'jquery',
+			$: 'jquery',
+			'window.$': 'jquery'
 			// "noUiSlider": "nouislider",
 			// "wNumb": "wnumb"
 		}),
 
 		// формирование css файла
 		new MiniCssExtractPlugin({
-			filename: `css/style.[hash].css`
+			filename: `css/style.css`
 		}),
 
 		new CleanWebpackPlugin(),
 
 		// сборка pug + json в html
-		...PAGES.map(page => new HtmlWebpackPlugin({
-			template: `${PAGES_DIR}/${page}`,
-			filename: `./${page.replace(/\.pug/,'.html')}`,
-			templateParameters: require(`${PATHS.app}/data/${page.replace(/\.pug/,'.json')}`),
-			minify: {
-				collapseWhitespace: false,
-				removeComments: true,
-				removeRedundantAttributes: true,
-				removeScriptTypeAttributes: false,
-				removeStyleLinkTypeAttributes: false,
-				useShortDoctype: false
-			}
-		} )),
+		...PAGES.map(
+			page =>
+				new HtmlWebpackPlugin({
+					template: `${PAGES_DIR}/${page}`,
+					filename: `./${page.replace(/\.pug/, '.html')}`,
+					templateParameters: require(`${
+						PATHS.app
+					}/data/${page.replace(/\.pug/, '.json')}`),
+					minify: {
+						collapseWhitespace: false,
+						removeComments: true,
+						removeRedundantAttributes: true,
+						removeScriptTypeAttributes: false,
+						removeStyleLinkTypeAttributes: false,
+						useShortDoctype: false
+					}
+				})
+		),
 
 		// Спрайт svg
 		new SVGSpritemapPlugin(`${PATHS.appAssets}/images/svg/*.svg`, {
@@ -178,7 +185,7 @@ module.exports = {
 				svgo: {
 					removeTitle: false,
 					removeStyleElement: false,
-					cleanupNumericValue: false,
+					cleanupNumericValue: false
 				}
 			},
 			sprite: {
@@ -193,17 +200,24 @@ module.exports = {
 					from: `${PATHS.appAssets}/images`,
 					globOptions: {
 						dot: true,
-						ignore: [
-							'**/svg/**'
-						]
+						ignore: ['**/svg/**']
 					},
-					to:   `${PATHS.buildAssets}/images`,
+					to: `${PATHS.buildAssets}/images`
+				},
+				{
+					from: `${PATHS.appAssets}/images/svg`,
+					to: `${PATHS.buildAssets}/images/svg`
+				},
+				{
+					// registration-form.js должен оставаться НЕ минифицированным (подключается отдельным <script>)
+					from: `${PATHS.app}/components/registration-form/registration-form.js`,
+					to: `${PATHS.buildAssets}/js/registration-form.js`
 				},
 				{
 					from: `${PATHS.appAssets}/fonts`,
-					to:   `${PATHS.buildAssets}/fonts`
+					to: `${PATHS.buildAssets}/fonts`
 				}
 			]
 		})
 	]
-}
+};

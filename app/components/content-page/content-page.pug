@@ -1,0 +1,84 @@
+include ../product-trust/product-trust
+
+mixin contentPage(data)
+	- var toc = data.toc || [];
+	section.content-hero
+		.hero-container
+			.content-hero-layout
+				picture
+					source(media="(max-width: 767px)" srcset="./assets/images/" + (data.heroImageMobile || data.heroImage))
+					img(src="./assets/images/" + data.heroImage alt=data.title)
+				div
+					h1
+						= data.title
+						if data.titleLine
+							br
+							= data.titleLine
+					p= data.intro
+					if data.heroLink
+						a.button.button--light(href=data.heroLink.href)
+							span.button__text= data.heroLink.text
+							span.button__icon
+								i.icon.icon-arrow-right-blue
+
+	if data.trust
+		+productTrust(data.trust)
+
+	section.content-page(class=!data.contentTitle && !(data.sections && data.sections.length) && !data.banner ? 'is-empty' : '')
+		.container
+			h2.content-page-title= data.contentTitle
+			.content-layout
+				article
+					each item in data.sections
+						section.content-block(id=item.id)
+							if item.title
+								h2= item.title
+							if item.wideImage
+								img.content-wide(src="./assets/images/" + item.wideImage alt="")
+							if item.floatImage
+								img.content-float(class=item.floatSide === 'right' ? 'right' : 'left' src="./assets/images/" + item.floatImage alt="")
+							!= item.html
+					if data.banner
+						.learning-test-banner
+							.learning-test-banner__content
+								h2.learning-test-banner__title= data.banner.title
+								p.learning-test-banner__text= data.banner.text
+								a.learning-test-banner__btn.button(href=data.banner.href)
+									span.button__text= data.banner.button
+									span.button__icon
+										i.icon.icon-arrow-right
+				if toc.length
+					aside.content-toc(data-content-toc data-content-toc-current=data.tocCurrent || 0)
+						h2.content-toc__title Оглавление
+						nav.content-toc__list(aria-label="Оглавление")
+							each item, index in toc
+								a(href=item.href class=index === (data.tocCurrent || 0) ? 'is-current' : '')= item.title
+						.content-toc__mobile
+							a.content-toc__arrow.content-toc__arrow--prev(data-content-toc-prev aria-label="Предыдущая глава")
+								span(data-content-toc-prev-label)
+								svg(width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+									path(d="M15.7071 8.70711C16.0976 8.31658 16.0976 7.68342 15.7071 7.29289L9.34315 0.928932C8.95262 0.538408 8.31946 0.538408 7.92893 0.928932C7.53841 1.31946 7.53841 1.95262 7.92893 2.34315L13.5858 8L7.92893 13.6569C7.53841 14.0474 7.53841 14.6805 7.92893 15.0711C8.31946 15.4616 8.95262 15.4616 9.34315 15.0711L15.7071 8.70711ZM0 8V9H15V8V7H0V8Z" fill="white")
+							button.content-toc__current(type="button" data-content-toc-toggle aria-expanded="false")
+								span(data-content-toc-current)
+							a.content-toc__arrow.content-toc__arrow--next(data-content-toc-next aria-label="Следующая глава")
+								span(data-content-toc-next-label)
+								svg(width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+									path(d="M15.7071 8.70711C16.0976 8.31658 16.0976 7.68342 15.7071 7.29289L9.34315 0.928932C8.95262 0.538408 8.31946 0.538408 7.92893 0.928932C7.53841 1.31946 7.53841 1.95262 7.92893 2.34315L13.5858 8L7.92893 13.6569C7.53841 14.0474 7.53841 14.6805 7.92893 15.0711C8.31946 15.4616 8.95262 15.4616 9.34315 15.0711L15.7071 8.70711ZM0 8V9H15V8V7H0V8Z" fill="white")
+
+	if toc.length
+		.content-toc.content-toc-mobile(data-content-toc data-content-toc-current=data.tocCurrent || 0)
+			h2.content-toc__title Оглавление
+			nav.content-toc__list(aria-label="Оглавление")
+				each item, index in toc
+					a(href=item.href class=index === (data.tocCurrent || 0) ? 'is-current' : '')= item.title
+			.content-toc__mobile
+				a.content-toc__arrow.content-toc__arrow--prev(data-content-toc-prev aria-label="Предыдущая глава")
+					span(data-content-toc-prev-label)
+					svg(width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+						path(d="M15.7071 8.70711C16.0976 8.31658 16.0976 7.68342 15.7071 7.29289L9.34315 0.928932C8.95262 0.538408 8.31946 0.538408 7.92893 0.928932C7.53841 1.31946 7.53841 1.95262 7.92893 2.34315L13.5858 8L7.92893 13.6569C7.53841 14.0474 7.53841 14.6805 7.92893 15.0711C8.31946 15.4616 8.95262 15.4616 9.34315 15.0711L15.7071 8.70711ZM0 8V9H15V8V7H0V8Z" fill="white")
+				button.content-toc__current(type="button" data-content-toc-toggle aria-expanded="false")
+					span(data-content-toc-current)
+				a.content-toc__arrow.content-toc__arrow--next(data-content-toc-next aria-label="Следующая глава")
+					span(data-content-toc-next-label)
+					svg(width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+						path(d="M15.7071 8.70711C16.0976 8.31658 16.0976 7.68342 15.7071 7.29289L9.34315 0.928932C8.95262 0.538408 8.31946 0.538408 7.92893 0.928932C7.53841 1.31946 7.53841 1.95262 7.92893 2.34315L13.5858 8L7.92893 13.6569C7.53841 14.0474 7.53841 14.6805 7.92893 15.0711C8.31946 15.4616 8.95262 15.4616 9.34315 15.0711L15.7071 8.70711ZM0 8V9H15V8V7H0V8Z" fill="white")
