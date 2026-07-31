@@ -32,23 +32,28 @@ block content
 		.container
 			.trust-reasons
 				h2 Почему нам доверяют?
-				.trust-grid
-					article
-						img(src="./assets/images/required/video.jpg" alt="Прозрачность и открытость")
-						h3 Прозрачность и открытость
-						p Мы раскрываем информацию в объёме, предусмотренном законодательством Грузии, требованиями регулятора и внутренними стандартами компании.
-					article
-						img(src="./assets/images/required/analytics-cover.jpg" alt="Независимый контроль")
-						h3 Независимый контроль
-						p Компания регулярно проходит независимые аудиторские проверки, а также процедуры due diligence международных партнёров.
-					article
-						img(src="./assets/images/required/slide2.jpg" alt="Современное регулирование")
-						h3 Современное регулирование финансового рынка
-						p Регулирование финансового рынка Грузии развивается с учётом европейских стандартов и лучших международных практик.
-					article
-						img(src="./assets/images/required/slide3.jpg" alt="Работа в соответствии с законодательством")
-						h3 Деятельность в соответствии с законодательством Грузии
-						p Внутренние документы и корпоративные стандарты учитывают лучшие европейские практики регулирования инвестиционных услуг.
+				.trust-reasons-slider(data-product-trust)
+					.trust-grid(data-product-trust-track)
+						article
+							img(src="./assets/images/required/video.jpg" alt="Прозрачность и открытость")
+							h3 Прозрачность и открытость
+							p Мы раскрываем информацию в объёме, предусмотренном законодательством Грузии, требованиями регулятора и внутренними стандартами компании.
+						article
+							img(src="./assets/images/required/analytics-cover.jpg" alt="Независимый контроль")
+							h3 Независимый контроль
+							p Компания регулярно проходит независимые аудиторские проверки, а также процедуры due diligence международных партнёров.
+						article
+							img(src="./assets/images/required/slide2.jpg" alt="Современное регулирование")
+							h3 Современное регулирование финансового рынка
+							p Регулирование финансового рынка Грузии развивается с учётом европейских стандартов и лучших международных практик.
+						article
+							img(src="./assets/images/required/slide3.jpg" alt="Работа в соответствии с законодательством")
+							h3 Деятельность в соответствии с законодательством Грузии
+							p Внутренние документы и корпоративные стандарты учитывают лучшие европейские практики регулирования инвестиционных услуг.
+					button.trust-reasons__nav.trust-reasons__nav--prev(type="button" data-product-trust-prev aria-label="Предыдущая карточка")
+						i.icon.icon-arrow-right-blue
+					button.trust-reasons__nav.trust-reasons__nav--next(type="button" data-product-trust-next aria-label="Следующая карточка")
+						i.icon.icon-arrow-right-blue
 
 			.trust-differences
 				h2 Чем мы отличаемся
