@@ -17,7 +17,12 @@ mixin contentPage(data)
 					p= data.intro
 					if data.heroLink
 						a.button.button--light(href=data.heroLink.href)
-							span.button__text= data.heroLink.text
+							if data.heroLink.mobileText
+								span.button__text
+									span.button__text-desktop= data.heroLink.text
+									span.button__text-mobile= data.heroLink.mobileText
+							else
+								span.button__text= data.heroLink.text
 							span.button__icon
 								i.icon.icon-arrow-right-blue
 

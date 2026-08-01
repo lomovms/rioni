@@ -24,6 +24,10 @@
 		transition: transform 0.3s ease;
 	}
 
+	&__text-mobile {
+		display: none;
+	}
+
 	&__icon {
 		display: inline-block;
 		transition: transform 0.3s ease;
@@ -95,6 +99,14 @@
 }
 
 @media (max-width: 767px) {
+	.button__text-desktop {
+		display: none;
+	}
+
+	.button__text-mobile {
+		display: inline;
+	}
+
 	.button:has(> .button__icon) {
 		margin-right: 56px;
 	}
