@@ -17,7 +17,7 @@ export default function initContentToc() {
 			var item = links[itemIndex];
 			link.toggleAttribute('href', Boolean(item));
 			link.setAttribute('aria-disabled', String(!item));
-			label.textContent = item ? 'Глава ' + (itemIndex + 1) : '';
+			label.textContent = item ? itemIndex + 1 : '';
 			if (item) link.setAttribute('href', item.getAttribute('href'));
 		}
 
