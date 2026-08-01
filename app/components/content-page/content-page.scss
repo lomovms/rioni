@@ -252,9 +252,9 @@
 
 	.content-toc {
 		position: fixed !important;
-		right: 12px;
+		right: 8px;
 		bottom: 12px;
-		left: 12px;
+		left: 8px;
 		z-index: 20;
 		color: var(--backgrounds-white);
 	}
@@ -274,8 +274,10 @@
 
 	.content-toc__mobile {
 		display: grid;
-		grid-template-columns: 66px minmax(0, 1fr) 66px;
-		gap: 6px;
+		grid-template-columns: 66px 219px 66px;
+		justify-content: center;
+		align-items: end;
+		gap: 4px;
 	}
 
 	.content-toc__arrow,
@@ -283,7 +285,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		min-height: 112px;
+		min-height: 88px;
 		border: 0;
 		border-radius: 16px;
 		background: #0a3d32;
@@ -322,8 +324,24 @@
 	}
 
 	.content-toc__current {
-		padding: 12px 18px;
+		width: 219px;
+		height: 88px;
+		min-height: 88px;
+		padding: 14px 16px;
+		border-radius: 10px 10px 0 0;
+		font-size: 12px;
+		font-weight: 700;
+		line-height: 1.2;
+		color: #fff;
 		cursor: pointer;
+
+		span {
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 4;
+			overflow: hidden;
+			writing-mode: horizontal-tb;
+		}
 	}
 
 	.content-toc.is-open {
