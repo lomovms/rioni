@@ -56,24 +56,6 @@
 	}
 }
 
-.disclosure-banner {
-	display: grid;
-	place-items: center;
-	min-height: 213px;
-	margin-bottom: 36px;
-	padding: 30px;
-	border-radius: 30px;
-	background-position: center;
-	background-size: cover;
-	color: #fff;
-	text-align: center;
-
-	h2 {
-		font-size: 36px;
-		font-weight: 500;
-	}
-}
-
 .disclosure-section {
 	position: relative;
 	margin-bottom: 70px;
@@ -214,16 +196,6 @@
 
 		p {
 			font-size: 13px;
-		}
-	}
-
-	.disclosure-banner {
-		min-height: 133px;
-		margin-bottom: 28px;
-		border-radius: 22px;
-
-		h2 {
-			font-size: 24px;
 		}
 	}
 
