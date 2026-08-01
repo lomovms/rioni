@@ -1,0 +1,541 @@
+
+
+<!DOCTYPE html>
+<html lang="RU">
+  <head>
+    <meta charset="utf-8">
+    <title>Тест попапов — Rioni</title>
+    <meta content="" name="author">
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <meta name="robots" content="noindex, nofollow">
+    <meta content="width=device-width,initial-scale=1" name="viewport" id="dynamicViewport">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600;700;800&amp;family=Red+Rose:wght@400;500;700&amp;family=Poller+One&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link href="/rioni/css/1.style.css" rel="stylesheet"><link href="/rioni/css/style.css" rel="stylesheet"></head>
+  <body>
+    <div class="page">
+      <div class="container"></div>
+      <header class="header header--">
+        <div class="container">
+          <div class="header__row"><a class="header__logo header__logo--mobile" href="/"><img class="header__logo-img" src="/rioni/assets/images/required/logo-rioni.svg" alt="RIONI capital"></a>
+            <div class="header__inner"><a class="header__logo header__logo--menu" href="/"><img class="header__logo-img" src="/rioni/assets/images/required/logo-rioni.svg" alt="RIONI capital"></a>
+              
+              <button class="header__burger" type="button" aria-controls="headerNav" aria-expanded="false"><span class="header__burger-line"></span><span class="header__burger-line"></span><span class="header__burger-line"></span></button>
+              <nav class="header__nav">
+                <ul class="header__menu">
+                  <li class="header__item"><a class="header__link" href="about.html">О нас</a></li>
+                  <li class="header__item"><a class="header__link" href="index.html#services">Услуги</a></li>
+                  <li class="header__item"><a class="header__link" href="tariffs.html">Тарифы</a></li>
+                  <li class="header__item"><a class="header__link" href="market.html">Рынок</a></li>
+                  <li class="header__item"><a class="header__link" href="documents.html">Документы</a></li>
+                </ul>
+              </nav>
+              
+              <div class="header__controls">
+                
+                <div class="header__lang js-header-lang">
+                  <button class="header__lang-trigger" type="button" aria-haspopup="listbox" aria-expanded="false"><img class="header__lang-flag header__lang-flag--current" src="/rioni/assets/images/required/flag-ru.svg" alt="RU"><span class="header__lang-caret" aria-hidden="true"></span></button>
+                  <ul class="header__lang-menu" role="listbox" aria-hidden="true">
+                    <li class="header__lang-item">
+                      <button class="header__lang-option" type="button" data-lang-code="ge" data-lang-flag="required/flag-ge.svg" aria-label="GE"><img class="header__lang-flag" src="/rioni/assets/images/required/flag-ge.svg" alt="GE"></button>
+                    </li>
+                    <li class="header__lang-item">
+                      <button class="header__lang-option" type="button" data-lang-code="en" data-lang-flag="required/flag-en.png" aria-label="EN"><img class="header__lang-flag" src="/rioni/assets/images/required/flag-en.png" alt="EN"></button>
+                    </li>
+                  </ul>
+                </div><a class="header__cta" href="#registration-form" data-popup="">
+                  <div class="header__cta-texts"><span class="text-default">Открыть счет</span><span class="text-hover">Открыть счет</span></div></a>
+                <a class="header__icon header__icon--login" href="#login-form" data-popup aria-label="Вход"><span class="header__icon-door icon--exit"></span></a>
+              </div>
+            </div>
+            
+            <div class="header__drawer" id="headerNav">
+              <button class="header__drawer-backdrop" type="button" aria-label="Закрыть меню"></button>
+              <div class="header__drawer-panel">
+                <button class="header__drawer-close" type="button" aria-label="Закрыть меню">
+                  <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g opacity="0.7">
+                      <rect width="19" height="19" rx="9.5" fill="white"></rect>
+                      <path d="M6 6L13 13M13 6L9.5 9.5L6 13" stroke="#0C342C" stroke-width="2"></path>
+                    </g>
+                  </svg>
+                </button>
+                <ul class="header__drawer-menu">
+                  <li class="header__drawer-item"><a class="header__drawer-link" href="index.html">Главная</a></li>
+                  <li class="header__drawer-item"><a class="header__drawer-link" href="about.html">О нас</a></li>
+                  <li class="header__drawer-item"><a class="header__drawer-link" href="index.html#services">Услуги</a></li>
+                  <li class="header__drawer-item"><a class="header__drawer-link" href="tariffs.html">Тарифы</a></li>
+                  <li class="header__drawer-item"><a class="header__drawer-link" href="market.html">Рынок</a></li>
+                  <li class="header__drawer-item"><a class="header__drawer-link" href="documents.html">Документы</a></li>
+                </ul>
+                <div class="header__drawer-actions"><a class="header__drawer-btn header__drawer-btn--login" href="#login-form" data-popup><span class="header__drawer-btn-text">Войти</span><span class="header__drawer-btn-icon icon icon--exit"></span></a><a class="header__drawer-btn" href="#registration-form" data-popup>Зарегистрироваться</a></div>
+                <div class="header__drawer-socials"><a class="header__drawer-social" href="#" aria-label="Instagram"><span class="form-block__social-icon form-block__social-icon--instagram"></span></a><a class="header__drawer-social" href="#" aria-label="LinkedIn"><span class="form-block__social-icon form-block__social-icon--linkedin"></span></a><a class="header__drawer-social" href="#" aria-label="Facebook"><span class="form-block__social-icon form-block__social-icon--facebook"></span></a><a class="header__drawer-social" href="#" aria-label="TikTok"><span class="form-block__social-icon form-block__social-icon--tiktok"></span></a><a class="header__drawer-social" href="#" aria-label="X"><span class="form-block__social-icon form-block__social-icon--x"></span></a><a class="header__drawer-social" href="#" aria-label="YouTube"><span class="form-block__social-icon form-block__social-icon--youtube"></span></a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="main">
+        <section class="section popups-test">
+          <div class="container popups-test">
+            <h1 class="popups-test__title">Тест системных попапов</h1>
+            <p class="popups-test__lead">Попап с cookie показывается сам при первом заходе на любую страницу (пока не нажали «Принять все» или «только обязательные»). Чтобы снова увидеть баннер, в консоли выполните:&nbsp;<code>localStorage.removeItem('rioni_cookie_consent')</code></p>
+            <p class="popups-test__note"><strong>Онбординг</strong> — демо-сценарий «вернуться к регистрации». Имя в тексте берётся из&nbsp;<code>rioni_last_login</code> (после успешного «Создайте аккаунт») или подставляется «друг».</p>
+            <ul class="popups-test__list">
+              <li><a class="popups-test__link" href="#onboarding-resume-popup" data-popup>Продолжить онбординг</a></li>
+              <li><a class="popups-test__link" href="#auth-required-popup" data-popup>Нужна авторизация (войти / зарегистрироваться)</a></li>
+              <li><a class="popups-test__link" href="#broker-account-required-popup" data-popup>Нужен брокерский счет</a></li>
+            </ul>
+          </div>
+        </section>
+      </main>
+      <div class="footer-parallax-spacer" aria-hidden="true"></div>
+      <div class="footer-parallax-cover" aria-hidden="true"></div>
+      <footer class="footer">
+        <div class="footer__container container">
+          <div class="footer__top">
+            <div class="footer__left"><a class="footer__logo" href="/"><img class="footer__logo-img" src="/rioni/assets/images/required/logo-white.svg" alt="RIONI capital"></a>
+              <div class="footer__contacts"><a class="footer__contact" href="mailto:адрес.почты@gmail.ru">адрес.почты@gmail.ru</a><a class="footer__contact" href="tel:+995595436655">+995 595 43 66 55</a><span class="footer__contact footer__contact--plain">(Офис) Пн-Пт 9:00-20:00</span></div>
+            </div>
+            <div class="footer__right">
+              <div class="footer__nav">
+                <h3 class="footer__nav-title">Меню</h3>
+                <div class="footer__search">
+                  <input class="footer__search-input" placeholder="Поиск по сайту" aria-label="Поиск по сайту">
+                  <button class="footer__search-btn" type="button" aria-label="Найти"><span class="footer__search-icon"></span></button>
+                </div>
+                <div class="footer__nav-columns">
+                  <div class="footer__nav-col"><a class="footer__nav-link" href="about.html">О нас</a><a class="footer__nav-link" href="services.html">Услуги</a><a class="footer__nav-link" href="tariffs.html">Тарифы</a><a class="footer__nav-link" href="market.html">Рынок</a></div>
+                  <div class="footer__nav-col"><a class="footer__nav-link" href="news.html">Новости</a><a class="footer__nav-link" href="documents.html">Документы</a><a class="footer__nav-link" href="#">FAQ</a><a class="footer__nav-link" href="training-calendar.html">Календарь</a></div>
+                  <div class="footer__nav-col"><a class="footer__nav-link" href="training.html">Обучение</a><a class="footer__nav-link" href="#">Лицензии</a><a class="footer__nav-link" href="dictionary.html">Словарь</a><a class="footer__nav-link" href="news.html#memes">Юмор</a></div>
+                  <div class="footer__nav-col"><a class="footer__nav-link" href="team.html">Команда</a><a class="footer__nav-link" href="career.html">Вакансии</a><a class="footer__nav-link" href="#">DXFina</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer__divider"></div>
+          <div class="footer__disclaimer">Общество с ограниченной ответственностью «Rioni Capital». ID 405664017. Bloomberg LEI: 254900SE3WOGKBD2RF35.<br>Уважаемые пользователи, обращаем ваше внимание, что до получения лицензии национального банка Грузии компания «RIONI CAPITAL LLC» не оказывает брокерские услуги на финансовом рынке. Ознакомиться с информацией в отношении ООО «Rioni Capital» можно на официальном сайте компании в сети Интернет по адресу: (Link in progress)<br>Получить подробную информацию об услугах и тарифах ООО «Rioni Capital», можно по адресу: I-й переулок - Ольги Сологашвили 5, Тбилиси, 0131, Грузия; в сети Интернет по адресу: (Link in progress), по телефону: +995 595436655. Ознакомиться с обучающим материалами по финансовым продуктам можно в сети интернет по адресу: (Link in progress). Размещенная на сайте информация носит исключительно информативный характер, не является индивидуальной инвестиционной рекомендацией, гарантией и/или обещанием эффективности деятельности (доходности вложений) в будущем, и финансовые инструменты либо операции, упомянутые в ней, могут не соответствовать вашему инвестиционному профилю и инвестиционным целям и ожиданиям. ООО "Rioni Capital" не гарантирует достижения ожидаемой доходности. Прежде чем начать инвестировать на финансовом рынке, следует внимательно ознакомиться с рисками сопутствующими этому процессу. Стоимость финансовых активов, в которые вы вложили свои средства, может увеличиваться и уменьшаться, результаты инвестирования в прошлом не определяют доходы в будущем, государство не гарантирует доходность ваших инвестиций. Взимание комиссий уменьшит доходность ваших инвестиций. Определение соответствия финансового инструмента либо операции вашим интересам, инвестиционным целям, инвестиционному горизонту и уровню допустимого риска является вашей задачей. ООО «Rioni Capital» не несет ответственности за возможные убытки в случае совершения операций либо инвестирования в финансовые инструменты, упомянутые в данной информации, и не рекомендует использовать указанную информацию в качестве единственного источника информации при принятии инвестиционного решения. Rioni Capital LLC. All rights reserved ® Tbilisi. Georgia.2024</div>
+          <div class="footer__divider"></div>
+          <div class="footer__bottom"><a class="footer__policy" href="#">Политика конфиденциальности</a><a class="footer__policy" href="#">Политика использования cookies</a><a class="footer__policy" href="#">Политика обработки персональных данных</a></div>
+        </div>
+      </footer>
+      
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+      <div class="popup mfp-hide mfp-with-anim" id="undefined">
+        <div class="popup__content">
+        </div>
+      </div>
+      <div class="registration-form mfp-hide mfp-with-anim" id="registration-form" aria-hidden="true" data-state="form">
+        <div class="registration-form__inner">
+          <div class="registration-form__brand">
+            <div class="registration-form__logo-top"><img class="registration-form__logo-img" src="/rioni/assets/images/required/logo-rioni.svg" alt="RIONI capital" width="120" height="40"></div>
+            <div class="registration-form__logo-main" aria-hidden="true"><img class="registration-form__logo-img" src="/rioni/assets/images/required/logo-form.svg" alt=""></div>
+            <p class="registration-form__tagline">Rioni Capital – европейский брокер с грузинским колоритом</p>
+          </div>
+          <div class="registration-form__right">
+            <div class="registration-form__right-logo" aria-hidden="true"><img class="registration-form__logo-img" src="/rioni/assets/images/required/logo-rioni.svg" alt="Rioni Capital"></div>
+            <h2 class="registration-form__title">Регистрация профиля</h2>
+            <div class="registration-form__body registration-form__body--form" data-state="form">
+              <form class="registration-form__form" action="#" method="post" data-registration-form>
+                <div class="registration-form__field">
+                  <label class="registration-form__label" for="reg-name">Имя</label>
+                  <input class="registration-form__input" id="reg-name" name="name" placeholder="Имя" required autocomplete="name">
+                </div>
+                <div class="registration-form__field">
+                  <label class="registration-form__label" for="reg-phone">Номер телефона</label>
+                  <div class="registration-form__phone">
+                    <div class="registration-form__country js-reg-country-select">
+                      <div class="registration-form__country-trigger" role="button" tabindex="0" aria-haspopup="listbox" aria-expanded="false" aria-label="Страна"><span class="registration-form__country-flag" id="reg-country-flag"></span><span class="registration-form__country-arrow"></span></div>
+                      <div class="registration-form__country-dropdown" role="listbox" aria-hidden="true">
+                        <div class="registration-form__country-option" role="option" data-value="ru" data-code="+7" tabindex="0"><span class="registration-form__country-code">+7</span></div>
+                        <div class="registration-form__country-option" role="option" data-value="ge" data-code="+995" tabindex="0"><span class="registration-form__country-code">+995</span></div>
+                        <div class="registration-form__country-option" role="option" data-value="am" data-code="+374" tabindex="0"><span class="registration-form__country-code">+374</span></div>
+                        <div class="registration-form__country-option" role="option" data-value="es" data-code="+34" tabindex="0"><span class="registration-form__country-code">+34</span></div>
+                        <div class="registration-form__country-option" role="option" data-value="pt" data-code="+351" tabindex="0"><span class="registration-form__country-code">+351</span></div>
+                        <div class="registration-form__country-option" role="option" data-value="fr" data-code="+33" tabindex="0"><span class="registration-form__country-code">+33</span></div>
+                        <div class="registration-form__country-option" role="option" data-value="gr" data-code="+30" tabindex="0"><span class="registration-form__country-code">+30</span></div>
+                        <div class="registration-form__country-option" role="option" data-value="kg" data-code="+996" tabindex="0"><span class="registration-form__country-code">+996</span></div>
+                      </div>
+                      <select class="registration-form__country-select" id="reg-country" name="country" aria-label="Страна" data-reg-country-select>
+                        <option value="ru" selected="selected">RU</option>
+                        <option value="ge">GE</option>
+                        <option value="am">AM</option>
+                        <option value="es">ES</option>
+                        <option value="pt">PT</option>
+                        <option value="fr">FR</option>
+                        <option value="gr">GR</option>
+                        <option value="kg">KG</option>
+                      </select>
+                    </div>
+                    <input class="registration-form__input registration-form__input--phone" id="reg-phone" type="tel" name="phone" placeholder="" autocomplete="tel" required>
+                  </div>
+                </div>
+                <div class="registration-form__field">
+                  <label class="registration-form__label" for="reg-email">E-mail</label>
+                  <input class="registration-form__input" id="reg-email" type="email" name="email" placeholder="E-mail" required autocomplete="email">
+                </div>
+                <div class="registration-form__agree registration-form__field">
+                  <label class="registration-form__checkbox-label">
+                    <input class="registration-form__checkbox" type="checkbox" name="consent" value="1" required><span class="registration-form__checkbox-text">Я согласен с<a class="registration-form__link" href="#">Rioni T&C</a>и<a class="registration-form__link" href="#">Уведомлением о конфиденциальности</a></span>
+                  </label>
+                </div>
+                <div class="registration-form__agree registration-form__field">
+                  <label class="registration-form__checkbox-label">
+                    <input class="registration-form__checkbox" type="checkbox" name="promo" value="1"><span class="registration-form__checkbox-text">Я согласен на получение рекламных рассылок</span>
+                  </label>
+                </div>
+                <button class="registration-form__submit" type="submit">Зарегистрироваться</button>
+              </form>
+              <p class="registration-form__login">Уже есть аккаунт?<a class="registration-form__login-link" href="#login-form" data-popup>Войти</a></p>
+            </div>
+            <div class="registration-form__body registration-form__body--code" data-state="code" aria-hidden="true">
+              <button class="registration-form__code-back" type="button" data-reg-code-back aria-label="Назад"><span class="registration-form__code-back-arrow"></span>Назад</button>
+              <h2 class="registration-form__code-title">Введите код подтверждения</h2>
+              <p class="registration-form__code-hint">Код отправлен на номер телефона<strong class="registration-form__code-phone" data-reg-code-phone>+7 (999) 999-99-99</strong></p>
+              <div class="registration-form__code-inputs" data-reg-code-inputs>
+                <input class="registration-form__code-digit" inputmode="numeric" maxlength="1" data-reg-code-digit aria-label="Цифра 1" autocomplete="one-time-code">
+                <input class="registration-form__code-digit" inputmode="numeric" maxlength="1" data-reg-code-digit aria-label="Цифра 2">
+                <input class="registration-form__code-digit" inputmode="numeric" maxlength="1" data-reg-code-digit aria-label="Цифра 3">
+                <input class="registration-form__code-digit" inputmode="numeric" maxlength="1" data-reg-code-digit aria-label="Цифра 4">
+                <input class="registration-form__code-digit" inputmode="numeric" maxlength="1" data-reg-code-digit aria-label="Цифра 5">
+                <input class="registration-form__code-digit" inputmode="numeric" maxlength="1" data-reg-code-digit aria-label="Цифра 6">
+              </div>
+              <p class="registration-form__code-error" role="alert" aria-live="polite" data-reg-code-error aria-hidden="true">Неверный код подтверждения. Введите код повторно</p>
+              <p class="registration-form__code-resend">Не пришел код?<a class="registration-form__code-resend-link" href="#" data-reg-code-resend>Отправить повторно через<span class="registration-form__code-resend-timer" data-reg-resend-timer>30</span></a></p>
+              <p class="registration-form__code-support">Возникли трудности?<a class="registration-form__link registration-form__support-link" href="#">Обратитесь в службу поддержки</a></p>
+            </div>
+            <div class="registration-form__body registration-form__body--loading" data-state="loading" aria-hidden="true">
+              <div class="registration-form__loading-text">Отправка…</div>
+            </div>
+            <div class="registration-form__body registration-form__body--success" data-state="success" aria-hidden="true">
+              <div class="registration-form__success-icon" aria-hidden="true"></div>
+              <p class="registration-form__success-title">Регистрация завершена</p>
+              <p class="registration-form__success-text">Проверьте почту и следуйте инструкциям для активации аккаунта.</p>
+            </div>
+            <div class="registration-form__body registration-form__body--error" data-state="error" aria-hidden="true">
+              <p class="registration-form__error-title">Ошибка отправки</p>
+              <p class="registration-form__error-text">Попробуйте позже или свяжитесь с поддержкой.</p>
+              <button class="registration-form__retry" type="button" data-reg-retry>Повторить</button>
+            </div>
+            <div class="registration-form__body registration-form__body--lockout" data-state="lockout" aria-hidden="true">
+              <div class="registration-form__lockout-icon"><img class="registration-form__lockout-img" src="/rioni/assets/images/required/lock2.png" alt=""></div>
+              <h2 class="registration-form__lockout-title">Превышено количество попыток по вводу проверочного кода</h2>
+              <p class="registration-form__lockout-text">В целях безопасности вход в личный кабинет временно недоступен. Вы сможете повторить попытку входа<span class="registration-form__lockout-duration">через 30 минут</span></p>
+              <p class="registration-form__lockout-support">Возникли трудности?<a class="registration-form__link registration-form__support-link" href="#">Обратитесь в службу поддержки</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="create-account-form mfp-hide mfp-with-anim" id="create-account-form" aria-hidden="true">
+        <div class="create-account-form__inner">
+          <div class="create-account-form__form-side">
+            <div class="create-account-form__brand">
+              <div class="create-account-form__logo-top"><img class="create-account-form__logo-img" src="/rioni/assets/images/required/logo-rioni.svg" alt="RIONI capital" width="120" height="40"></div>
+              <div class="create-account-form__logo-main" aria-hidden="true"><img class="create-account-form__logo-img" src="/rioni/assets/images/required/logo-form.svg" alt=""></div>
+              <p class="create-account-form__tagline">Rioni Capital – европейский брокер с грузинским колоритом</p>
+            </div>
+            <div class="create-account-form__right">
+              <h2 class="create-account-form__title">Создайте аккаунт</h2>
+              <p class="create-account-form__subtitle">Придумайте логин и пароль на основе<a class="create-account-form__link" href="#" data-create-account-recommendations>рекомендаций</a></p>
+              <form class="create-account-form__form" action="#" method="post" data-create-account-form>
+                <div class="create-account-form__field">
+                  <label class="create-account-form__label" for="create-account-login">Логин</label>
+                  <input class="create-account-form__input" id="create-account-login" name="login" placeholder="" required autocomplete="username">
+                </div>
+                <div class="create-account-form__field">
+                  <label class="create-account-form__label" for="create-account-password">Пароль</label>
+                  <div class="create-account-form__password-wrap">
+                    <input class="create-account-form__input create-account-form__input--password" id="create-account-password" type="password" name="password" placeholder="" required autocomplete="new-password">
+                    <button class="create-account-form__toggle-password" type="button" aria-label="Показать пароль" data-create-account-toggle-password><span class="create-account-form__toggle-icon create-account-form__toggle-icon--hidden" aria-hidden="true"></span><span class="create-account-form__toggle-icon create-account-form__toggle-icon--visible" aria-hidden="true"></span></button>
+                  </div>
+                </div>
+                <div class="create-account-form__field">
+                  <label class="create-account-form__label" for="create-account-password-repeat">Повторите пароль</label>
+                  <div class="create-account-form__password-wrap">
+                    <input class="create-account-form__input create-account-form__input--password" id="create-account-password-repeat" type="password" name="password_repeat" placeholder="" required autocomplete="new-password">
+                    <button class="create-account-form__toggle-password" type="button" aria-label="Показать пароль" data-create-account-toggle-password><span class="create-account-form__toggle-icon create-account-form__toggle-icon--hidden" aria-hidden="true"></span><span class="create-account-form__toggle-icon create-account-form__toggle-icon--visible" aria-hidden="true"></span></button>
+                  </div>
+                </div>
+                <div class="create-account-form__error-note">
+                  <p class="create-account-form__error-note-text">Для создания аккаунта, вам необходимо подтвердить адрес электронной почты указанный при регистрации профиля</p>
+                  <p class="create-account-form__error-note-text">Ссылку для подтверждения отправили на почту arespochty@mail.ru</p>
+                </div>
+                <button class="create-account-form__submit" type="submit">Создать аккаунт</button>
+              </form>
+            </div>
+          </div>
+          <div class="create-account-form__recommendations" data-create-account-recommendations-panel>
+            <div class="create-account-form__recommendations-inner">
+              <h3 class="create-account-form__recommendations-title">Рекомендации по созданию логина:</h3>
+              <ul class="create-account-form__recommendations-list">
+                <li>Длина не менее 8 символов, но не более 32;</li>
+                <li>Может состоять из строчных латинских букв, цифр, подчеркивания, точки и минуса.</li>
+              </ul>
+              <h3 class="create-account-form__recommendations-title">Рекомендации по созданию пароля:</h3>
+              <ul class="create-account-form__recommendations-list">
+                <li>Длина не менее 12 символов. Чем больше символов, тем надёжнее пароль, но количество символов не должно превышать 36;</li>
+                <li>Состоит из нескольких несвязанных слов или букв;</li>
+                <li>Содержит в себе прописные (заглавные) и строчные латинские буквы;</li>
+                <li>Содержит в себе цифры или спец. символы (кроме пробела);</li>
+                <li>Не используйте цифры или буквы идущие друг за другом на раскладке вашего девайса;</li>
+                <li>Не создавайте пароль на основе личной информации (имя, дата рождения, ИНН и т.д.)</li>
+              </ul>
+              <div class="create-account-form__recommendations-passwords">
+                <div class="create-account-form__recommendations-passwords-col">
+                  <p class="create-account-form__recommendations-heading">Сильные пароли</p>
+                  <p class="create-account-form__recommendations-examples">RIFXY-3Y,XD*h\s
+L!%9#ENVs9b:.XbDxDb&lt;
+vx92PC!VpoJb#22</p>
+                </div>
+                <div class="create-account-form__recommendations-passwords-col">
+                  <p class="create-account-form__recommendations-heading">Слабые пароли</p>
+                  <p class="create-account-form__recommendations-examples">qwerty1234567
+Vasiliy_Ivanov
+12.02.1998</p>
+                </div>
+              </div>
+            </div>
+            <button class="create-account-form__recommendations-close" type="button" data-create-account-recommendations-close aria-label="Свернуть"><span class="create-account-form__recommendations-close-text">свернуть</span><span class="create-account-form__recommendations-close-arrow"></span></button>
+          </div>
+        </div>
+      </div>
+      <div class="popup popup-after-registration mfp-hide mfp-with-anim" id="after-registration-welcome" aria-hidden="true">
+        <div class="popup-after-registration__inner">
+          <div class="popup-after-registration__icon" aria-hidden="true">
+            <svg width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="9" y="17" width="56" height="42" rx="8" fill="#FFDD77"></rect>
+              <path d="M13 20L37 38L61 20" stroke="#F1B233" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M23 45C23 38 51 38 51 45" fill="#FFDD77"></path>
+              <circle cx="29" cy="33" r="3" fill="#2C4D90"></circle>
+              <circle cx="45" cy="33" r="3" fill="#2C4D90"></circle>
+              <path d="M31 39C34 42 40 42 43 39" stroke="#2C4D90" stroke-width="3" stroke-linecap="round"></path>
+            </svg>
+          </div>
+          <h2 class="popup-after-registration__title">Добро пожаловать, <span class="popup-after-registration__username"></span>!</h2>
+          <p class="popup-after-registration__subtitle">Теперь вам доступны к пользованию следующие разделы:</p>
+          <ul class="popup-after-registration__list">
+            <li class="popup-after-registration__item"><img class="popup-after-registration__item-icon" src="/rioni/assets/images/required/analytics-icon-1.png" alt="" aria-hidden="true">
+              <div class="popup-after-registration__item-text"><a class="popup-after-registration__item-link" href="#">Раздел обучения и тестирования</a>
+                <p class="popup-after-registration__item-desc">Узнайте свой финансовый уровень и совершенствуйте свои знания в различных отраслях инвестирования, в том числе с помощью расширенной базы полезных статей и видеокурсов</p>
+              </div>
+            </li>
+            <li class="popup-after-registration__item"><img class="popup-after-registration__item-icon" src="/rioni/assets/images/required/analytics-icon-2.png" alt="" aria-hidden="true">
+              <div class="popup-after-registration__item-text"><a class="popup-after-registration__item-link" href="#">Демо торговля для новичков</a>
+                <p class="popup-after-registration__item-desc">Избегайте от сомнений и прокачайте свой уровень инвестора на реальных инструментах торговли с помощью демо-режима</p>
+              </div>
+            </li>
+            <li class="popup-after-registration__item"><img class="popup-after-registration__item-icon" src="/rioni/assets/images/required/cloud.png" alt="" aria-hidden="true">
+              <div class="popup-after-registration__item-text"><a class="popup-after-registration__item-link" href="#">Доступ к аналитике и профобзорам</a>
+                <p class="popup-after-registration__item-desc">Будьте в курсе последних новостей в экономике и следите за обзорами инвестиционных специалистов</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="login-form mfp-hide mfp-with-anim" id="login-form" aria-hidden="true">
+        <div class="login-form__inner">
+          <div class="login-form__form-side">
+            <div class="login-form__logo-top"><img class="login-form__logo-top-img" src="/rioni/assets/images/required/logo-rioni.svg" alt="RIONI capital" width="120" height="40"></div>
+            <h2 class="login-form__title">Добро пожаловать!</h2>
+            <p class="login-form__subtitle">Войдите в личный кабинет Rioni Capital, чтобы продолжить работу с инвестиционными инструментами.</p>
+            <form class="login-form__form" action="#" method="post" data-login-form>
+              <div class="login-form__field">
+                <label class="login-form__label" for="login">Логин</label>
+                <input class="login-form__input login-form__input--login" id="login" name="login" placeholder="Логин" autocomplete="username" required>
+              </div>
+              <div class="login-form__field">
+                <label class="login-form__label" for="login-password">Пароль</label>
+                <div class="login-form__password-wrap">
+                  <input class="login-form__input login-form__input--password" id="login-password" type="password" name="password" placeholder="Пароль" autocomplete="current-password" required data-login-password>
+                  <button class="login-form__toggle-password" type="button" aria-label="Показать пароль" data-login-toggle-password><span class="login-form__toggle-icon login-form__toggle-icon--hidden" aria-hidden="true"></span><span class="login-form__toggle-icon login-form__toggle-icon--visible" aria-hidden="true"></span></button>
+                </div>
+              </div><a class="login-form__forgot" href="#password-recovery-popup" data-popup>Забыли пароль?</a>
+              <button class="login-form__submit" type="submit">Войти</button>
+            </form>
+            <p class="login-form__register">Еще нет аккаунта?<a class="login-form__register-link" href="#registration-form" data-popup>Зарегистрируйтесь</a></p>
+          </div>
+          <div class="login-form__brand">
+            <div class="login-form__logo-main" aria-hidden="true"><img class="login-form__logo-main-img" src="/rioni/assets/images/required/logo-form.svg" alt=""></div>
+            <p class="login-form__tagline">Rioni Capital – европейский брокер с грузинским колоритом</p>
+          </div>
+        </div>
+      </div>
+      <div class="password-recovery-popup mfp-hide mfp-with-anim" id="password-recovery-popup" aria-hidden="true">
+        <div class="password-recovery-popup__inner">
+          <div class="password-recovery-popup__brand">
+            <div class="password-recovery-popup__logo-top"><img class="password-recovery-popup__logo-top-img" src="/rioni/assets/images/required/logo-rioni.svg" alt="RIONI capital" width="120" height="40"></div>
+            <div class="password-recovery-popup__logo-main" aria-hidden="true"><img class="password-recovery-popup__logo-main-img" src="/rioni/assets/images/required/logo-form.svg" alt=""></div>
+            <p class="password-recovery-popup__tagline">Rioni Capital - европейский брокер с грузинским колоритом</p>
+          </div>
+          <div class="password-recovery-popup__form-side"><a class="password-recovery-popup__back" href="#login-form" data-popup><span class="password-recovery-popup__back-arrow"></span>Назад</a>
+            <h2 class="password-recovery-popup__title">Восстановить доступ</h2>
+            <p class="password-recovery-popup__subtitle">Выберите способ восстановления пароля</p>
+            <div class="password-recovery-popup__tabs" role="tablist" aria-label="Способ восстановления">
+              <button class="password-recovery-popup__tab is-active" type="button" role="tab" aria-selected="true" data-recovery-tab="phone">Телефон</button>
+              <button class="password-recovery-popup__tab" type="button" role="tab" aria-selected="false" data-recovery-tab="email">E-mail</button>
+            </div>
+            <form class="password-recovery-popup__form" action="#" method="post" data-recovery-form>
+              <div class="password-recovery-popup__panel is-active" data-recovery-panel="phone">
+                <div class="registration-form__phone">
+                  <div class="registration-form__country js-recovery-country-select">
+                    <div class="registration-form__country-trigger" role="button" tabindex="0" aria-haspopup="listbox" aria-expanded="false" aria-label="Страна"><span class="registration-form__country-flag"></span><span class="registration-form__country-arrow"></span></div>
+                    <div class="registration-form__country-dropdown" role="listbox" aria-hidden="true">
+                      <div class="registration-form__country-option" role="option" data-value="ru" data-code="+7" tabindex="0"><span class="registration-form__country-code">+7</span></div>
+                      <div class="registration-form__country-option" role="option" data-value="ge" data-code="+995" tabindex="0"><span class="registration-form__country-code">+995</span></div>
+                      <div class="registration-form__country-option" role="option" data-value="am" data-code="+374" tabindex="0"><span class="registration-form__country-code">+374</span></div>
+                      <div class="registration-form__country-option" role="option" data-value="es" data-code="+34" tabindex="0"><span class="registration-form__country-code">+34</span></div>
+                      <div class="registration-form__country-option" role="option" data-value="pt" data-code="+351" tabindex="0"><span class="registration-form__country-code">+351</span></div>
+                      <div class="registration-form__country-option" role="option" data-value="fr" data-code="+33" tabindex="0"><span class="registration-form__country-code">+33</span></div>
+                      <div class="registration-form__country-option" role="option" data-value="gr" data-code="+30" tabindex="0"><span class="registration-form__country-code">+30</span></div>
+                      <div class="registration-form__country-option" role="option" data-value="kg" data-code="+996" tabindex="0"><span class="registration-form__country-code">+996</span></div>
+                    </div>
+                    <select class="registration-form__country-select" id="recovery-country" name="country" aria-label="Страна" data-recovery-country-select>
+                      <option value="ru" selected="selected">RU</option>
+                      <option value="ge">GE</option>
+                      <option value="am">AM</option>
+                      <option value="es">ES</option>
+                      <option value="pt">PT</option>
+                      <option value="fr">FR</option>
+                      <option value="gr">GR</option>
+                      <option value="kg">KG</option>
+                    </select>
+                  </div>
+                  <input class="registration-form__input registration-form__input--phone" id="recovery-phone" type="tel" name="phone" placeholder="" autocomplete="tel">
+                </div>
+                <p class="password-recovery-popup__hint">Введите номер телефона, который был указан при регистрации</p>
+              </div>
+              <div class="password-recovery-popup__panel" data-recovery-panel="email">
+                <input class="password-recovery-popup__input" type="email" name="email" placeholder="Введите E-mail">
+                <p class="password-recovery-popup__hint">Введите E-mail, который был указан при регистрации</p>
+              </div>
+              <button class="password-recovery-popup__submit" type="submit">Продолжить</button>
+            </form>
+            <p class="password-recovery-popup__support">Возникли трудности?<a class="password-recovery-popup__support-link" href="#">Обратитесь в службу поддержки</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="site-popup site-popup--cookie mfp-hide mfp-with-anim" id="cookie-consent-popup" aria-hidden="true" role="dialog" aria-labelledby="cookie-consent-title" aria-modal="true">
+        <div class="site-popup__inner site-popup__inner--cookie">
+          <div class="site-popup__cookie-visual" aria-hidden="true"><img class="site-popup__cookie-icon" src="/rioni/assets/images/required/cookie.png" alt="" width="72" height="72" loading="lazy" decoding="async"></div>
+          <div class="site-popup__cookie-body">
+            <h2 class="site-popup__title site-popup__title--cookie" id="cookie-consent-title">Файлы cookie</h2>
+            <p class="site-popup__text">Сайт использует cookie-файлы чтобы сделать ваше пребывание на нем максимально удобным. Оставаясь на сайте, вы даёте своё <a class="site-popup__inline-link" href="#" target="_blank" rel="noopener">согласие на использование cookie-файлов</a>
+            </p>
+            <div class="site-popup__actions site-popup__actions--cookie">
+              <button class="site-popup__btn site-popup__btn--primary" type="button" data-cookie-accept="all">Принять все</button>
+              <button class="site-popup__btn site-popup__btn--outline" type="button" data-cookie-accept="essential">Принять только обязательные</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="site-popup site-popup--onboarding mfp-hide mfp-with-anim" id="onboarding-resume-popup" aria-hidden="true" role="dialog" aria-labelledby="onboarding-resume-title" aria-modal="true">
+        <div class="site-popup__inner">
+          <h2 class="site-popup__title" id="onboarding-resume-title">С возвращением, <span class="site-popup__name" id="onboarding-resume-name">друг</span>! Хотите продолжить регистрацию на том месте где вы остановились?</h2>
+          <button class="site-popup__btn site-popup__btn--blue" type="button" data-onboarding-continue>Продолжить онбординг</button>
+        </div>
+      </div>
+      <div class="site-popup site-popup--auth mfp-hide mfp-with-anim" id="auth-required-popup" aria-hidden="true" role="dialog" aria-labelledby="auth-required-title" aria-modal="true">
+        <div class="site-popup__inner">
+          <h2 class="site-popup__title" id="auth-required-title">Обучение доступно только авторизированным пользователям Rioni Capital</h2>
+          <p class="site-popup__text site-popup__text--muted">Для того чтобы начать обучение вам необходимо зарегистрироваться на сайте</p><a class="site-popup__btn site-popup__btn--primary" href="#registration-form" data-popup>Зарегистрироваться</a>
+        </div>
+      </div>
+      <div class="site-popup site-popup--auth mfp-hide mfp-with-anim" id="broker-account-required-popup" aria-hidden="true" role="dialog" aria-labelledby="broker-account-required-title" aria-modal="true">
+        <div class="site-popup__inner">
+          <h2 class="site-popup__title" id="broker-account-required-title">Все материалы по обучению доступны только клиентам Rioni Capital</h2>
+          <p class="site-popup__text site-popup__text--muted">Для того чтобы продолжить обучение вам необходимо открыть брокерский счет</p><a class="site-popup__btn site-popup__btn--primary" href="#registration-form" data-popup>Открыть счет</a>
+        </div>
+      </div>
+      <div class="site-popup site-popup--auth mfp-hide mfp-with-anim" id="access-denied-popup" aria-hidden="true" role="dialog" aria-labelledby="access-denied-title" aria-modal="true">
+        <div class="site-popup__inner">
+          <h2 class="site-popup__title" id="access-denied-title">Доступ запрещен</h2>
+          <p class="site-popup__text site-popup__text--muted">У вас нет прав для выполнения этого действия. Войдите в аккаунт с нужным уровнем доступа.</p><a class="site-popup__btn site-popup__btn--primary" href="#login-form" data-popup>Войти</a>
+          <p class="site-popup__auth-alt">Нет аккаунта?&nbsp;<a class="site-popup__auth-alt-link" href="#registration-form" data-popup>Зарегистрироваться</a></p>
+        </div>
+      </div>
+      <div class="site-popup site-popup--soon mfp-hide mfp-with-anim" id="soon-available-popup" aria-hidden="true" role="dialog" aria-labelledby="soon-available-title" aria-modal="true">
+        <div class="site-popup__inner site-popup__inner--soon">
+          <h2 class="site-popup__title site-popup__title--soon" id="soon-available-title">Скоро будет доступно!</h2>
+          <p class="site-popup__text site-popup__text--soon" id="soon-available-text">Регистрация временно закрыта. Мы сообщим, когда сервис будет готов к запуску.</p>
+          <button class="site-popup__btn site-popup__btn--blue" type="button" data-soon-available-close>Понятно</button>
+        </div>
+      </div>
+      <div class="site-popup site-popup--status mfp-hide mfp-with-anim" id="registration-something-wrong-popup" aria-hidden="true" role="dialog" aria-labelledby="registration-something-wrong-title" aria-modal="true">
+        <div class="site-popup__inner site-popup__inner--status">
+          <div class="site-popup__status-top"><img class="site-popup__status-logo" src="/rioni/assets/images/required/logo-rioni.svg" alt="Rioni Capital" width="120" height="40"></div><a class="site-popup__status-back" href="#registration-form" data-popup><span class="site-popup__status-back-arrow" aria-hidden="true"></span>Назад</a>
+          <div class="site-popup__status-center">
+            <div class="site-popup__status-visual" aria-hidden="true"><img class="site-popup__status-icon" src="/rioni/assets/images/required/error.png" alt="" width="114" height="114"></div>
+            <h2 class="site-popup__status-title" id="registration-something-wrong-title">Что-то пошло не так</h2>
+            <p class="site-popup__status-text">Связь прервалась из-за плохого соединения с интернетом, попробуйте перезагрузить страницу</p>
+          </div>
+          <p class="site-popup__status-support">Возникли трудности?<a class="site-popup__status-support-link" href="#">Обратитесь в службу поддержки</a></p>
+        </div>
+      </div>
+      <div class="site-popup site-popup--status mfp-hide mfp-with-anim" id="registration-service-unavailable-popup" aria-hidden="true" role="dialog" aria-labelledby="registration-service-unavailable-title" aria-modal="true">
+        <div class="site-popup__inner site-popup__inner--status">
+          <div class="site-popup__status-top"><img class="site-popup__status-logo" src="/rioni/assets/images/required/logo-rioni.svg" alt="Rioni Capital" width="120" height="40"></div><a class="site-popup__status-back" href="#registration-form" data-popup><span class="site-popup__status-back-arrow" aria-hidden="true"></span>Назад</a>
+          <div class="site-popup__status-center">
+            <div class="site-popup__status-visual" aria-hidden="true"><img class="site-popup__status-icon" src="/rioni/assets/images/required/logo.svg" alt="" width="114" height="114"></div>
+            <h2 class="site-popup__status-title" id="registration-service-unavailable-title">Сервис временно недоступен</h2>
+            <p class="site-popup__status-text">Мы уже работаем над устранением ошибки Попробуйте повторить позднее</p>
+          </div>
+          <p class="site-popup__status-support">Возникли трудности?<a class="site-popup__status-support-link" href="#">Обратитесь в службу поддержки</a></p>
+        </div>
+      </div>
+      <div class="site-popup site-popup--status mfp-hide mfp-with-anim" id="registration-banned-popup" aria-hidden="true" role="dialog" aria-labelledby="registration-banned-title" aria-modal="true">
+        <div class="site-popup__inner site-popup__inner--status">
+          <div class="site-popup__status-top"><img class="site-popup__status-logo" src="/rioni/assets/images/required/logo-rioni.svg" alt="Rioni Capital" width="120" height="40"></div>
+          <div class="site-popup__status-center site-popup__status-center--compact">
+            <div class="site-popup__status-visual" aria-hidden="true"><img class="site-popup__status-icon" src="/rioni/assets/images/required/ban.png" alt="" width="114" height="114"></div>
+            <h2 class="site-popup__status-title" id="registration-banned-title">Вход недоступен для данного пользователя</h2>
+            <p class="site-popup__status-text">К сожалению, на данный момент мы не готовы предоставить вам доступ к материалам Rioni Capital исходя из внутренней политики компании. Если решение будет пересмотрено, вы получите уведомление на электронную почту</p>
+          </div>
+        </div>
+      </div>
+      <div class="site-popup site-popup--status site-popup--status-soft mfp-hide mfp-with-anim" id="registration-completed-popup" aria-hidden="true" role="dialog" aria-labelledby="registration-completed-title" aria-modal="true">
+        <div class="site-popup__inner site-popup__inner--status">
+          <div class="site-popup__status-top"><img class="site-popup__status-logo" src="/rioni/assets/images/required/logo-rioni.svg" alt="Rioni Capital" width="120" height="40"></div><a class="site-popup__status-back" href="#registration-form" data-popup><span class="site-popup__status-back-arrow" aria-hidden="true"></span>Назад</a>
+          <div class="site-popup__status-center">
+            <div class="site-popup__status-visual site-popup__status-visual--soft" aria-hidden="true"><img class="site-popup__status-icon" src="/rioni/assets/images/required/mail.png" alt="" width="114" height="114"></div>
+            <h2 class="site-popup__status-title" id="registration-completed-title">Регистрация завершена!</h2>
+            <p class="site-popup__status-text">Брокерский счет формируется, вы получите уведомление об открытии на почту<span class="site-popup__status-email" id="registration-completed-email">takoytotam@mail.ru</span></p>
+          </div>
+          <p class="site-popup__status-support">Возникли трудности?<a class="site-popup__status-support-link" href="#">Обратитесь в службу поддержки</a></p>
+        </div>
+      </div>
+      <div class="popup tariff-consultation-popup mfp-hide mfp-with-anim" id="tariff-consultation-popup" aria-hidden="true">
+        <div class="tariff-consultation-popup__inner">
+          <h2 class="tariff-consultation-popup__title">Бесплатная консультация специалистов Rioni Capital</h2>
+          <form class="tariff-consultation-popup__form" action="#" method="post">
+            <div class="tariff-consultation-popup__field">
+              <label class="tariff-consultation-popup__label" for="tariff-consult-name">Ваше имя</label>
+              <input class="tariff-consultation-popup__input" id="tariff-consult-name" name="name" required>
+            </div>
+            <div class="tariff-consultation-popup__field">
+              <label class="tariff-consultation-popup__label" for="tariff-consult-email">E-mail</label>
+              <input class="tariff-consultation-popup__input" id="tariff-consult-email" type="email" name="email" required>
+            </div>
+            <div class="tariff-consultation-popup__field">
+              <label class="tariff-consultation-popup__label" for="tariff-consult-phone">Номер телефона</label>
+              <input class="tariff-consultation-popup__input" id="tariff-consult-phone" type="tel" name="phone" required>
+            </div>
+            <div class="tariff-consultation-popup__field">
+              <label class="tariff-consultation-popup__label" for="tariff-consult-comment">Комментарий</label>
+              <textarea class="tariff-consultation-popup__input tariff-consultation-popup__textarea" id="tariff-consult-comment" name="comment" rows="4"></textarea>
+            </div>
+            <label class="tariff-consultation-popup__agree">
+              <input class="tariff-consultation-popup__checkbox" type="checkbox" name="consent" value="1" required><span class="tariff-consultation-popup__agree-text">Даю согласие на обработку<a class="tariff-consultation-popup__link" href="#">персональных данных</a></span>
+            </label>
+            <button class="tariff-consultation-popup__submit" type="submit">Отправить</button>
+            <p class="tariff-consultation-popup__privacy">Нажимая кнопку “Отправить” вы принимаете<a class="tariff-consultation-popup__link" href="#">политику конфиденциальности</a></p>
+          </form>
+        </div>
+      </div>
+      <script src="/rioni/assets/js/registration-form.js"></script>
+    </div>
+  <script src="/rioni/js/libs.js"></script><script src="/rioni/js/app.js"></script></body>
+</html>
