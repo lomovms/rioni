@@ -128,9 +128,12 @@ block content
 						div
 							p Уведомление будет опубликовано редактором при возникновении события.
 
-			a.disclosure-cta(href="documents.html" style="background-image: url('./assets/images/required/seasonal-banner.jpg')")
+			.disclosure-cta(style="background-image: url('./assets/images/required/seasonal-banner.jpg')")
 				h2 Документация Rioni Capital
 				p Перейдите к полному списку документов компании.
-				span Перейти к документам →
+				a.button(href="documents.html")
+					span.button__text Перейти к документам
+					span.button__icon
+						i.icon.icon-arrow-right
 
 	+sectionForm({ prefix: 'disclosure' })
