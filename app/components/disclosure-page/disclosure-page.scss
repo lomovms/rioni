@@ -91,9 +91,9 @@
 
 	h3,
 	.disclosure-note {
-		margin: 0 0 10px;
+		margin: 0 0 8px;
 		color: var(--backgrounds-blue-ocean);
-		font-size: 16px;
+		font-size: 18px;
 		font-weight: 400;
 	}
 }
@@ -232,6 +232,12 @@
 
 		> h2 {
 			font-size: 20px;
+		}
+
+		h3,
+		.disclosure-note {
+			margin-bottom: 6px;
+			font-size: 12px;
 		}
 	}
 
