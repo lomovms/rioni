@@ -31,9 +31,9 @@ mixin contentPage(data)
 
 	section.content-page(class=!data.contentTitle && !(data.sections && data.sections.length) && !data.banner ? 'is-empty' : '')
 		.container
-			h2.content-page-title= data.contentTitle
 			.content-layout
 				article
+					h2.content-page-title= data.contentTitle
 					each item in data.sections
 						section.content-block(id=item.id)
 							if item.title
