@@ -24,6 +24,18 @@
 	}
 }
 
+.disclosure .docs__heading {
+	margin-bottom: 40px;
+}
+
+.disclosure .docs__note {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	font-size: 18px;
+}
+
 .disclosure-search {
 	position: relative;
 	display: block;
