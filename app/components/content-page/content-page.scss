@@ -188,6 +188,13 @@
 		border-radius: 20px;
 		object-fit: cover;
 
+		&--investor {
+			width: 328px;
+			height: 369px;
+			max-width: 40%;
+			aspect-ratio: auto;
+		}
+
 		&.left {
 			float: left;
 		}
@@ -467,6 +474,11 @@
 		.content-float {
 			width: 44%;
 			margin-right: 18px;
+
+			&--investor {
+				height: auto;
+				aspect-ratio: 3 / 4;
+			}
 
 			&.right {
 				margin-left: 18px;

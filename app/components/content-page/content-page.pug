@@ -41,7 +41,7 @@ mixin contentPage(data)
 							if item.wideImage
 								img.content-wide(src="./assets/images/" + item.wideImage alt="")
 							if item.floatImage
-								img.content-float(class=item.floatSide === 'right' ? 'right' : 'left' src="./assets/images/" + item.floatImage alt="")
+								img.content-float(class=[item.floatSide === 'right' ? 'right' : 'left', item.floatClass] src="./assets/images/" + item.floatImage alt="")
 							!= item.html
 					if data.banner
 						.learning-test-banner
