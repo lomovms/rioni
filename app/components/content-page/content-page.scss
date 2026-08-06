@@ -220,15 +220,19 @@
 
 @media (max-width: 767px) {
 	.content-hero-layout {
-		min-height: 760px;
+		min-height: 670px;
 
-		> picture,
-		> picture img {
-			min-height: 760px;
+		> picture {
+			display: flex;
+			align-items: flex-end;
+			min-height: 670px;
 		}
 
 		> picture img {
+			height: 670px;
+			min-height: 670px;
 			object-fit: contain;
+			object-position: center bottom;
 		}
 
 		> div {
