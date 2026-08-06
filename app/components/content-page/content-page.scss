@@ -363,6 +363,11 @@
 		width: calc(100vw - 16px);
 		max-width: 359px;
 
+		.content-toc__title,
+		.content-toc__list {
+			animation: content-toc-open 180ms ease-out both;
+		}
+
 		.content-toc__title {
 			display: block;
 			margin: 0;
@@ -429,6 +434,17 @@
 				padding-left: 28px;
 				background: #27413c;
 			}
+		}
+	}
+
+	@keyframes content-toc-open {
+		from {
+			opacity: 0;
+			transform: translateY(6px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
 		}
 	}
 
