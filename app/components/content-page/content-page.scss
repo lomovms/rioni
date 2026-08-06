@@ -227,17 +227,25 @@
 			min-height: 760px;
 		}
 
+		> picture img {
+			object-fit: contain;
+		}
+
 		> div {
 			max-width: 265px;
 			padding: 142px 0 24px 30px;
 		}
 
 		h1 {
+			margin-bottom: 20px;
 			font-size: 26px;
 		}
 
 		p {
-			font-size: 13px;
+			max-width: 430px;
+			margin-bottom: 20px;
+			font-size: 12px;
+			line-height: 1.3;
 		}
 	}
 
